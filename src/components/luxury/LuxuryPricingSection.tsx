@@ -92,9 +92,15 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               <div className="absolute top-0 right-0 p-3 opacity-30">
                 <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
               </div>
-              <span className="inline-block self-start font-mono text-[10px] px-2.5 py-1 uppercase tracking-[0.2em] font-bold bg-[#48C765]/10 text-[#48C765] border border-[#48C765]/30 mb-4 shadow-[0_0_10px_rgba(72,199,101,0.2)]">
-                {popularTier.badge}
-              </span>
+              <div className="inline-flex items-center gap-2.5 self-start mb-4 px-3.5 py-1.5 bg-[#1A1C1A]/80 rounded-full border border-white/10 backdrop-blur-md shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_4px_12px_rgba(0,0,0,0.3)] group-hover:border-[#48C765]/30 transition-colors duration-500">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#48C765] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#48C765]"></span>
+                </span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.25em] font-bold text-white/90">
+                  {popularTier.badge}
+                </span>
+              </div>
               <h3 className="font-['Oswald'] text-3xl lg:text-4xl uppercase tracking-wide text-white mb-3 leading-tight drop-shadow-md">
                 {popularTier.name}
               </h3>
