@@ -1,0 +1,114 @@
+import React, { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
+import { GorillaLogo } from './GorillaLogo';
+
+interface LuxuryNavbarProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
+  const { language, setLanguage, t } = useLanguage();
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim() && onNavigate) {
+      onNavigate(`/verify?id=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+    }
+  };
+
+  return (
+    <header className="sticky top-0 z-50 w-full bg-[#454545]/85 backdrop-blur-xl border-b border-white/[0.06] transition-all">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+        
+        {/* Brand Logo & Name (Authentic Original Project Logo) */}
+        <div 
+          onClick={() => onNavigate && onNavigate('/')}
+          className="cursor-pointer group"
+        >
+          <GorillaLogo />
+        </div>
+
+        {/* Center Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+          <button 
+            onClick={() => onNavigate && onNavigate('/pricing')}
+            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
+          >
+            {t('ref.nav.grading')}
+          </button>
+
+          <button 
+            onClick={() => onNavigate && onNavigate('/technology')}
+            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
+          >
+            {t('ref.nav.technology')}
+          </button>
+
+
+
+
+
+          <button 
+            onClick={() => onNavigate && onNavigate('/about')}
+            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
+          >
+            {t('ref.nav.about')}
+          </button>
+        </nav>
+
+        {/* Right Tools & CTAs */}
+        <div className="flex items-center gap-5">
+          {/* Quick Search Trigger */}
+          <div className="relative">
+            {isSearchOpen ? (
+              <form onSubmit={handleSearchSubmit} className="flex items-center">
+                <input
+                  type="text"
+                  placeholder="GG-892401..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  autoFocus
+                  className="bg-[#161B16] border border-[#48C765]/50 text-white text-xs px-3 py-1.5 rounded-none w-36 focus:outline-none focus:w-48 transition-all font-mono"
+                />
+                <button 
+                  type="button" 
+                  onClick={() => setIsSearchOpen(false)}
+                  className="ml-2 text-xs text-[#A4ACA1] hover:text-white"
+                >
+                  ✕
+                </button>
+              </form>
+            ) : (
+              <button 
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 text-[#A4ACA1] hover:text-white transition-colors"
+                title="Search Certificate"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Language Toggle Dropdown */}
+          <div className="relative">
+          </div>
+
+          {/* Submit a Card Button */}
+          <button
+            onClick={() => onNavigate && onNavigate('/submit')}
+            className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-none border border-white/20 hover:border-[#48C765] text-white hover:text-[#48C765] text-xs font-semibold tracking-wide uppercase transition-all duration-200 hover:bg-[#48C765]/10"
+          >
+            {t('ref.nav.submit')}
+          </button>
+        </div>
+
+      </div>
+    </header>
+  );
+};
