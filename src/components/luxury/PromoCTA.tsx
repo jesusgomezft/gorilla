@@ -20,8 +20,7 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
         {/* Original Industrial Tech Badge */}
         <div className="flex items-center gap-3 mb-6 opacity-90">
           <div className="text-[#48C765]/60 font-mono text-[10px] leading-none">{'['}</div>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 bg-[#48C765] shadow-[0_0_10px_rgba(72,199,101,0.9)]" />
+          <div className="flex items-center">
             <span className="font-mono text-[9px] sm:text-[10px] font-bold tracking-[0.3em] text-[#48C765] uppercase leading-none mt-0.5">
               {language === 'es' ? 'OFERTA LIMITADA' : 'LIMITED TIME OFFER'}
             </span>
