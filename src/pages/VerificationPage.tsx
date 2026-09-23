@@ -94,7 +94,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
           
           {/* Left Column: The Slab (Hero of the page) */}
           <div className="lg:col-span-5 flex flex-col gap-8 sticky top-32">
-            <div className="w-full max-w-[420px] mx-auto relative group">
+            <div className="w-full max-w-[420px] mx-auto relative group lg:mb-12">
               {/* Subtle background glow to make the slab pop without looking like a cheap template */}
               <div className="absolute inset-0 bg-[#48C765]/5 blur-[100px] rounded-none pointer-events-none transition-opacity duration-700 opacity-50 group-hover:opacity-100" />
               <div className="relative z-10 scale-100 origin-top lg:scale-110">
