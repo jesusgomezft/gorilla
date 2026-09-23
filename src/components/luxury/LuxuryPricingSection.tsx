@@ -65,96 +65,86 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
     const popularTier = tiers.find(t => t.id === 'standard')!;
     
     return (
-      <section id="pricing" className="w-full bg-transparent text-white py-16 lg:py-24 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
+      <section id="pricing" className="w-full bg-transparent text-white py-10 lg:py-14 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
         
-        <div className="mb-8 flex items-center justify-center gap-4 w-full">
-          <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#48C765]/50" />
-          <h2 className="font-mono text-xs sm:text-sm tracking-[0.3em] text-[#A4ACA1] uppercase text-center">
-            {language === 'es' ? 'NUESTRO SERVICIO MÁS POPULAR' : 'OUR MOST POPULAR SERVICE'}
+        {/* Minimalist Section Header */}
+        <div className="mb-6 flex items-center justify-center gap-6 w-full opacity-60">
+          <div className="h-[1px] w-8 bg-white/20" />
+          <h2 className="font-mono text-[9px] tracking-[0.4em] text-white uppercase text-center">
+            {language === 'es' ? 'NUESTRO SERVICIO ESTRELLA' : 'FEATURED SERVICE'}
           </h2>
-          <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#48C765]/50" />
+          <div className="h-[1px] w-8 bg-white/20" />
         </div>
 
-        {/* Uncommon Horizontal Ticket Design */}
-        <div className="w-full max-w-[850px] relative group cursor-pointer transition-transform duration-500 hover:scale-[1.01]" onClick={() => onNavigate && onNavigate('/submit')}>
+        {/* Ultra-Slim Technical Readout Strip */}
+        <div 
+          onClick={() => onNavigate && onNavigate('/submit')}
+          className="w-full max-w-[900px] group cursor-pointer relative"
+        >
+          {/* Hover Glow */}
+          <div className="absolute inset-0 bg-[#48C765]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full" />
           
-          {/* Subtle Outer Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#48C765]/0 via-[#48C765]/10 to-[#48C765]/0 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-          {/* Ticket Body */}
-          <div className="relative w-full bg-[#111311]/80 backdrop-blur-xl border border-white/5 shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden">
+          <div className="relative w-full bg-[#0B0C0B] border border-white/10 group-hover:border-[#48C765]/50 transition-colors duration-500 flex flex-col md:flex-row items-center justify-between pl-6 pr-2 py-2 shadow-2xl">
             
-            {/* Left Accent Bar */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#48C765] to-[#1F552B]" />
-
-            {/* Section 1: Title & Badge */}
-            <div className="p-6 md:p-8 md:w-[35%] border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-center relative bg-[url('/images/noise.png')] bg-repeat opacity-95">
-              <div className="absolute top-0 right-0 p-2">
-                <svg className="w-4 h-4 text-white/10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
-              </div>
-              <span className="inline-block self-start font-mono text-[9px] px-2 py-0.5 uppercase tracking-widest font-bold bg-[#48C765]/10 text-[#48C765] border border-[#48C765]/20 mb-3">
-                {popularTier.badge}
-              </span>
-              <h3 className="font-['Oswald'] text-2xl lg:text-3xl uppercase tracking-wide text-white mb-2 leading-tight">
-                {popularTier.name}
-              </h3>
-              <p className="text-[11px] text-[#8A9388] font-sans leading-relaxed">
-                {popularTier.tagline}
-              </p>
-            </div>
-
-            {/* Section 2: Features & Turnaround */}
-            <div className="p-6 md:p-8 md:w-[45%] flex flex-col justify-center bg-white/[0.01]">
-              <div className="grid grid-cols-1 gap-5">
-                <div className="flex flex-col">
-                   <p className="font-mono text-[9px] text-[#5B6154] uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
-                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                     {language === 'es' ? 'Plazo Estimado' : 'Estimated Turnaround'}
-                   </p>
-                   <p className="font-sans text-sm text-white font-medium">{popularTier.turnaround}</p>
-                </div>
-                
-                <div>
-                   <p className="font-mono text-[9px] text-[#5B6154] uppercase tracking-widest mb-2 flex items-center gap-1.5">
-                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                     {language === 'es' ? 'Incluye' : 'Includes'}
-                   </p>
-                   <div className="flex flex-wrap gap-x-4 gap-y-2">
-                     {popularTier.features.map((feature, idx) => (
-                       <div key={idx} className="flex items-center gap-1.5">
-                         <div className="w-1 h-1 bg-[#48C765]/70" />
-                         <span className="font-sans text-[11px] text-[#C2C9C3]">{feature}</span>
-                       </div>
-                     ))}
-                   </div>
-                </div>
+            {/* 1. Identity & Name */}
+            <div className="flex items-center gap-4 py-2 md:py-0 md:w-1/4">
+              <div className="flex flex-col">
+                <span className="font-mono text-[8px] text-[#48C765] tracking-widest uppercase mb-0.5">
+                  {popularTier.badge}
+                </span>
+                <h3 className="font-['Oswald'] text-xl uppercase tracking-wider text-white leading-none">
+                  {popularTier.name}
+                </h3>
               </div>
             </div>
 
-            {/* Section 3: Price & Action */}
-            <div className="p-6 md:p-8 md:w-[20%] border-t md:border-t-0 md:border-l border-white/5 bg-[#48C765]/[0.02] flex flex-row md:flex-col items-center justify-between md:justify-center gap-4 group-hover:bg-[#48C765]/[0.05] transition-colors">
-              <div className="flex items-start md:items-baseline gap-0.5">
-                <span className="font-mono text-sm text-[#8A9388] mt-1 md:mt-0">€</span>
-                <span className="font-['Oswald'] font-[700] text-4xl lg:text-5xl text-white group-hover:text-[#48C765] transition-colors">
+            {/* 2. Divider */}
+            <div className="hidden md:block w-[1px] h-8 bg-white/10" />
+
+            {/* 3. Tech Specs (Turnaround + Features) */}
+            <div className="flex flex-row items-center gap-6 md:gap-8 py-3 md:py-0 flex-1 justify-center">
+              <div className="flex flex-col items-center md:items-start">
+                <span className="font-mono text-[8px] text-white/40 uppercase tracking-widest mb-1">Time</span>
+                <span className="font-mono text-xs text-white/90">{popularTier.turnaround}</span>
+              </div>
+              <div className="hidden sm:flex items-center gap-4">
+                {popularTier.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-1.5 bg-white/5 px-2 py-1 border border-white/5">
+                    <div className="w-1 h-1 bg-[#48C765]" />
+                    <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-wider whitespace-nowrap">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 4. Price & CTA Button (Merged into a solid block) */}
+            <div className="w-full md:w-auto flex items-stretch mt-2 md:mt-0">
+              <div className="flex items-center gap-1 bg-white/5 px-4 md:px-6 py-3 md:py-0 border-r border-white/5">
+                <span className="font-mono text-xs text-[#8A9388]">€</span>
+                <span className="font-['Oswald'] font-[700] text-3xl text-white group-hover:text-[#48C765] transition-colors leading-none tracking-tighter">
                   {popularTier.price}
                 </span>
               </div>
               
-              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#48C765] group-hover:bg-[#48C765] transition-all duration-300">
-                <svg className="w-4 h-4 text-[#A4ACA1] group-hover:text-[#111] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <div className="bg-[#48C765] text-[#0B0C0B] hover:bg-[#3A9F50] transition-colors flex items-center justify-center px-6 py-3 cursor-pointer">
+                <span className="font-bold text-[10px] tracking-[0.2em] uppercase whitespace-nowrap hidden md:inline mr-2">
+                  {language === 'es' ? 'SELECCIONAR' : 'SELECT'}
+                </span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </div>
             </div>
             
           </div>
         </div>
 
-        <div className="mt-8">
+        {/* View All Link */}
+        <div className="mt-6">
           <button
             onClick={() => onNavigate && onNavigate('/pricing')}
-            className="group font-mono text-[10px] tracking-widest uppercase text-[#8A9388] hover:text-white transition-colors flex items-center gap-2"
+            className="group font-mono text-[9px] tracking-[0.2em] uppercase text-white/40 hover:text-white transition-colors flex items-center gap-1.5"
           >
             {language === 'es' ? 'Ver todas las tarifas' : 'View all services'}
-            <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
         </div>
       </section>
