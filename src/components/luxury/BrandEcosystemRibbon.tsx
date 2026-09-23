@@ -32,12 +32,12 @@ export const BrandEcosystemRibbon: React.FC = () => {
           </span>
         </div>
 
-        {/* Logos Flex Row */}
-        <div className="w-full flex flex-wrap md:flex-nowrap items-center justify-between gap-6 lg:gap-8 pt-1">
+        {/* Logos Grid */}
+        <div className="w-full grid grid-cols-2 md:flex md:flex-nowrap items-center justify-items-center md:justify-between gap-x-6 gap-y-10 pt-4 md:pt-2">
           {brands.map((brand) => (
             <div 
               key={brand.id}
-              className="flex items-center justify-center opacity-60 hover:opacity-80 transition-opacity duration-200 text-white cursor-pointer"
+              className="flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity duration-200 text-white cursor-pointer drop-shadow-md"
               title={brand.name}
             >
               {brand.component}
@@ -45,7 +45,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
           ))}
 
           {/* And More Link */}
-          <div className="flex items-center gap-1.5 font-mono text-[11px] font-bold tracking-[0.18em] text-[#A4ACA1] hover:text-white uppercase cursor-pointer transition-colors group">
+          <div className="col-span-2 md:col-span-1 flex items-center justify-center gap-1.5 font-mono text-[11px] font-bold tracking-[0.18em] text-[#A4ACA1] hover:text-white uppercase cursor-pointer transition-colors group pt-2 md:pt-0">
             <span>{t('ref.ribbon.andMore')}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </div>

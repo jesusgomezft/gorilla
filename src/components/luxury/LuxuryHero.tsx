@@ -29,9 +29,9 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         style={{ perspective: '1000px' }}
       >
         <img 
-          src="/images/gorila.png?v=7" 
+          src={`/images/gorila.png?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
-          className="w-full h-full object-cover object-center transition-transform duration-[1200ms] ease-out will-change-transform"
+          className="w-full h-full object-cover object-[75%_center] lg:object-center transition-transform duration-[1200ms] ease-out will-change-transform"
           style={{
             transform: `scale(1.06) translate3d(${mousePos.x * -12}px, ${mousePos.y * -12}px, 0) rotateY(${mousePos.x * 2}deg) rotateX(${mousePos.y * -2}deg)`
           }}
@@ -47,7 +47,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 items-center min-h-[82vh]">
         
         {/* Left Column: Headlines, Copy, Buttons, Social Proof */}
-        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center py-12">
+        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center py-12 pl-4 sm:pl-8 lg:pl-16 xl:pl-24">
           
           {/* Technical Kicker */}
           <div className="flex items-center gap-3 mb-6">
@@ -57,14 +57,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           </div>
 
           {/* Monumental Display Headline (Architectural Senior Grotesque - Oswald 700) */}
-          <h1 className="font-['Oswald'] font-[700] text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-7xl leading-[0.95] tracking-[0.01em] text-white mb-7 uppercase">
+          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl leading-[0.95] tracking-[0.01em] text-white mb-7 uppercase">
             {t('ref.hero.title1')}<br />
             {t('ref.hero.title2')}<span className="text-[#48C765]">{t('ref.hero.titleGreen')}</span>
           </h1>
 
           {/* Clear Editorial Description */}
           <div className="relative mb-9">
-            <div className="absolute -inset-4 bg-[radial-gradient(ellipse_at_center,_rgba(10,13,11,0.85)_0%,_transparent_70%)] pointer-events-none" />
             <p className="relative font-sans text-base sm:text-lg text-[#C2C9C3] max-w-[490px] leading-relaxed font-normal">
               {t('ref.hero.desc')}
             </p>
@@ -140,7 +139,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             </div>
             
             {/* European Grading Standard Circular Seal */}
-            <div className="relative w-16 h-16 rounded-none border border-white/25 flex items-center justify-center p-2 opacity-70">
+            <div className="relative w-16 h-16 flex items-center justify-center p-2 opacity-70">
               <svg className="w-full h-full text-[#A4ACA1] animate-[spin_60s_linear_infinite]" viewBox="0 0 100 100">
                 <path id="sealPath" fill="transparent" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
                 <text className="text-[7.5px] font-mono uppercase tracking-[0.22em] fill-white/70">
@@ -148,9 +147,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                 </text>
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-none border border-[#48C765]/50 flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-none bg-[#48C765]" />
-                </div>
+                  <div className="w-1.5 h-1.5 bg-[#48C765]" />
               </div>
             </div>
           </div>

@@ -8,6 +8,10 @@ import { LuxuryPricingSection } from '../components/luxury/LuxuryPricingSection'
 import { LuxuryAboutSection } from '../components/luxury/LuxuryAboutSection';
 import { MissionBanner } from '../components/luxury/MissionBanner';
 import { TechDetailModal } from '../components/luxury/TechDetailModal';
+import { InfluencerTestimonialsPlaceholder, SocialProofPlaceholder } from '../components/luxury/MarketingPlaceholders';
+import { PromoCTA } from '../components/luxury/PromoCTA';
+import { FAQSection } from '../components/luxury/FAQSection';
+import { NewsletterSection } from '../components/luxury/NewsletterSection';
 
 interface LuxuryReferenceHomePageProps {
   onNavigate: (path: string) => void;
@@ -28,9 +32,32 @@ export const LuxuryReferenceHomePage: React.FC<LuxuryReferenceHomePageProps> = (
       {/* 2. Brand Ecosystem Ribbon */}
       <BrandEcosystemRibbon />
 
-      {/* 2.5 Technology Teaser Section */}
+      {/* 3. Pricing & Services Recommendation */}
+      <LuxuryPricingSection onNavigate={onNavigate} />
+
+      {/* 4. Cognitive Reinforcement 1: Technology */}
       <HomeTechnologySection onNavigate={onNavigate} />
 
+      {/* 5. Step by Step / Process */}
+      <TechnologySection />
+
+      {/* 7. Influencer Testimonials (Placeholder) */}
+      <InfluencerTestimonialsPlaceholder />
+
+      {/* 8. Call to Action / Promos */}
+      <PromoCTA onNavigate={onNavigate} />
+
+      {/* 9. FAQs */}
+      <FAQSection />
+
+      {/* 10. Social Proof Reinforcement (Placeholder) */}
+      <SocialProofPlaceholder />
+
+      {/* 11. Customer Promise / International Shipping */}
+      <MissionBanner onNavigate={onNavigate} />
+
+      {/* 12. Newsletter Subscription */}
+      <NewsletterSection />
 
       {/* Interactive Technology Detail Explorer Modal */}
       <TechDetailModal

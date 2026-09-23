@@ -15,10 +15,13 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
       <img 
         src="/images/ourmission.png?v=7" 
         alt="Gorilla Grading Box" 
-        className="absolute left-0 top-0 h-full w-[50%] object-cover object-right opacity-90 z-0"
+        className="absolute left-0 top-0 h-full w-full lg:w-[50%] object-cover object-center lg:object-right opacity-90 z-0"
       />
       {/* Smooth fade from the image on the left to the solid background on the right */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#454545]/80 to-[#454545] pointer-events-none" />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[#454545]/85 lg:hidden" />
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#454545]/80 to-[#454545]" />
+      </div>
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
         
@@ -26,7 +29,7 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
         <div className="hidden lg:block lg:w-[45%] shrink-0"></div>
 
         {/* Text and buttons (always pushed to the right side on desktop, stacked on mobile) */}
-        <div className="w-full lg:w-[35%] flex flex-col justify-center mt-[300px] sm:mt-0 lg:mt-0 z-10 bg-[#454545]/40 lg:bg-transparent p-6 lg:p-0 rounded-none backdrop-blur-sm lg:backdrop-blur-none">
+        <div className="w-full lg:w-[35%] flex flex-col justify-center mt-8 lg:mt-0 z-10 bg-transparent p-0 rounded-none">
           <p className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase mb-4">
             {t('ref.mission.eyebrow')}
           </p>

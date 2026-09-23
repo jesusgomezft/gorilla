@@ -11,6 +11,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,9 +107,53 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
           >
             {t('ref.nav.submit')}
           </button>
+
+          {/* Mobile Menu Hamburger Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-[#A4ACA1] hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
 
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-20 left-0 w-full bg-[#2B302B] border-b border-white/10 flex flex-col py-4 px-6 gap-4 shadow-xl">
+          <button 
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/pricing'); }}
+            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+          >
+            {t('ref.nav.grading')}
+          </button>
+          <button 
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/technology'); }}
+            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+          >
+            {t('ref.nav.technology')}
+          </button>
+          <button 
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/about'); }}
+            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+          >
+            {t('ref.nav.about')}
+          </button>
+          <button
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
+            className="sm:hidden mt-2 inline-flex items-center justify-center px-5 py-3 rounded-none border border-[#48C765]/50 bg-[#48C765]/10 text-white font-semibold tracking-wide uppercase transition-all"
+          >
+            {t('ref.nav.submit')}
+          </button>
+        </div>
+      )}
     </header>
   );
 };

@@ -114,7 +114,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         </p>
 
         {/* Minimalist Horizontal Step Indicator */}
-        <div className="flex w-full border border-[#2A2E2A] rounded bg-[#0D120F] mb-12">
+        <div className="flex w-full border border-[#2A2E2A] rounded bg-[#2B302B] mb-12">
           {stepsList.map((step) => {
             const isCurrent = currentStep === step.num;
             const isPast = currentStep > step.num;
@@ -122,7 +122,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
               <div 
                 key={step.num}
                 onClick={() => isPast && setCurrentStep(step.num as any)}
-                className={`flex-1 p-3 sm:px-6 sm:py-4 border-r border-[#2A2E2A] last:border-r-0 transition-all ${isPast ? 'cursor-pointer hover:bg-white/[0.02]' : ''} ${isCurrent ? 'bg-[#151D17] border-b-2 border-b-[#48C765]' : ''}`}
+                className={`flex-1 p-3 sm:px-6 sm:py-4 border-r border-[#2A2E2A] last:border-r-0 transition-all ${isPast ? 'cursor-pointer hover:bg-white/[0.05]' : ''} ${isCurrent ? 'bg-black/20 border-b-2 border-b-[#48C765]' : ''}`}
               >
                 <div className="flex flex-col">
                   <span className={`font-mono text-[11px] font-bold ${isCurrent ? 'text-[#48C765]' : isPast ? 'text-white' : 'text-[#A4ACA1]'}`}>

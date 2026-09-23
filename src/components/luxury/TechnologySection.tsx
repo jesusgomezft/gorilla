@@ -16,15 +16,18 @@ export const TechnologySection: React.FC = () => {
       />
       
       {/* Dark overlay to ensure text is readable */}
-      <div className="absolute inset-0 z-0 flex pointer-events-none">
-        <div className="w-2/5 bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent" />
-        <div className="w-1/5" />
-        <div className="w-2/5 bg-gradient-to-l from-[#454545] via-[#454545]/80 to-transparent" />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[#454545]/85 lg:hidden" />
+        <div className="hidden lg:flex w-full h-full">
+          <div className="w-2/5 bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent" />
+          <div className="w-1/5" />
+          <div className="w-2/5 bg-gradient-to-l from-[#454545] via-[#454545]/80 to-transparent" />
+        </div>
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32 min-h-[600px] flex items-center">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-16 lg:py-32 min-h-[600px] flex items-center">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 w-full items-center">
           
           {/* Left Copy Overlay */}
           <div className="lg:col-span-5 flex flex-col justify-center">
@@ -51,7 +54,7 @@ export const TechnologySection: React.FC = () => {
           <div className="hidden lg:block lg:col-span-3"></div>
 
           {/* Right Steps */}
-          <div className="lg:col-span-4 flex flex-col justify-center pl-4 lg:pl-10">
+          <div className="lg:col-span-4 flex flex-col justify-center lg:pl-10">
             <div className="flex flex-col border-l border-white/10">
               
               {/* Step 1 */}
