@@ -92,14 +92,25 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               <div className="absolute top-0 right-0 p-3 opacity-30">
                 <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
               </div>
-              <div className="inline-flex items-center gap-2.5 self-start mb-4 px-3.5 py-1.5 bg-[#1A1C1A]/80 rounded-full border border-white/10 backdrop-blur-md shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_4px_12px_rgba(0,0,0,0.3)] group-hover:border-[#48C765]/30 transition-colors duration-500">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#48C765] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#48C765]"></span>
-                </span>
-                <span className="font-mono text-[9px] uppercase tracking-[0.25em] font-bold text-white/90">
-                  {popularTier.badge}
-                </span>
+              <div className="flex items-center gap-3 self-start mb-6 opacity-90">
+                {/* Abstract Industrial Barcode */}
+                <div className="flex gap-[2px] h-5 items-end">
+                  <div className="w-[4px] h-full bg-[#48C765]"></div>
+                  <div className="w-[1px] h-[70%] bg-[#48C765]/60"></div>
+                  <div className="w-[2px] h-[90%] bg-[#48C765]/80"></div>
+                  <div className="w-[1px] h-[50%] bg-[#48C765]/40"></div>
+                  <div className="w-[3px] h-full bg-[#48C765]/90"></div>
+                </div>
+                
+                {/* Tech Readout Text */}
+                <div className="flex flex-col justify-end h-full">
+                  <span className="font-mono text-[7px] text-[#A4ACA1] tracking-[0.3em] uppercase leading-none mb-[3px]">
+                    {language === 'es' ? 'RCDM.01' : 'REC.01'}
+                  </span>
+                  <span className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-white leading-none">
+                    {popularTier.badge}
+                  </span>
+                </div>
               </div>
               <h3 className="font-['Oswald'] text-3xl lg:text-4xl uppercase tracking-wide text-white mb-3 leading-tight drop-shadow-md">
                 {popularTier.name}
