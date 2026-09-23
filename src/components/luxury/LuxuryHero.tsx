@@ -33,7 +33,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           alt="Gorilla Grading - Master Artwork" 
           className="w-full h-full object-cover object-[75%_center] lg:object-center transition-transform duration-[1200ms] ease-out will-change-transform"
           style={{
-            transform: `scale(1.06) translate3d(${mousePos.x * -12}px, ${mousePos.y * -12}px, 0) rotateY(${mousePos.x * 2}deg) rotateX(${mousePos.y * -2}deg)`
+            transform: `scale(0.95) translate3d(${mousePos.x * -12}px, ${mousePos.y * -12}px, 0) rotateY(${mousePos.x * 2}deg) rotateX(${mousePos.y * -2}deg)`
           }}
         />
         
