@@ -33,7 +33,7 @@ export const LuxuryReferenceHomePage: React.FC<LuxuryReferenceHomePageProps> = (
       <BrandEcosystemRibbon />
 
       {/* 3. Pricing & Services Recommendation */}
-      <LuxuryPricingSection onNavigate={onNavigate} />
+      <LuxuryPricingSection onNavigate={onNavigate} isHome={true} />
 
       {/* 4. Cognitive Reinforcement 1: Technology */}
       <HomeTechnologySection onNavigate={onNavigate} />

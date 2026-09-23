@@ -3,9 +3,10 @@ import { useLanguage } from '../../context/LanguageContext';
 
 interface LuxuryPricingSectionProps {
   onNavigate?: (path: string) => void;
+  isHome?: boolean;
 }
 
-export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNavigate }) => {
+export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNavigate, isHome = false }) => {
   const { language } = useLanguage();
   const [selectedTier, setSelectedTier] = useState<string>('standard');
 
@@ -59,6 +60,87 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         : ['Dual Audit', 'Armored Case', 'Assigned Master Grader']
     }
   ];
+
+  if (isHome) {
+    const popularTier = tiers.find(t => t.id === 'standard')!;
+    
+    return (
+      <section id="pricing" className="w-full bg-[#454545] text-white py-20 lg:py-32 px-6 lg:px-12 border-b border-white/[0.04] select-none relative overflow-hidden flex flex-col items-center">
+        {/* Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#48C765]/[0.03] blur-[150px] pointer-events-none rounded-full" />
+        
+        <div className="max-w-[500px] w-full relative z-10 flex flex-col items-center">
+          <div className="mb-10 text-center">
+            <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl text-white uppercase tracking-wide leading-tight text-center">
+              {language === 'es' ? 'NUESTRO SERVICIO MÁS POPULAR' : 'OUR MOST POPULAR SERVICE'}
+            </h2>
+          </div>
+
+          <div className="w-full bg-white/[0.03] border border-[#48C765]/40 shadow-[0_8px_30px_rgba(72,199,101,0.1)] p-8 relative flex flex-col group hover:border-[#48C765] transition-colors duration-500">
+            {/* Active Left Border Accent */}
+            <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-[#48C765]" />
+            
+            <div className="flex flex-col items-center mb-8 text-center border-b border-white/10 pb-8">
+              <span className="font-mono text-[10px] px-2 py-0.5 uppercase tracking-widest font-bold bg-[#48C765] text-[#111] mb-4">
+                {popularTier.badge}
+              </span>
+              <h3 className="font-['Oswald'] text-2xl uppercase tracking-wide text-white mb-2">
+                {popularTier.name}
+              </h3>
+              <p className="text-sm text-[#8A9388] font-sans mb-4 max-w-[280px]">
+                {popularTier.tagline}
+              </p>
+              <div className="flex items-baseline gap-1">
+                <span className="font-mono text-xl text-[#8A9388]">€</span>
+                <span className="font-['Oswald'] font-[700] text-5xl text-[#48C765]">
+                  {popularTier.price}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-6 mb-10">
+              <div className="flex flex-col items-center text-center mb-2">
+                <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mb-1">
+                  {language === 'es' ? 'Plazo Estimado' : 'Estimated Turnaround'}
+                </p>
+                <p className="font-sans text-lg text-white font-semibold">{popularTier.turnaround}</p>
+              </div>
+
+              <div className="flex flex-col gap-3 items-center">
+                <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mb-1">
+                  {language === 'es' ? 'Incluye' : 'Includes'}
+                </p>
+                {popularTier.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#48C765]" />
+                    <span className="font-sans text-sm text-[#EAEAEA]">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={() => onNavigate && onNavigate('/submit')}
+              className="w-full bg-[#3A9F50] hover:bg-[#48C765] text-white py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 flex justify-center items-center gap-2"
+            >
+              {language === 'es' ? 'SELECCIONAR ESTE SERVICIO' : 'SELECT THIS SERVICE'}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+
+          <div className="mt-10">
+            <button
+              onClick={() => onNavigate && onNavigate('/pricing')}
+              className="group font-mono text-[11px] tracking-widest uppercase text-[#A4ACA1] hover:text-white transition-colors flex items-center gap-2"
+            >
+              {language === 'es' ? 'Ver todas las tarifas' : 'View all services'}
+              <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="pricing" className="w-full bg-[#454545] text-white py-16 lg:py-24 px-6 lg:px-12 border-b border-white/[0.04] select-none relative overflow-hidden">
