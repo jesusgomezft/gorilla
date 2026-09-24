@@ -61,62 +61,94 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
     }
   ];
 
+  const tiersWithTheme = tiers.map(t => {
+    switch(t.id) {
+      case 'regular': return { ...t, color: '#3B82F6', code: 'RCDM.00', shortName: 'REGULAR' };
+      case 'standard': return { ...t, color: '#48C765', code: 'RCDM.01', shortName: 'STANDARD' };
+      case 'express': return { ...t, color: '#F59E0B', code: 'RCDM.02', shortName: 'EXPRESS' };
+      case 'walkthrough': return { ...t, color: '#8B5CF6', code: 'RCDM.MASTER', shortName: 'WALK-THROUGH' };
+      default: return { ...t, color: '#48C765', code: 'RCDM.XX', shortName: 'TIER' };
+    }
+  });
+
+  const [currentSlide, setCurrentSlide] = useState(1); // Start on standard
+
+  React.useEffect(() => {
+    if (!isHome) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % tiersWithTheme.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isHome, tiersWithTheme.length]);
+
   if (isHome) {
-    const popularTier = tiers.find(t => t.id === 'standard')!;
+    const activeTier = tiersWithTheme[currentSlide];
     
     return (
       <section id="pricing" className="w-full bg-transparent text-white py-16 lg:py-20 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
         
         <div className="mb-10 flex items-center justify-center gap-6 w-full opacity-80">
-          <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#48C765]/50" />
-          <h2 className="font-mono text-xs sm:text-sm tracking-[0.4em] text-white uppercase text-center font-semibold">
-            {language === 'es' ? 'NUESTRO SERVICIO ESTRELLA' : 'FEATURED SERVICE'}
+          <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-white/30" />
+          <h2 className="font-mono text-xs sm:text-sm tracking-[0.4em] text-white uppercase text-center font-semibold transition-colors duration-500" style={{ color: activeTier.color }}>
+            {language === 'es' ? 'NUESTROS SERVICIOS' : 'OUR SERVICES'}
           </h2>
-          <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#48C765]/50" />
+          <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-white/30" />
         </div>
 
-        {/* Larger & Improved Horizontal Ticket Design */}
-        <div className="w-full max-w-[1000px] relative group cursor-pointer transition-transform duration-700 hover:scale-[1.01]" onClick={() => onNavigate && onNavigate('/submit')}>
+        {/* Dynamic Slider Container */}
+        <div className="w-full max-w-[1000px] relative">
           
           {/* Enhanced Outer Glow */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-[#48C765]/0 via-[#48C765]/15 to-[#48C765]/0 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          <div 
+            className="absolute -inset-2 blur-2xl transition-all duration-700 pointer-events-none opacity-40" 
+            style={{ backgroundImage: `linear-gradient(to right, transparent, ${activeTier.color}20, transparent)` }}
+          />
 
-          {/* Ticket Body - Color blends with background (#454545) */}
-          <div className="relative w-full bg-[#525252]/80 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm group-hover:border-[#48C765]/40 transition-colors duration-500">
+          {/* Ticket Body */}
+          <div 
+            className="relative w-full bg-[#525252]/80 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm transition-all duration-700 cursor-pointer hover:scale-[1.01]"
+            style={{ borderColor: `${activeTier.color}40` }}
+            onClick={() => onNavigate && onNavigate('/submit')}
+          >
             
             {/* Left Accent Bar */}
-            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#48C765] to-[#1F552B]" />
+            <div 
+              className="absolute left-0 top-0 bottom-0 w-1.5 transition-colors duration-700" 
+              style={{ backgroundImage: `linear-gradient(to bottom, ${activeTier.color}, transparent)` }}
+            />
 
             {/* Section 1: Title & Badge */}
             <div className="p-8 md:p-10 md:w-[35%] border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center relative bg-[url('/images/noise.png')] bg-repeat opacity-95">
-              <div className="absolute top-0 right-0 p-3 opacity-30">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
+              <div className="absolute top-0 right-0 p-3 opacity-30 transition-colors duration-700" style={{ color: activeTier.color }}>
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
               </div>
+              
               <div className="flex items-center gap-3 self-start mb-6 opacity-90">
                 {/* Abstract Industrial Barcode */}
-                <div className="flex gap-[2px] h-5 items-end">
-                  <div className="w-[4px] h-full bg-[#48C765]"></div>
-                  <div className="w-[1px] h-[70%] bg-[#48C765]/60"></div>
-                  <div className="w-[2px] h-[90%] bg-[#48C765]/80"></div>
-                  <div className="w-[1px] h-[50%] bg-[#48C765]/40"></div>
-                  <div className="w-[3px] h-full bg-[#48C765]/90"></div>
+                <div className="flex gap-[2px] h-5 items-end transition-colors duration-700" style={{ color: activeTier.color }}>
+                  <div className="w-[4px] h-full bg-current"></div>
+                  <div className="w-[1px] h-[70%] bg-current opacity-60"></div>
+                  <div className="w-[2px] h-[90%] bg-current opacity-80"></div>
+                  <div className="w-[1px] h-[50%] bg-current opacity-40"></div>
+                  <div className="w-[3px] h-full bg-current opacity-90"></div>
                 </div>
                 
                 {/* Tech Readout Text */}
                 <div className="flex flex-col justify-end h-full">
                   <span className="font-mono text-[7px] text-[#A4ACA1] tracking-[0.3em] uppercase leading-none mb-[3px]">
-                    {language === 'es' ? 'RCDM.01' : 'REC.01'}
+                    {activeTier.code}
                   </span>
                   <span className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-white leading-none">
-                    {popularTier.badge}
+                    {activeTier.shortName}
                   </span>
                 </div>
               </div>
+
               <h3 className="font-['Oswald'] text-3xl lg:text-4xl uppercase tracking-wide text-white mb-3 leading-tight drop-shadow-md">
-                {popularTier.name}
+                {activeTier.name}
               </h3>
-              <p className="text-xs text-[#EAEAEA] font-sans leading-relaxed">
-                {popularTier.tagline}
+              <p className="text-xs text-[#EAEAEA] font-sans leading-relaxed min-h-[40px]">
+                {activeTier.tagline}
               </p>
             </div>
 
@@ -124,22 +156,22 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             <div className="p-8 md:p-10 md:w-[45%] flex flex-col justify-center bg-white/[0.02]">
               <div className="grid grid-cols-1 gap-6">
                 <div className="flex flex-col">
-                   <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
-                     <svg className="w-4 h-4 text-[#48C765]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                     {language === 'es' ? 'Plazo Estimado' : 'Estimated Turnaround'}
+                   <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2 flex items-center gap-2 transition-colors duration-700" style={{ color: activeTier.color }}>
+                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                     <span className="text-[#A4ACA1]">{language === 'es' ? 'Plazo Estimado' : 'Estimated Turnaround'}</span>
                    </p>
-                   <p className="font-sans text-base text-white font-semibold">{popularTier.turnaround}</p>
+                   <p className="font-sans text-base text-white font-semibold">{activeTier.turnaround}</p>
                 </div>
                 
                 <div>
-                   <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
-                     <svg className="w-4 h-4 text-[#48C765]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                     {language === 'es' ? 'Incluye' : 'Includes'}
+                   <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-3 flex items-center gap-2 transition-colors duration-700" style={{ color: activeTier.color }}>
+                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                     <span className="text-[#A4ACA1]">{language === 'es' ? 'Incluye' : 'Includes'}</span>
                    </p>
                    <div className="flex flex-wrap gap-x-6 gap-y-3">
-                     {popularTier.features.map((feature, idx) => (
+                     {activeTier.features.map((feature, idx) => (
                        <div key={idx} className="flex items-center gap-2">
-                         <div className="w-1.5 h-1.5 bg-[#48C765] shadow-[0_0_8px_rgba(72,199,101,0.8)]" />
+                         <div className="w-1.5 h-1.5 shadow-sm transition-colors duration-700" style={{ backgroundColor: activeTier.color, boxShadow: `0 0 8px ${activeTier.color}80` }} />
                          <span className="font-sans text-xs text-[#EAEAEA] font-medium">{feature}</span>
                        </div>
                      ))}
@@ -149,20 +181,41 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             </div>
 
             {/* Section 3: Price & Action */}
-            <div className="p-8 md:p-10 md:w-[20%] border-t md:border-t-0 md:border-l border-white/10 bg-[#48C765]/[0.03] flex flex-row md:flex-col items-center justify-between md:justify-center gap-6 group-hover:bg-[#48C765]/[0.08] transition-colors">
+            <div 
+              className="p-8 md:p-10 md:w-[20%] border-t md:border-t-0 md:border-l border-white/10 flex flex-row md:flex-col items-center justify-between md:justify-center gap-6 transition-all duration-700 group"
+              style={{ backgroundColor: `${activeTier.color}08` }}
+            >
               <div className="flex items-start md:items-baseline gap-1">
                 <span className="font-mono text-lg text-[#A4ACA1] mt-1 md:mt-0">€</span>
-                <span className="font-['Oswald'] font-[700] text-5xl lg:text-6xl text-white group-hover:text-[#48C765] transition-colors drop-shadow-lg">
-                  {popularTier.price}
+                <span 
+                  className="font-['Oswald'] font-[700] text-5xl lg:text-6xl text-white transition-colors duration-700 drop-shadow-lg"
+                >
+                  {activeTier.price}
                 </span>
               </div>
               
-              <div className="w-14 h-14 rounded-full border border-[#48C765]/50 flex items-center justify-center group-hover:border-[#48C765] group-hover:bg-[#48C765] transition-all duration-300 shadow-[0_0_15px_rgba(72,199,101,0.15)] group-hover:shadow-[0_0_25px_rgba(72,199,101,0.5)]">
-                <svg className="w-6 h-6 text-[#48C765] group-hover:text-[#111] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <div 
+                className="w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-700"
+                style={{ borderColor: `${activeTier.color}80`, boxShadow: `0 0 15px ${activeTier.color}30` }}
+              >
+                <svg className="w-6 h-6 transition-colors duration-700" style={{ color: activeTier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </div>
             </div>
             
           </div>
+          
+          {/* Dots Navigation */}
+          <div className="flex justify-center gap-3 mt-8">
+            {tiersWithTheme.map((tier, idx) => (
+              <button
+                key={tier.id}
+                onClick={(e) => { e.stopPropagation(); setCurrentSlide(idx); }}
+                className={`h-1.5 rounded-full transition-all duration-500 ${currentSlide === idx ? 'w-8' : 'w-2 bg-white/20 hover:bg-white/40'}`}
+                style={currentSlide === idx ? { backgroundColor: tier.color, boxShadow: `0 0 8px ${tier.color}` } : {}}
+              />
+            ))}
+          </div>
+
         </div>
 
         <div className="mt-8">
