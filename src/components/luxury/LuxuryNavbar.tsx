@@ -18,14 +18,14 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
     // Initial reveal after 2 seconds
     const initialTimeout = setTimeout(() => {
       setShowSearchHint(true);
-      setTimeout(() => setShowSearchHint(false), 4000);
+      setTimeout(() => setShowSearchHint(false), 3000);
     }, 2000);
 
-    // Loop every 10 seconds
+    // Loop every 5 seconds
     const interval = setInterval(() => {
       setShowSearchHint(true);
-      setTimeout(() => setShowSearchHint(false), 4000);
-    }, 10000);
+      setTimeout(() => setShowSearchHint(false), 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(initialTimeout);
