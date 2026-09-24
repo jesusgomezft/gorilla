@@ -119,7 +119,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             <div 
               className="relative w-full bg-[#525252]/80 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm transition-all duration-700 cursor-pointer hover:scale-[1.01]"
               style={{ borderColor: `${activeTier.color}40` }}
-              onClick={() => onNavigate && onNavigate('/submit')}
+              onClick={() => onNavigate && onNavigate(`/submit?tier=${activeTier.id}`)}
             >
               
               {/* Left Accent Bar */}

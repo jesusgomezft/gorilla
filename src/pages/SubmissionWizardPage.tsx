@@ -11,7 +11,15 @@ interface SubmissionWizardPageProps {
 export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
-  const [selectedTier, setSelectedTier] = useState<ServiceTier>(MOCK_SERVICES[0]); 
+  const [selectedTier, setSelectedTier] = useState<ServiceTier>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tierId = params.get('tier');
+    if (tierId) {
+      const found = MOCK_SERVICES.find(s => s.id === tierId);
+      if (found) return found;
+    }
+    return MOCK_SERVICES[0];
+  }); 
   
   const [items, setItems] = useState<OrderItem[]>([]);
   const [newCardName, setNewCardName] = useState('');

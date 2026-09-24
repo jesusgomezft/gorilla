@@ -26,7 +26,8 @@ export const AppContent: React.FC = () => {
   });
 
   const handleNavigate = (path: string) => {
-    setCurrentPath(path);
+    const pathname = path.split('?')[0];
+    setCurrentPath(pathname);
     window.history.pushState({}, '', path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
