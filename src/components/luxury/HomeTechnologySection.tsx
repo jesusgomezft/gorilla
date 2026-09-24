@@ -50,6 +50,9 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
                 alt="Gorilla Optical Technology Sequence"
                 className="w-full h-auto object-contain scale-105 origin-right"
               />
+              {/* Edge Blending Gradients (Vignette) to merge seamlessly with the #454545 background */}
+              <div className="absolute inset-0 scale-105 origin-right bg-gradient-to-r from-[#454545] via-transparent to-[#454545] opacity-100 pointer-events-none" style={{ background: 'linear-gradient(to right, #454545 0%, transparent 15%, transparent 85%, #454545 100%)' }} />
+              <div className="absolute inset-0 scale-105 origin-right bg-gradient-to-b from-[#454545] via-transparent to-[#454545] opacity-100 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #454545 0%, transparent 15%, transparent 85%, #454545 100%)' }} />
             </div>
           </div>
 
