@@ -31,11 +31,11 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         <div className="absolute inset-x-0 bottom-0 h-32 md:h-56 bg-gradient-to-t from-[#454545] via-[#454545]/80 to-transparent pointer-events-none z-10" />
 
         {/* Floor Reflection Stage */}
-        <div className="absolute bottom-0 left-0 w-full flex justify-end items-end pointer-events-none z-20">
+        <div className="absolute bottom-0 left-0 w-full flex pointer-events-none z-20">
           <img 
             src={`/images/floor-reflection.png?v=${Date.now()}`}
             alt="Glossy Floor Reflection"
-            className="w-full lg:w-[70%] h-24 sm:h-32 md:h-40 object-cover object-bottom opacity-80 mix-blend-screen lg:mr-4 xl:mr-12"
+            className="w-full h-24 sm:h-32 md:h-40 object-cover object-center opacity-80 mix-blend-screen"
             style={{ maskImage: 'linear-gradient(to top, black 20%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to top, black 20%, transparent 100%)' }}
           />
         </div>
