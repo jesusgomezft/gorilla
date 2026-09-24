@@ -71,25 +71,18 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center gap-6 sm:gap-8 mb-12">
-            {/* Primary Capsule Button (Luxury Engineered Pill with Specular Bevel & Precision Badge) */}
+            {/* Primary Capsule Button */}
             <button
               onClick={() => onNavigate && onNavigate('/submit')}
-              className="group relative inline-flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 sm:pl-5 sm:pr-2 sm:py-1.5 rounded-none bg-[#2B302B] border border-[#48C765]/50 hover:border-[#48C765] transition-all duration-300 overflow-hidden cursor-pointer"
+              className="group relative inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-3 rounded-none bg-[#48C765] hover:bg-[#3A9F50] transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)]"
             >
-              {/* Button Typography */}
-              <span className="relative z-10 font-sans font-semibold text-[11px] sm:text-xs tracking-[0.02em] text-white select-none">
+              <span className="relative z-10 font-sans font-bold text-xs tracking-widest text-[#14170F] uppercase select-none">
                 {t('ref.hero.ctaPrimary')}
               </span>
-
-              {/* Precision Disc Icon Badge */}
-              <div className="relative z-10 w-5 h-5 rounded-none bg-[#454545] border border-white/10 group-hover:bg-[#48C765]/20 group-hover:border-[#48C765]/40 flex items-center justify-center transition-all duration-300">
-                <svg className="w-2.5 h-2.5 text-[#48C765] transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
+              <span className="relative z-10 ml-1 transition-transform duration-300 group-hover:translate-x-1 text-[#14170F]">→</span>
             </button>
 
-            {/* Secondary Action (Tactical Glassmorphism Pill) */}
+            {/* Secondary Action */}
             <a
               href="#technology"
               onClick={(e) => {
@@ -98,13 +91,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                   onOpenTechModal();
                 }
               }}
-              className="group inline-flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-none bg-[#2B302B] border border-[#48C765]/20 hover:border-[#48C765]/60 transition-all duration-300 cursor-pointer"
+              className="group inline-flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 rounded-none bg-[#454545]/60 hover:bg-[#454545] border border-[#48C765]/50 hover:border-[#48C765] transition-all duration-300 cursor-pointer"
             >
-              <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-gray-300 group-hover:text-white transition-colors select-none">
+              <span className="text-xs font-semibold tracking-wide text-white select-none">
                 {t('ref.hero.ctaSecondary')}
               </span>
-              <div className="w-5 h-5 rounded-none bg-[#454545] border border-white/10 group-hover:border-[#48C765]/40 group-hover:bg-[#48C765]/10 flex items-center justify-center pl-[1px] transition-all">
-                <svg className="w-2 h-2 text-[#A4ACA1] group-hover:text-[#48C765] transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center pl-[2px] transition-transform duration-300 group-hover:scale-110">
+                <svg className="w-2.5 h-2.5 text-[#48C765]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
