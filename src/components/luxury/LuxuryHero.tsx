@@ -8,33 +8,20 @@ interface LuxuryHeroProps {
 
 export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechModal }) => {
   const { t } = useLanguage();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
-    setMousePos({ x, y });
-  };
 
   return (
     <section 
-      onMouseMove={handleMouseMove}
       className="relative w-full min-h-[88vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-[#454545] text-white pt-4 pb-0 select-none border-b border-black"
     >
       
       {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (gorila.png in background) */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
-        style={{ perspective: '1000px' }}
       >
         <img 
           src={`/images/gorila.png?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
-          className="w-full h-full object-cover object-[65%_center] lg:object-center transition-transform duration-[1200ms] ease-out will-change-transform"
-          style={{
-            transform: `scale(0.95) translate3d(${mousePos.x * -12}px, ${mousePos.y * -12}px, 0) rotateY(${mousePos.x * 2}deg) rotateX(${mousePos.y * -2}deg)`
-          }}
+          className="w-full h-full object-cover object-[65%_center] lg:object-center"
         />
         
         {/* Editorial Text Readability Gradients: dark smoke on the left to ensure 100% text contrast without obscuring the gorilla */}
