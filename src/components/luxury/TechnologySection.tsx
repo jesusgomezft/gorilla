@@ -114,16 +114,18 @@ export const TechnologySection: React.FC = () => {
               {steps.map((step, index) => (
                 <div 
                   key={step.id} 
-                  className={`flex gap-6 py-5 px-6 border-b border-white/5 relative transition-all duration-1000 ease-out transform ${
+                  className={`flex gap-6 py-5 px-6 border-b border-white/5 relative transition-all ease-out transform ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                   } ${index === 0 ? 'bg-gradient-to-r from-white/[0.02] to-transparent' : 'bg-transparent hover:bg-gradient-to-r hover:from-white/[0.01] hover:to-transparent'}`}
-                  style={{ transitionDelay: `${index * 400 + 400}ms` }}
+                  style={{ transitionDelay: `${index * 700 + 600}ms`, transitionDuration: '1500ms' }}
                 >
-                  <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-1000 ${
+                  <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all ${
                     isVisible 
                       ? (index === 0 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'bg-transparent hover:bg-[#48C765]/50 scale-y-100')
                       : 'scale-y-0 bg-transparent'
-                  }`}></div>
+                  }`}
+                  style={{ transitionDelay: `${index * 700 + 600}ms`, transitionDuration: '1500ms' }}
+                  ></div>
                   <span className="font-mono text-lg text-[#48C765] font-bold">{step.id}</span>
                   <div>
                     <h4 className="font-sans font-bold text-sm tracking-widest text-white uppercase mb-1">{step.title}</h4>
