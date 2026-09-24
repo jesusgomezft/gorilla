@@ -114,10 +114,10 @@ export const TechnologySection: React.FC = () => {
               {steps.map((step, index) => (
                 <div 
                   key={step.id} 
-                  className={`flex gap-6 py-5 px-6 border-b border-white/5 relative transition-all duration-700 ease-out transform ${
+                  className={`flex gap-6 py-5 px-6 border-b border-white/5 relative transition-all duration-1000 ease-out transform ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                   } ${index === 0 ? 'bg-gradient-to-r from-white/[0.02] to-transparent' : 'bg-transparent hover:bg-gradient-to-r hover:from-white/[0.01] hover:to-transparent'}`}
-                  style={{ transitionDelay: `${index * 200 + 300}ms` }}
+                  style={{ transitionDelay: `${index * 400 + 400}ms` }}
                 >
                   <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-1000 ${
                     isVisible 
