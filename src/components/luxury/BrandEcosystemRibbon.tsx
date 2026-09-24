@@ -22,12 +22,12 @@ export const BrandEcosystemRibbon: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#454545] text-white select-none border-b border-white/[0.04] py-8 px-6 lg:px-12">
+    <section className="w-full bg-[#2F3430] text-[#EAE8E3] select-none border-b border-black/20 py-8 px-6 lg:px-12">
       <div className="max-w-[1400px] mx-auto flex flex-col gap-5">
         
         {/* Top Kicker Label */}
         <div className="flex items-center">
-          <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-[#A4ACA1] uppercase">
+          <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-[#A69F93] uppercase">
             {t('ref.ribbon.title')}
           </span>
         </div>
@@ -37,7 +37,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
           {brands.map((brand) => (
             <div 
               key={brand.id}
-              className="flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity duration-200 text-white cursor-pointer drop-shadow-md"
+              className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200 text-[#F5F3ED] cursor-pointer drop-shadow-md"
               title={brand.name}
             >
               {brand.component}
@@ -45,7 +45,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
           ))}
 
           {/* And More Link */}
-          <div className="col-span-2 md:col-span-1 flex items-center justify-center gap-1.5 font-mono text-[11px] font-bold tracking-[0.18em] text-[#A4ACA1] hover:text-white uppercase cursor-pointer transition-colors group pt-2 md:pt-0">
+          <div className="col-span-2 md:col-span-1 flex items-center justify-center gap-1.5 font-mono text-[11px] font-bold tracking-[0.18em] text-[#A69F93] hover:text-[#F5F3ED] uppercase cursor-pointer transition-colors group pt-2 md:pt-0">
             <span>{t('ref.ribbon.andMore')}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </div>

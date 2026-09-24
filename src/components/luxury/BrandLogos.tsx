@@ -27,10 +27,10 @@ export const MagicLogo: React.FC<{ className?: string }> = ({ className = "h-7" 
       {/* Mythic Planeswalker Icon */}
       <path d="M12 25l-5-9 5 2 2-8 3 7 5-4-2 12h-8zM2 25l8 2-3 5-4-2-1-5zm20 0l-8 2 3 5 4-2 1-5z" fill="#FF6B00"/>
       {/* MAGIC Typography */}
-      <text x="34" y="27" fontFamily="'Cinzel', 'Trajan Pro', 'Georgia', serif" fontSize="22" fontWeight="900" letterSpacing="2.5" fill="#FFFFFF">
+      <text x="34" y="27" fontFamily="'Cinzel', 'Trajan Pro', 'Georgia', serif" fontSize="22" fontWeight="900" letterSpacing="2.5" fill="currentColor">
         MAGIC
       </text>
-      <text x="35" y="39" fontFamily="'Inter', 'Arial', sans-serif" fontSize="6.5" fontWeight="800" letterSpacing="3.5" opacity="0.85" fill="#FFFFFF">
+      <text x="35" y="39" fontFamily="'Inter', 'Arial', sans-serif" fontSize="6.5" fontWeight="800" letterSpacing="3.5" opacity="0.85" fill="currentColor">
         THE GATHERING
       </text>
     </g>
@@ -42,15 +42,15 @@ export const OnePieceLogo: React.FC<{ className?: string }> = ({ className = "h-
   <svg viewBox="0 0 220 50" className={className} xmlns="http://www.w3.org/2000/svg">
     <g>
       {/* Skull Icon */}
-      <circle cx="15" cy="22" r="10" fill="none" stroke="#FFFFFF" strokeWidth="2.5"/>
-      <path d="M10 20a5 5 0 0 1 10 0c0 2.5-1.5 4-3.5 5h-3c-1.8-1-3.5-2.5-3.5-5z" fill="#FFFFFF"/>
+      <circle cx="15" cy="22" r="10" fill="none" stroke="currentColor" strokeWidth="2.5"/>
+      <path d="M10 20a5 5 0 0 1 10 0c0 2.5-1.5 4-3.5 5h-3c-1.8-1-3.5-2.5-3.5-5z" fill="currentColor"/>
       <circle cx="12.5" cy="19.5" r="1.5" fill="#E3000F"/>
       <circle cx="17.5" cy="19.5" r="1.5" fill="#E3000F"/>
       {/* Crossbones */}
-      <path d="M6 13l18 18M24 13L6 31" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M6 13l18 18M24 13L6 31" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
       
       {/* ONE PIECE Text */}
-      <text x="34" y="27" fontFamily="'Impact', 'Arial Black', sans-serif" fontSize="21" fontWeight="900" letterSpacing="1" fill="#E3000F" stroke="#FFFFFF" strokeWidth="0.5">
+      <text x="34" y="27" fontFamily="'Impact', 'Arial Black', sans-serif" fontSize="21" fontWeight="900" letterSpacing="1" fill="#E3000F" stroke="currentColor" strokeWidth="0.5">
         ONE PIECE
       </text>
       <text x="35" y="40" fontFamily="'Inter', sans-serif" fontSize="7" fontWeight="900" letterSpacing="4.5" fill="#FFD100">
@@ -65,7 +65,7 @@ export const LorcanaLogo: React.FC<{ className?: string }> = ({ className = "h-7
   <svg viewBox="0 0 210 50" className={className} xmlns="http://www.w3.org/2000/svg">
     <g>
       {/* Disney Script */}
-      <text x="105" y="16" textAnchor="middle" fontFamily="'Brush Script MT', 'Dancing Script', cursive, serif" fontSize="17" fontStyle="italic" fontWeight="bold" fill="#FFFFFF">
+      <text x="105" y="16" textAnchor="middle" fontFamily="'Brush Script MT', 'Dancing Script', cursive, serif" fontSize="17" fontStyle="italic" fontWeight="bold" fill="currentColor">
         Disney
       </text>
       {/* LORCANA Serif */}
@@ -89,7 +89,7 @@ export const ToppsLogo: React.FC<{ className?: string }> = ({ className = "h-7" 
       letterSpacing="-0.02em"
       transform="skewX(-10)"
       fill="#E21836"
-      stroke="#FFFFFF"
+      stroke="currentColor"
       strokeWidth="1"
     >
       Topps
@@ -104,7 +104,7 @@ export const PaniniLogo: React.FC<{ className?: string }> = ({ className = "h-7"
       {/* Outer Panini Border Frame */}
       <rect x="2" y="2" width="166" height="41" rx="4" fill="none" stroke="#FFE600" strokeWidth="3.5"/>
       {/* Panini Block Text */}
-      <text x="85" y="30" textAnchor="middle" fontFamily="'Arial Black', 'Impact', sans-serif" fontSize="24" fontWeight="900" letterSpacing="4" fill="#FFFFFF">
+      <text x="85" y="30" textAnchor="middle" fontFamily="'Arial Black', 'Impact', sans-serif" fontSize="24" fontWeight="900" letterSpacing="4" fill="currentColor">
         PANINI
       </text>
     </g>

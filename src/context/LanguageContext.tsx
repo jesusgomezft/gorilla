@@ -20,11 +20,11 @@ export const translations = {
     'ref.nav.signIn': 'Acceso',
     
     // Hero
-    'ref.hero.eyebrow': 'LAS CARTAS MERECEN ALGO MEJOR',
+    'ref.hero.eyebrow': 'GRADUACIÓN PROFESIONAL DE CARTAS',
     'ref.hero.title1': 'PRECISIÓN',
     'ref.hero.title2': 'QUE DA ',
     'ref.hero.titleGreen': 'VALOR',
-    'ref.hero.desc': 'Graduación profesional de cartas impulsada por tecnología avanzada y análisis experto. Autenticidad. Transparencia. Confianza.',
+    'ref.hero.desc': 'Impulsado por tecnología avanzada y expertos.',
     'ref.hero.ctaPrimary': 'Iniciar Solicitud',
     'ref.hero.ctaSecondary': 'Ver Nuestra Tecnología',
     'ref.hero.trustedBy': 'Coleccionistas en toda Europa',
@@ -42,7 +42,7 @@ export const translations = {
     // Section 02 Technology
     'ref.tech.title': 'TECNOLOGÍA QUE REVELA LA HISTORIA REAL',
     'ref.tech.title2': 'TECNOLOGÍA Y EXPERIENCIA',
-    'ref.tech.desc': 'Imágenes de alta resolución, análisis avanzado y revisión de expertos. Cada detalle importa.',
+    'ref.tech.desc': 'Imágenes de alta resolución y análisis avanzado donde cada detalle importa.',
     'ref.tech.desc2': 'Un proceso de graduación transparente diseñado para darte confianza en cada detalle.',
     'ref.tech.explore': 'EXPLORAR EL PROCESO',
     'ref.tech.step1': 'ESCANEO',
@@ -295,11 +295,11 @@ export const translations = {
     'ref.nav.signIn': 'Sign in',
     
     // Hero
-    'ref.hero.eyebrow': 'CARDS DESERVE BETTER',
+    'ref.hero.eyebrow': 'PROFESSIONAL CARD GRADING',
     'ref.hero.title1': 'PRECISION',
     'ref.hero.title2': 'GIVES ',
     'ref.hero.titleGreen': 'VALUE',
-    'ref.hero.desc': 'Professional card grading powered by advanced technology and expert analysis. Authenticity. Transparency. Trust.',
+    'ref.hero.desc': 'Powered by advanced technology and experts.',
     'ref.hero.ctaPrimary': 'Start Your Submission',
     'ref.hero.ctaSecondary': 'See Our Technology',
     'ref.hero.trustedBy': 'Trusted by collectors all over Europe',
@@ -317,7 +317,7 @@ export const translations = {
     // Section 02 Technology
     'ref.tech.title': 'TECHNOLOGY THAT REVEALS THE REAL STORY',
     'ref.tech.title2': 'TECHNOLOGY MEETS EXPERTISE',
-    'ref.tech.desc': 'High-resolution imaging, advanced analysis and expert review. Every detail matters.',
+    'ref.tech.desc': 'High-resolution imaging and advanced analysis where every detail matters.',
     'ref.tech.desc2': 'A transparent grading process designed to give you confidence in every detail.',
     'ref.tech.explore': 'EXPLORE THE PROCESS',
     'ref.tech.step1': 'SCAN',

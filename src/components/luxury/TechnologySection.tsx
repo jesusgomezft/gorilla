@@ -76,11 +76,16 @@ export const TechnologySection: React.FC = () => {
             <h2 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] text-white uppercase leading-[1.05] mb-5 whitespace-pre-line">
               {language === 'es' ? 'CÓMO FUNCIONA' : 'HOW IT WORKS'}
             </h2>
-            <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-[360px] font-normal leading-relaxed mb-8">
-              {language === 'es' 
-                ? 'Un proceso de envío simple, seguro y transparente. Desde que empaquetas tus cartas hasta que vuelven encapsuladas.' 
-                : 'A simple, secure, and transparent submission process. From packing your cards to receiving them fully encapsulated.'}
-            </p>
+            <div className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-[360px] font-normal leading-relaxed mb-8">
+              <p className="font-bold text-white mb-2 tracking-wide uppercase">
+                {language === 'es' ? 'SIMPLE | SEGURO | TRANSPARENTE' : 'SIMPLE | SECURE | TRANSPARENT'}
+              </p>
+              <p>
+                {language === 'es' 
+                  ? 'Desde que empaquetas tus cartas hasta que las recibes totalmente encapsuladas.' 
+                  : 'From packing your cards to receiving them fully encapsulated.'}
+              </p>
+            </div>
             
             <a
               href="#pricing"

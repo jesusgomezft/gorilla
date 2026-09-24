@@ -118,18 +118,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
         {/* Right Editorial Rail (Matches Reference Image) */}
         <div className="hidden xl:flex xl:col-span-5 h-full items-center justify-end pr-2 pb-24 pointer-events-none select-none">
-          <div className="flex flex-col items-center justify-between h-[480px] text-right py-4">
-            <div className="flex flex-col items-center gap-7">
-              <span className="font-mono text-[10px] tracking-[0.38em] text-[#A4ACA1] uppercase [writing-mode:vertical-rl] rotate-180">
-                MORE THAN A GRADE
-              </span>
-              <div className="w-[1px] h-20 bg-white/20" />
-              <span className="font-mono text-[10px] tracking-[0.38em] text-[#A4ACA1] uppercase [writing-mode:vertical-rl] rotate-180">
-                A HIGHER STANDARD
-              </span>
-            </div>
-            
-            {/* European Grading Standard Circular Seal */}
+          <div className="flex flex-col items-center justify-end h-[480px] text-right py-4">
             <div className="relative w-16 h-16 flex items-center justify-center p-2 opacity-70">
               <svg className="w-full h-full text-[#A4ACA1] animate-[spin_60s_linear_infinite]" viewBox="0 0 100 100">
                 <path id="sealPath" fill="transparent" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />

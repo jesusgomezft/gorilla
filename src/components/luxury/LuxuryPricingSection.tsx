@@ -63,10 +63,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
   const tiersWithTheme = tiers.map(t => {
     switch(t.id) {
-      case 'regular': return { ...t, color: '#3B82F6', code: 'RCDM.00', shortName: 'REGULAR' };
+      case 'regular': return { ...t, color: '#8CA5B8', code: 'RCDM.00', shortName: 'REGULAR' };
       case 'standard': return { ...t, color: '#48C765', code: 'RCDM.01', shortName: 'STANDARD' };
-      case 'express': return { ...t, color: '#F59E0B', code: 'RCDM.02', shortName: 'EXPRESS' };
-      case 'walkthrough': return { ...t, color: '#8B5CF6', code: 'RCDM.MASTER', shortName: 'WALK-THROUGH' };
+      case 'express': return { ...t, color: '#F97316', code: 'RCDM.02', shortName: 'EXPRESS' };
+      case 'walkthrough': return { ...t, color: '#D4AF37', code: 'RCDM.MASTER', shortName: 'WALK-THROUGH' };
       default: return { ...t, color: '#48C765', code: 'RCDM.XX', shortName: 'TIER' };
     }
   });
@@ -125,13 +125,17 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
             {/* Ticket Body */}
             <div 
-              className="relative w-full bg-[#454545] border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-stretch overflow-hidden rounded-none transition-all duration-700 cursor-pointer hover:scale-[1.01]"
-              style={{ borderColor: `${activeTier.color}30` }}
+              className="relative w-full border shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden rounded-none transition-all duration-700 cursor-pointer hover:scale-[1.01]"
+              style={{ 
+                background: `linear-gradient(135deg, #121613 0%, ${activeTier.color}15 100%)`,
+                borderColor: `${activeTier.color}40`,
+                boxShadow: `0 20px 40px -10px ${activeTier.color}25`
+              }}
               onClick={() => onNavigate && onNavigate(`/submit?tier=${activeTier.id}`)}
             >
               
               {/* Noise Texture Overlay */}
-              <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-30 pointer-events-none mix-blend-overlay z-0" />
+              <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
 
               {/* Left Accent Bar */}
               <div 
@@ -248,10 +252,13 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
   }
 
   return (
-    <section id="pricing" className="w-full bg-[#454545] text-white py-16 lg:py-24 px-6 lg:px-12 border-b border-white/[0.04] select-none relative overflow-hidden">
+    <section id="pricing" className="w-full bg-brand-bg text-white py-16 lg:py-24 px-6 lg:px-12 border-b border-brand-border/50 select-none relative overflow-hidden transition-colors duration-700">
       
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#48C765]/[0.02] blur-[150px] pointer-events-none" />
+      {/* Background Glow based on selected tier */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] blur-[150px] pointer-events-none transition-colors duration-700 opacity-20" 
+        style={{ backgroundColor: tiersWithTheme.find(t => t.id === selectedTier)?.color || '#48C765' }}
+      />
 
       <div className="max-w-[900px] mx-auto relative z-10 flex flex-col">
         
@@ -278,12 +285,17 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 onClick={() => setSelectedTier(tier.id)}
                 className={`group flex flex-col cursor-pointer transition-all duration-500 relative border overflow-hidden ${
                   isSelected 
-                    ? 'bg-white/[0.03] border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.15)]' 
+                    ? 'border-white/10' 
                     : 'bg-transparent border-white/[0.04] hover:border-white/10 hover:bg-white/[0.01]'
                 }`}
+                style={isSelected ? {
+                  background: `linear-gradient(90deg, ${tierWithTheme.color}15 0%, transparent 100%)`,
+                  borderColor: `${tierWithTheme.color}40`,
+                  boxShadow: `0 8px 30px ${tierWithTheme.color}15`
+                } : {}}
               >
                 {/* Active Left Border Accent */}
-                <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-colors duration-500 ${isSelected ? 'bg-[#48C765]' : 'bg-transparent'}`} />
+                <div className={`absolute left-0 top-0 bottom-0 w-[4px] transition-colors duration-500 ${isSelected ? 'opacity-100' : 'opacity-0'}`} style={{ backgroundColor: tierWithTheme.color }} />
 
                 <div className="p-6 sm:px-8 sm:py-6">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
@@ -308,9 +320,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                             {tier.name}
                           </h3>
                           {tier.badge && (
-                            <span className={`font-mono text-[9px] px-2 py-0.5 uppercase tracking-wider font-bold ${
-                              isSelected ? 'bg-[#48C765] text-[#111]' : 'bg-white/10 text-white'
-                            }`}>
+                            <span className={`font-mono text-[9px] px-2 py-0.5 uppercase tracking-wider font-bold transition-colors duration-300 ${
+                              isSelected ? 'text-[#111]' : 'bg-white/10 text-white'
+                            }`}
+                            style={isSelected ? { backgroundColor: tierWithTheme.color } : {}}>
                               {tier.badge}
                             </span>
                           )}
@@ -323,7 +336,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
                     {/* Right Info: Price */}
                     <div className="flex items-baseline gap-1 shrink-0">
-                      <span className={`font-['Oswald'] font-[700] text-2xl transition-colors ${isSelected ? 'text-[#48C765]' : 'text-white'}`}>
+                      <span className={`font-['Oswald'] font-[700] text-2xl transition-colors duration-500 ${isSelected ? '' : 'text-white'}`} style={isSelected ? { color: tierWithTheme.color } : {}}>
                         {tier.price}
                       </span>
                       <span className="font-mono text-sm text-[#8A9388]">€</span>
@@ -346,7 +359,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                           </p>
                           {tier.features.map((feature, idx) => (
                             <div key={idx} className="flex items-center gap-3">
-                              <div className="w-1 h-1 rounded-full bg-[#48C765]" />
+                              <div className="w-1 h-1 rounded-full transition-colors duration-500" style={{ backgroundColor: tierWithTheme.color }} />
                               <span className="font-sans text-sm text-[#EAEAEA]">{feature}</span>
                             </div>
                           ))}
@@ -397,7 +410,11 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
           <button
             onClick={() => onNavigate && onNavigate('/submit')}
-            className="shrink-0 bg-[#3A9F50] hover:bg-[#48C765] text-white px-8 py-3 text-sm font-bold tracking-widest uppercase transition-all duration-300"
+            className="shrink-0 text-white px-8 py-3 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:brightness-110 hover:shadow-lg"
+            style={{ 
+              backgroundColor: tiersWithTheme.find(t => t.id === selectedTier)?.color || '#48C765',
+              boxShadow: `0 4px 20px ${tiersWithTheme.find(t => t.id === selectedTier)?.color}40`
+            }}
           >
             {language === 'es' ? 'CONTINUAR' : 'CONTINUE'}
           </button>
