@@ -21,7 +21,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         <img 
           src={`/images/card-solo-grey.jpg?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
-          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-center opacity-95 lg:mr-16 xl:mr-32"
+          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-center opacity-95 lg:mr-4 xl:mr-12"
         />
         
         {/* Aggressive Edge Blending Gradients (Vignette) to hide any potential edges */}
@@ -35,7 +35,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 items-center min-h-[82vh]">
         
         {/* Left Column: Headlines, Copy, Buttons, Social Proof */}
-        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center py-12 pl-4 sm:pl-8 lg:pl-16 xl:pl-24">
+        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center py-12 pl-4 sm:pl-8 lg:pl-28 xl:pl-40">
           
           {/* Technical Kicker */}
           <div className="flex items-center gap-3 mb-6">
