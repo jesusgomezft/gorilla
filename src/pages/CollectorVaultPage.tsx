@@ -176,33 +176,53 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
               {/* Active Order Highlight */}
               {activeOrder && (
-                <div className="bg-[#48C765]/[0.05] border border-[#48C765]/20 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay" />
+                <div className="bg-black/30 border border-white/5 relative overflow-hidden group flex flex-col sm:flex-row">
+                  {/* Left Accent Bar */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#48C765] to-[#48C765]/10" />
                   
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="w-2 h-2 rounded-full bg-[#48C765] animate-pulse" />
-                      <span className="font-mono text-[10px] text-[#48C765] uppercase tracking-[0.2em] font-bold">
+                  {/* Noise Texture */}
+                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 pointer-events-none mix-blend-overlay z-0" />
+                  
+                  {/* Content Left (Info) */}
+                  <div className="p-6 md:p-8 relative z-10 flex-1 border-b sm:border-b-0 sm:border-r border-white/5">
+                    <div className="flex items-center gap-4 mb-4">
+                      {/* Tech indicator instead of blinking circle */}
+                      <div className="flex gap-[2px] h-3 items-end text-[#48C765]">
+                        <div className="w-[1px] h-[60%] bg-current"></div>
+                        <div className="w-[2px] h-[100%] bg-current"></div>
+                        <div className="w-[1px] h-[40%] bg-current"></div>
+                      </div>
+                      <span className="font-mono text-[9px] text-[#48C765] uppercase tracking-[0.3em] font-bold">
                         {language === 'es' ? 'Envío Activo' : 'Active Submission'}
                       </span>
                     </div>
-                    <h3 className="font-['Oswald'] text-2xl text-white tracking-wide uppercase mb-1">
+                    
+                    <h3 className="font-['Oswald'] text-2xl sm:text-3xl text-white tracking-wide uppercase mb-1 leading-none">
                       {activeOrder.items.length} {language === 'es' ? 'Cartas en Proceso' : 'Cards in Progress'}
                     </h3>
-                    <p className="font-mono text-[11px] text-[#A4ACA1]">
-                      ID: {activeOrder.id} • {language === 'es' ? 'Estado' : 'Status'}: {activeOrder.status.replace('_', ' ')}
-                    </p>
+                    
+                    <div className="flex items-center gap-3 mt-4">
+                      <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] bg-white/5 px-2 py-1">
+                        ID: {activeOrder.id}
+                      </span>
+                      <span className="font-mono text-[10px] text-white uppercase tracking-[0.2em] bg-[#48C765]/10 border border-[#48C765]/20 px-2 py-1">
+                        {activeOrder.status.replace('_', ' ')}
+                      </span>
+                    </div>
                   </div>
 
-                  <button
-                    onClick={() => onNavigate('/track')}
-                    className="relative z-10 bg-transparent border border-[#48C765]/50 text-[#48C765] hover:bg-[#48C765] hover:text-[#111] px-6 py-3 font-mono text-[10px] uppercase tracking-[0.2em] transition-all flex items-center gap-3"
-                  >
-                    <span>{language === 'es' ? 'Seguimiento' : 'Live Tracking'}</span>
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </button>
+                  {/* Content Right (Action) */}
+                  <div className="p-6 md:p-8 relative z-10 sm:w-[30%] flex items-center justify-center bg-white/[0.01]">
+                    <button
+                      onClick={() => onNavigate('/track')}
+                      className="w-full relative z-10 bg-transparent border border-white/10 hover:border-[#48C765] text-[#A4ACA1] hover:text-[#48C765] px-6 py-4 font-mono text-[10px] uppercase tracking-[0.3em] transition-colors flex items-center justify-center gap-3 group/btn"
+                    >
+                      <span>{language === 'es' ? 'Seguimiento' : 'Live Tracking'}</span>
+                      <svg className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               )}
 
