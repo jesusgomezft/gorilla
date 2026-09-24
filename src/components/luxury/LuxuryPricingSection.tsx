@@ -125,7 +125,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
             {/* Ticket Body */}
             <div 
-              className="relative w-full bg-black/50 backdrop-blur-2xl border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-stretch overflow-hidden rounded-none transition-all duration-700 cursor-pointer hover:scale-[1.01]"
+              className="relative w-full bg-[#454545] border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-stretch overflow-hidden rounded-none transition-all duration-700 cursor-pointer hover:scale-[1.01]"
               style={{ borderColor: `${activeTier.color}30` }}
               onClick={() => onNavigate && onNavigate(`/submit?tier=${activeTier.id}`)}
             >
