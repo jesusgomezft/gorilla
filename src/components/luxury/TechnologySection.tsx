@@ -3,6 +3,27 @@ import { useLanguage } from '../../context/LanguageContext';
 
 export const TechnologySection: React.FC = () => {
   const { language } = useLanguage();
+  const [isVisible, setIsVisible] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
 
   const steps = [
     {
@@ -35,6 +56,7 @@ export const TechnologySection: React.FC = () => {
   return (
     <section 
       id="how-it-works" 
+      ref={sectionRef}
       className="relative w-full text-white overflow-hidden select-none"
     >
       {/* Full Width Background Image */}
@@ -58,7 +80,7 @@ export const TechnologySection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 w-full items-center">
           
           {/* Left Copy Overlay */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
+          <div className={`lg:col-span-5 flex flex-col justify-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase mb-4">
               {language === 'es' ? 'EL PROCESO' : 'SUBMISSION PROCESS'}
             </p>
@@ -87,11 +109,21 @@ export const TechnologySection: React.FC = () => {
 
           {/* Right Steps */}
           <div className="lg:col-span-4 flex flex-col justify-center lg:pl-10">
-            <div className="flex flex-col border-l border-white/10">
+            <div className="flex flex-col border-l border-white/10 overflow-hidden">
               
               {steps.map((step, index) => (
-                <div key={step.id} className={`flex gap-6 py-5 px-6 border-b border-white/5 relative ${index === 0 ? 'bg-gradient-to-r from-white/[0.02] to-transparent' : 'bg-transparent hover:bg-gradient-to-r hover:from-white/[0.01] hover:to-transparent'}`}>
-                  <div className={`absolute top-0 left-[-1px] w-[2px] h-full ${index === 0 ? 'bg-gradient-to-b from-[#48C765] to-transparent' : 'bg-transparent hover:bg-[#48C765]/50 transition-colors'}`}></div>
+                <div 
+                  key={step.id} 
+                  className={`flex gap-6 py-5 px-6 border-b border-white/5 relative transition-all duration-700 ease-out transform ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  } ${index === 0 ? 'bg-gradient-to-r from-white/[0.02] to-transparent' : 'bg-transparent hover:bg-gradient-to-r hover:from-white/[0.01] hover:to-transparent'}`}
+                  style={{ transitionDelay: `${index * 200 + 300}ms` }}
+                >
+                  <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-1000 ${
+                    isVisible 
+                      ? (index === 0 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'bg-transparent hover:bg-[#48C765]/50 scale-y-100')
+                      : 'scale-y-0 bg-transparent'
+                  }`}></div>
                   <span className="font-mono text-lg text-[#48C765] font-bold">{step.id}</span>
                   <div>
                     <h4 className="font-sans font-bold text-sm tracking-widest text-white uppercase mb-1">{step.title}</h4>
