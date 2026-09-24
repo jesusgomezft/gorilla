@@ -83,6 +83,14 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
     setCurrentSlide((prev) => (prev + 1) % tiersWithTheme.length);
   };
 
+  React.useEffect(() => {
+    if (!isHome) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % tiersWithTheme.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isHome, tiersWithTheme.length]);
+
   if (isHome) {
     const activeTier = tiersWithTheme[currentSlide];
     
