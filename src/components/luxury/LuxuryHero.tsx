@@ -21,14 +21,24 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         <img 
           src={`/images/card-solo-grey.jpg?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
-          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-center opacity-95 lg:mr-4 xl:mr-12"
+          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-center opacity-95 lg:mr-4 xl:mr-12 relative z-0"
         />
         
         {/* Aggressive Edge Blending Gradients (Vignette) to hide any potential edges */}
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#454545] to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-24 md:h-40 bg-gradient-to-b from-[#454545] to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-32 md:h-56 bg-gradient-to-t from-[#454545] via-[#454545]/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#454545] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-x-0 top-0 h-24 md:h-40 bg-gradient-to-b from-[#454545] to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-x-0 bottom-0 h-32 md:h-56 bg-gradient-to-t from-[#454545] via-[#454545]/80 to-transparent pointer-events-none z-10" />
+
+        {/* Floor Reflection Stage */}
+        <div className="absolute bottom-0 left-0 w-full flex justify-end items-end pointer-events-none z-20">
+          <img 
+            src={`/images/floor-reflection.png?v=${Date.now()}`}
+            alt="Glossy Floor Reflection"
+            className="w-full lg:w-[70%] h-24 sm:h-32 md:h-40 object-cover object-bottom opacity-80 mix-blend-screen lg:mr-4 xl:mr-12"
+            style={{ maskImage: 'linear-gradient(to top, black 20%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to top, black 20%, transparent 100%)' }}
+          />
+        </div>
       </div>
 
       {/* 2. FOREGROUND EDITORIAL CONTENT (Text on Left, Artwork Center/Right, Rail Far Right) */}
