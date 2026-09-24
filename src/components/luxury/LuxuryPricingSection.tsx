@@ -139,88 +139,63 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 style={{ backgroundImage: `linear-gradient(to bottom, ${activeTier.color}, transparent)` }}
               />
 
-              {/* Section 1: Title & Badge */}
-              <div className="p-5 md:p-8 md:w-[35%] border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-center relative z-10">
-                <div className="absolute top-0 right-0 p-3 opacity-30 transition-colors duration-700" style={{ color: activeTier.color }}>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
-                </div>
-                
-                <div className="flex items-center gap-3 self-start mb-6 opacity-90">
-                  {/* Abstract Industrial Barcode */}
-                  <div className="flex gap-[2px] h-5 items-end transition-colors duration-700" style={{ color: activeTier.color }}>
-                    <div className="w-[4px] h-full bg-current"></div>
-                    <div className="w-[1px] h-[70%] bg-current opacity-60"></div>
-                    <div className="w-[2px] h-[90%] bg-current opacity-80"></div>
-                    <div className="w-[1px] h-[50%] bg-current opacity-40"></div>
-                    <div className="w-[3px] h-full bg-current opacity-90"></div>
+              <div className="w-full flex flex-col p-6 sm:p-8 relative z-10">
+                {/* Header: Title + Price side by side */}
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="flex gap-[2px] h-3 items-end transition-colors duration-700" style={{ color: activeTier.color }}>
+                        <div className="w-[2px] h-full bg-current"></div>
+                        <div className="w-[1px] h-[70%] bg-current opacity-60"></div>
+                        <div className="w-[1px] h-[100%] bg-current opacity-80"></div>
+                      </div>
+                      <span className="font-mono text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.3em] text-[#A4ACA1] leading-none">
+                        {activeTier.code} // {activeTier.shortName}
+                      </span>
+                    </div>
+                    <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-none">
+                      {activeTier.name}
+                    </h3>
                   </div>
-                  
-                  {/* Tech Readout Text */}
-                  <div className="flex flex-col justify-end h-full">
-                    <span className="font-mono text-[7px] text-[#A4ACA1] tracking-[0.3em] uppercase leading-none mb-[3px]">
-                      {activeTier.code}
-                    </span>
-                    <span className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-white leading-none">
-                      {activeTier.shortName}
+
+                  {/* Price */}
+                  <div className="flex items-start">
+                    <span className="font-mono text-sm text-[#A4ACA1] mt-1 mr-0.5">€</span>
+                    <span className="font-['Oswald'] font-[700] text-3xl sm:text-4xl text-white leading-none tracking-tight">
+                      {activeTier.price}
                     </span>
                   </div>
                 </div>
 
-                <h3 className="font-['Oswald'] text-2xl lg:text-3xl uppercase tracking-wide text-white mb-2 leading-tight">
-                  {activeTier.name}
-                </h3>
-                <p className="text-[11px] text-[#A4ACA1] font-sans leading-relaxed min-h-[30px]">
+                <p className="text-[11px] sm:text-xs text-[#8A9388] font-sans leading-relaxed max-w-[85%] mb-6">
                   {activeTier.tagline}
                 </p>
-              </div>
 
-              {/* Section 2: Features & Turnaround */}
-              <div className="p-5 md:p-8 md:w-[45%] flex flex-col justify-center relative z-10">
-                <div className="grid grid-cols-1 gap-6">
-                  <div className="flex flex-col">
-                     <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2 flex items-center gap-2 transition-colors duration-700" style={{ color: activeTier.color }}>
-                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                       <span className="text-[#A4ACA1]">{language === 'es' ? 'Plazo Estimado' : 'Estimated Turnaround'}</span>
-                     </p>
-                     <p className="font-sans text-base text-white font-semibold">{activeTier.turnaround}</p>
-                  </div>
+                {/* Tech Specs Block */}
+                <div className="mt-auto flex flex-col bg-white/[0.02] border border-white/5 p-4 relative">
+                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20" />
+                  <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20" />
                   
-                  <div>
-                     <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-3 flex items-center gap-2 transition-colors duration-700" style={{ color: activeTier.color }}>
-                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                       <span className="text-[#A4ACA1]">{language === 'es' ? 'Incluye' : 'Includes'}</span>
-                     </p>
-                     <div className="flex flex-wrap gap-x-6 gap-y-3">
-                       {activeTier.features.map((feature, idx) => (
-                         <div key={idx} className="flex items-center gap-2">
-                           <div className="w-1.5 h-1.5 shadow-sm transition-colors duration-700" style={{ backgroundColor: activeTier.color, boxShadow: `0 0 8px ${activeTier.color}80` }} />
-                           <span className="font-sans text-xs text-[#EAEAEA] font-medium">{feature}</span>
-                         </div>
-                       ))}
-                     </div>
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-3">
+                    <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em]">{language === 'es' ? 'TIEMPO ESTIMADO' : 'TURNAROUND'}</span>
+                    <span className="font-sans text-xs text-white font-medium" style={{ color: activeTier.color }}>{activeTier.turnaround}</span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    {activeTier.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <span className="font-mono text-[8px] opacity-50" style={{ color: activeTier.color }}>►</span>
+                        <span className="font-sans text-[11px] text-[#EAEAEA]">{feature}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
 
-              {/* Section 3: Price & Action */}
-              <div 
-                className="p-5 md:p-8 md:w-[20%] border-t md:border-t-0 md:border-l border-white/5 flex flex-row md:flex-col items-center justify-between md:justify-center gap-4 transition-all duration-700 relative z-10"
-                style={{ backgroundColor: `${activeTier.color}05` }}
-              >
-                <div className="flex items-start md:items-baseline gap-1">
-                  <span className="font-mono text-base text-[#A4ACA1] mt-1 md:mt-0">€</span>
-                  <span 
-                    className="font-['Oswald'] font-[700] text-4xl lg:text-5xl text-white transition-colors duration-700"
-                  >
-                    {activeTier.price}
-                  </span>
-                </div>
-                
-                <div 
-                  className="w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-700"
-                  style={{ borderColor: `${activeTier.color}80`, boxShadow: `0 0 15px ${activeTier.color}30` }}
-                >
-                  <svg className="w-6 h-6 transition-colors duration-700" style={{ color: activeTier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                {/* Subtle Action Arrow */}
+                <div className="absolute bottom-0 right-0 p-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                  <svg className="w-5 h-5" style={{ color: activeTier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
                 </div>
               </div>
               
