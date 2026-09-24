@@ -48,7 +48,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
               <img 
                 src="/images/tech_sequence_exact.png" 
                 alt="Gorilla Optical Technology Sequence"
-                className="w-full h-auto object-contain scale-105 origin-right"
+                className="w-full h-auto object-contain scale-105 origin-right mix-blend-screen opacity-90"
               />
             </div>
           </div>
