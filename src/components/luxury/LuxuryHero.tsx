@@ -117,7 +117,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         </div>
 
         {/* Right Editorial Rail (Matches Reference Image) */}
-        <div className="hidden xl:flex xl:col-span-5 h-full items-center justify-end pr-2 pointer-events-none select-none">
+        <div className="hidden xl:flex xl:col-span-5 h-full items-center justify-end pr-2 pb-24 pointer-events-none select-none">
           <div className="flex flex-col items-center justify-between h-[480px] text-right py-4">
             <div className="flex flex-col items-center gap-7">
               <span className="font-mono text-[10px] tracking-[0.38em] text-[#A4ACA1] uppercase [writing-mode:vertical-rl] rotate-180">
