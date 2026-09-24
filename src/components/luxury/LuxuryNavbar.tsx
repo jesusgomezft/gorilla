@@ -36,28 +36,28 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
         {/* Center Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 lg:gap-10">
           <button 
+            onClick={() => onNavigate && onNavigate('/submit')}
+            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
+          >
+            {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
+          </button>
+          <button 
+            onClick={() => onNavigate && onNavigate('/verify')}
+            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
+          >
+            {language === 'es' ? 'Verificar Certificado' : 'Verify Certificate'}
+          </button>
+          <button 
             onClick={() => onNavigate && onNavigate('/pricing')}
             className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
           >
-            {t('ref.nav.grading')}
+            {language === 'es' ? 'Precios y Niveles' : 'Pricing & Tiers'}
           </button>
-
           <button 
-            onClick={() => onNavigate && onNavigate('/technology')}
+            onClick={() => onNavigate && onNavigate('/tracking')}
             className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
           >
-            {t('ref.nav.technology')}
-          </button>
-
-
-
-
-
-          <button 
-            onClick={() => onNavigate && onNavigate('/about')}
-            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
-          >
-            {t('ref.nav.about')}
+            {language === 'es' ? 'Seguimiento' : 'Live Tracking'}
           </button>
         </nav>
 
@@ -129,22 +129,28 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-20 left-0 w-full bg-[#2B302B] border-b border-white/10 flex flex-col py-4 px-6 gap-4 shadow-xl">
           <button 
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
+            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+          >
+            {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
+          </button>
+          <button 
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/verify'); }}
+            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+          >
+            {language === 'es' ? 'Verificar Certificado' : 'Verify Certificate'}
+          </button>
+          <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/pricing'); }}
             className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
           >
-            {t('ref.nav.grading')}
+            {language === 'es' ? 'Precios y Niveles' : 'Pricing & Tiers'}
           </button>
           <button 
-            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/technology'); }}
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/tracking'); }}
             className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
           >
-            {t('ref.nav.technology')}
-          </button>
-          <button 
-            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/about'); }}
-            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
-          >
-            {t('ref.nav.about')}
+            {language === 'es' ? 'Seguimiento' : 'Live Tracking'}
           </button>
           <button
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
