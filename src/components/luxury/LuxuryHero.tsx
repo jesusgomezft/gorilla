@@ -14,14 +14,14 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
       className="relative w-full min-h-[88vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-[#454545] text-white pt-4 pb-0 select-none border-b border-black"
     >
       
-      {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (card-solo-transparent.jpg in background) */}
+      {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (card-solo-grey.jpg in background) */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex justify-end items-center px-4 lg:px-12"
       >
         <img 
-          src={`/images/card-solo-transparent.jpg?v=${Date.now()}`}
+          src={`/images/card-solo-grey.jpg?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
-          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-right opacity-95"
+          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-center opacity-95 lg:mr-16 xl:mr-32"
         />
         
         {/* Aggressive Edge Blending Gradients (Vignette) to hide any potential edges */}
