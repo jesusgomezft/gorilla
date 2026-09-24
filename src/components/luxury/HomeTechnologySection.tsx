@@ -46,9 +46,9 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
           <div className="lg:col-span-8 flex items-center justify-end">
             <div className="relative w-full max-w-[880px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.9)]">
               <img 
-                src="/images/tecnologia.png" 
+                src="/images/tech_sequence_exact.png" 
                 alt="Gorilla Optical Technology Sequence"
-                className="w-full h-auto object-contain scale-105 origin-right rounded-3xl"
+                className="w-full h-auto object-contain scale-105 origin-right"
               />
             </div>
           </div>
