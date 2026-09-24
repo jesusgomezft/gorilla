@@ -50,8 +50,10 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
                 alt="Gorilla Optical Technology Sequence"
                 className="w-full h-auto object-contain scale-105 origin-right"
                 style={{ 
-                  WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 60%, transparent 100%)',
-                  maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 60%, transparent 100%)'
+                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+                  WebkitMaskComposite: 'source-in',
+                  maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+                  maskComposite: 'intersect'
                 }}
               />
             </div>
