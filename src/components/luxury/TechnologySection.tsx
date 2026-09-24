@@ -6,11 +6,11 @@ export const TechnologySection: React.FC = () => {
   const [activeStep, setActiveStep] = React.useState(-1);
 
   React.useEffect(() => {
-    // 3 seconds total to reveal 5 steps means ~500ms per step.
-    // We add an extra tick to hold the full state before resetting.
+    // Slower pacing so the user has time to see each step clearly.
+    // 1200ms per step.
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev >= 5 ? -1 : prev + 1));
-    }, 500);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, []);
