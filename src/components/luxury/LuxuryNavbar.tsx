@@ -106,11 +106,12 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
             ) : (
               <div className="flex items-center">
                 <span 
-                  className={`absolute right-8 whitespace-nowrap text-[9px] uppercase font-mono tracking-widest text-[#48C765] pointer-events-none transition-all duration-1000 ease-in-out ${
+                  className={`absolute right-8 whitespace-nowrap text-[8px] sm:text-[9px] uppercase font-mono tracking-widest text-[#48C765] pointer-events-none transition-all duration-1000 ease-in-out ${
                     showSearchHint ? 'opacity-100 translate-x-0 blur-none' : 'opacity-0 translate-x-4 blur-sm'
                   }`}
                 >
-                  {language === 'es' ? 'Verifica tu carta' : 'Verify your card'}
+                  <span className="sm:hidden">{language === 'es' ? 'Verificar' : 'Verify'}</span>
+                  <span className="hidden sm:inline">{language === 'es' ? 'Verifica tu carta' : 'Verify your card'}</span>
                 </span>
                 <button 
                   onClick={() => setIsSearchOpen(true)}
