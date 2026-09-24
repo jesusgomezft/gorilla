@@ -55,6 +55,12 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
       turnaround: language === 'es' ? '48 horas' : '48 hours',
       maxValue: '€25.000',
       badge: language === 'es' ? 'GUANTE BLANCO' : 'WHITE GLOVE',
+      features: language === 'es' 
+        ? ['Doble Auditoría', 'Maletín Blindado', 'Master Grader Asignado'] 
+        : ['Dual Audit', 'Armored Case', 'Assigned Master Grader']
+    }
+  ];
+
   const tiersWithTheme = tiers.map(t => {
     switch(t.id) {
       case 'regular': return { ...t, color: '#3B82F6', code: 'RCDM.00', shortName: 'REGULAR' };
