@@ -95,7 +95,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
     const activeTier = tiersWithTheme[currentSlide];
     
     return (
-      <section id="pricing" className="w-full bg-transparent text-white py-16 lg:py-20 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
+      <section id="pricing" className="w-full bg-white/[0.03] border-b border-white/[0.05] text-white py-16 lg:py-20 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
         
         <div className="mb-10 flex items-center justify-center gap-6 w-full opacity-80">
           <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-white/30" />
