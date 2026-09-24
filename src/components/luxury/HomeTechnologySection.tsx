@@ -44,15 +44,18 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
 
           {/* COLUMN 2: Panoramic Artwork Sequence */}
           <div className="lg:col-span-8 flex items-center justify-end">
-            <div className="relative w-full max-w-[880px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.9)]">
+            <div 
+              className="relative w-full max-w-[880px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.9)]"
+              style={{
+                WebkitMaskImage: 'radial-gradient(ellipse 95% 85% at 50% 50%, black 60%, transparent 100%)',
+                maskImage: 'radial-gradient(ellipse 95% 85% at 50% 50%, black 60%, transparent 100%)'
+              }}
+            >
               <img 
                 src="/images/tecnologia.png" 
                 alt="Gorilla Optical Technology Sequence"
                 className="w-full h-auto object-contain scale-105 origin-right"
               />
-              {/* Edge Blending Gradients (Vignette) to merge seamlessly with the #454545 background */}
-              <div className="absolute inset-0 scale-105 origin-right bg-gradient-to-r from-[#454545] via-transparent to-[#454545] opacity-100 pointer-events-none" style={{ background: 'linear-gradient(to right, #454545 0%, transparent 15%, transparent 85%, #454545 100%)' }} />
-              <div className="absolute inset-0 scale-105 origin-right bg-gradient-to-b from-[#454545] via-transparent to-[#454545] opacity-100 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #454545 0%, transparent 15%, transparent 85%, #454545 100%)' }} />
             </div>
           </div>
 
