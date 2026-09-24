@@ -15,7 +15,7 @@ export const GorillaLogo: React.FC<GorillaLogoProps> = ({
       <img 
         src="/brand/logo-green.png" 
         alt="Gorilla Grading Shield" 
-        className={`${shieldSize} object-contain shrink-0 drop-shadow-[0_2px_10px_rgba(72,199,101,0.25)] transition-transform duration-200 group-hover:scale-105`}
+        className={`${shieldSize} object-contain shrink-0 transition-transform duration-200 group-hover:scale-105`}
       />
 
       {/* Official Project Typography: Stacked GORILLA / GRADING */}
