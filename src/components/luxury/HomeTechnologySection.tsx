@@ -22,10 +22,10 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
           
           {/* COLUMN 1: Left Copy */}
           <div className="lg:col-span-4 flex flex-col justify-center pr-2">
-            <h2 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] text-white uppercase leading-[0.94] mb-5 whitespace-pre-line">
+            <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] tracking-[0.01em] text-white uppercase leading-[1] mb-4 whitespace-pre-line">
               {t('ref.tech.title').replace(' QUE ', ' QUE\n').replace(' LA ', '\nLA ').replace('THAT REVEALS', 'THAT REVEALS\n')}
             </h2>
-            <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-[360px] font-normal leading-relaxed mb-8">
+            <p className="font-sans text-sm text-[#A4ACA1] max-w-[360px] font-normal leading-relaxed mb-8">
               {t('ref.tech.desc')}
             </p>
             
