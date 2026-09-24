@@ -44,11 +44,15 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
 
           {/* COLUMN 2: Panoramic Artwork Sequence */}
           <div className="lg:col-span-8 flex items-center justify-end">
-            <div className="relative w-full max-w-[880px] drop-shadow-[0_20px_45px_rgba(0,0,0,0.9)]">
+            <div className="relative w-full max-w-[880px]">
               <img 
-                src="/images/tech_sequence_exact.png" 
+                src="/images/tecnologia.png" 
                 alt="Gorilla Optical Technology Sequence"
-                className="w-full h-auto object-contain scale-105 origin-right mix-blend-screen opacity-90"
+                className="w-full h-auto object-contain scale-105 origin-right"
+                style={{ 
+                  WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 60%, transparent 100%)',
+                  maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 60%, transparent 100%)'
+                }}
               />
             </div>
           </div>
