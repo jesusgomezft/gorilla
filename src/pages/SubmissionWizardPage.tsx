@@ -10,7 +10,10 @@ interface SubmissionWizardPageProps {
 
 export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
-  const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(1);
+  const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('tier') ? 2 : 1;
+  });
   const [selectedTier, setSelectedTier] = useState<ServiceTier>(() => {
     const params = new URLSearchParams(window.location.search);
     const tierId = params.get('tier');
