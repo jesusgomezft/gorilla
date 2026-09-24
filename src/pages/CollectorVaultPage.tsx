@@ -44,7 +44,8 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
         <aside className="lg:w-[320px] shrink-0 flex flex-col gap-8">
           
           {/* Profile Card */}
-          <div className="bg-white/[0.02] border border-white/[0.05] p-8 relative overflow-hidden group">
+          <div className="bg-black/20 border border-white/5 p-6 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
             {/* Accent Line */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#48C765] to-transparent opacity-70" />
             
@@ -53,10 +54,17 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 <div className="absolute inset-0 bg-gradient-to-br from-[#48C765]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <span className="font-['Oswald'] text-2xl text-white tracking-widest relative z-10">CM</span>
               </div>
-              <div className="flex flex-col">
-                <span className="font-mono text-[9px] text-[#48C765] uppercase tracking-[0.3em] mb-1">
-                  VIP COLLECTOR
-                </span>
+              <div className="flex flex-col z-10">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="flex gap-[2px] h-2.5 items-end opacity-50 text-[#48C765]">
+                    <div className="w-[2px] h-full bg-current"></div>
+                    <div className="w-[1px] h-[70%] bg-current"></div>
+                    <div className="w-[1px] h-[100%] bg-current"></div>
+                  </div>
+                  <span className="font-mono text-[8px] text-[#48C765] uppercase tracking-[0.3em] leading-none">
+                    VIP COLLECTOR
+                  </span>
+                </div>
                 <h1 className="font-['Oswald'] text-2xl uppercase tracking-wide text-white leading-none">
                   Carlos Mendes
                 </h1>
@@ -80,11 +88,11 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
             <button
               onClick={() => onNavigate('/submit')}
-              className="mt-8 w-full bg-[#48C765] hover:bg-[#3A9F50] text-[#111] font-mono text-[11px] font-bold tracking-[0.2em] uppercase py-4 transition-all hover:shadow-[0_0_20px_rgba(72,199,101,0.3)] flex items-center justify-center gap-3"
+              className="mt-8 w-full relative z-10 bg-transparent border border-[#48C765]/30 hover:border-[#48C765] hover:bg-[#48C765]/5 text-[#48C765] font-mono text-[10px] font-bold tracking-[0.2em] uppercase py-3.5 transition-all flex items-center justify-center gap-3 group"
             >
               <span>{language === 'es' ? 'NUEVO ENVÍO' : 'NEW SUBMISSION'}</span>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+              <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
           </div>
@@ -121,10 +129,10 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
               
               {/* Header */}
               <div>
-                <h2 className="font-['Oswald'] text-3xl sm:text-4xl text-white uppercase tracking-wide mb-2">
+                <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
                   {language === 'es' ? 'Panel de Control' : 'Dashboard Overview'}
                 </h2>
-                <p className="font-sans text-sm text-[#A4ACA1]">
+                <p className="font-sans text-xs sm:text-sm text-[#A4ACA1]">
                   {language === 'es' ? 'Métricas de tu colección certificada.' : 'Metrics for your certified collection.'}
                 </p>
               </div>
@@ -133,30 +141,34 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 
                 {/* Value Card */}
-                <div className="bg-white/[0.02] border border-white/[0.05] p-8 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 p-6 opacity-10 text-[#48C765] group-hover:opacity-20 transition-opacity duration-500">
-                    <svg className="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  </div>
-                  <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4 relative z-10">
+                <div className="bg-black/20 border border-white/5 p-6 md:p-8 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 pointer-events-none mix-blend-overlay z-0" />
+                  
+                  <div className="absolute top-0 right-0 h-full w-[2px] bg-gradient-to-b from-[#48C765]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  
+                  <p className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.3em] mb-4 relative z-10 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-[#48C765]/50 rounded-sm"></span>
                     {language === 'es' ? 'Valor Total Estimado' : 'Total Portfolio Value'}
                   </p>
                   <div className="flex items-baseline gap-1 relative z-10">
                     <span className="font-mono text-xl text-[#48C765]">€</span>
-                    <span className="font-['Oswald'] text-5xl text-white">{totalVaultValue.toLocaleString()}</span>
+                    <span className="font-['Oswald'] text-4xl sm:text-5xl text-white">{totalVaultValue.toLocaleString()}</span>
                   </div>
                 </div>
 
                 {/* Cards Card */}
-                <div className="bg-white/[0.02] border border-white/[0.05] p-8 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 p-6 opacity-10 text-white group-hover:opacity-20 transition-opacity duration-500">
-                    <svg className="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-                  </div>
-                  <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4 relative z-10">
+                <div className="bg-black/20 border border-white/5 p-6 md:p-8 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 pointer-events-none mix-blend-overlay z-0" />
+                  
+                  <div className="absolute top-0 right-0 h-full w-[2px] bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                  <p className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.3em] mb-4 relative z-10 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-white/30 rounded-sm"></span>
                     {language === 'es' ? 'Cartas Certificadas' : 'Certified Slabs'}
                   </p>
                   <div className="flex items-baseline gap-3 relative z-10">
-                    <span className="font-['Oswald'] text-5xl text-white">{userCards.length}</span>
-                    <span className="font-mono text-xs text-[#A4ACA1] tracking-widest">{language === 'es' ? 'UNIDADES' : 'UNITS'}</span>
+                    <span className="font-['Oswald'] text-4xl sm:text-5xl text-white">{userCards.length}</span>
+                    <span className="font-mono text-[10px] text-[#A4ACA1] tracking-[0.3em]">{language === 'es' ? 'UNIDADES' : 'UNITS'}</span>
                   </div>
                 </div>
 
@@ -202,10 +214,10 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             <div className="space-y-12 animate-in fade-in duration-700">
               
               <div>
-                <h2 className="font-['Oswald'] text-3xl sm:text-4xl text-white uppercase tracking-wide mb-2">
+                <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
                   {language === 'es' ? 'Historial de Envíos' : 'Submission History'}
                 </h2>
-                <p className="font-sans text-sm text-[#A4ACA1]">
+                <p className="font-sans text-xs sm:text-sm text-[#A4ACA1]">
                   {language === 'es' ? 'Rastrea y revisa todos tus procesos.' : 'Track and review all your past and present submissions.'}
                 </p>
               </div>
@@ -260,10 +272,10 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
               
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
                 <div>
-                  <h2 className="font-['Oswald'] text-3xl sm:text-4xl text-white uppercase tracking-wide mb-2">
+                  <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
                     {language === 'es' ? 'Bóveda Digital' : 'Digital Vault'}
                   </h2>
-                  <p className="font-sans text-sm text-[#A4ACA1] max-w-md">
+                  <p className="font-sans text-xs sm:text-sm text-[#A4ACA1] max-w-md">
                     {language === 'es' 
                       ? 'Explora tus cartas certificadas en 3D. Selecciona una carta para ver su reporte óptico detallado.' 
                       : 'Explore your certified cards in 3D. Select a card to view its detailed optical report.'}

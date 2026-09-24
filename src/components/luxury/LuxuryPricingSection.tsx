@@ -125,19 +125,22 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
             {/* Ticket Body */}
             <div 
-              className="relative w-full bg-[#525252]/80 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden rounded-sm transition-all duration-700 cursor-pointer hover:scale-[1.01]"
-              style={{ borderColor: `${activeTier.color}40` }}
+              className="relative w-full bg-black/50 backdrop-blur-2xl border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-stretch overflow-hidden rounded-none transition-all duration-700 cursor-pointer hover:scale-[1.01]"
+              style={{ borderColor: `${activeTier.color}30` }}
               onClick={() => onNavigate && onNavigate(`/submit?tier=${activeTier.id}`)}
             >
               
+              {/* Noise Texture Overlay */}
+              <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-30 pointer-events-none mix-blend-overlay z-0" />
+
               {/* Left Accent Bar */}
               <div 
-                className="absolute left-0 top-0 bottom-0 w-1.5 transition-colors duration-700" 
+                className="absolute left-0 top-0 bottom-0 w-1 transition-colors duration-700 z-10" 
                 style={{ backgroundImage: `linear-gradient(to bottom, ${activeTier.color}, transparent)` }}
               />
 
               {/* Section 1: Title & Badge */}
-              <div className="p-8 md:p-10 md:w-[35%] border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center relative bg-[url('/images/noise.png')] bg-repeat opacity-95">
+              <div className="p-5 md:p-8 md:w-[35%] border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-center relative z-10">
                 <div className="absolute top-0 right-0 p-3 opacity-30 transition-colors duration-700" style={{ color: activeTier.color }}>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13l6.5-13z"/></svg>
                 </div>
@@ -163,16 +166,16 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   </div>
                 </div>
 
-                <h3 className="font-['Oswald'] text-3xl lg:text-4xl uppercase tracking-wide text-white mb-3 leading-tight drop-shadow-md">
+                <h3 className="font-['Oswald'] text-2xl lg:text-3xl uppercase tracking-wide text-white mb-2 leading-tight">
                   {activeTier.name}
                 </h3>
-                <p className="text-xs text-[#EAEAEA] font-sans leading-relaxed min-h-[40px]">
+                <p className="text-[11px] text-[#A4ACA1] font-sans leading-relaxed min-h-[30px]">
                   {activeTier.tagline}
                 </p>
               </div>
 
               {/* Section 2: Features & Turnaround */}
-              <div className="p-8 md:p-10 md:w-[45%] flex flex-col justify-center bg-white/[0.02]">
+              <div className="p-5 md:p-8 md:w-[45%] flex flex-col justify-center relative z-10">
                 <div className="grid grid-cols-1 gap-6">
                   <div className="flex flex-col">
                      <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2 flex items-center gap-2 transition-colors duration-700" style={{ color: activeTier.color }}>
@@ -201,13 +204,13 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
               {/* Section 3: Price & Action */}
               <div 
-                className="p-8 md:p-10 md:w-[20%] border-t md:border-t-0 md:border-l border-white/10 flex flex-row md:flex-col items-center justify-between md:justify-center gap-6 transition-all duration-700 group"
-                style={{ backgroundColor: `${activeTier.color}08` }}
+                className="p-5 md:p-8 md:w-[20%] border-t md:border-t-0 md:border-l border-white/5 flex flex-row md:flex-col items-center justify-between md:justify-center gap-4 transition-all duration-700 relative z-10"
+                style={{ backgroundColor: `${activeTier.color}05` }}
               >
                 <div className="flex items-start md:items-baseline gap-1">
-                  <span className="font-mono text-lg text-[#A4ACA1] mt-1 md:mt-0">€</span>
+                  <span className="font-mono text-base text-[#A4ACA1] mt-1 md:mt-0">€</span>
                   <span 
-                    className="font-['Oswald'] font-[700] text-5xl lg:text-6xl text-white transition-colors duration-700 drop-shadow-lg"
+                    className="font-['Oswald'] font-[700] text-4xl lg:text-5xl text-white transition-colors duration-700"
                   >
                     {activeTier.price}
                   </span>
