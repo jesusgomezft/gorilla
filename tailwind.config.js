@@ -40,7 +40,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        sans: ['"Montserrat"', '"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
         display: ['"Oswald"', '"Barlow Condensed"', '"Syne"', 'sans-serif'],
         condensed: ['"Oswald"', '"Barlow Condensed"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
