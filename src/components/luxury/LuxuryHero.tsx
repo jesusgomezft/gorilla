@@ -16,15 +16,23 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
       
       {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (gorila.png in background) */}
       <div 
-        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex justify-end items-center"
       >
-        <img 
-          src={`/images/gorila.png?v=${Date.now()}`}
-          alt="Gorilla Grading - Master Artwork" 
-          className="w-full h-full object-cover object-[65%_center] lg:object-center"
-        />
+        <div 
+          className="relative w-full lg:w-[85%] h-full lg:h-[90%] flex justify-end"
+          style={{
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 70% 50%, black 40%, transparent 100%)',
+            maskImage: 'radial-gradient(ellipse 100% 100% at 70% 50%, black 40%, transparent 100%)'
+          }}
+        >
+          <img 
+            src={`/images/gorila.png?v=${Date.now()}`}
+            alt="Gorilla Grading - Master Artwork" 
+            className="w-full h-full object-contain object-right"
+          />
+        </div>
         
-        {/* Editorial Text Readability Gradients: dark smoke on the left to ensure 100% text contrast without obscuring the gorilla */}
+        {/* Editorial Text Readability Gradients */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#454545]/90 via-[#454545]/65 to-transparent w-full lg:w-[48%] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#454545] via-transparent to-transparent h-32 bottom-0 top-auto pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#454545]/80 via-transparent to-transparent h-24 pointer-events-none" />
