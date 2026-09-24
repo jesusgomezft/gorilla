@@ -278,6 +278,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         <div className="flex flex-col gap-3">
           {tiers.map((tier) => {
             const isSelected = selectedTier === tier.id;
+            const tierWithTheme = tiersWithTheme.find(t => t.id === tier.id) || { ...tier, color: '#48C765', glow: false };
             
             return (
               <div
