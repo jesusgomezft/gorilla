@@ -28,12 +28,12 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           <img 
             src={`/images/gorila.png?v=${Date.now()}`}
             alt="Gorilla Grading - Master Artwork" 
-            className="w-full h-full object-cover object-[65%_center] lg:object-contain lg:object-right"
+            className="w-full h-full object-cover object-[85%_center] lg:object-contain lg:object-right"
           />
         </div>
         
         {/* Editorial Text Readability Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#454545]/90 via-[#454545]/65 to-transparent w-full lg:w-[48%] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#454545] via-[#454545]/85 to-transparent w-[90%] md:w-[70%] lg:w-[48%] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#454545] via-transparent to-transparent h-32 bottom-0 top-auto pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#454545]/80 via-transparent to-transparent h-24 pointer-events-none" />
       </div>
@@ -46,20 +46,20 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           
           {/* Technical Kicker */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="font-mono text-xs font-semibold tracking-[0.28em] text-[#A4ACA1] uppercase">
+            <span className="font-mono text-xs font-semibold tracking-[0.28em] text-[#A4ACA1] uppercase drop-shadow-md">
               {t('ref.hero.eyebrow')}
             </span>
           </div>
 
           {/* Monumental Display Headline (Architectural Senior Grotesque - Oswald 700) */}
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl leading-[0.95] tracking-[0.01em] text-white mb-7 uppercase">
+          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl leading-[0.95] tracking-[0.01em] text-white mb-7 uppercase drop-shadow-lg">
             {t('ref.hero.title1')}<br />
             {t('ref.hero.title2')}<span className="text-[#48C765]">{t('ref.hero.titleGreen')}</span>
           </h1>
 
           {/* Clear Editorial Description */}
           <div className="relative mb-9">
-            <p className="relative font-sans text-base sm:text-lg text-[#C2C9C3] max-w-[490px] leading-relaxed font-normal">
+            <p className="relative font-sans text-base sm:text-lg text-[#F4F6F0] max-w-[490px] leading-relaxed font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               {t('ref.hero.desc')}
             </p>
           </div>
