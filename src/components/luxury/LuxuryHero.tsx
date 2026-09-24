@@ -28,7 +28,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           <img 
             src={`/images/gorila.png?v=${Date.now()}`}
             alt="Gorilla Grading - Master Artwork" 
-            className="w-full h-full object-contain object-right"
+            className="w-full h-full object-cover object-[65%_center] lg:object-contain lg:object-right"
           />
         </div>
         
