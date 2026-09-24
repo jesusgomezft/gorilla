@@ -11,24 +11,24 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
   return (
     <section 
-      className="relative w-full min-h-[88vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-black text-white pt-4 pb-0 select-none border-b border-black"
+      className="relative w-full min-h-[88vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-[#454545] text-white pt-4 pb-0 select-none border-b border-black"
     >
       
-      {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (card-solo.jpg in background) */}
+      {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (card-solo-transparent.jpg in background) */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex justify-end items-center px-4 lg:px-12"
       >
         <img 
-          src={`/images/card-solo.jpg?v=${Date.now()}`}
+          src={`/images/card-solo-transparent.jpg?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
           className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-right opacity-95"
         />
         
         {/* Aggressive Edge Blending Gradients (Vignette) to hide any potential edges */}
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-black via-black/90 to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-black to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-24 md:h-40 bg-gradient-to-b from-black to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-32 md:h-56 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#454545] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-24 md:h-40 bg-gradient-to-b from-[#454545] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-32 md:h-56 bg-gradient-to-t from-[#454545] via-[#454545]/80 to-transparent pointer-events-none" />
       </div>
 
       {/* 2. FOREGROUND EDITORIAL CONTENT (Text on Left, Artwork Center/Right, Rail Far Right) */}
