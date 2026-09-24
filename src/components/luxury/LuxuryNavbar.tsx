@@ -12,6 +12,26 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showSearchHint, setShowSearchHint] = useState(false);
+
+  React.useEffect(() => {
+    // Initial reveal after 2 seconds
+    const initialTimeout = setTimeout(() => {
+      setShowSearchHint(true);
+      setTimeout(() => setShowSearchHint(false), 4000);
+    }, 2000);
+
+    // Loop every 10 seconds
+    const interval = setInterval(() => {
+      setShowSearchHint(true);
+      setTimeout(() => setShowSearchHint(false), 4000);
+    }, 10000);
+
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +84,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
         {/* Right Tools & CTAs */}
         <div className="flex items-center gap-5">
           {/* Quick Search Trigger */}
-          <div className="relative">
+          <div className="relative flex items-center">
             {isSearchOpen ? (
               <form onSubmit={handleSearchSubmit} className="flex items-center">
                 <input
@@ -84,15 +104,24 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
                 </button>
               </form>
             ) : (
-              <button 
-                onClick={() => setIsSearchOpen(true)}
-                className="p-2 text-[#A4ACA1] hover:text-white transition-colors"
-                title="Search Certificate"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
+              <div className="flex items-center">
+                <span 
+                  className={`hidden sm:block absolute right-8 whitespace-nowrap text-[9px] uppercase font-mono tracking-widest text-[#48C765] pointer-events-none transition-all duration-1000 ease-in-out ${
+                    showSearchHint ? 'opacity-100 translate-x-0 blur-none' : 'opacity-0 translate-x-4 blur-sm'
+                  }`}
+                >
+                  {language === 'es' ? 'Verifica tu carta' : 'Verify your card'}
+                </span>
+                <button 
+                  onClick={() => setIsSearchOpen(true)}
+                  className="p-2 text-[#A4ACA1] hover:text-white transition-colors relative z-10"
+                  title="Search Certificate"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </div>
             )}
           </div>
 
