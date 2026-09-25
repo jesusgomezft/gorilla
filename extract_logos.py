@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 src_path = r"C:\Users\jesus\.gemini\antigravity-ide\brain\912c2c6c-654a-4b34-bc59-03e2874277ac\.user_uploaded\media_1790083815678.jpg"
-out_dir = r"public\brand\logos"
+out_dir = r"public\images\logos"
 os.makedirs(out_dir, exist_ok=True)
 
 img = Image.open(src_path)
@@ -39,10 +39,9 @@ def make_transparent_logo(crop_img):
             
             # If pixel is darker than background, it belongs to the logo
             if lum < avg_bg - 12:
-                # Calculate alpha based on how dark it is
+                # Keep original RGB, just calculate alpha
                 alpha = int(min(255, (avg_bg - lum) * 3.5))
-                # Set crisp dark graphite color #161A16
-                result.putpixel((x, y), (22, 26, 22, alpha))
+                result.putpixel((x, y), (r, g, b, alpha))
             else:
                 result.putpixel((x, y), (0, 0, 0, 0))
     return result

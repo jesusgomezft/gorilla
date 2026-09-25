@@ -17,7 +17,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-14 border-b border-white/[0.06]">
           
           {/* Brand Info */}
-          <div className="lg:col-span-4 flex flex-col items-start">
+          <div className="lg:col-span-3 flex flex-col items-start">
             <div 
               onClick={() => onNavigate && onNavigate('/')}
               className="cursor-pointer group mb-4"
@@ -90,8 +90,30 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             </button>
           </div>
 
+          {/* Legal */}
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
+              {language === 'es' ? 'LEGAL' : 'LEGAL'}
+            </span>
+            <button onClick={() => onNavigate && onNavigate('/terms')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions'}
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/privacy')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/refund')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Política de Reembolso' : 'Refund Policy'}
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/cookies')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Política de Cookies' : 'Cookie Policy'}
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/cookie-consent')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Consentimiento de Cookies' : 'Cookie Consent'}
+            </button>
+          </div>
+
           {/* Standards & Certifications */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
+          <div className="lg:col-span-3 flex flex-col gap-3">
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'ESTÁNDARES ÓPTICOS' : 'OPTICAL STANDARDS'}
             </span>

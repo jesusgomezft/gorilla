@@ -57,6 +57,7 @@ export default {
         'pulse-subtle': 'pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 5s ease-in-out infinite',
         'iridescent': 'iridescent 8s ease infinite',
+        'marquee': 'marquee 40s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -80,6 +81,10 @@ export default {
         iridescent: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         }
       }
     },

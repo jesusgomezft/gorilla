@@ -1,0 +1,56 @@
+LOGO · GORILLA GRADING
+======================
+
+ARCHIVOS
+
+  Isotipo (solo el escudo) — vectorial puro, funciona siempre
+    isotipo-verde.svg          escudo verde, G recortada en gris   → uso principal
+    isotipo-oscuro.svg         escudo oscuro, G verde              → sobre fondo claro
+    isotipo-blanco.svg         escudo blanco, G oscura             → sobre foto o color
+    isotipo-negro-plano.svg    todo en un solo color               → sellos, grabado, fax
+    favicon.svg                para la pestaña del navegador
+
+  Logo horizontal (escudo + nombre al lado)
+    horizontal-claro.svg
+    horizontal-oscuro.svg
+    horizontal-mono-oscuro.svg
+    horizontal-blanco.svg
+
+  Logo vertical (escudo arriba, nombre debajo) — para la carcasa
+    vertical-claro.svg
+    vertical-oscuro.svg
+
+
+IMPORTANTE SOBRE EL TEXTO
+-------------------------
+Los archivos con nombre (horizontal y vertical) llevan el texto como
+TEXTO EDITABLE, no como trazados. Eso significa que para verlos bien
+hace falta tener instalada la fuente Nunito Sans.
+
+  · En la web funciona sin más, porque la carga Google Fonts.
+  · En Illustrator, Figma o una imprenta, instala primero la fuente:
+    https://fonts.google.com/specimen/Nunito+Sans   (gratuita)
+
+Para dejarlos definitivos y que no dependan de nada:
+  · Illustrator → selecciona el texto → Texto > Crear contornos
+  · Figma       → selecciona el texto → clic derecho > Outline stroke
+  · Inkscape    → selecciona el texto → Trayecto > Objeto a trayecto
+
+Los isotipos NO tienen este problema: son trazados puros.
+
+
+COLORES
+-------
+  Verde de marca   #61B663
+  Verde oscuro     #3B803C
+  Gris de fondo    #454545
+  Tinta            #0E1512
+
+
+USO
+---
+  · Área de respeto: deja libre a cada lado al menos la mitad del
+    ancho del escudo.
+  · Tamaño mínimo del isotipo: 16 px de alto en pantalla, 8 mm impreso.
+  · No cambies las proporciones entre escudo y texto.
+  · No pongas el escudo verde sobre fondo verde.

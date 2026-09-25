@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 94" width="360" height="94" role="img" aria-label="Gorilla Grading">
+  <title>Gorilla Grading</title>
+  <g transform="translate(4,4)">
+    <path d="M8 16A8 8 0 0 1 16 8h52a8 8 0 0 1 8 8v34c0 16-16 28-34 34C24 78 8 66 8 50Z" fill="#61B663"/>
+    <g transform="translate(42,44)">
+      <path d="M13 -9 A15.5 15.5 0 1 0 15.5 3 H2" fill="none" stroke="#454545" stroke-width="7.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="98" y="52" font-family="Nunito Sans, Arial, sans-serif" font-size="31"
+        font-weight="800" letter-spacing="-.8" fill="#0E1512">GORILLA</text>
+  <text x="100" y="76" font-family="Nunito Sans, Arial, sans-serif" font-size="15"
+        font-weight="500" letter-spacing="6.4" fill="#61B663">GRADING</text>
+</svg>

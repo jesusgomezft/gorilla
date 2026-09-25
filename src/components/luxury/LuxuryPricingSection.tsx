@@ -116,93 +116,108 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
           </button>
 
-          <div className="w-full max-w-[1000px] relative mx-auto">
+          <div className="w-full max-w-[950px] relative mx-auto">
             {/* Enhanced Outer Glow */}
             <div 
-              className="absolute -inset-2 blur-2xl transition-all duration-700 pointer-events-none opacity-40" 
-              style={{ backgroundImage: `linear-gradient(to right, transparent, ${activeTier.color}20, transparent)` }}
+              className="absolute -inset-4 blur-[50px] transition-all duration-700 pointer-events-none opacity-30" 
+              style={{ backgroundImage: `radial-gradient(circle at center, ${activeTier.color}, transparent 65%)` }}
             />
 
-            {/* Ticket Body */}
+            {/* Ticket Body - Ultra Premium Design */}
             <div 
-              className="relative w-full border shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden rounded-none transition-all duration-700 cursor-pointer hover:scale-[1.01]"
+              className="relative w-full border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden rounded-2xl transition-all duration-700 cursor-pointer group/card hover:scale-[1.01]"
               style={{ 
-                background: `linear-gradient(135deg, #121613 0%, ${activeTier.color}15 100%)`,
+                background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
                 borderColor: `${activeTier.color}40`,
-                boxShadow: `0 20px 40px -10px ${activeTier.color}25`
               }}
               onClick={() => onNavigate && onNavigate(`/submit?tier=${activeTier.id}`)}
             >
               
+              {/* Massive Typography Watermark */}
+              <div 
+                className="absolute -right-4 -bottom-6 text-[100px] sm:text-[140px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
+                style={{ color: activeTier.color }}
+              >
+                {activeTier.shortName}
+              </div>
+
+              {/* Glowing Orb inside the card */}
+              <div 
+                className="absolute top-0 right-0 w-[300px] h-[300px] blur-[80px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
+                style={{ backgroundColor: activeTier.color }}
+              />
+
               {/* Noise Texture Overlay */}
               <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
 
-              {/* Left Accent Bar */}
-              <div 
-                className="absolute left-0 top-0 bottom-0 w-1 transition-colors duration-700 z-10" 
-                style={{ backgroundImage: `linear-gradient(to bottom, ${activeTier.color}, transparent)` }}
-              />
+              {/* Glass Reflection Sheen */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.07] to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20" />
 
-              <div key={activeTier.id} className="w-full flex flex-col p-6 sm:p-8 relative z-10 animate-crossfade-up">
-                {/* Header: Title + Price side by side */}
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="flex gap-[2px] h-3 items-end transition-colors duration-700" style={{ color: activeTier.color }}>
-                        <div className="w-[2px] h-full bg-current"></div>
-                        <div className="w-[1px] h-[70%] bg-current opacity-60"></div>
-                        <div className="w-[1px] h-[100%] bg-current opacity-80"></div>
-                      </div>
-                      <span className="font-mono text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.3em] text-[#A4ACA1] leading-none">
-                        {activeTier.code} // {activeTier.shortName}
-                      </span>
+              <div key={activeTier.id} className="w-full flex flex-col md:flex-row relative z-10 animate-crossfade-up h-full">
+                
+                {/* Left Side: Info */}
+                <div className="flex-1 p-6 sm:p-10 flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-3 mb-5">
+                    <div className="px-3 py-1 text-[9px] sm:text-[10px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
+                         style={{ backgroundColor: `${activeTier.color}10`, color: activeTier.color, borderColor: `${activeTier.color}30` }}>
+                      {activeTier.code}
                     </div>
-                    <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-none">
-                      {activeTier.name}
-                    </h3>
+                    {activeTier.badge && (
+                      <div className="px-3 py-1 text-[9px] sm:text-[10px] font-mono font-bold tracking-[0.2em] uppercase bg-white text-black rounded-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                        {activeTier.badge}
+                      </div>
+                    )}
                   </div>
-
-                  {/* Price */}
-                  <div className="flex items-start">
-                    <span className="font-mono text-sm text-[#A4ACA1] mt-1 mr-0.5">€</span>
-                    <span className="font-['Oswald'] font-[700] text-3xl sm:text-4xl text-white leading-none tracking-tight">
-                      {activeTier.price}
-                    </span>
-                  </div>
-                </div>
-
-                <p className="text-[11px] sm:text-xs text-[#8A9388] font-sans leading-relaxed max-w-[85%] mb-6">
-                  {activeTier.tagline}
-                </p>
-
-                {/* Tech Specs Block */}
-                <div className="mt-auto flex flex-col bg-white/[0.02] border border-white/5 p-4 relative">
-                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20" />
-                  <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20" />
                   
-                  <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-3">
-                    <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em]">{language === 'es' ? 'TIEMPO ESTIMADO' : 'TURNAROUND'}</span>
-                    <span className="font-sans text-xs text-white font-medium" style={{ color: activeTier.color }}>{activeTier.turnaround}</span>
-                  </div>
+                  <h3 className="font-['Oswald'] text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-white leading-[1.1] mb-3 drop-shadow-lg">
+                    {activeTier.name}
+                  </h3>
+                  
+                  <p className="text-[13px] sm:text-sm text-[#A4ACA1] font-sans leading-relaxed max-w-[95%] mb-6">
+                    {activeTier.tagline}
+                  </p>
 
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-3 mt-auto">
                     {activeTier.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <span className="font-mono text-[8px] opacity-50" style={{ color: activeTier.color }}>►</span>
-                        <span className="font-sans text-[11px] text-[#EAEAEA]">{feature}</span>
+                      <div key={idx} className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: activeTier.color, color: activeTier.color }} />
+                        <span className="font-sans text-[13px] sm:text-sm text-[#EAEAEA] font-medium tracking-wide">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Subtle Action Arrow */}
-                <div className="absolute bottom-0 right-0 p-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
-                  <svg className="w-5 h-5" style={{ color: activeTier.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
+                {/* Right Side: Price & CTA */}
+                <div className="w-full md:w-[35%] lg:w-[30%] p-6 sm:p-10 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l border-white/10 backdrop-blur-md bg-black/20">
+                  
+                  <div className="flex flex-col items-start md:items-end w-full mb-6">
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2">
+                      {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
+                    </span>
+                    <div className="flex items-start mb-3">
+                      <span className="font-mono text-lg sm:text-xl text-white/40 mt-1 mr-1">€</span>
+                      <span className="font-['Oswald'] font-[700] text-5xl sm:text-6xl lg:text-7xl text-white leading-none tracking-tighter" style={{ textShadow: `0 0 50px ${activeTier.color}40` }}>
+                        {activeTier.price}
+                      </span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 text-right">
+                      <svg className="w-4 h-4 opacity-80" style={{ color: activeTier.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span className="font-sans text-[11px] sm:text-xs text-[#A4ACA1] font-medium">{activeTier.turnaround}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto w-full pt-4">
+                    <div className="w-full py-3.5 text-center text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 border rounded-sm hover:bg-white/5"
+                         style={{ borderColor: activeTier.color, color: activeTier.color, boxShadow: `inset 0 0 20px ${activeTier.color}00` }}>
+                      {language === 'es' ? 'ELEGIR SERVICIO' : 'SELECT TIER'}
+                    </div>
+                  </div>
                 </div>
+
               </div>
-              
             </div>
             
             {/* Dots Navigation */}
