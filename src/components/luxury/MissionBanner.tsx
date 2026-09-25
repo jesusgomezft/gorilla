@@ -21,7 +21,7 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
       
       {/* The Box Image - Positioned absolutely to the left */}
       <img 
-        src="/images/ourmission.png?v=7" 
+        src="/images/ourmission.png?v=7"
         alt="Gorilla Grading Box" 
         className="absolute left-0 top-0 h-full w-full lg:w-[50%] object-cover object-center lg:object-right opacity-90 z-0"
       />

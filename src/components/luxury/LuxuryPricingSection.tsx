@@ -143,7 +143,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 style={{ backgroundImage: `linear-gradient(to bottom, ${activeTier.color}, transparent)` }}
               />
 
-              <div className="w-full flex flex-col p-6 sm:p-8 relative z-10">
+              <div key={activeTier.id} className="w-full flex flex-col p-6 sm:p-8 relative z-10 animate-crossfade-up">
                 {/* Header: Title + Price side by side */}
                 <div className="flex justify-between items-start mb-6">
                   <div className="flex flex-col">
@@ -410,7 +410,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           </div>
 
           <button
-            onClick={() => onNavigate && onNavigate('/submit')}
+            onClick={() => onNavigate && onNavigate(`/submit?tier=${selectedTier}`)}
             className="shrink-0 text-white px-8 py-3 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:brightness-110 hover:shadow-lg"
             style={{ 
               backgroundColor: tiersWithTheme.find(t => t.id === selectedTier)?.color || '#48C765',

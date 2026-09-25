@@ -17,7 +17,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-14 border-b border-white/[0.06]">
           
           {/* Brand Info */}
-          <div className="lg:col-span-5 flex flex-col items-start">
+          <div className="lg:col-span-4 flex flex-col items-start">
             <div 
               onClick={() => onNavigate && onNavigate('/')}
               className="cursor-pointer group mb-4"
@@ -56,7 +56,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
           </div>
 
           {/* Quick Nav */}
-          <div className="lg:col-span-3 flex flex-col gap-3">
+          <div className="lg:col-span-2 flex flex-col gap-3">
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'SERVICIOS' : 'SERVICES'}
             </span>
@@ -71,6 +71,22 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             </button>
             <button onClick={() => onNavigate && onNavigate('/track')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
               {language === 'es' ? 'Seguimiento en Vivo' : 'Live Tracking'}
+            </button>
+          </div>
+
+          {/* Company & Support */}
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
+              {language === 'es' ? 'COMPAÑÍA' : 'COMPANY'}
+            </span>
+            <button onClick={() => onNavigate && onNavigate('/about')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Sobre Nosotros' : 'About Us'}
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/contact')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Contacto' : 'Contact'}
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/faq')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              {language === 'es' ? 'Preguntas Frecuentes' : 'FAQ'}
             </button>
           </div>
 
@@ -100,13 +116,22 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#5A6357]">
           <div>
-            © 2026 GORILLA GRADING · ALL RIGHTS RESERVED
+            © 2026 GORILLA GRADING · {language === 'es' ? 'TODOS LOS DERECHOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">PRIVACY</span>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">TERMS</span>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">WARRANTY</span>
+            <button 
+              onClick={() => setLanguage(language === 'es' ? 'en' : 'es')} 
+              className="hover:text-white transition-colors text-white font-bold flex items-center gap-1"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {language === 'es' ? 'ES' : 'EN'}
+            </button>
+            <span className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'PRIVACIDAD' : 'PRIVACY'}</span>
+            <span className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'TÉRMINOS' : 'TERMS'}</span>
+            <span className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'GARANTÍA' : 'WARRANTY'}</span>
           </div>
         </div>
 

@@ -145,7 +145,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
           <button
             onClick={() => onNavigate && onNavigate('/account')}
             className="hidden sm:flex p-2 text-[#A4ACA1] hover:text-[#48C765] transition-colors items-center justify-center"
-            title="My Dashboard"
+            title="Login"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -169,45 +169,48 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
 
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Full Screen Takeover */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-[#2B302B] border-b border-white/10 flex flex-col py-4 px-6 gap-4 shadow-xl">
+        <div className="md:hidden fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-[#2B302B] flex flex-col py-6 px-8 gap-4 z-40 animate-crossfade-up overflow-y-auto">
           <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
-            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+            className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
           >
             {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
           </button>
           <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/verify'); }}
-            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+            className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
           >
             {language === 'es' ? 'Verificar Certificado' : 'Verify Certificate'}
           </button>
           <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/pricing'); }}
-            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+            className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
           >
             {language === 'es' ? 'Precios y Niveles' : 'Pricing & Tiers'}
           </button>
           <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/tracking'); }}
-            className="text-left text-sm font-medium text-white hover:text-[#48C765] transition-colors py-2 border-b border-white/5"
+            className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
           >
             {language === 'es' ? 'Seguimiento' : 'Live Tracking'}
           </button>
           <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/account'); }}
-            className="text-left text-sm font-medium text-[#48C765] hover:text-white transition-colors py-2 border-b border-white/5"
+            className="text-left text-base font-medium text-[#48C765] hover:text-white transition-colors py-4 border-b border-white/5"
           >
-            {language === 'es' ? 'Mi Panel' : 'My Dashboard'}
+            {language === 'es' ? 'Iniciar Sesión' : 'Login'}
           </button>
-          <button
-            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
-            className="sm:hidden mt-2 inline-flex items-center justify-center px-5 py-3 rounded-none border border-[#48C765]/50 bg-[#48C765]/10 text-white font-semibold tracking-wide uppercase transition-all"
-          >
-            {t('ref.nav.submit')}
-          </button>
+          
+          <div className="mt-8">
+            <button
+              onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
+              className="w-full inline-flex items-center justify-center px-8 py-4 rounded-none border border-[#48C765]/50 bg-[#48C765]/10 text-white font-semibold tracking-wide uppercase transition-all shadow-[0_0_15px_rgba(72,199,101,0.15)]"
+            >
+              {t('ref.nav.submit')}
+            </button>
+          </div>
         </div>
       )}
     </header>

@@ -11,7 +11,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
   return (
     <section 
-      className="relative w-full min-h-[88vh] lg:min-h-[92vh] flex items-center overflow-hidden bg-[#454545] text-white pt-4 pb-0 select-none"
+      className="relative w-full flex items-center overflow-hidden bg-[#454545] text-white pt-12 pb-0 select-none"
     >
       
       {/* 1. FULL BACKGROUND CINEMATIC ARTWORK (card-solo-grey.jpg in background) */}
@@ -19,16 +19,14 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex justify-end items-center px-4 lg:px-12"
       >
         <img 
-          src={`/images/card-solo-grey.jpg?v=${Date.now()}`}
+          src={`/images/alakazam_hero.png?v=${Date.now()}`}
           alt="Gorilla Grading - Master Artwork" 
-          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[90%] object-contain object-right lg:object-center opacity-95 lg:mr-4 xl:mr-12 relative z-0"
+          className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[100%] object-contain object-right lg:object-center opacity-95 lg:mr-4 xl:mr-12 relative z-0"
         />
         
-        {/* Aggressive Edge Blending Gradients (Vignette) to hide any potential edges */}
         <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent pointer-events-none z-10" />
         <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#454545] to-transparent pointer-events-none z-10" />
         <div className="absolute inset-x-0 top-0 h-24 md:h-40 bg-gradient-to-b from-[#454545] to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-x-0 bottom-0 h-32 md:h-56 bg-gradient-to-t from-[#454545] via-[#454545]/80 to-transparent pointer-events-none z-10" />
 
         {/* Floor Reflection Stage */}
         <div className="absolute bottom-0 left-0 w-full flex pointer-events-none z-20">
@@ -39,10 +37,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             style={{ maskImage: 'linear-gradient(to top, black 20%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to top, black 20%, transparent 100%)' }}
           />
         </div>
+
+        {/* Bottom Blend Gradient (z-30) to seamlessly merge into the next section */}
+        <div className="absolute inset-x-0 bottom-0 h-16 md:h-24 bg-gradient-to-t from-[#2F3430] via-[#2F3430]/80 to-transparent pointer-events-none z-30" />
       </div>
 
       {/* 2. FOREGROUND EDITORIAL CONTENT (Text on Left, Artwork Center/Right, Rail Far Right) */}
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 items-center min-h-[82vh]">
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 items-center">
         
         {/* Left Column: Headlines, Copy, Buttons, Social Proof */}
         <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center py-12 pl-4 sm:pl-8 lg:pl-28 xl:pl-40">
@@ -114,23 +115,6 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             </div>
           </div>
 
-        </div>
-
-        {/* Right Editorial Rail (Matches Reference Image) */}
-        <div className="hidden xl:flex xl:col-span-5 h-full items-center justify-end pr-2 pb-24 pointer-events-none select-none">
-          <div className="flex flex-col items-center justify-end h-[480px] text-right py-4">
-            <div className="relative w-16 h-16 flex items-center justify-center p-2 opacity-70">
-              <svg className="w-full h-full text-[#A4ACA1] animate-[spin_60s_linear_infinite]" viewBox="0 0 100 100">
-                <path id="sealPath" fill="transparent" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
-                <text className="text-[7.5px] font-mono uppercase tracking-[0.22em] fill-white/70">
-                  <textPath href="#sealPath">EUROPEAN GRADING STANDARD • COLLECT & TRUST •</textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 bg-[#48C765]" />
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
