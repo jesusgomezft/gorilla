@@ -7,11 +7,11 @@ interface MissionBannerProps {
 
 export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
-  const [activeStep, setActiveStep] = useState(-1);
+  const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev >= 4 ? -1 : prev + 1));
+      setActiveStep((prev) => (prev >= 4 ? 0 : prev + 1));
     }, 3000);
     return () => clearInterval(interval);
   }, []);

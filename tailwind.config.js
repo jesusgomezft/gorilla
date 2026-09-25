@@ -57,7 +57,7 @@ export default {
         'pulse-subtle': 'pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 5s ease-in-out infinite',
         'iridescent': 'iridescent 8s ease infinite',
-        'marquee': 'marquee 40s linear infinite',
+        'marquee': 'marquee 120s linear infinite',
       },
       keyframes: {
         fadeIn: {

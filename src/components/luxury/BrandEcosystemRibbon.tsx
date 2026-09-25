@@ -13,21 +13,21 @@ export const BrandEcosystemRibbon: React.FC = () => {
   const { t } = useLanguage();
 
   const brands = [
-    { id: 'pokemon', name: 'Pokémon', component: <PokemonLogo className="h-6 sm:h-8" /> },
-    { id: 'magic', name: 'Magic: The Gathering', component: <MagicLogo className="h-6 sm:h-8" /> },
-    { id: 'onepiece', name: 'One Piece Card Game', component: <OnePieceLogo className="h-6 sm:h-8" /> },
-    { id: 'lorcana', name: 'Disney Lorcana', component: <LorcanaLogo className="h-6 sm:h-8" /> },
-    { id: 'yugioh', name: 'Yu-Gi-Oh!', component: <YuGiOhLogo className="h-6 sm:h-8" /> },
-    { id: 'panini', name: 'Panini', component: <PaniniLogo className="h-10 sm:h-14 scale-[1.3] sm:scale-[1.5]" /> },
-    { id: 'topps', name: 'Topps', component: <img src="/images/logos/Topps.png" alt="Topps" className="h-5 sm:h-7 object-contain" /> },
-    { id: 'dragonball', name: 'Dragon Ball', component: <img src="/images/logos/DragonBall.png" alt="Dragon Ball" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'digimon', name: 'Digimon', component: <img src="/images/logos/DigimonCard.png" alt="Digimon" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'fleshblood', name: 'Flesh and Blood', component: <img src="/images/logos/FleshBlood.png" alt="Flesh and Blood" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'gundam', name: 'Gundam', component: <img src="/images/logos/Gundam.png" alt="Gundam" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'cyberpunk', name: 'Cyberpunk', component: <img src="/images/logos/cyberpunk.png" alt="Cyberpunk" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'finalfantasy', name: 'Final Fantasy', component: <img src="/images/logos/finalFantasy.png" alt="Final Fantasy" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'force', name: 'Force', component: <img src="/images/logos/force.png" alt="Force" className="h-6 sm:h-8 object-contain" /> },
-    { id: 'vanguard', name: 'Vanguard', component: <img src="/images/logos/vanguar.png" alt="Vanguard" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'pokemon', name: 'Pokémon', component: <img src="/images/logos/pokemon.png" alt="Pokémon" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'magic', name: 'Magic', component: <img src="/images/logos/magic-logo.webp" alt="Magic" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'onepiece', name: 'One Piece', component: <img src="/images/logos/onepiece.png" alt="One Piece" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'lorcana', name: 'Lorcana', component: <img src="/images/logos/lorcana.png" alt="Lorcana" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'yugioh', name: 'Yu-Gi-Oh!', component: <img src="/images/logos/You-Gi-OH.png" alt="Yu-Gi-Oh!" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'panini', name: 'Panini', component: <img src="/images/logos/panini.png" alt="Panini" className="h-16 sm:h-24 scale-125 object-contain" /> },
+    { id: 'dragonball', name: 'Dragon Ball', component: <img src="/images/logos/DragonBall.png" alt="Dragon Ball" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'digimon', name: 'Digimon', component: <img src="/images/logos/DigimonCard.png" alt="Digimon" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'fleshblood', name: 'Flesh and Blood', component: <img src="/images/logos/FleshBlood.png" alt="Flesh and Blood" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'gundam', name: 'Gundam', component: <img src="/images/logos/Gundam.png" alt="Gundam" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'cyberpunk', name: 'Cyberpunk', component: <img src="/images/logos/cyberpunk.png" alt="Cyberpunk" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'finalfantasy', name: 'Final Fantasy', component: <img src="/images/logos/finalFantasy.png" alt="Final Fantasy" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'force', name: 'Force', component: <img src="/images/logos/force.png" alt="Force" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'vanguard', name: 'Vanguard', component: <img src="/images/logos/vanguar.png" alt="Vanguard" className="h-8 sm:h-10 object-contain" /> },
+    { id: 'extra', name: 'Brand', component: <img src="/images/logos/fbf7fc57-3966-4943-afbe-16d3b649b314.png" alt="Brand" className="h-8 sm:h-10 object-contain" /> },
   ];
 
   // Duplicate the array multiple times to create a seamless infinite scroll effect
@@ -46,7 +46,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
 
         {/* Infinite Scrolling Marquee */}
         <div className="relative flex overflow-x-hidden pt-4 mask-edges group">
-          <div className="animate-marquee whitespace-nowrap flex w-max items-center gap-16 sm:gap-24 px-8 shrink-0">
+          <div className="animate-marquee whitespace-nowrap flex w-max items-center gap-16 sm:gap-24 px-8 shrink-0" style={{ animationDuration: '240s' }}>
             {marqueeBrands.map((brand, idx) => (
               <div 
                 key={`${brand.id}-${idx}`}

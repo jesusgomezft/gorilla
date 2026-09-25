@@ -14,14 +14,14 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
     const params = new URLSearchParams(window.location.search);
     return params.get('tier') ? 2 : 1;
   });
-  const [selectedTier, setSelectedTier] = useState<ServiceTier>(() => {
+  const [selectedTier, setSelectedTier] = useState<ServiceTier | null>(() => {
     const params = new URLSearchParams(window.location.search);
     const tierId = params.get('tier');
     if (tierId) {
       const found = MOCK_SERVICES.find(s => s.id === tierId);
       if (found) return found;
     }
-    return MOCK_SERVICES[0];
+    return null;
   }); 
   
   const [items, setItems] = useState<OrderItem[]>([]);
@@ -33,7 +33,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
   const [generatedSubmissionId, setGeneratedSubmissionId] = useState('');
 
   // Totals Calculation
-  const subtotalGrading = items.length * selectedTier.priceEur;
+  const subtotalGrading = items.length * (selectedTier?.priceEur || 0);
   const totalDeclaredValue = items.reduce((sum, item) => sum + (Number(item.declaredValue) || 0), 0);
   const insuranceFee = Math.max(8.00, totalDeclaredValue * 0.008);
   const shippingFee = shippingMethod === 'CARD_SHOW_DROPOFF' ? 0.00 : 14.50;
@@ -49,7 +49,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
       game: 'Mixed',
       set: 'Unknown',
       declaredValue: Number(newDeclaredValue) || 100,
-      serviceTierId: selectedTier.id,
+      serviceTierId: selectedTier?.id || 'standard',
       notes: '',
       frontImagePreview: 'https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=400&q=80'
     };
@@ -162,85 +162,132 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 : 'Turnaround starts when cards enter our system, not when shipped.'}
             </p>
 
-            <div className="flex flex-col bg-[#454545] border border-white/[0.06] rounded-none overflow-hidden shadow-2xl">
+            <div className="flex flex-col gap-8">
               {MOCK_SERVICES.map((tier) => {
-                const isSelected = selectedTier.id === tier.id;
+                const isSelected = selectedTier?.id === tier.id;
                 
                 let color = '#48C765';
                 let shortName = 'TIER';
+                let code = 'RCDM.XX';
+                let badge = null;
+                let features = ['Premium Slab', 'NFC Chip', 'Basic Scan'];
+                
                 switch(tier.id) {
-                  case 'standard': color = '#48C765'; shortName = 'STANDARD'; break;
-                  case 'express': color = '#F97316'; shortName = 'EXPRESS'; break;
-                  case 'walkthrough': color = '#D4AF37'; shortName = 'MASTER'; break;
-                  default: color = '#8CA5B8'; shortName = 'REGULAR';
+                  case 'standard': 
+                    color = '#48C765'; shortName = 'STANDARD'; code = 'RCDM.01'; 
+                    badge = language === 'es' ? 'MÁS ELEGIDO' : 'MOST POPULAR';
+                    features = language === 'es' ? ['Subgrados detallados', 'Escaneo 4K HD', 'Registro público'] : ['Detailed Subgrades', '4K HD Scan', 'Public Registry'];
+                    break;
+                  case 'express': 
+                    color = '#F97316'; shortName = 'EXPRESS'; code = 'RCDM.02';
+                    badge = language === 'es' ? 'PRIORIDAD' : 'PRIORITY';
+                    features = language === 'es' ? ['Acelerado', 'Soporte Directo', 'Fila Preferente'] : ['Fast-Track', 'Direct Support', 'Priority Queue'];
+                    break;
+                  case 'walkthrough': 
+                    color = '#D4AF37'; shortName = 'WALK-THROUGH'; code = 'RCDM.MASTER';
+                    badge = language === 'es' ? 'GUANTE BLANCO' : 'WHITE GLOVE';
+                    features = language === 'es' ? ['Doble Auditoría', 'Maletín Blindado', 'Master Grader Asignado'] : ['Dual Audit', 'Armored Case', 'Assigned Master Grader'];
+                    break;
+                  default: 
+                    color = '#8CA5B8'; shortName = 'REGULAR'; code = 'RCDM.00';
+                    features = language === 'es' ? ['Carcasa Premium', 'Chip NFC', 'Escaneo Básico'] : ['Premium Slab', 'NFC Chip', 'Basic Scan'];
                 }
 
                 return (
-                  <div
+                  <div 
                     key={tier.id}
-                    onClick={() => setSelectedTier(tier)}
-                    className={`group flex flex-col p-6 sm:px-8 sm:py-7 cursor-pointer transition-all duration-500 relative border-b border-white/[0.04] last:border-b-0 overflow-hidden ${
-                      isSelected ? 'border-white/10' : 'hover:bg-white/[0.01]'
-                    }`}
-                    style={isSelected ? {
+                    className={`relative w-full border shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)] overflow-hidden rounded-xl transition-all duration-700 cursor-pointer group/card hover:scale-[1.01] hover:ring-2 hover:ring-white/20 ${isSelected ? 'ring-2 ring-white/50' : ''}`}
+                    style={{ 
                       background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
                       borderColor: `${color}40`,
-                    } : {}}
+                    }}
+                    onClick={() => setSelectedTier(tier)}
                   >
-                    <div className={`absolute left-0 top-0 bottom-0 w-[4px] transition-colors duration-300 z-30 ${isSelected ? 'opacity-100' : 'opacity-0'}`} style={{ backgroundColor: color }} />
-
-                    {/* Ticket Styling Overlays (Only visible when selected) */}
-                    <div className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${isSelected ? 'opacity-100' : 'opacity-0'}`}>
-                      {/* Massive Typography Watermark */}
-                      <div 
-                        className="absolute -right-4 -bottom-10 text-[100px] font-black opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap font-['Oswald']" 
-                        style={{ color: color }}
-                      >
-                        {shortName}
-                      </div>
-
-                      {/* Glowing Orb */}
-                      <div 
-                        className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full opacity-20 translate-x-1/3 -translate-y-1/3"
-                        style={{ backgroundColor: color }}
-                      />
-
-                      {/* Noise Texture */}
-                      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 mix-blend-overlay z-0" />
+                    
+                    {/* Massive Typography Watermark */}
+                    <div 
+                      className="absolute -right-2 -bottom-4 text-[70px] sm:text-[90px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
+                      style={{ color: color }}
+                    >
+                      {shortName}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
-                      <div className="mt-1 shrink-0 relative z-10">
-                        <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${
-                          isSelected ? 'border-transparent' : 'border-[#5B6154]'
-                        }`} style={isSelected ? { borderColor: color } : {}}>
-                          <div className={`w-2.5 h-2.5 rounded-full transition-transform duration-300 ${isSelected ? 'scale-100' : 'scale-0'}`} style={{ backgroundColor: color }} />
-                        </div>
-                      </div>
+                    {/* Glowing Orb inside the card */}
+                    <div 
+                      className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
+                      style={{ backgroundColor: color }}
+                    />
 
-                      <div className="flex-1 w-full relative z-10">
-                        <div className="flex justify-between items-start mb-2">
-                          <h3 className={`font-['Oswald'] text-lg uppercase tracking-wide transition-colors ${isSelected ? 'text-white' : 'text-[#C2C9C3]'}`}>
-                            {tier.name}
-                          </h3>
-                          <div className="flex items-baseline gap-1">
-                            <span className={`font-['Oswald'] font-[700] text-lg transition-colors ${isSelected ? '' : 'text-[#A4ACA1]'}`} style={isSelected ? { color: color } : {}}>
-                              {tier.priceEur}
-                            </span>
-                            <span className="font-mono text-sm text-[#8A9388]">€</span>
+                    {/* Noise Texture Overlay */}
+                    <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
+
+                    {/* Glass Reflection Sheen */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.07] to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20" />
+
+                    <div className="w-full flex flex-col md:flex-row relative z-10 h-full">
+                      
+                      {/* Left Side: Info */}
+                      <div className="flex-1 p-5 sm:p-7 flex flex-col justify-center">
+                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                          <div className="px-2 py-0.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
+                               style={{ backgroundColor: `${color}10`, color: color, borderColor: `${color}30` }}>
+                            {code}
                           </div>
+                          {badge && (
+                            <div className="px-2 py-0.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase bg-white text-black rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                              {badge}
+                            </div>
+                          )}
                         </div>
-
-                        <p className="text-sm text-[#A4ACA1] font-sans mb-3">
+                        
+                        <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-[1.1] mb-2 drop-shadow-lg">
+                          {tier.name}
+                        </h3>
+                        
+                        <p className="text-xs sm:text-[13px] text-[#A4ACA1] font-sans leading-relaxed max-w-[95%] mb-4">
                           {tier.tagline}
                         </p>
 
-                        <div className="flex items-center gap-2 font-mono text-[11px] text-[#A4ACA1] uppercase tracking-wider">
-                          <span className={isSelected ? 'text-white' : ''}>{tier.turnaroundLabel}</span>
-                          <span className="w-1 h-1 rounded-none bg-[#5B6154] mx-1" />
-                          <span>hasta €{tier.maxDeclaredValueEur.toLocaleString()}</span>
+                        <div className="flex flex-col gap-2 mt-auto">
+                          {features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center gap-2">
+                              <div className="w-1 h-1 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color: color }} />
+                              <span className="font-sans text-xs sm:text-[13px] text-[#EAEAEA] font-medium tracking-wide">{feature}</span>
+                            </div>
+                          ))}
                         </div>
                       </div>
+
+                      {/* Right Side: Price & CTA */}
+                      <div className="w-full md:w-[30%] lg:w-[25%] p-5 sm:p-7 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l border-white/10 backdrop-blur-md bg-black/20">
+                        
+                        <div className="flex flex-col items-start md:items-end w-full mb-4">
+                          <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-1">
+                            {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
+                          </span>
+                          <div className="flex items-start mb-2">
+                            <span className="font-mono text-base text-white/40 mt-1 mr-1">€</span>
+                            <span className="font-['Oswald'] font-[700] text-4xl sm:text-5xl text-white leading-none tracking-tighter" style={{ textShadow: `0 0 40px ${color}40` }}>
+                              {tier.priceEur}
+                            </span>
+                          </div>
+                          
+                          <div className="flex items-center gap-1.5 text-right">
+                            <svg className="w-3.5 h-3.5 opacity-80" style={{ color: color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span className="font-sans text-[10px] sm:text-[11px] text-[#A4ACA1] font-medium">{tier.turnaroundLabel}</span>
+                          </div>
+                        </div>
+
+                        <div className="mt-auto w-full pt-3">
+                          <div className="w-full py-2.5 text-center text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 border rounded-sm"
+                               style={isSelected ? { backgroundColor: color, borderColor: color, color: '#000' } : { borderColor: color, color: color, boxShadow: `inset 0 0 20px ${color}00` }}>
+                            {isSelected ? (language === 'es' ? 'SELECCIONADO' : 'SELECTED') : (language === 'es' ? 'ELEGIR' : 'SELECT')}
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 );
@@ -378,7 +425,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             <div className="bg-[#454545] border border-[#2A2E2A] rounded-none p-6 font-mono text-sm space-y-4">
               <div className="flex justify-between border-b border-[#2A2E2A] pb-3 text-white">
                 <span>{language === 'es' ? 'Servicio Seleccionado' : 'Selected Service'}</span>
-                <span className="text-[#48C765] font-bold">{selectedTier.name}</span>
+                <span className="text-[#48C765] font-bold">{selectedTier?.name || ''}</span>
               </div>
               <div className="flex justify-between border-b border-[#2A2E2A] pb-3 text-white">
                 <span>{language === 'es' ? 'Total de Cartas' : 'Total Cards'}</span>
@@ -411,7 +458,13 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
           
           <button
             onClick={() => {
-              if (currentStep === 1) setCurrentStep(2);
+              if (currentStep === 1) {
+                if (!selectedTier) {
+                  alert(language === 'es' ? 'Por favor, selecciona un servicio primero.' : 'Please select a service first.');
+                  return;
+                }
+                setCurrentStep(2);
+              }
               else if (currentStep === 2 && items.length > 0) setCurrentStep(3);
               else if (currentStep === 2 && items.length === 0) alert(language === 'es' ? 'Añade al menos una carta' : 'Add at least one card');
               else if (currentStep === 3) setCurrentStep(4);
