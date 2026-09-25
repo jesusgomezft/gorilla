@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
 interface CardAnalysisPillarsProps {
@@ -53,18 +54,22 @@ export const CardAnalysisPillars: React.FC<CardAnalysisPillarsProps> = ({ onNavi
         
         {/* 4 Pillars Grid with Real Macro Photography */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillars.map((p) => (
-            <div
+          {pillars.map((p, idx) => (
+            <motion.div
               key={p.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
               onClick={() => onNavigate && onNavigate(p.route)}
-              className="group bg-[#454545] rounded-none border border-white/[0.08] hover:border-[#48C765]/40 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] cursor-pointer"
+              className="group bg-[#454545] rounded-none border border-white/[0.08] hover:border-[#48C765]/40 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] cursor-pointer"
             >
               {/* Macro Photographic Image Area */}
               <div className="w-full h-48 sm:h-52 relative border-b border-white/[0.06] overflow-hidden bg-[#454545]">
                 <img 
                   src={p.imgSrc} 
                   alt={p.imgAlt} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
 
@@ -85,7 +90,7 @@ export const CardAnalysisPillars: React.FC<CardAnalysisPillarsProps> = ({ onNavi
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -289,152 +289,122 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           </p>
         </div>
 
-        {/* Interactive Accordion List */}
-        <div className="flex flex-col gap-3">
-          {tiers.map((tier) => {
+        {/* Vertical Stack of Premium Tickets */}
+        <div className="flex flex-col gap-8">
+          {tiersWithTheme.map((tier) => {
             const isSelected = selectedTier === tier.id;
-            const tierWithTheme = tiersWithTheme.find(t => t.id === tier.id) || { ...tier, color: '#48C765', glow: false };
-            
             return (
-              <div
-                key={tier.id}
-                onClick={() => setSelectedTier(tier.id)}
-                className={`group flex flex-col cursor-pointer transition-all duration-500 relative border overflow-hidden ${
-                  isSelected 
-                    ? 'border-white/10' 
-                    : 'bg-transparent border-white/[0.04] hover:border-white/10 hover:bg-white/[0.01]'
-                }`}
-                style={isSelected ? {
-                  background: `linear-gradient(90deg, ${tierWithTheme.color}15 0%, transparent 100%)`,
-                  borderColor: `${tierWithTheme.color}40`,
-                  boxShadow: `0 8px 30px ${tierWithTheme.color}15`
-                } : {}}
+            <div 
+              key={tier.id}
+              className={`relative w-full border shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)] overflow-hidden rounded-xl transition-all duration-700 cursor-pointer group/card hover:scale-[1.01] hover:ring-2 hover:ring-white/20`}
+              style={{ 
+                background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
+                borderColor: `${tier.color}40`,
+              }}
+              onClick={() => onNavigate && onNavigate(`/submit?tier=${tier.id}`)}
+            >
+              
+              {/* Massive Typography Watermark */}
+              <div 
+                className="absolute -right-2 -bottom-4 text-[70px] sm:text-[90px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
+                style={{ color: tier.color }}
               >
-                {/* Active Left Border Accent */}
-                <div className={`absolute left-0 top-0 bottom-0 w-[4px] transition-colors duration-500 ${isSelected ? 'opacity-100' : 'opacity-0'}`} style={{ backgroundColor: tierWithTheme.color }} />
+                {tier.shortName}
+              </div>
 
-                <div className="p-6 sm:px-8 sm:py-6">
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
-                    
-                    {/* Left Info: Checkbox/Radio + Title */}
-                    <div className="flex items-start gap-5 w-full sm:w-auto">
-                      
-                      {/* Custom Minimal Radio */}
-                      <div className="mt-1 shrink-0 relative">
-                        <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${
-                          isSelected ? 'border-[#48C765]' : 'border-[#5B6154] group-hover:border-white/50'
-                        }`}>
-                          <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            isSelected ? 'bg-[#48C765] scale-100' : 'bg-transparent scale-0'
-                          }`} />
-                        </div>
-                      </div>
+              {/* Glowing Orb inside the card */}
+              <div 
+                className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
+                style={{ backgroundColor: tier.color }}
+              />
 
-                      <div className="flex flex-col">
-                        <div className="flex items-center gap-3 mb-1">
-                          <h3 className={`font-['Oswald'] text-xl uppercase tracking-wide transition-colors ${isSelected ? 'text-white' : 'text-[#C2C9C3] group-hover:text-white'}`}>
-                            {tier.name}
-                          </h3>
-                          {tier.badge && (
-                            <span className={`font-mono text-[9px] px-2 py-0.5 uppercase tracking-wider font-bold transition-colors duration-300 ${
-                              isSelected ? 'text-[#111]' : 'bg-white/10 text-white'
-                            }`}
-                            style={isSelected ? { backgroundColor: tierWithTheme.color } : {}}>
-                              {tier.badge}
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-sm text-[#8A9388] font-sans">
-                          {tier.tagline}
-                        </p>
-                      </div>
+              {/* Noise Texture Overlay */}
+              <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
+
+              {/* Glass Reflection Sheen */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.07] to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20" />
+
+              <div className="w-full flex flex-col md:flex-row relative z-10 h-full">
+                
+                {/* Left Side: Info */}
+                <div className="flex-1 p-5 sm:p-7 flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <div className="px-2 py-0.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
+                         style={{ backgroundColor: `${tier.color}10`, color: tier.color, borderColor: `${tier.color}30` }}>
+                      {tier.code}
                     </div>
+                    {tier.badge && (
+                      <div className="px-2 py-0.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase bg-white text-black rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        {tier.badge}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-[1.1] mb-2 drop-shadow-lg">
+                    {tier.name}
+                  </h3>
+                  
+                  <p className="text-xs sm:text-[13px] text-[#A4ACA1] font-sans leading-relaxed max-w-[95%] mb-4">
+                    {tier.tagline}
+                  </p>
 
-                    {/* Right Info: Price */}
-                    <div className="flex items-baseline gap-1 shrink-0">
-                      <span className={`font-['Oswald'] font-[700] text-2xl transition-colors duration-500 ${isSelected ? '' : 'text-white'}`} style={isSelected ? { color: tierWithTheme.color } : {}}>
+                  <div className="flex flex-col gap-2 mt-auto">
+                    {tier.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: tier.color, color: tier.color }} />
+                        <span className="font-sans text-xs sm:text-[13px] text-[#EAEAEA] font-medium tracking-wide">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Side: Price & CTA */}
+                <div className="w-full md:w-[30%] lg:w-[25%] p-5 sm:p-7 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l border-white/10 backdrop-blur-md bg-black/20">
+                  
+                  <div className="flex flex-col items-start md:items-end w-full mb-4">
+                    <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-1">
+                      {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
+                    </span>
+                    <div className="flex items-start mb-2">
+                      <span className="font-mono text-base text-white/40 mt-1 mr-1">€</span>
+                      <span className="font-['Oswald'] font-[700] text-4xl sm:text-5xl text-white leading-none tracking-tighter" style={{ textShadow: `0 0 40px ${tier.color}40` }}>
                         {tier.price}
                       </span>
-                      <span className="font-mono text-sm text-[#8A9388]">€</span>
                     </div>
-
-                  </div>
-
-                  {/* Expandable Content (Features & Metadata) */}
-                  <div className={`grid transition-all duration-500 ease-in-out ${
-                    isSelected ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0'
-                  }`}>
-                    <div className="overflow-hidden pl-[40px] sm:pl-[44px]">
-                      
-                      <div className="flex flex-col sm:flex-row gap-8 pt-4 border-t border-white/[0.04]">
-                        
-                        {/* Features */}
-                        <div className="flex-1 space-y-3">
-                          <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mb-2">
-                            {language === 'es' ? 'Incluye' : 'Includes'}
-                          </p>
-                          {tier.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-center gap-3">
-                              <div className="w-1 h-1 rounded-full transition-colors duration-500" style={{ backgroundColor: tierWithTheme.color }} />
-                              <span className="font-sans text-sm text-[#EAEAEA]">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Metadata Details */}
-                        <div className="flex-1 space-y-4">
-                          <div>
-                            <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mb-1">
-                              {language === 'es' ? 'Plazo Estimado' : 'Estimated Turnaround'}
-                            </p>
-                            <p className="font-sans text-sm text-white">{tier.turnaround}</p>
-                          </div>
-                          <div>
-                            <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mb-1">
-                              {language === 'es' ? 'Valor Máximo Asegurado' : 'Max Insured Value'}
-                            </p>
-                            <p className="font-sans text-sm text-white">
-                              {language === 'es' ? `Hasta ${tier.maxValue} por carta` : `Up to ${tier.maxValue} per card`}
-                            </p>
-                          </div>
-                        </div>
-
-                      </div>
+                    
+                    <div className="flex items-center gap-1.5 text-right">
+                      <svg className="w-3.5 h-3.5 opacity-80" style={{ color: tier.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span className="font-sans text-[10px] sm:text-[11px] text-[#A4ACA1] font-medium">{tier.turnaround}</span>
                     </div>
                   </div>
 
+                  <div className="mt-auto w-full pt-3">
+                    <div className="w-full py-2.5 text-center text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 border rounded-sm hover:bg-white/5"
+                         style={{ borderColor: tier.color, color: tier.color, boxShadow: `inset 0 0 20px ${tier.color}00` }}>
+                      {language === 'es' ? 'ELEGIR' : 'SELECT'}
+                    </div>
+                  </div>
                 </div>
+
               </div>
+            </div>
             );
           })}
         </div>
 
-        {/* Info Box & Continue Button */}
-        <div className="mt-12 flex flex-col md:flex-row gap-6 justify-between items-center bg-white/[0.02] border border-white/[0.04] p-6">
-          
-          <div className="flex gap-4 items-start max-w-xl">
-            <svg className="w-5 h-5 text-[#48C765] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p className="font-sans text-sm text-[#A4ACA1] leading-relaxed">
-              <strong className="text-white font-semibold">{language === 'es' ? 'Valor declarado. ' : 'Declared value. '}</strong>
-              {language === 'es' 
-                ? 'Si una carta supera el límite del nivel elegido, se ajustará automáticamente al nivel correspondiente para asegurar la cobertura correcta.'
-                : 'If a card exceeds the chosen tier limit, it will automatically be bumped to the appropriate tier to ensure proper coverage.'}
-            </p>
-          </div>
-
-          <button
-            onClick={() => onNavigate && onNavigate(`/submit?tier=${selectedTier}`)}
-            className="shrink-0 text-white px-8 py-3 text-sm font-bold tracking-widest uppercase transition-all duration-500 hover:brightness-110 hover:shadow-lg"
-            style={{ 
-              backgroundColor: tiersWithTheme.find(t => t.id === selectedTier)?.color || '#48C765',
-              boxShadow: `0 4px 20px ${tiersWithTheme.find(t => t.id === selectedTier)?.color}40`
-            }}
-          >
-            {language === 'es' ? 'CONTINUAR' : 'CONTINUE'}
-          </button>
-          
+        {/* Info Box */}
+        <div className="mt-12 flex gap-4 items-start max-w-2xl bg-white/[0.02] border border-white/[0.04] p-6 mx-auto">
+          <svg className="w-5 h-5 text-[#48C765] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="font-sans text-sm text-[#A4ACA1] leading-relaxed">
+            <strong className="text-white font-semibold">{language === 'es' ? 'Valor declarado. ' : 'Declared value. '}</strong>
+            {language === 'es' 
+              ? 'Si una carta supera el límite del nivel elegido, se ajustará automáticamente al nivel correspondiente para asegurar la cobertura correcta.'
+              : 'If a card exceeds the chosen tier limit, it will automatically be bumped to the appropriate tier to ensure proper coverage.'}
+          </p>
         </div>
 
       </div>

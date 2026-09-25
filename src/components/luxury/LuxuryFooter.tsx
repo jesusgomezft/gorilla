@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { GorillaLogo } from './GorillaLogo';
 
@@ -8,6 +8,14 @@ interface LuxuryFooterProps {
 
 export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
   const { language, setLanguage } = useLanguage();
+  const [searchCert, setSearchCert] = useState('');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchCert.trim() && onNavigate) {
+      onNavigate(`/certificates/${searchCert.trim()}`);
+    }
+  };
 
   return (
     <footer className="w-full bg-[#2B302B] text-white py-16 px-6 lg:px-12 border-t border-white/[0.06] select-none">
@@ -32,7 +40,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
               }
             </p>
 
-            <div className="flex items-center gap-4 font-mono text-[10px] text-[#5A6357] mb-6">
+            <div className="flex items-center gap-4 font-mono text-[10px] text-[#5A6357] mb-8">
               <span>MADRID LAB</span>
               <span>•</span>
               <span>LISBON LAB</span>
@@ -60,16 +68,16 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'SERVICIOS' : 'SERVICES'}
             </span>
-            <button onClick={() => onNavigate && onNavigate('/submit')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/submit')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/verify')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/verify')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Verificar Certificado' : 'Verify Certificate'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/pricing')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/pricing')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Tarifas & Plazos' : 'Pricing & Tiers'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/track')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/track')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Seguimiento en Vivo' : 'Live Tracking'}
             </button>
           </div>
@@ -79,13 +87,13 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'COMPAÑÍA' : 'COMPANY'}
             </span>
-            <button onClick={() => onNavigate && onNavigate('/about')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/about')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Sobre Nosotros' : 'About Us'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/contact')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/contact')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Contacto' : 'Contact'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/faq')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/faq')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Preguntas Frecuentes' : 'FAQ'}
             </button>
           </div>
@@ -95,19 +103,19 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'LEGAL' : 'LEGAL'}
             </span>
-            <button onClick={() => onNavigate && onNavigate('/terms')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/terms')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/privacy')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/privacy')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/refund')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/refund')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Política de Reembolso' : 'Refund Policy'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/cookies')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/cookies')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Política de Cookies' : 'Cookie Policy'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/cookie-consent')} className="text-left text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <button onClick={() => onNavigate && onNavigate('/cookie-consent')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Consentimiento de Cookies' : 'Cookie Consent'}
             </button>
           </div>
@@ -117,26 +125,48 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'ESTÁNDARES ÓPTICOS' : 'OPTICAL STANDARDS'}
             </span>
-            <div className="bg-transparent p-4 rounded-none border border-white/[0.07] flex flex-col gap-2">
-              <div className="flex items-center justify-between text-xs font-mono">
+            <div className="bg-transparent p-4 rounded-none border border-white/[0.07] flex flex-col gap-2 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex items-center justify-between text-xs font-mono relative z-10">
                 <span className="text-[#A4ACA1]">CALIBRE LÁSER:</span>
                 <span className="text-[#48C765] font-bold">0.01 mm</span>
               </div>
-              <div className="flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center justify-between text-xs font-mono relative z-10">
                 <span className="text-[#A4ACA1]">FILTRACIÓN UV:</span>
                 <span className="text-white font-bold">99.4% ACRÍLICO</span>
               </div>
-              <div className="flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center justify-between text-xs font-mono relative z-10">
                 <span className="text-[#A4ACA1]">SELLADO SÓNICO:</span>
                 <span className="text-white font-bold">35 kHz HERMÉTICO</span>
               </div>
+            </div>
+
+            {/* Certificate Search Input */}
+            <div className="mt-4">
+              <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2 block">
+                {language === 'es' ? 'BUSCADOR DE CERTIFICADOS' : 'CERTIFICATE SEARCH'}
+              </span>
+              <form onSubmit={handleSearch} className="relative flex items-center w-full group">
+                <input 
+                  type="text" 
+                  value={searchCert}
+                  onChange={(e) => setSearchCert(e.target.value)}
+                  placeholder={language === 'es' ? 'Ej. GG-892401' : 'e.g. GG-892401'}
+                  className="w-full bg-white/[0.02] border border-white/[0.07] text-white text-xs px-4 py-2.5 rounded-none focus:outline-none focus:border-[#48C765]/50 transition-colors placeholder:text-[#5A6357] uppercase font-mono group-hover:bg-white/[0.04]"
+                />
+                <button type="submit" className="absolute right-2 p-1 text-[#5A6357] hover:text-[#48C765] transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </form>
             </div>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#5A6357]">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-[#5A6357]">
           <div>
             © 2026 GORILLA GRADING · {language === 'es' ? 'TODOS LOS DERECHOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
           </div>

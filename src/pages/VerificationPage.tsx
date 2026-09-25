@@ -13,7 +13,7 @@ interface VerificationPageProps {
 export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }) => {
   const { t, language } = useLanguage();
   const [searchInput, setSearchInput] = useState('');
-  const [activeCard, setActiveCard] = useState<GradedCard | null>(MOCK_GRADED_CARDS[0]);
+  const [activeCard, setActiveCard] = useState<GradedCard | null>(null);
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleSearch = (e: React.FormEvent) => {

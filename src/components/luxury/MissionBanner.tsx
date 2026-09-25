@@ -19,17 +19,21 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
   return (
     <section className="relative w-full bg-[#454545] text-white overflow-hidden select-none min-h-[500px] flex items-center border-y border-white/[0.04]">
       
-      {/* The Box Image - Positioned absolutely to the left */}
+      {/* The Box Image with CSS Mask for perfect edge blending */}
       <img 
         src="/images/ourmission.png?v=7"
         alt="Gorilla Grading Box" 
-        className="absolute left-0 top-0 h-full w-full lg:w-[50%] object-cover object-center lg:object-right opacity-90 z-0"
+        className="absolute left-0 top-0 h-full w-full lg:w-[55%] object-cover object-center lg:object-right opacity-90 z-0"
+        style={{
+          maskImage: 'linear-gradient(to right, black 40%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, black 50%, transparent 100%)',
+          maskComposite: 'intersect',
+          WebkitMaskComposite: 'source-in'
+        }}
       />
-      {/* Smooth fade from the image on the left to the solid background on the right */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[#454545]/85 lg:hidden" />
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[#454545]/80 to-[#454545]" />
-      </div>
+      
+      {/* Mobile-only dark overlay to ensure text is readable */}
+      <div className="absolute inset-0 bg-[#454545]/85 lg:hidden z-0 pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
         

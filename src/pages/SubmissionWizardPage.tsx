@@ -165,33 +165,69 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             <div className="flex flex-col bg-[#454545] border border-white/[0.06] rounded-none overflow-hidden shadow-2xl">
               {MOCK_SERVICES.map((tier) => {
                 const isSelected = selectedTier.id === tier.id;
+                
+                let color = '#48C765';
+                let shortName = 'TIER';
+                switch(tier.id) {
+                  case 'standard': color = '#48C765'; shortName = 'STANDARD'; break;
+                  case 'express': color = '#F97316'; shortName = 'EXPRESS'; break;
+                  case 'walkthrough': color = '#D4AF37'; shortName = 'MASTER'; break;
+                  default: color = '#8CA5B8'; shortName = 'REGULAR';
+                }
+
                 return (
                   <div
                     key={tier.id}
                     onClick={() => setSelectedTier(tier)}
-                    className={`group flex flex-col p-6 sm:px-8 sm:py-7 cursor-pointer transition-all duration-300 relative border-b border-white/[0.04] last:border-b-0 ${
-                      isSelected ? 'bg-white/[0.03]' : 'hover:bg-white/[0.01]'
+                    className={`group flex flex-col p-6 sm:px-8 sm:py-7 cursor-pointer transition-all duration-500 relative border-b border-white/[0.04] last:border-b-0 overflow-hidden ${
+                      isSelected ? 'border-white/10' : 'hover:bg-white/[0.01]'
                     }`}
+                    style={isSelected ? {
+                      background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
+                      borderColor: `${color}40`,
+                    } : {}}
                   >
-                    <div className={`absolute left-0 top-0 bottom-0 w-[4px] transition-colors duration-300 ${isSelected ? 'bg-[#48C765]' : 'bg-transparent'}`} />
+                    <div className={`absolute left-0 top-0 bottom-0 w-[4px] transition-colors duration-300 z-30 ${isSelected ? 'opacity-100' : 'opacity-0'}`} style={{ backgroundColor: color }} />
 
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
-                      <div className="mt-1 shrink-0">
-                        <div className={`w-5 h-5 rounded-none border-2 flex items-center justify-center transition-colors duration-300 ${isSelected ? 'border-[#48C765]' : 'border-[#5B6154]'}`}>
-                          <div className={`w-2.5 h-2.5 rounded-none transition-transform duration-300 ${isSelected ? 'bg-[#48C765] scale-100' : 'bg-transparent scale-0'}`} />
+                    {/* Ticket Styling Overlays (Only visible when selected) */}
+                    <div className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${isSelected ? 'opacity-100' : 'opacity-0'}`}>
+                      {/* Massive Typography Watermark */}
+                      <div 
+                        className="absolute -right-4 -bottom-10 text-[100px] font-black opacity-[0.03] select-none tracking-tighter leading-none whitespace-nowrap font-['Oswald']" 
+                        style={{ color: color }}
+                      >
+                        {shortName}
+                      </div>
+
+                      {/* Glowing Orb */}
+                      <div 
+                        className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full opacity-20 translate-x-1/3 -translate-y-1/3"
+                        style={{ backgroundColor: color }}
+                      />
+
+                      {/* Noise Texture */}
+                      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 mix-blend-overlay z-0" />
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="mt-1 shrink-0 relative z-10">
+                        <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${
+                          isSelected ? 'border-transparent' : 'border-[#5B6154]'
+                        }`} style={isSelected ? { borderColor: color } : {}}>
+                          <div className={`w-2.5 h-2.5 rounded-full transition-transform duration-300 ${isSelected ? 'scale-100' : 'scale-0'}`} style={{ backgroundColor: color }} />
                         </div>
                       </div>
 
-                      <div className="flex-1 w-full">
+                      <div className="flex-1 w-full relative z-10">
                         <div className="flex justify-between items-start mb-2">
-                          <h3 className={`font-['Oswald'] text-lg uppercase tracking-wide transition-colors ${isSelected ? 'text-[#48C765]' : 'text-white'}`}>
+                          <h3 className={`font-['Oswald'] text-lg uppercase tracking-wide transition-colors ${isSelected ? 'text-white' : 'text-[#C2C9C3]'}`}>
                             {tier.name}
                           </h3>
                           <div className="flex items-baseline gap-1">
-                            <span className={`font-['Oswald'] font-[700] text-lg ${isSelected ? 'text-white' : 'text-[#A4ACA1]'}`}>
+                            <span className={`font-['Oswald'] font-[700] text-lg transition-colors ${isSelected ? '' : 'text-[#A4ACA1]'}`} style={isSelected ? { color: color } : {}}>
                               {tier.priceEur}
                             </span>
-                            <span className="font-mono text-sm text-[#48C765]">€</span>
+                            <span className="font-mono text-sm text-[#8A9388]">€</span>
                           </div>
                         </div>
 

@@ -87,6 +87,16 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
     }
   ];
 
+  const tiersWithTheme = tiers.map(t => {
+    switch(t.id) {
+      case 'regular': return { ...t, color: '#8CA5B8', shortName: 'REGULAR' };
+      case 'standard': return { ...t, color: '#48C765', shortName: 'STANDARD' };
+      case 'express': return { ...t, color: '#F97316', shortName: 'EXPRESS' };
+      case 'walkthrough': return { ...t, color: '#D4AF37', shortName: 'MASTER' };
+      default: return { ...t, color: '#48C765', shortName: 'TIER' };
+    }
+  });
+
   const comparisonRows = [
     {
       feature: language === 'es' ? 'Centrado por Calibre Láser (0.01 mm)' : 'Laser Caliper Centering (0.01mm)',
@@ -145,27 +155,48 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
 
         {/* 4 Obsidian Tiers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-20">
-          {tiers.map((tier) => (
+          {tiersWithTheme.map((tier) => (
             <div
               key={tier.id}
-              className={`rounded-none p-7 flex flex-col justify-between transition-all duration-300 relative group ${
-                tier.featured
-                  ? 'bg-gradient-to-b from-[#151D17] to-[#0E1310] border-2 border-[#48C765]/80 shadow-[0_12px_40px_rgba(72,199,101,0.2)] md:-translate-y-2'
-                  : 'bg-[#454545] border border-white/[0.08] hover:border-white/20 hover:bg-[#151B16]'
+              className={`rounded-2xl flex flex-col justify-between transition-all duration-700 relative group/card cursor-pointer border hover:scale-[1.02] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden ${
+                tier.featured ? 'md:-translate-y-2' : ''
               }`}
+              style={{
+                background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
+                borderColor: `${tier.color}40`,
+              }}
             >
-              {/* Badge if present */}
-              <div className="h-6 mb-3">
-                {tier.badge && (
-                  <span className={`inline-block font-mono text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-0.5 rounded-none ${
-                    tier.featured 
-                      ? 'bg-[#48C765] text-[#14170F]' 
-                      : 'bg-white/10 text-white border border-white/15'
-                  }`}>
-                    {tier.badge}
-                  </span>
-                )}
+              {/* Massive Typography Watermark */}
+              <div 
+                className="absolute -right-4 -bottom-6 text-[80px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
+                style={{ color: tier.color }}
+              >
+                {tier.shortName}
               </div>
+
+              {/* Glowing Orb inside the card */}
+              <div 
+                className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
+                style={{ backgroundColor: tier.color }}
+              />
+
+              {/* Noise Texture Overlay */}
+              <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
+
+              {/* Glass Reflection Sheen */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.07] to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20" />
+
+              <div className="p-7 flex flex-col justify-between h-full relative z-10">
+                {/* Badge if present */}
+                <div className="h-6 mb-3">
+                  {tier.badge && (
+                    <span className="inline-block font-mono text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-0.5 rounded-sm shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                      style={{ backgroundColor: tier.featured ? tier.color : 'rgba(255,255,255,0.1)', color: tier.featured ? '#14170F' : '#FFF', borderColor: 'rgba(255,255,255,0.15)', borderWidth: tier.featured ? 0 : 1 }}
+                    >
+                      {tier.badge}
+                    </span>
+                  )}
+                </div>
 
               {/* Title & Tagline */}
               <div>
@@ -209,15 +240,18 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
               {/* CTA Action */}
               <button
                 onClick={() => onNavigate('/submit')}
-                className={`w-full py-3.5 px-4 rounded-none font-mono text-xs font-bold tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
-                  tier.featured
-                    ? 'bg-[#48C765] hover:bg-[#38B554] text-[#14170F] shadow-[0_4px_20px_rgba(72,199,101,0.35)]'
-                    : 'bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10 hover:border-white/25'
-                }`}
+                className="w-full py-3.5 px-4 rounded-sm font-mono text-xs font-bold tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border"
+                style={{
+                  backgroundColor: tier.featured ? tier.color : 'rgba(255,255,255,0.06)',
+                  borderColor: tier.featured ? tier.color : 'rgba(255,255,255,0.1)',
+                  color: tier.featured ? '#14170F' : '#FFF',
+                  boxShadow: tier.featured ? `0 4px 20px ${tier.color}40` : 'none'
+                }}
               >
                 <span>{t('pricing.submitCta')}</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                <span className="transition-transform group-hover/card:translate-x-1">→</span>
               </button>
+              </div>
             </div>
           ))}
         </div>

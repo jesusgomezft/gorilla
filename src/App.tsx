@@ -19,6 +19,7 @@ import { TechnologyPage } from './pages/TechnologyPage';
 
 import { PricingPage } from './pages/PricingPage';
 import { AboutPage } from './pages/AboutPage';
+import { LegalPage } from './pages/LegalPage';
 
 export const AppContent: React.FC = () => {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -67,6 +68,16 @@ export const AppContent: React.FC = () => {
         return <TrackingPage onNavigate={handleNavigate} />;
       case '/account':
         return <CollectorVaultPage onNavigate={handleNavigate} />;
+      case '/terms':
+        return <LegalPage type="terms" />;
+      case '/privacy':
+        return <LegalPage type="privacy" />;
+      case '/refund':
+        return <LegalPage type="refund" />;
+      case '/cookies':
+        return <LegalPage type="cookies" />;
+      case '/cookie-consent':
+        return <LegalPage type="cookie-consent" />;
       default:
         if (currentPath.startsWith('/certificates/')) {
           const certId = currentPath.replace('/certificates/', '');
