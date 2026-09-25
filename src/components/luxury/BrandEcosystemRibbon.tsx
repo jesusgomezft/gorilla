@@ -13,12 +13,12 @@ export const BrandEcosystemRibbon: React.FC = () => {
   const { t } = useLanguage();
 
   const brands = [
-    { id: 'pokemon', name: 'Pokémon', component: <PokemonLogo className="h-14 sm:h-16" /> },
-    { id: 'magic', name: 'Magic: The Gathering', component: <MagicLogo className="h-14 sm:h-16" /> },
-    { id: 'onepiece', name: 'One Piece Card Game', component: <OnePieceLogo className="h-14 sm:h-16" /> },
-    { id: 'lorcana', name: 'Disney Lorcana', component: <LorcanaLogo className="h-14 sm:h-16" /> },
-    { id: 'yugioh', name: 'Yu-Gi-Oh!', component: <YuGiOhLogo className="h-14 sm:h-16" /> },
-    { id: 'panini', name: 'Panini', component: <PaniniLogo className="h-12 sm:h-14 scale-[1.7] sm:scale-[2]" /> },
+    { id: 'pokemon', name: 'Pokémon', component: <PokemonLogo className="h-6 sm:h-8" /> },
+    { id: 'magic', name: 'Magic: The Gathering', component: <MagicLogo className="h-6 sm:h-8" /> },
+    { id: 'onepiece', name: 'One Piece Card Game', component: <OnePieceLogo className="h-6 sm:h-8" /> },
+    { id: 'lorcana', name: 'Disney Lorcana', component: <LorcanaLogo className="h-6 sm:h-8" /> },
+    { id: 'yugioh', name: 'Yu-Gi-Oh!', component: <YuGiOhLogo className="h-6 sm:h-8" /> },
+    { id: 'panini', name: 'Panini', component: <PaniniLogo className="h-5 sm:h-7 scale-[1.2] sm:scale-[1.4]" /> },
   ];
 
   // Duplicate the array multiple times to create a seamless infinite scroll effect
@@ -41,7 +41,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
             {marqueeBrands.map((brand, idx) => (
               <div 
                 key={`${brand.id}-${idx}`}
-                className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200 text-[#F5F3ED] cursor-pointer drop-shadow-md shrink-0"
+                className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer drop-shadow-md shrink-0"
                 title={brand.name}
               >
                 {brand.component}
