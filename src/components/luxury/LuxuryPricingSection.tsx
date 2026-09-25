@@ -252,7 +252,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
   }
 
   return (
-    <section id="pricing" className="w-full bg-brand-bg text-white py-16 lg:py-24 px-6 lg:px-12 border-b border-brand-border/50 select-none relative overflow-hidden transition-colors duration-700">
+    <section id="pricing" className="w-full text-white py-16 lg:py-24 px-6 lg:px-12 border-b border-brand-border/50 select-none relative overflow-hidden transition-colors duration-700">
       
       {/* Background Glow based on selected tier */}
       <div 

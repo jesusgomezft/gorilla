@@ -10,7 +10,7 @@ export const TechnologySection: React.FC = () => {
     // 1200ms per step.
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev >= 5 ? -1 : prev + 1));
-    }, 1200);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);

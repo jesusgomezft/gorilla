@@ -12,7 +12,7 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev >= 4 ? -1 : prev + 1));
-    }, 1200);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
