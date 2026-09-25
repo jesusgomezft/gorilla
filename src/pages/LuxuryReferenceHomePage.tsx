@@ -12,6 +12,7 @@ import { InfluencerTestimonialsPlaceholder, SocialProofPlaceholder } from '../co
 import { PromoCTA } from '../components/luxury/PromoCTA';
 import { FAQSection } from '../components/luxury/FAQSection';
 import { NewsletterSection } from '../components/luxury/NewsletterSection';
+import { ScrollReveal } from '../components/luxury/ScrollReveal';
 
 interface LuxuryReferenceHomePageProps {
   onNavigate: (path: string) => void;
@@ -30,34 +31,54 @@ export const LuxuryReferenceHomePage: React.FC<LuxuryReferenceHomePageProps> = (
       />
 
       {/* 2. Brand Ecosystem Ribbon */}
-      <BrandEcosystemRibbon />
+      <ScrollReveal direction="up" delay={0.1}>
+        <BrandEcosystemRibbon />
+      </ScrollReveal>
 
       {/* 3. Pricing & Services Recommendation */}
-      <LuxuryPricingSection onNavigate={onNavigate} isHome={true} />
+      <ScrollReveal direction="up" delay={0.1}>
+        <LuxuryPricingSection onNavigate={onNavigate} isHome={true} />
+      </ScrollReveal>
 
       {/* 4. Cognitive Reinforcement 1: Technology */}
-      <HomeTechnologySection onNavigate={onNavigate} />
+      <ScrollReveal direction="up" delay={0.1}>
+        <HomeTechnologySection onNavigate={onNavigate} />
+      </ScrollReveal>
 
       {/* 5. Step by Step / Process */}
-      <TechnologySection />
+      <ScrollReveal direction="up" delay={0.1}>
+        <TechnologySection />
+      </ScrollReveal>
 
       {/* 7. Influencer Testimonials (Placeholder) */}
-      <InfluencerTestimonialsPlaceholder />
+      <ScrollReveal direction="up" delay={0.1}>
+        <InfluencerTestimonialsPlaceholder />
+      </ScrollReveal>
 
       {/* 8. Call to Action / Promos */}
-      <PromoCTA onNavigate={onNavigate} />
+      <ScrollReveal direction="up" delay={0.1}>
+        <PromoCTA onNavigate={onNavigate} />
+      </ScrollReveal>
 
       {/* 9. FAQs */}
-      <FAQSection />
+      <ScrollReveal direction="up" delay={0.1}>
+        <FAQSection />
+      </ScrollReveal>
 
       {/* 10. Social Proof Reinforcement (Placeholder) */}
-      <SocialProofPlaceholder />
+      <ScrollReveal direction="up" delay={0.1}>
+        <SocialProofPlaceholder />
+      </ScrollReveal>
 
       {/* 11. Customer Promise / International Shipping */}
-      <MissionBanner onNavigate={onNavigate} />
+      <ScrollReveal direction="up" delay={0.1}>
+        <MissionBanner onNavigate={onNavigate} />
+      </ScrollReveal>
 
       {/* 12. Newsletter Subscription */}
-      <NewsletterSection />
+      <ScrollReveal direction="up" delay={0.1}>
+        <NewsletterSection />
+      </ScrollReveal>
 
       {/* Interactive Technology Detail Explorer Modal */}
       <TechDetailModal

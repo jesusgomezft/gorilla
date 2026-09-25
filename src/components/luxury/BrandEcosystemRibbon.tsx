@@ -18,7 +18,16 @@ export const BrandEcosystemRibbon: React.FC = () => {
     { id: 'onepiece', name: 'One Piece Card Game', component: <OnePieceLogo className="h-6 sm:h-8" /> },
     { id: 'lorcana', name: 'Disney Lorcana', component: <LorcanaLogo className="h-6 sm:h-8" /> },
     { id: 'yugioh', name: 'Yu-Gi-Oh!', component: <YuGiOhLogo className="h-6 sm:h-8" /> },
-    { id: 'panini', name: 'Panini', component: <PaniniLogo className="h-5 sm:h-7 scale-[1.2] sm:scale-[1.4]" /> },
+    { id: 'panini', name: 'Panini', component: <PaniniLogo className="h-10 sm:h-14 scale-[1.3] sm:scale-[1.5]" /> },
+    { id: 'topps', name: 'Topps', component: <img src="/images/logos/Topps.png" alt="Topps" className="h-5 sm:h-7 object-contain" /> },
+    { id: 'dragonball', name: 'Dragon Ball', component: <img src="/images/logos/DragonBall.png" alt="Dragon Ball" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'digimon', name: 'Digimon', component: <img src="/images/logos/DigimonCard.png" alt="Digimon" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'fleshblood', name: 'Flesh and Blood', component: <img src="/images/logos/FleshBlood.png" alt="Flesh and Blood" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'gundam', name: 'Gundam', component: <img src="/images/logos/Gundam.png" alt="Gundam" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'cyberpunk', name: 'Cyberpunk', component: <img src="/images/logos/cyberpunk.png" alt="Cyberpunk" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'finalfantasy', name: 'Final Fantasy', component: <img src="/images/logos/finalFantasy.png" alt="Final Fantasy" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'force', name: 'Force', component: <img src="/images/logos/force.png" alt="Force" className="h-6 sm:h-8 object-contain" /> },
+    { id: 'vanguard', name: 'Vanguard', component: <img src="/images/logos/vanguar.png" alt="Vanguard" className="h-6 sm:h-8 object-contain" /> },
   ];
 
   // Duplicate the array multiple times to create a seamless infinite scroll effect
