@@ -28,9 +28,9 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
           <div className="lg:col-span-3 flex flex-col items-start">
             <div 
               onClick={() => onNavigate && onNavigate('/')}
-              className="cursor-pointer group mb-4"
+              className="cursor-pointer mb-8"
             >
-              <GorillaLogo />
+              <GorillaLogo shieldSize="h-20 sm:h-28" />
             </div>
             
             <p className="text-xs text-[#A4ACA1] max-w-sm leading-relaxed mb-6 font-normal">
