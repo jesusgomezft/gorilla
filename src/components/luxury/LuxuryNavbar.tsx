@@ -82,7 +82,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
         </nav>
 
         {/* Right Tools & CTAs */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-1 sm:gap-5">
           {/* Quick Search Trigger */}
           <div className="relative flex items-center">
             {isSearchOpen ? (
@@ -110,11 +110,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
                     showSearchHint ? 'opacity-100 translate-x-0 blur-none' : 'opacity-0 translate-x-4 blur-sm'
                   }`}
                 >
-                  <span className="sm:hidden flex flex-col items-center leading-[1.2] text-center mr-1">
-                    <span>{language === 'es' ? 'Verifica' : 'Verify'}</span>
-                    <span>{language === 'es' ? 'tu carta' : 'your card'}</span>
-                  </span>
-                  <span className="hidden sm:inline whitespace-nowrap">{language === 'es' ? 'Verifica tu carta' : 'Verify your card'}</span>
+                  <span className="whitespace-nowrap mr-1">{language === 'es' ? 'Verifica tu carta' : 'Verify your card'}</span>
                 </span>
                 <button 
                   onClick={() => setIsSearchOpen(true)}
