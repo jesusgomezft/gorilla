@@ -92,59 +92,42 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
   }, [isHome, tiersWithTheme.length]);
 
   if (isHome) {
-    const activeTier = tiersWithTheme[currentSlide];
-    
     return (
       <section id="pricing" className="w-full bg-white/[0.03] border-b border-white/[0.05] text-white py-16 lg:py-20 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
         
-        <div className="mb-10 flex items-center justify-center gap-6 w-full opacity-80">
+        <div className="mb-12 flex items-center justify-center gap-6 w-full opacity-80">
           <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-white/30" />
-          <h2 className="font-mono text-xs sm:text-sm tracking-[0.4em] text-white uppercase text-center font-semibold transition-colors duration-500" style={{ color: activeTier.color }}>
+          <h2 className="font-mono text-xs sm:text-sm tracking-[0.4em] text-white uppercase text-center font-semibold transition-colors duration-500">
             {language === 'es' ? 'NUESTROS SERVICIOS' : 'OUR SERVICES'}
           </h2>
           <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-white/30" />
         </div>
 
-        {/* Dynamic Slider Container */}
-        <div className="w-full max-w-[1100px] relative flex items-center gap-4 group/slider">
-          
-          {/* Left Arrow */}
-          <button 
-            onClick={handlePrev}
-            className="hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-110 transition-all text-white/50 hover:text-white z-30"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-
-          <div className="w-full max-w-[950px] relative mx-auto">
-            {/* Enhanced Outer Glow */}
+        {/* 3-Column Grid */}
+        <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative">
+          {tiersWithTheme.slice(0, 3).map((tier) => (
             <div 
-              className="absolute -inset-4 blur-[50px] transition-all duration-700 pointer-events-none opacity-30" 
-              style={{ backgroundImage: `radial-gradient(circle at center, ${activeTier.color}, transparent 65%)` }}
-            />
-
-            {/* Ticket Body - Ultra Premium Design */}
-            <div 
-              className="relative w-full border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden rounded-2xl transition-all duration-700 cursor-pointer group/card hover:scale-[1.01]"
+              key={tier.id}
+              className="relative w-full border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden rounded-2xl transition-all duration-700 cursor-pointer group/card hover:-translate-y-2 hover:shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9)]"
               style={{ 
                 background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
-                borderColor: `${activeTier.color}40`,
+                borderColor: `${tier.color}40`,
               }}
-              onClick={() => onNavigate && onNavigate(`/submit?tier=${activeTier.id}`)}
+              onClick={() => onNavigate && onNavigate(`/submit?tier=${tier.id}`)}
             >
               
               {/* Massive Typography Watermark */}
               <div 
-                className="absolute -right-4 -bottom-6 text-[100px] sm:text-[140px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
-                style={{ color: activeTier.color }}
+                className="absolute -right-4 -bottom-6 text-[80px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
+                style={{ color: tier.color }}
               >
-                {activeTier.shortName}
+                {tier.shortName}
               </div>
 
               {/* Glowing Orb inside the card */}
               <div 
-                className="absolute top-0 right-0 w-[300px] h-[300px] blur-[80px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
-                style={{ backgroundColor: activeTier.color }}
+                className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
+                style={{ backgroundColor: tier.color }}
               />
 
               {/* Noise Texture Overlay */}
@@ -153,65 +136,64 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               {/* Glass Reflection Sheen */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.07] to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20" />
 
-              <div key={activeTier.id} className="w-full flex flex-col md:flex-row relative z-10 animate-crossfade-up h-full">
+              <div className="w-full flex flex-col relative z-10 h-full p-6 sm:p-8">
                 
-                {/* Left Side: Info */}
-                <div className="flex-1 p-6 sm:p-10 flex flex-col justify-center">
-                  <div className="flex flex-wrap items-center gap-3 mb-5">
-                    <div className="px-3 py-1 text-[9px] sm:text-[10px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
-                         style={{ backgroundColor: `${activeTier.color}10`, color: activeTier.color, borderColor: `${activeTier.color}30` }}>
-                      {activeTier.code}
+                {/* Info */}
+                <div className="flex flex-col mb-8">
+                  <div className="flex flex-wrap items-center gap-2 mb-5">
+                    <div className="px-2 py-1 text-[9px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
+                         style={{ backgroundColor: `${tier.color}10`, color: tier.color, borderColor: `${tier.color}30` }}>
+                      {tier.code}
                     </div>
-                    {activeTier.badge && (
-                      <div className="px-3 py-1 text-[9px] sm:text-[10px] font-mono font-bold tracking-[0.2em] uppercase bg-white text-black rounded-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                        {activeTier.badge}
+                    {tier.badge && (
+                      <div className="px-2 py-1 text-[9px] font-mono font-bold tracking-[0.2em] uppercase bg-white text-black rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        {tier.badge}
                       </div>
                     )}
                   </div>
                   
-                  <h3 className="font-['Oswald'] text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-white leading-[1.1] mb-3 drop-shadow-lg">
-                    {activeTier.name}
+                  <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-[1.1] mb-3 drop-shadow-lg">
+                    {tier.name}
                   </h3>
                   
-                  <p className="text-[13px] sm:text-sm text-[#A4ACA1] font-sans leading-relaxed max-w-[95%] mb-6">
-                    {activeTier.tagline}
+                  <p className="text-[13px] text-[#A4ACA1] font-sans leading-relaxed mb-6 min-h-[60px]">
+                    {tier.tagline}
                   </p>
 
-                  <div className="flex flex-col gap-3 mt-auto">
-                    {activeTier.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: activeTier.color, color: activeTier.color }} />
-                        <span className="font-sans text-[13px] sm:text-sm text-[#EAEAEA] font-medium tracking-wide">{feature}</span>
+                  <div className="flex flex-col gap-3">
+                    {tier.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: tier.color, color: tier.color }} />
+                        <span className="font-sans text-[13px] text-[#EAEAEA] font-medium tracking-wide">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Right Side: Price & CTA */}
-                <div className="w-full md:w-[35%] lg:w-[30%] p-6 sm:p-10 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l border-white/10 backdrop-blur-md bg-black/20">
-                  
-                  <div className="flex flex-col items-start md:items-end w-full mb-6">
-                    <span className="font-mono text-[9px] sm:text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2">
+                {/* Price & CTA */}
+                <div className="mt-auto pt-6 border-t border-white/10 flex flex-col items-center">
+                  <div className="flex flex-col items-center w-full mb-6">
+                    <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2">
                       {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
                     </span>
-                    <div className="flex items-start mb-3">
-                      <span className="font-mono text-lg sm:text-xl text-white/40 mt-1 mr-1">€</span>
-                      <span className="font-['Oswald'] font-[700] text-5xl sm:text-6xl lg:text-7xl text-white leading-none tracking-tighter" style={{ textShadow: `0 0 50px ${activeTier.color}40` }}>
-                        {activeTier.price}
+                    <div className="flex items-start mb-2">
+                      <span className="font-mono text-base text-white/40 mt-1 mr-1">€</span>
+                      <span className="font-['Oswald'] font-[700] text-5xl text-white leading-none tracking-tighter" style={{ textShadow: `0 0 30px ${tier.color}40` }}>
+                        {tier.price}
                       </span>
                     </div>
                     
-                    <div className="flex items-center gap-2 text-right">
-                      <svg className="w-4 h-4 opacity-80" style={{ color: activeTier.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="flex items-center gap-2">
+                      <svg className="w-4 h-4 opacity-80" style={{ color: tier.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
-                      <span className="font-sans text-[11px] sm:text-xs text-[#A4ACA1] font-medium">{activeTier.turnaround}</span>
+                      <span className="font-sans text-xs text-[#A4ACA1] font-medium">{tier.turnaround}</span>
                     </div>
                   </div>
 
-                  <div className="mt-auto w-full pt-4">
+                  <div className="w-full">
                     <div className="w-full py-3.5 text-center text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 border rounded-sm hover:bg-white/5"
-                         style={{ borderColor: activeTier.color, color: activeTier.color, boxShadow: `inset 0 0 20px ${activeTier.color}00` }}>
+                         style={{ borderColor: tier.color, color: tier.color, boxShadow: `inset 0 0 20px ${tier.color}00` }}>
                       {language === 'es' ? 'ELEGIR SERVICIO' : 'SELECT TIER'}
                     </div>
                   </div>
@@ -219,41 +201,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
               </div>
             </div>
-            
-            {/* Dots Navigation */}
-            <div className="flex justify-center gap-3 mt-8">
-              {tiersWithTheme.map((tier, idx) => (
-                <button
-                  key={tier.id}
-                  onClick={(e) => { e.stopPropagation(); setCurrentSlide(idx); }}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${currentSlide === idx ? 'w-8' : 'w-2 bg-white/20 hover:bg-white/40'}`}
-                  style={currentSlide === idx ? { backgroundColor: tier.color, boxShadow: `0 0 8px ${tier.color}` } : {}}
-                />
-              ))}
-            </div>
-
-            {/* Mobile Arrows (Visible only on small screens below dots) */}
-            <div className="flex md:hidden justify-center gap-6 mt-6">
-              <button onClick={handlePrev} className="p-2 text-white/50 hover:text-white">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
-              </button>
-              <button onClick={handleNext} className="p-2 text-white/50 hover:text-white">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Right Arrow */}
-          <button 
-            onClick={handleNext}
-            className="hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-110 transition-all text-white/50 hover:text-white z-30"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
-          </button>
-
+          ))}
         </div>
 
-        <div className="mt-6 md:mt-8">
+        <div className="mt-10 md:mt-12">
           <button
             onClick={() => onNavigate && onNavigate('/pricing')}
             className="group font-mono text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors flex items-center gap-2"
