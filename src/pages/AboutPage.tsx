@@ -1,5 +1,5 @@
 import React from 'react';
-import { LuxuryAboutSection } from '../components/luxury/LuxuryAboutSection';
+import { CompanyStorySection } from '../components/luxury/CompanyStorySection';
 import { MissionBanner } from '../components/luxury/MissionBanner';
 
 interface AboutPageProps {
@@ -9,7 +9,7 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
     <div className="w-full min-h-screen bg-[#454545] text-white flex flex-col">
-      <LuxuryAboutSection />
+      <CompanyStorySection />
       <MissionBanner onNavigate={onNavigate} />
     </div>
   );

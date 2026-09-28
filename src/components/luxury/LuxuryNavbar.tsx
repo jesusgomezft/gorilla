@@ -56,10 +56,16 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
         {/* Center Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 lg:gap-10">
           <button 
-            onClick={() => onNavigate && onNavigate('/submit')}
+            onClick={() => onNavigate && onNavigate('/technology')}
             className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
           >
-            {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
+            {language === 'es' ? 'Tecnología' : 'Technology'}
+          </button>
+          <button 
+            onClick={() => onNavigate && onNavigate('/about')}
+            className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
+          >
+            {language === 'es' ? 'Nosotros' : 'About Us'}
           </button>
           <button 
             onClick={() => onNavigate && onNavigate('/verify')}
@@ -74,7 +80,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
             {language === 'es' ? 'Precios y Niveles' : 'Pricing & Tiers'}
           </button>
           <button 
-            onClick={() => onNavigate && onNavigate('/tracking')}
+            onClick={() => onNavigate && onNavigate('/track')}
             className="text-sm font-medium text-[#A4ACA1] hover:text-[#F4F6F0] transition-colors tracking-wide cursor-pointer"
           >
             {language === 'es' ? 'Seguimiento' : 'Live Tracking'}
@@ -169,10 +175,16 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
       {isMobileMenuOpen && (
         <div className="md:hidden fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-[#2B302B] flex flex-col py-6 px-8 gap-4 z-40 animate-crossfade-up overflow-y-auto">
           <button 
-            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/submit'); }}
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/technology'); }}
             className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
           >
-            {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
+            {language === 'es' ? 'Tecnología' : 'Technology'}
+          </button>
+          <button 
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/about'); }}
+            className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
+          >
+            {language === 'es' ? 'Nosotros' : 'About Us'}
           </button>
           <button 
             onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/verify'); }}
@@ -187,7 +199,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
             {language === 'es' ? 'Precios y Niveles' : 'Pricing & Tiers'}
           </button>
           <button 
-            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/tracking'); }}
+            onClick={() => { setIsMobileMenuOpen(false); onNavigate && onNavigate('/track'); }}
             className="text-left text-base font-medium text-white hover:text-[#48C765] transition-colors py-4 border-b border-white/5"
           >
             {language === 'es' ? 'Seguimiento' : 'Live Tracking'}
@@ -198,6 +210,13 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
           >
             {language === 'es' ? 'Iniciar Sesión' : 'Login'}
           </button>
+
+          <div className="flex items-center gap-4 py-4 border-b border-white/5">
+            <span className="text-white/50 text-sm font-medium">{language === 'es' ? 'Idioma:' : 'Language:'}</span>
+            <button onClick={() => setLanguage('en')} className={`text-sm font-bold ${language === 'en' ? 'text-[#48C765]' : 'text-white'}`}>EN</button>
+            <span className="text-white/20">|</span>
+            <button onClick={() => setLanguage('es')} className={`text-sm font-bold ${language === 'es' ? 'text-[#48C765]' : 'text-white'}`}>ES</button>
+          </div>
           
           <div className="mt-8">
             <button

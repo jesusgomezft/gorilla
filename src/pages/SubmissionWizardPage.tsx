@@ -201,7 +201,11 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                       background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
                       borderColor: `${color}40`,
                     }}
-                    onClick={() => setSelectedTier(tier)}
+                    onClick={() => {
+                      setSelectedTier(tier);
+                      setCurrentStep(2);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                   >
                     
                     {/* Massive Typography Watermark */}
@@ -456,29 +460,24 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             </button>
           ) : <div />}
           
-          <button
-            onClick={() => {
-              if (currentStep === 1) {
-                if (!selectedTier) {
-                  alert(language === 'es' ? 'Por favor, selecciona un servicio primero.' : 'Please select a service first.');
-                  return;
-                }
-                setCurrentStep(2);
-              }
-              else if (currentStep === 2 && items.length > 0) setCurrentStep(3);
-              else if (currentStep === 2 && items.length === 0) alert(language === 'es' ? 'Añade al menos una carta' : 'Add at least one card');
-              else if (currentStep === 3) setCurrentStep(4);
-              else if (currentStep === 4) handleFinalSubmit();
-            }}
-            className="bg-[#3A9F50] hover:bg-[#48C765] text-black px-10 py-3.5 rounded text-xs font-bold tracking-widest uppercase transition-colors shadow-lg shadow-[#48C765]/10 flex items-center gap-4"
-          >
-            <span>{language === 'es' ? (currentStep === 4 ? 'ENVIAR PEDIDO' : 'CONTINUAR') : (currentStep === 4 ? 'SUBMIT ORDER' : 'CONTINUE')}</span>
-            
-            {/* Show dynamic total price on the button! Minimalist and out of the way */}
-            {items.length > 0 && currentStep > 1 && (
-              <span className="bg-[#454545]/20 px-2 py-0.5 rounded-none">€{totalEstimatedCost.toFixed(2)}</span>
-            )}
-          </button>
+          {currentStep > 1 && (
+            <button
+              onClick={() => {
+                if (currentStep === 2 && items.length > 0) setCurrentStep(3);
+                else if (currentStep === 2 && items.length === 0) alert(language === 'es' ? 'Añade al menos una carta' : 'Add at least one card');
+                else if (currentStep === 3) setCurrentStep(4);
+                else if (currentStep === 4) handleFinalSubmit();
+              }}
+              className="bg-[#3A9F50] hover:bg-[#48C765] text-black px-10 py-3.5 rounded text-xs font-bold tracking-widest uppercase transition-colors shadow-lg shadow-[#48C765]/10 flex items-center gap-4"
+            >
+              <span>{language === 'es' ? (currentStep === 4 ? 'ENVIAR PEDIDO' : 'CONTINUAR') : (currentStep === 4 ? 'SUBMIT ORDER' : 'CONTINUE')}</span>
+              
+              {/* Show dynamic total price on the button! Minimalist and out of the way */}
+              {items.length > 0 && currentStep > 1 && (
+                <span className="bg-[#454545]/20 px-2 py-0.5 rounded-none">€{totalEstimatedCost.toFixed(2)}</span>
+              )}
+            </button>
+          )}
         </div>
 
       </div>

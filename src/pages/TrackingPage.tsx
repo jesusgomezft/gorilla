@@ -88,7 +88,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate }) => {
         <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
           
           {/* Left Column: Order Data */}
-          <div className="lg:col-span-4 flex flex-col gap-12 sticky top-32">
+          <div className="lg:col-span-4 flex flex-col gap-12 lg:sticky lg:top-32">
             
             <div className="flex flex-col pb-12 border-b border-white/10">
               <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#48C765] mb-4">

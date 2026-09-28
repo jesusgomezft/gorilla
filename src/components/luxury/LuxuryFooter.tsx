@@ -103,6 +103,9 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
               {language === 'es' ? 'LEGAL' : 'LEGAL'}
             </span>
+            <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+              {language === 'es' ? 'Aviso Legal' : 'Legal Notice'}
+            </button>
             <button onClick={() => onNavigate && onNavigate('/terms')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions'}
             </button>
@@ -181,9 +184,9 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
               </svg>
               {language === 'es' ? 'ES' : 'EN'}
             </button>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'PRIVACIDAD' : 'PRIVACY'}</span>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'TÉRMINOS' : 'TERMS'}</span>
-            <span className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'GARANTÍA' : 'WARRANTY'}</span>
+            <button onClick={() => onNavigate && onNavigate('/privacy')} className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'PRIVACIDAD' : 'PRIVACY'}</button>
+            <button onClick={() => onNavigate && onNavigate('/terms')} className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'TÉRMINOS' : 'TERMS'}</button>
+            <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'AVISO LEGAL' : 'LEGAL NOTICE'}</button>
           </div>
         </div>
 
