@@ -60,6 +60,7 @@ export default {
         'float': 'float 5s ease-in-out infinite',
         'iridescent': 'iridescent 8s ease infinite',
         'marquee': 'marquee 120s linear infinite',
+        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -87,6 +88,10 @@ export default {
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        heartbeat: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.15)' },
         }
       }
     },

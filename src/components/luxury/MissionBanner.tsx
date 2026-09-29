@@ -71,8 +71,8 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
             
             {/* 1. PERSONAL SUPPORT */}
             <div className={`flex gap-5 py-5 border-b border-white/5 group relative transition-all duration-500 ease-out transform ${activeStep >= 0 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} ${activeStep === 0 ? 'bg-gradient-to-r from-white/[0.04] to-transparent' : 'bg-transparent'}`}>
-              <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-300 ${activeStep >= 0 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
-              <svg className={`w-5 h-5 mt-0.5 transition-colors shrink-0 ${activeStep === 0 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`absolute top-0 left-[-2px] w-1 h-full transition-all duration-300 ${activeStep >= 0 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
+              <svg className={`w-7 h-7 mt-0 transition-colors shrink-0 ${activeStep === 0 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
               </svg>
               <div className="flex flex-col">
@@ -87,8 +87,8 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
 
             {/* 2. INTERNATIONAL SHIPPING */}
             <div className={`flex gap-5 py-5 border-b border-white/5 group relative transition-all duration-500 ease-out transform ${activeStep >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} ${activeStep === 1 ? 'bg-gradient-to-r from-white/[0.04] to-transparent' : 'bg-transparent'}`}>
-              <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-300 ${activeStep >= 1 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
-              <svg className={`w-5 h-5 mt-0.5 transition-colors shrink-0 ${activeStep === 1 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`absolute top-0 left-[-2px] w-1 h-full transition-all duration-300 ${activeStep >= 1 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
+              <svg className={`w-7 h-7 mt-0 transition-colors shrink-0 ${activeStep === 1 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div className="flex flex-col">
@@ -103,8 +103,8 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
 
             {/* 3. ORDER TRACKING */}
             <div className={`flex gap-5 py-5 border-b border-white/5 group relative transition-all duration-500 ease-out transform ${activeStep >= 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} ${activeStep === 2 ? 'bg-gradient-to-r from-white/[0.04] to-transparent' : 'bg-transparent'}`}>
-              <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-300 ${activeStep >= 2 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
-              <svg className={`w-5 h-5 mt-0.5 transition-colors shrink-0 ${activeStep === 2 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`absolute top-0 left-[-2px] w-1 h-full transition-all duration-300 ${activeStep >= 2 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
+              <svg className={`w-7 h-7 mt-0 transition-colors shrink-0 ${activeStep === 2 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
               <div className="flex flex-col">
@@ -119,8 +119,8 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
 
             {/* 4. SECURE RETURN */}
             <div className={`flex gap-5 py-5 border-b border-white/5 group relative transition-all duration-500 ease-out transform ${activeStep >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'} ${activeStep === 3 ? 'bg-gradient-to-r from-white/[0.04] to-transparent' : 'bg-transparent'}`}>
-              <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-300 ${activeStep >= 3 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
-              <svg className={`w-5 h-5 mt-0.5 transition-colors shrink-0 ${activeStep === 3 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`absolute top-0 left-[-2px] w-1 h-full transition-all duration-300 ${activeStep >= 3 ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'}`}></div>
+              <svg className={`w-7 h-7 mt-0 transition-colors shrink-0 ${activeStep === 3 ? 'text-[#48C765]' : 'text-[#A4ACA1] group-hover:text-[#48C765]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
               <div className="flex flex-col">

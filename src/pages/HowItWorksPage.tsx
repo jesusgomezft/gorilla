@@ -155,7 +155,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
             {labSpecs.map((spec, idx) => (
               <div key={idx} className="bg-[#454545] p-6 rounded-none border border-white/[0.05] flex flex-col justify-between">
                 <div>

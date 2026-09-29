@@ -1,0 +1,10 @@
+TIPOGRAFIAS DEL PROYECTO
+
+Google Fonts no permite la descarga automatizada por scripts de sus archivos .zip (bloquean los bots).
+
+Para instalar estas fuentes, por favor entra a los siguientes enlaces desde tu navegador y haz clic en 'Download family':
+
+1. Nunito Sans: https://fonts.google.com/specimen/Nunito+Sans
+2. Oswald: https://fonts.google.com/specimen/Oswald
+
+Una vez descargados los .zip, descomprímelos e instala los archivos .ttf en tu sistema.
