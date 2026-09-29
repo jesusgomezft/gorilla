@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { GorillaLogo } from './GorillaLogo';
 
 interface LuxuryNavbarProps {
   onNavigate?: (path: string) => void;
@@ -45,12 +44,24 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
     <header className="sticky top-0 z-50 w-full bg-[#454545]/85 backdrop-blur-xl border-b border-white/[0.06] transition-all">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
         
-        {/* Brand Logo & Name (Authentic Original Project Logo) */}
+        {/* Brand Logo & Name */}
         <div 
           onClick={() => onNavigate && onNavigate('/')}
-          className="cursor-pointer group"
+          className="flex flex-col items-center justify-center cursor-pointer group"
         >
-          <GorillaLogo />
+          <img
+            src="/brand/logo-green.png"
+            alt="Gorilla Grading Shield"
+            className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="flex flex-col items-center leading-none mt-1">
+            <span className="font-display font-extrabold tracking-tight text-[15px] sm:text-[17px] uppercase text-[#F0F1F2]">
+              GORILLA
+            </span>
+            <span className="font-display font-bold text-[#61B663] tracking-[0.25em] text-[7px] sm:text-[8px] uppercase mt-[2px]">
+              GRADING
+            </span>
+          </div>
         </div>
 
         {/* Center Navigation Links */}
