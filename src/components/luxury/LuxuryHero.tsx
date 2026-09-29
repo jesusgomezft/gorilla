@@ -84,7 +84,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative mb-9"
           >
-            <p className="relative font-sans text-base sm:text-lg text-[#F4F6F0] max-w-[490px] leading-relaxed font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <p className="relative font-sans text-base sm:text-lg text-[#F4F6F0] max-w-[490px] leading-relaxed font-medium">
               {t('ref.hero.desc')}
             </p>
           </motion.div>

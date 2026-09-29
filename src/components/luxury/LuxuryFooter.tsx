@@ -65,7 +65,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
 
           {/* Quick Nav */}
           <div className="lg:col-span-2 flex flex-col gap-3">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
+            <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'SERVICIOS' : 'SERVICES'}
             </span>
             <button onClick={() => onNavigate && onNavigate('/submit')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
@@ -84,7 +84,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
 
           {/* Company & Support */}
           <div className="lg:col-span-2 flex flex-col gap-3">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
+            <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'COMPAÑÍA' : 'COMPANY'}
             </span>
             <button onClick={() => onNavigate && onNavigate('/about')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
@@ -100,7 +100,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
 
           {/* Legal */}
           <div className="lg:col-span-2 flex flex-col gap-3">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
+            <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'LEGAL' : 'LEGAL'}
             </span>
             <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
@@ -125,7 +125,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
 
           {/* Standards & Certifications */}
           <div className="lg:col-span-3 flex flex-col gap-3">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2">
+            <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'ESTÁNDARES ÓPTICOS' : 'OPTICAL STANDARDS'}
             </span>
             <div className="bg-transparent p-4 rounded-none border border-white/[0.07] flex flex-col gap-2 relative overflow-hidden group">
@@ -146,7 +146,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
 
             {/* Certificate Search Input */}
             <div className="mt-4">
-              <span className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase font-semibold mb-2 block">
+              <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2 block">
                 {language === 'es' ? 'BUSCADOR DE CERTIFICADOS' : 'CERTIFICATE SEARCH'}
               </span>
               <form onSubmit={handleSearch} className="relative flex items-center w-full group">
