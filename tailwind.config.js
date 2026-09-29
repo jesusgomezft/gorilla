@@ -42,7 +42,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"Nunito Sans"', 'sans-serif'],
         display: ['"Space Grotesk"', 'sans-serif'],
         condensed: ['"Space Grotesk"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
