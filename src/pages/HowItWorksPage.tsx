@@ -155,17 +155,24 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {labSpecs.map((spec, idx) => (
-              <div key={idx} className="bg-[#454545] p-6 rounded-none border border-white/[0.05] flex flex-col justify-between">
-                <div>
-                  <span className="font-mono text-xs text-[#48C765] font-bold block mb-2 tracking-wider">
-                    {spec.spec}
-                  </span>
-                  <h4 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-wide mb-3">
+              <div 
+                key={idx} 
+                className="bg-[#121814] hover:bg-[#161d18] p-8 rounded-none border border-white/[0.06] hover:border-[#48C765]/40 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(72,199,101,0.08)] relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#48C765]/0 to-transparent group-hover:via-[#48C765]/80 transition-all duration-500" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-1.5 h-1.5 bg-[#48C765] rounded-none opacity-80 group-hover:animate-pulse" />
+                    <span className="font-mono text-xs text-[#48C765] font-bold tracking-[0.15em]">
+                      {spec.spec}
+                    </span>
+                  </div>
+                  <h4 className="font-['Oswald'] font-[700] text-xl text-white uppercase tracking-wide mb-3 group-hover:text-[#48C765] transition-colors duration-300">
                     {spec.title}
                   </h4>
-                  <p className="text-xs text-[#A4ACA1] leading-relaxed">
+                  <p className="text-sm text-[#A4ACA1] leading-relaxed font-normal">
                     {spec.desc}
                   </p>
                 </div>
