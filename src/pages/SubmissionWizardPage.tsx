@@ -25,8 +25,14 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
   }); 
   
   const [items, setItems] = useState<OrderItem[]>([]);
+  const [newCardGame, setNewCardGame] = useState('Pokemon');
+  const [newCardYear, setNewCardYear] = useState('');
+  const [newCardSet, setNewCardSet] = useState('');
   const [newCardName, setNewCardName] = useState('');
+  const [newCardLanguage, setNewCardLanguage] = useState('English');
+  const [newCardRarity, setNewCardRarity] = useState('');
   const [newDeclaredValue, setNewDeclaredValue] = useState('');
+  const [newCardQuantity, setNewCardQuantity] = useState('1');
 
   const [shippingMethod, setShippingMethod] = useState<'COURIER_INSURED' | 'CARD_SHOW_DROPOFF'>('COURIER_INSURED');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -43,20 +49,29 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
     e.preventDefault();
     if (!newCardName.trim()) return;
 
-    const newItem: OrderItem = {
-      id: `item-${Date.now()}`,
-      cardName: newCardName,
-      game: 'Mixed',
-      set: 'Unknown',
-      declaredValue: Number(newDeclaredValue) || 100,
-      serviceTierId: selectedTier?.id || 'standard',
-      notes: '',
-      frontImagePreview: 'https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=400&q=80'
-    };
+    const quantity = Math.max(1, parseInt(newCardQuantity) || 1);
+    const newItems: OrderItem[] = [];
+    
+    for (let i = 0; i < quantity; i++) {
+      newItems.push({
+        id: `item-${Date.now()}-${i}`,
+        cardName: newCardName,
+        game: newCardGame,
+        set: newCardSet || 'Unknown',
+        declaredValue: Number(newDeclaredValue) || 100,
+        serviceTierId: selectedTier?.id || 'standard',
+        notes: '',
+        frontImagePreview: 'https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=400&q=80'
+      });
+    }
 
-    setItems([...items, newItem]);
+    setItems([...items, ...newItems]);
     setNewCardName('');
+    setNewCardSet('');
+    setNewCardYear('');
+    setNewCardRarity('');
     setNewDeclaredValue('');
+    setNewCardQuantity('1');
   };
 
   const handleRemoveCard = (id: string) => {
@@ -92,12 +107,20 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             ? `Tu número de envío es #${generatedSubmissionId}. Recibirás las etiquetas por correo electrónico en breve.`
             : `Your submission ID is #${generatedSubmissionId}. You will receive shipping labels via email shortly.`}
         </p>
-        <button
-          onClick={() => onNavigate('/')}
-          className="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-none font-mono text-xs uppercase tracking-widest border border-white/20 transition-all"
-        >
-          {language === 'es' ? 'VOLVER AL INICIO' : 'BACK TO HOME'}
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            onClick={() => onNavigate('/account')}
+            className="w-full sm:w-auto bg-[#48C765] hover:bg-[#3ca352] text-black px-8 py-3 rounded-none font-mono text-xs font-bold uppercase tracking-widest transition-all shadow-lg shadow-[#48C765]/20"
+          >
+            {language === 'es' ? 'VER MIS PEDIDOS' : 'VIEW MY ORDERS'}
+          </button>
+          <button
+            onClick={() => onNavigate('/')}
+            className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white px-8 py-3 rounded-none font-mono text-xs uppercase tracking-widest border border-white/10 transition-all"
+          >
+            {language === 'es' ? 'VOLVER AL INICIO' : 'BACK TO HOME'}
+          </button>
+        </div>
       </div>
     );
   }
@@ -323,39 +346,113 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 : 'Add a photo or type the name and value of each card.'}
             </p>
 
-            {/* Huge Dropzone */}
-            <form onSubmit={handleAddCard} className="w-full h-64 border-2 border-dashed border-[#2A2E2A] bg-[#454545]/50 hover:bg-[#151D17]/50 hover:border-[#48C765]/50 transition-all rounded-none flex flex-col items-center justify-center mb-8 cursor-pointer group">
-              <div className="w-12 h-12 rounded-none border border-[#48C765]/50 text-[#48C765] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Plus className="w-6 h-6" />
-              </div>
-              <div className="text-center font-sans space-y-1">
-                <p className="text-sm font-semibold text-white">
-                  {language === 'es' ? 'Arrastra tus fotos acá, o haz clic para añadir datos' : 'Drag photos here, or click to add details'}
-                </p>
-                <p className="text-[10px] font-mono text-[#A4ACA1] uppercase tracking-widest">
-                  JPG o PNG • Máx. 20 MB
-                </p>
-              </div>
+            {/* Professional Mini-Form */}
+            <form onSubmit={handleAddCard} className="w-full bg-[#383838] border border-[#2A2E2A] p-6 mb-8 shadow-inner flex flex-col gap-6 rounded-sm">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                {/* TCG / Collection */}
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Colección / TCG' : 'TCG / Collection'}</label>
+                  <select 
+                    value={newCardGame}
+                    onChange={e => setNewCardGame(e.target.value)}
+                    className="w-full px-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                  >
+                    <option value="Pokemon">Pokémon TCG</option>
+                    <option value="Magic">Magic: The Gathering</option>
+                    <option value="Yu-Gi-Oh!">Yu-Gi-Oh!</option>
+                    <option value="Sports">Sports Cards</option>
+                    <option value="One Piece">One Piece TCG</option>
+                    <option value="Lorcana">Disney Lorcana</option>
+                    <option value="Other">Other / Misc</option>
+                  </select>
+                </div>
 
-              {/* Invisible inputs just to allow typing for demo if they click the area (Normally this would open a modal) */}
-              <div className="mt-6 flex flex-wrap justify-center gap-3 w-3/4 opacity-0 group-hover:opacity-100 transition-opacity">
-                 <input 
-                  type="text" 
-                  placeholder="Card Name (e.g. Charizard)" 
-                  value={newCardName}
-                  onChange={e => setNewCardName(e.target.value)}
-                  className="px-3 py-1 bg-[#454545]/50 border border-white/10 rounded text-xs text-white"
-                  onClick={e => e.stopPropagation()}
-                 />
-                 <input 
-                  type="number" 
-                  placeholder="Value (€)" 
-                  value={newDeclaredValue}
-                  onChange={e => setNewDeclaredValue(e.target.value)}
-                  className="px-3 py-1 bg-[#454545]/50 border border-white/10 rounded text-xs text-white w-24"
-                  onClick={e => e.stopPropagation()}
-                 />
-                 <button type="submit" onClick={e => e.stopPropagation()} className="px-4 py-1 bg-[#48C765] text-black text-xs font-bold rounded">Add</button>
+                {/* Year */}
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Año' : 'Year'}</label>
+                  <input 
+                    type="number" 
+                    placeholder="e.g. 1999" 
+                    value={newCardYear}
+                    onChange={e => setNewCardYear(e.target.value)}
+                    className="w-full px-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                  />
+                </div>
+
+                {/* Set / Edition */}
+                <div className="flex flex-col gap-1 lg:col-span-2">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Nombre del Set / Expansión' : 'Set / Expansion Name'}</label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Base Set" 
+                    value={newCardSet}
+                    onChange={e => setNewCardSet(e.target.value)}
+                    className="w-full px-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                  />
+                </div>
+
+                {/* Card Name */}
+                <div className="flex flex-col gap-1 lg:col-span-2">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Nombre de la carta' : 'Card Name'}</label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Charizard Holo 1st Edition" 
+                    value={newCardName}
+                    onChange={e => setNewCardName(e.target.value)}
+                    className="w-full px-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                    required
+                  />
+                </div>
+
+                {/* Rarity / Variant */}
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Rareza / Variante' : 'Rarity / Variant'}</label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. Secret Rare, Holo" 
+                    value={newCardRarity}
+                    onChange={e => setNewCardRarity(e.target.value)}
+                    className="w-full px-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                  />
+                </div>
+
+                {/* Quantity */}
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Cantidad' : 'Quantity'}</label>
+                  <input 
+                    type="number" 
+                    min="1"
+                    placeholder="1" 
+                    value={newCardQuantity}
+                    onChange={e => setNewCardQuantity(e.target.value)}
+                    className="w-full px-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                  />
+                </div>
+
+                {/* Declared Value */}
+                <div className="flex flex-col gap-1">
+                  <label className="text-[10px] uppercase font-mono text-[#A4ACA1] tracking-widest">{language === 'es' ? 'Valor Declarado ud. (€)' : 'Declared Value ea. (€)'}</label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-[#A4ACA1] text-sm">€</span>
+                    <input 
+                      type="number" 
+                      placeholder="e.g. 500" 
+                      value={newDeclaredValue}
+                      onChange={e => setNewDeclaredValue(e.target.value)}
+                      className="w-full pl-7 pr-3 py-2 bg-[#2B302B] border border-white/5 text-sm text-white focus:outline-none focus:border-[#48C765] rounded-none transition-colors"
+                      required
+                    />
+                  </div>
+                </div>
+
+              </div>
+              
+              <div className="flex justify-end pt-2 border-t border-white/5 mt-2">
+                <button type="submit" className="px-6 py-2.5 bg-[#48C765] hover:bg-[#3ca352] text-black text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 rounded-none">
+                  <Plus className="w-4 h-4" />
+                  {language === 'es' ? 'Añadir a la orden' : 'Add to Order'}
+                </button>
               </div>
             </form>
 
@@ -450,15 +547,15 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         {/* ==============================================================
             BOTTOM NAVIGATION BAR
         ============================================================== */}
-        <div className="mt-16 flex items-center justify-between pt-6 border-t border-[#2A2E2A]">
+        <div className="mt-16 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 border-t border-[#2A2E2A]">
           {currentStep > 1 ? (
             <button
               onClick={() => setCurrentStep((currentStep - 1) as any)}
-              className="bg-[#454545] hover:bg-[#1A221C] text-white px-8 py-3.5 rounded text-xs font-bold tracking-widest uppercase transition-colors border border-[#2A2E2A]"
+              className="w-full sm:w-auto bg-[#454545] hover:bg-[#1A221C] text-white px-6 sm:px-8 py-3.5 rounded text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-colors border border-[#2A2E2A]"
             >
               {language === 'es' ? 'ATRÁS' : 'BACK'}
             </button>
-          ) : <div />}
+          ) : <div className="hidden sm:block" />}
           
           {currentStep > 1 && (
             <button
@@ -468,13 +565,13 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 else if (currentStep === 3) setCurrentStep(4);
                 else if (currentStep === 4) handleFinalSubmit();
               }}
-              className="bg-[#3A9F50] hover:bg-[#48C765] text-black px-10 py-3.5 rounded text-xs font-bold tracking-widest uppercase transition-colors shadow-lg shadow-[#48C765]/10 flex items-center gap-4"
+              className="w-full sm:w-auto bg-[#3A9F50] hover:bg-[#48C765] text-black px-6 sm:px-10 py-3.5 rounded text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-colors shadow-lg shadow-[#48C765]/10 flex items-center justify-center gap-2 sm:gap-4"
             >
               <span>{language === 'es' ? (currentStep === 4 ? 'ENVIAR PEDIDO' : 'CONTINUAR') : (currentStep === 4 ? 'SUBMIT ORDER' : 'CONTINUE')}</span>
               
               {/* Show dynamic total price on the button! Minimalist and out of the way */}
               {items.length > 0 && currentStep > 1 && (
-                <span className="bg-[#454545]/20 px-2 py-0.5 rounded-none">€{totalEstimatedCost.toFixed(2)}</span>
+                <span className="bg-[#454545]/20 px-2 py-0.5 rounded-none shrink-0 truncate">€{totalEstimatedCost.toFixed(2)}</span>
               )}
             </button>
           )}

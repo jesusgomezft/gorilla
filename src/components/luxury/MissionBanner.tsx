@@ -17,7 +17,7 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
   }, []);
 
   return (
-    <section className="relative w-full bg-[#454545] text-white overflow-hidden select-none min-h-[500px] flex items-center border-y border-white/[0.04]">
+    <section className="relative w-full bg-[#383838] text-white overflow-hidden select-none min-h-[500px] flex items-center border-y border-white/[0.04]">
       
       {/* The Box Image with CSS Mask for perfect edge blending */}
       <img 

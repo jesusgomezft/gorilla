@@ -1,7 +1,11 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 
-export const TechnologySection: React.FC = () => {
+interface TechnologySectionProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
   const [activeStep, setActiveStep] = React.useState(-1);
 
@@ -87,15 +91,15 @@ export const TechnologySection: React.FC = () => {
               </p>
             </div>
             
-            <a
-              href="#pricing"
+            <button
+              onClick={() => onNavigate ? onNavigate('/pricing') : window.location.href = '/pricing'}
               className="inline-flex items-center justify-center px-6 py-2.5 rounded-none border border-[#48C765] text-[#48C765] hover:bg-[#48C765] hover:text-[#14170F] text-sm font-medium transition-all group w-fit"
             >
               <span>{language === 'es' ? 'Empezar ahora' : 'Start Submission'}</span>
               <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </a>
+            </button>
           </div>
 
           {/* Empty spacer for center image focus */}

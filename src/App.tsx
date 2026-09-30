@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ConceptProvider } from './context/ConceptContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { LuxuryNavbar } from './components/luxury/LuxuryNavbar';
 import { LuxuryFooter } from './components/luxury/LuxuryFooter';
 
@@ -21,7 +22,17 @@ import { PricingPage } from './pages/PricingPage';
 import { AboutPage } from './pages/AboutPage';
 import { LegalPage } from './pages/LegalPage';
 
+import { PreservePage } from './pages/PreservePage';
+import { AuthenticatePage } from './pages/AuthenticatePage';
+import { UnderstandPage } from './pages/UnderstandPage';
+import { BelongPage } from './pages/BelongPage';
+import { FAQPreparePage } from './pages/FAQPreparePage';
+import { FAQDropoffPage } from './pages/FAQDropoffPage';
+import { FAQTurnaroundPage } from './pages/FAQTurnaroundPage';
+import { LoginPage } from './pages/LoginPage';
+
 export const AppContent: React.FC = () => {
+  const { isLoggedIn } = useAuth();
   const [currentPath, setCurrentPath] = useState<string>(() => {
     return window.location.pathname || '/';
   });
@@ -46,7 +57,7 @@ export const AppContent: React.FC = () => {
       case '/':
         return <HomePage onNavigate={handleNavigate} />;
       case '/technology':
-        return <TechnologyPage />;
+        return <TechnologyPage onNavigate={handleNavigate} />;
 
       case '/pricing':
         return <PricingPage onNavigate={handleNavigate} />;
@@ -58,6 +69,20 @@ export const AppContent: React.FC = () => {
         return <ServicesPage onNavigate={handleNavigate} />;
       case '/how-it-works':
         return <HowItWorksPage onNavigate={handleNavigate} />;
+      case '/preserve':
+        return <PreservePage onNavigate={handleNavigate} />;
+      case '/authenticate':
+        return <AuthenticatePage onNavigate={handleNavigate} />;
+      case '/understand':
+        return <UnderstandPage onNavigate={handleNavigate} />;
+      case '/belong':
+        return <BelongPage onNavigate={handleNavigate} />;
+      case '/faq/prepare':
+        return <FAQPreparePage onNavigate={handleNavigate} />;
+      case '/faq/dropoff':
+        return <FAQDropoffPage onNavigate={handleNavigate} />;
+      case '/faq/turnaround':
+        return <FAQTurnaroundPage onNavigate={handleNavigate} />;
       case '/submit':
         return <SubmissionWizardPage onNavigate={handleNavigate} />;
       case '/verify':
@@ -66,8 +91,10 @@ export const AppContent: React.FC = () => {
         return <CertificateDetailPage onNavigate={handleNavigate} certId="GG-892401" />;
       case '/track':
         return <TrackingPage onNavigate={handleNavigate} />;
+      case '/login':
+        return <LoginPage onNavigate={handleNavigate} />;
       case '/account':
-        return <CollectorVaultPage onNavigate={handleNavigate} />;
+        return isLoggedIn ? <CollectorVaultPage onNavigate={handleNavigate} /> : <LoginPage onNavigate={handleNavigate} />;
       case '/terms':
         return <LegalPage type="terms" />;
       case '/privacy':
@@ -78,6 +105,8 @@ export const AppContent: React.FC = () => {
         return <LegalPage type="cookies" />;
       case '/cookie-consent':
         return <LegalPage type="cookie-consent" />;
+      case '/legal-notice':
+        return <LegalPage type="legal-notice" />;
       default:
         if (currentPath.startsWith('/certificates/')) {
           const certId = currentPath.replace('/certificates/', '');
@@ -104,7 +133,9 @@ export default function App() {
   return (
     <LanguageProvider>
       <ConceptProvider>
-        <AppContent />
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
       </ConceptProvider>
     </LanguageProvider>
   );

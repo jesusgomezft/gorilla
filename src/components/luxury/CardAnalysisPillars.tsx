@@ -15,7 +15,7 @@ export const CardAnalysisPillars: React.FC<CardAnalysisPillarsProps> = ({ onNavi
       title: t('ref.pillar1.title'),
       desc: t('ref.pillar1.desc'),
       cta: t('ref.pillar1.cta'),
-      route: '/how-it-works',
+      route: '/preserve',
       imgSrc: '/images/preservar.png?v=7',
       imgAlt: 'Preserve - Hermetic acrylic slab protection'
     },
@@ -24,7 +24,7 @@ export const CardAnalysisPillars: React.FC<CardAnalysisPillarsProps> = ({ onNavi
       title: t('ref.pillar2.title'),
       desc: t('ref.pillar2.desc'),
       cta: t('ref.pillar2.cta'),
-      route: '/verify',
+      route: '/authenticate',
       imgSrc: '/images/autenticar.png?v=7',
       imgAlt: 'Authenticate - Advanced analysis against fakes'
     },
@@ -33,7 +33,7 @@ export const CardAnalysisPillars: React.FC<CardAnalysisPillarsProps> = ({ onNavi
       title: t('ref.pillar3.title'),
       desc: t('ref.pillar3.desc'),
       cta: t('ref.pillar3.cta'),
-      route: '/certificates/demo',
+      route: '/understand',
       imgSrc: '/images/comprender.png?v=7',
       imgAlt: 'Understand - Clear explanation for every grade'
     },
@@ -42,14 +42,14 @@ export const CardAnalysisPillars: React.FC<CardAnalysisPillarsProps> = ({ onNavi
       title: t('ref.pillar4.title'),
       desc: t('ref.pillar4.desc'),
       cta: t('ref.pillar4.cta'),
-      route: '/account',
+      route: '/belong',
       imgSrc: '/images/pertenecer.png?v=7',
       imgAlt: 'Belong - A growing community across Europe'
     }
   ];
 
   return (
-    <section id="pillars" className="w-full bg-[#454545] text-white py-20 px-6 lg:px-12 border-b border-white/[0.06] select-none">
+    <section id="pillars" className="w-full bg-[#383838] text-white py-20 px-6 lg:px-12 border-b border-white/[0.06] select-none">
       <div className="max-w-[1400px] mx-auto">
         
         {/* 4 Pillars Grid with Real Macro Photography */}

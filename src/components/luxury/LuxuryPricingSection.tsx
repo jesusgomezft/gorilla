@@ -1,5 +1,130 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { Box, Cpu, Scan, BarChart, Link, Zap, Headset, ListOrdered, ShieldCheck, Briefcase, Crown, CheckCircle2 } from 'lucide-react';
+
+const BlueprintScanner = ({ color }: { color: string }) => (
+  <svg viewBox="0 0 100 120" className="w-full h-full overflow-visible" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,10; 0,0" dur="4s" repeatCount="indefinite" />
+      <rect x="25" y="10" width="50" height="8" rx="2" className="stroke-white/80" />
+      <line x1="50" y1="2" x2="50" y2="10" className="stroke-white/80" />
+      <text x="50" y="8" fill={color} fontSize="5" fontFamily="monospace" textAnchor="middle" stroke="none">365 nm</text>
+      <polygon points="30,18 70,18 85,60 15,60" fill={`${color}10`} stroke="none">
+        <animate attributeName="points" values="30,18 70,18 85,60 15,60; 30,18 70,18 75,50 25,50; 30,18 70,18 85,60 15,60" dur="2s" repeatCount="indefinite" />
+      </polygon>
+      <line x1="30" y1="18" x2="15" y2="60" stroke={color} strokeWidth="0.5" opacity="0.3">
+        <animate attributeName="x2" values="15; 25; 15" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="60; 50; 60" dur="2s" repeatCount="indefinite" />
+      </line>
+      <line x1="70" y1="18" x2="85" y2="60" stroke={color} strokeWidth="0.5" opacity="0.3">
+        <animate attributeName="x2" values="85; 75; 85" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="60; 50; 60" dur="2s" repeatCount="indefinite" />
+      </line>
+    </g>
+    <rect x="30" y="30" width="40" height="55" rx="3" className="stroke-white/80" />
+    <rect x="35" y="35" width="30" height="7" className="stroke-white/60" />
+    <rect x="35" y="45" width="30" height="25" className="stroke-white/60" />
+    <circle cx="50" cy="57.5" r="7" className="stroke-white/60" />
+    <line x1="35" y1="45" x2="65" y2="70" className="stroke-white/30" strokeWidth="0.5" />
+    <line x1="65" y1="45" x2="35" y2="70" className="stroke-white/30" strokeWidth="0.5" />
+    <rect x="35" y="73" width="30" height="4" className="stroke-white/60" />
+    <line x1="35" y1="80" x2="55" y2="80" className="stroke-white/60" />
+    <line x1="35" y1="83" x2="65" y2="83" className="stroke-white/60" />
+  </svg>
+);
+
+const BlueprintCaliper = ({ color }: { color: string }) => (
+  <svg viewBox="0 0 120 100" className="w-full h-full overflow-visible" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <rect x="30" y="35" width="60" height="20" rx="1" className="stroke-white/80" />
+    <rect x="20" y="60" width="80" height="8" rx="1" className="stroke-white/80" />
+    <path d="M20 60 V30 H25 V60" className="stroke-white/80" />
+    <line x1="30" y1="60" x2="30" y2="64" className="stroke-white/50" />
+    <line x1="40" y1="60" x2="40" y2="64" className="stroke-white/50" />
+    <line x1="50" y1="60" x2="50" y2="65" className="stroke-white/80" />
+    <line x1="60" y1="60" x2="60" y2="64" className="stroke-white/50" />
+    <line x1="70" y1="60" x2="70" y2="64" className="stroke-white/50" />
+    <line x1="80" y1="60" x2="80" y2="65" className="stroke-white/80" />
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="5,0; -5,0; 5,0" dur="5s" repeatCount="indefinite" />
+      <path d="M90 68 V30 H95 V68 H102 V75 H90 Z" className="stroke-white/80" />
+      <text x="50" y="25" fill={color} fontSize="6" fontFamily="monospace" textAnchor="middle" stroke="none">7.82 mm</text>
+      <line x1="50" y1="27" x2="50" y2="35" stroke={color} strokeWidth="0.5" />
+    </g>
+  </svg>
+);
+
+const BlueprintMagnifier = ({ color }: { color: string }) => (
+  <svg viewBox="0 0 100 120" className="w-full h-full overflow-visible" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M20 60 V20 H60" className="stroke-white/50" />
+    <path d="M25 60 V25 H60" className="stroke-white/30" />
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0; -8,-8; 0,0" dur="6s" repeatCount="indefinite" />
+      <circle cx="50" cy="50" r="25" className="stroke-white/90" />
+      <circle cx="50" cy="50" r="23" className="stroke-white/30" />
+      <line x1="68" y1="68" x2="85" y2="85" strokeWidth="3" strokeLinecap="round" className="stroke-white/80" />
+      <line x1="68" y1="68" x2="85" y2="85" strokeWidth="1" strokeLinecap="round" className="stroke-[#454545]" />
+      <circle cx="50" cy="50" r="1.5" fill={color} stroke="none">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <path d="M50 45 A 5 5 0 0 1 55 50" stroke={color} strokeWidth="1" />
+      <line x1="35" y1="50" x2="55" y2="50" stroke={color} strokeWidth="1" />
+      <line x1="50" y1="35" x2="50" y2="60" stroke={color} strokeWidth="1" />
+      <text x="60" y="55" fill={color} fontSize="6" fontFamily="monospace" stroke="none">89.94°</text>
+    </g>
+  </svg>
+);
+
+const BlueprintBriefcase = ({ color }: { color: string }) => (
+  <svg viewBox="0 0 120 100" className="w-full h-full overflow-visible" fill="none" stroke="currentColor" strokeWidth="1.5">
+    {/* Security Scan Line */}
+    <line x1="15" y1="30" x2="105" y2="30" stroke={color} strokeWidth="1" opacity="0.6">
+      <animate attributeName="y1" values="30; 90; 30" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="30; 90; 30" dur="4s" repeatCount="indefinite" />
+    </line>
+    
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-1.5; 0,0" dur="3s" repeatCount="indefinite" />
+      <path d="M45 35 V23 H75 V35" className="stroke-white/80" />
+      <rect x="52" y="25" width="16" height="4" className="stroke-white/40" />
+    </g>
+    
+    <rect x="20" y="35" width="80" height="55" rx="4" className="stroke-white/80" />
+    <rect x="26" y="41" width="68" height="43" rx="2" className="stroke-white/30" />
+    
+    <rect x="35" y="31" width="10" height="8" rx="1" className="stroke-white/90" />
+    <rect x="75" y="31" width="10" height="8" rx="1" className="stroke-white/90" />
+    
+    <circle cx="40" cy="35" r="1.5" className="stroke-white/50" />
+    <circle cx="80" cy="35" r="1.5" className="stroke-white/50" />
+    
+    <path d="M26 62.5 H94" className="stroke-white/20" strokeWidth="1" />
+    
+    {/* Shield icon in the middle */}
+    <g stroke={color}>
+      <path d="M60 47 L70 51 V59 C70 65 60 71 60 71 C60 71 50 65 50 59 V51 Z" strokeWidth="1.5" />
+      <circle cx="60" cy="57" r="3" fill={color} stroke="none">
+        <animate attributeName="opacity" values="0.3; 1; 0.3" dur="2s" repeatCount="indefinite" />
+      </circle>
+    </g>
+    <text x="60" y="79" fill={color} fontSize="5" fontFamily="monospace" textAnchor="middle" stroke="none" opacity="0.8">LEVEL-5</text>
+  </svg>
+);
+
+const getFeatureIcon = (feature: string) => {
+  const f = feature.toLowerCase();
+  if (f.includes('slab') || f.includes('carcasa')) return Box;
+  if (f.includes('nfc') || f.includes('chip')) return Cpu;
+  if (f.includes('scan') || f.includes('escan')) return Scan;
+  if (f.includes('subgrade') || f.includes('subgrado')) return BarChart;
+  if (f.includes('blockchain') || f.includes('registr')) return Link;
+  if (f.includes('fast') || f.includes('acelerad')) return Zap;
+  if (f.includes('support') || f.includes('soporte')) return Headset;
+  if (f.includes('queue') || f.includes('fila')) return ListOrdered;
+  if (f.includes('audit')) return ShieldCheck;
+  if (f.includes('armored') || f.includes('malet')) return Briefcase;
+  if (f.includes('master') || f.includes('grader')) return Crown;
+  return CheckCircle2;
+};
 
 interface LuxuryPricingSectionProps {
   onNavigate?: (path: string) => void;
@@ -63,11 +188,11 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
   const tiersWithTheme = tiers.map(t => {
     switch(t.id) {
-      case 'regular': return { ...t, color: '#8CA5B8', code: 'RCDM.00', shortName: 'REGULAR' };
-      case 'standard': return { ...t, color: '#48C765', code: 'RCDM.01', shortName: 'STANDARD' };
-      case 'express': return { ...t, color: '#F97316', code: 'RCDM.02', shortName: 'EXPRESS' };
-      case 'walkthrough': return { ...t, color: '#D4AF37', code: 'RCDM.MASTER', shortName: 'WALK-THROUGH' };
-      default: return { ...t, color: '#48C765', code: 'RCDM.XX', shortName: 'TIER' };
+      case 'regular': return { ...t, color: '#8CA5B8', code: 'RCDM.00', shortName: 'REGULAR', Blueprint: BlueprintScanner };
+      case 'standard': return { ...t, color: '#48C765', code: 'RCDM.01', shortName: 'STANDARD', Blueprint: BlueprintCaliper };
+      case 'express': return { ...t, color: '#F97316', code: 'RCDM.02', shortName: 'EXPRESS', Blueprint: BlueprintMagnifier };
+      case 'walkthrough': return { ...t, color: '#D4AF37', code: 'RCDM.MASTER', shortName: 'WALK-THROUGH', Blueprint: BlueprintBriefcase };
+      default: return { ...t, color: '#48C765', code: 'RCDM.XX', shortName: 'TIER', Blueprint: BlueprintScanner };
     }
   });
 
@@ -93,7 +218,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
   if (isHome) {
     return (
-      <section id="pricing" className="w-full bg-white/[0.03] border-b border-white/[0.05] text-white py-16 lg:py-20 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
+      <section id="pricing" className="w-full bg-[#454545] border-b border-white/[0.05] text-white py-16 lg:py-20 px-6 lg:px-12 select-none relative flex flex-col items-center z-20">
         
         <div className="mb-12 flex items-center justify-center gap-6 w-full opacity-80">
           <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-white/30" />
@@ -103,9 +228,9 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-white/30" />
         </div>
 
-        {/* 3-Column Grid */}
-        <div className="w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative">
-          {tiersWithTheme.slice(0, 3).map((tier) => (
+        {/* 4-Column Grid */}
+        <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 relative">
+          {tiersWithTheme.slice(0, 4).map((tier) => (
             <div 
               key={tier.id}
               className="relative w-full border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden rounded-2xl transition-all duration-700 cursor-pointer group/card hover:-translate-y-2 hover:shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9)]"
@@ -136,11 +261,11 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               {/* Glass Reflection Sheen */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.07] to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20" />
 
-              <div className="w-full flex flex-col relative z-10 h-full p-6 sm:p-8">
-                
+              <div className="w-full flex flex-col relative z-10 h-full p-5 sm:p-6">
+
                 {/* Info */}
-                <div className="flex flex-col mb-8">
-                  <div className="flex flex-wrap items-center gap-2 mb-5">
+                <div className="flex flex-col mb-4">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
                     <div className="px-2 py-1 text-[9px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
                          style={{ backgroundColor: `${tier.color}10`, color: tier.color, borderColor: `${tier.color}30` }}>
                       {tier.code}
@@ -152,27 +277,40 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                     )}
                   </div>
                   
-                  <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-[1.1] mb-3 drop-shadow-lg">
+                  <h3 className="font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide text-white leading-[1.1] mb-2 drop-shadow-lg">
                     {tier.name}
                   </h3>
                   
-                  <p className="text-[13px] text-[#A4ACA1] font-sans leading-relaxed mb-6 min-h-[60px]">
+                  <p className="text-[13px] text-[#A4ACA1] font-sans leading-relaxed mb-4 min-h-[40px]">
                     {tier.tagline}
                   </p>
 
+                  <div className="w-full mb-4 flex justify-center h-20 opacity-40 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-screen" style={{ filter: `drop-shadow(0 0 10px ${tier.color}30)` }}>
+                    <tier.Blueprint color={tier.color} />
+                  </div>
+
                   <div className="flex flex-col gap-3">
-                    {tier.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: tier.color, color: tier.color }} />
-                        <span className="font-sans text-[13px] text-[#EAEAEA] font-medium tracking-wide">{feature}</span>
-                      </div>
-                    ))}
+                    {tier.features.map((feature, fIdx) => {
+                      const Icon = getFeatureIcon(feature);
+                      return (
+                        <div key={fIdx} className="flex items-center gap-3 group/item">
+                          <Icon 
+                            className="w-4 h-4 transition-transform duration-500 group-hover/item:scale-110 group-hover/item:rotate-[5deg]" 
+                            style={{ color: tier.color }} 
+                            strokeWidth={1.5}
+                          />
+                          <span className="font-sans text-[13px] text-[#EAEAEA] font-medium tracking-wide transition-colors group-hover/item:text-white">
+                            {feature}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
                 {/* Price & CTA */}
-                <div className="mt-auto pt-6 border-t border-white/10 flex flex-col items-center">
-                  <div className="flex flex-col items-center w-full mb-6">
+                <div className="mt-auto pt-4 border-t border-white/10 flex flex-col items-center">
+                  <div className="flex flex-col items-center w-full mb-4">
                     <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-2">
                       {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
                     </span>

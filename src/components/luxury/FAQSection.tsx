@@ -10,25 +10,31 @@ export const FAQSection: React.FC = () => {
       q: language === 'es' ? '¿Cómo preparo mis cartas para enviarlas?' : 'How should I prepare my cards for shipping?',
       a: language === 'es' 
         ? 'Recomendamos usar un penny sleeve dentro de un toploader semirrígido (Card Saver). Evita usar celo o cinta adhesiva. Asegúrate de empacar todo en una caja resistente con plástico de burbujas.'
-        : 'We recommend using a penny sleeve inside a semi-rigid toploader (Card Saver). Avoid using tape. Make sure to pack everything in a sturdy box with bubble wrap.'
+        : 'We recommend using a penny sleeve inside a semi-rigid toploader (Card Saver). Avoid using tape. Make sure to pack everything in a sturdy box with bubble wrap.',
+      route: '/faq/prepare',
+      linkText: language === 'es' ? 'VER DETALLES' : 'VIEW DETAILS'
+    },
+    {
+      q: language === 'es' ? '¿Puedo entregar mis cartas en persona?' : 'Can I drop off my cards in person?',
+      a: language === 'es'
+        ? 'Sí, organizamos "Pickup Events" regularmente y también contamos con puntos de entrega asociados. Revisa nuestra sección de Eventos para las próximas fechas.'
+        : 'Yes, we regularly host "Pickup Events" and have partnered drop-off locations. Check our Events section for upcoming dates.',
+      route: '/faq/dropoff',
+      linkText: language === 'es' ? 'VER DETALLES' : 'VIEW DETAILS'
+    },
+    {
+      q: language === 'es' ? '¿Cuánto tardan los tiempos de respuesta (turnaround)?' : 'How long are the turnaround times?',
+      a: language === 'es'
+        ? 'El tiempo comienza a contar el día hábil en que procesamos tu paquete en nuestras oficinas, no cuando lo envías. Ofrecemos plazos desde 48 horas hasta 20 días hábiles según el paquete.'
+        : 'Turnaround time starts on the business day we process your package at our facility, not when you ship it. We offer timeframes from 48 hours up to 20 business days.',
+      route: '/faq/turnaround',
+      linkText: language === 'es' ? 'VER DETALLES' : 'VIEW DETAILS'
     },
     {
       q: language === 'es' ? '¿Qué pasa si mi carta supera el valor declarado del nivel elegido?' : 'What if my card exceeds the declared value of the chosen tier?',
       a: language === 'es'
         ? 'Si nuestro equipo determina que el valor de mercado de tu carta excede el límite del servicio contratado, te notificaremos para actualizarla al siguiente nivel. Esto es crucial por motivos de seguro.'
         : 'If our team determines your card\'s market value exceeds the tier limit, we will notify you to upgrade it to the next tier. This is crucial for insurance purposes.'
-    },
-    {
-      q: language === 'es' ? '¿Cuánto tardan los tiempos de respuesta (turnaround)?' : 'How long are the turnaround times?',
-      a: language === 'es'
-        ? 'El tiempo comienza a contar el día hábil en que procesamos tu paquete en nuestras oficinas, no cuando lo envías. Ofrecemos plazos desde 48 horas hasta 20 días hábiles según el paquete.'
-        : 'Turnaround time starts on the business day we process your package at our facility, not when you ship it. We offer timeframes from 48 hours up to 20 business days.'
-    },
-    {
-      q: language === 'es' ? '¿Puedo entregar mis cartas en persona?' : 'Can I drop off my cards in person?',
-      a: language === 'es'
-        ? 'Sí, organizamos "Pickup Events" regularmente y también contamos con puntos de entrega asociados. Revisa nuestra sección de Eventos para las próximas fechas.'
-        : 'Yes, we regularly host "Pickup Events" and have partnered drop-off locations. Check our Events section for upcoming dates.'
     }
   ];
 
@@ -75,11 +81,26 @@ export const FAQSection: React.FC = () => {
                   </div>
                 </button>
                 <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-60 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
                 >
-                  <p className="font-sans text-[#A4ACA1] text-sm leading-relaxed pr-8">
+                  <p className="font-sans text-[#A4ACA1] text-sm leading-relaxed pr-8 mb-4">
                     {faq.a}
                   </p>
+                  {faq.route && faq.linkText && (
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // This component doesn't take onNavigate currently, so we use window.location or we need to add onNavigate
+                        window.location.href = faq.route;
+                      }}
+                      className="mt-4 px-4 py-1.5 bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765] font-mono text-[9px] font-bold tracking-[0.15em] uppercase transition-all flex items-center gap-2 w-fit"
+                    >
+                      <span>{faq.linkText}</span>
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               </div>
             );

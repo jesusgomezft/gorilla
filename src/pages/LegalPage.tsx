@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface LegalPageProps {
-  type: 'terms' | 'privacy' | 'refund' | 'cookies' | 'cookie-consent';
+  type: 'terms' | 'privacy' | 'refund' | 'cookies' | 'cookie-consent' | 'legal-notice';
 }
 
 export const LegalPage: React.FC<LegalPageProps> = ({ type }) => {
@@ -118,6 +118,26 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type }) => {
           [ ] Advertising and Marketing Cookies
           
           By clicking "Accept All", you consent to the use of all cookies. By clicking "Save Preferences", you consent only to the use of the selected categories.
+        `
+      }
+    },
+    'legal-notice': {
+      es: {
+        title: 'Aviso Legal',
+        body: `
+          1. Identidad del Titular: Gorilla Grading Europe S.L., registrada en España y Portugal.
+          2. Propiedad Intelectual: Todo el contenido de este sitio web es propiedad exclusiva de Gorilla Grading.
+          3. Uso del Sitio Web: El usuario se compromete a utilizar el sitio web de conformidad con la ley y el presente Aviso Legal.
+          4. Exclusión de Responsabilidad: Gorilla Grading no se hace responsable de los daños derivados del uso de este sitio web.
+        `
+      },
+      en: {
+        title: 'Legal Notice',
+        body: `
+          1. Identity of the Owner: Gorilla Grading Europe S.L., registered in Spain and Portugal.
+          2. Intellectual Property: All content on this website is the exclusive property of Gorilla Grading.
+          3. Use of the Website: The user agrees to use the website in accordance with the law and this Legal Notice.
+          4. Exclusion of Liability: Gorilla Grading is not responsible for damages arising from the use of this website.
         `
       }
     }

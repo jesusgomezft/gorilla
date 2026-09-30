@@ -14,37 +14,43 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
       num: t('how.step1.num'),
       title: t('how.step1.title'),
       sub: t('how.step1.sub'),
-      tag: language === 'es' ? 'CÁMARA ACORAZADA' : 'SECURE VAULT'
+      tag: language === 'es' ? 'CÁMARA ACORAZADA' : 'SECURE VAULT',
+      img: '/images/step_1_vault.jpg'
     },
     {
       num: t('how.step2.num'),
       title: t('how.step2.title'),
       sub: t('how.step2.sub'),
-      tag: language === 'es' ? 'SALA LIMPIA ISO' : 'ISO CLEANROOM'
+      tag: language === 'es' ? 'SALA LIMPIA ISO' : 'ISO CLEANROOM',
+      img: '/images/step_2_cleanroom.jpg'
     },
     {
       num: t('how.step3.num'),
       title: t('how.step3.title'),
       sub: t('how.step3.sub'),
-      tag: language === 'es' ? 'ESPECTROMETRÍA' : 'SPECTROMETRY'
+      tag: language === 'es' ? 'ESPECTROMETRÍA' : 'SPECTROMETRY',
+      img: '/images/step_3_spectrometry.jpg'
     },
     {
       num: t('how.step4.num'),
       title: t('how.step4.title'),
       sub: t('how.step4.sub'),
-      tag: language === 'es' ? 'CALIBRE LÁSER' : 'LASER CALIPER'
+      tag: language === 'es' ? 'CALIBRE LÁSER' : 'LASER CALIPER',
+      img: '/images/macro_understand.jpg'
     },
     {
       num: t('how.step5.num'),
       title: t('how.step5.title'),
       sub: t('how.step5.sub'),
-      tag: language === 'es' ? 'CAMPO OSCURO 40X' : '40X DARKFIELD'
+      tag: language === 'es' ? 'CAMPO OSCURO 40X' : '40X DARKFIELD',
+      img: '/images/macro_authenticate.jpg'
     },
     {
       num: t('how.step6.num'),
       title: t('how.step6.title'),
       sub: t('how.step6.sub'),
-      tag: language === 'es' ? 'FUSIÓN 35 KHZ' : '35 KHZ FUSION'
+      tag: language === 'es' ? 'FUSIÓN 35 KHZ' : '35 KHZ FUSION',
+      img: '/images/macro_preserve.jpg'
     }
   ];
 
@@ -85,6 +91,46 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
                 <span>{language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}</span>
                 <span>→</span>
               </button>
+          </div>
+
+          {/* Interactive Image Display */}
+          <div className="mt-12 relative w-full aspect-[4/3] bg-[#14170F] border border-white/[0.04] overflow-hidden group">
+            {/* Tech UI Overlays */}
+            <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#48C765] z-20" />
+            <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#48C765] z-20" />
+            <div className="absolute bottom-4 left-4 font-mono text-[10px] font-bold text-[#48C765] tracking-widest z-20 uppercase">
+              {hoveredStep ? steps.find(s => s.num === hoveredStep)?.tag : steps[0].tag}
+            </div>
+
+            {steps.map((st) => {
+              const isActive = (hoveredStep === st.num) || (!hoveredStep && st.num === '01');
+              return (
+                <div
+                  key={`img-${st.num}`}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-black/40 z-10 mix-blend-overlay" />
+                  {st.img ? (
+                    <img
+                      src={st.img}
+                      alt={st.tag}
+                      className="w-full h-full object-cover opacity-80"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center opacity-30">
+                      <svg className="w-12 h-12 mb-4 text-[#48C765]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                      </svg>
+                      <span className="font-mono text-xs tracking-widest text-[#48C765] uppercase">
+                        {language === 'es' ? 'Datos visuales no disponibles' : 'Visual data unavailable'}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 

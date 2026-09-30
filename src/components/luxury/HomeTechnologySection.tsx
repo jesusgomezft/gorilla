@@ -9,7 +9,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full bg-[#454545] text-white py-20 lg:py-24 px-6 lg:px-12 border-b border-white/[0.06] overflow-hidden select-none">
+    <section className="relative w-full bg-[#383838] text-white py-20 lg:py-24 px-6 lg:px-12 border-b border-white/[0.06] overflow-hidden select-none">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-20">

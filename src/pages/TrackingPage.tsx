@@ -31,18 +31,19 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#454545] text-white flex flex-col pt-32 pb-32 px-6 lg:px-12 font-sans selection:bg-[#48C765] selection:text-[#14170F]">
+    <div className="w-full min-h-screen bg-[#454545] text-white flex flex-col font-sans selection:bg-[#48C765] selection:text-[#14170F]">
       
       {/* Editorial Search Section */}
-      <div className="w-full max-w-[1400px] mx-auto mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-white/10 pb-16">
-        <div className="flex flex-col max-w-2xl w-full">
-          <div className="flex items-center gap-3 text-[#48C765] font-mono text-[10px] tracking-[0.2em] uppercase mb-4">
-            <ScanLine className="w-4 h-4" />
-            <span>{language === 'es' ? 'Seguimiento de Custodia' : 'Chain of Custody Tracker'}</span>
-          </div>
-          <h1 className="font-['Oswald'] text-lg md:text-lg font-bold uppercase tracking-tight text-white mb-8">
-            {language === 'es' ? 'ESTADO EN TIEMPO REAL' : 'LIVE ORDER STATUS'}
-          </h1>
+      <section className="w-full bg-[#454545] pt-32 pb-16 px-6 lg:px-12 border-b border-white/[0.04]">
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-12">
+          <div className="flex flex-col max-w-2xl w-full">
+            <div className="flex items-center gap-3 text-[#48C765] font-mono text-[10px] tracking-[0.2em] uppercase mb-4">
+              <ScanLine className="w-4 h-4" />
+              <span>{language === 'es' ? 'Seguimiento de Custodia' : 'Chain of Custody Tracker'}</span>
+            </div>
+            <h1 className="font-['Oswald'] text-lg md:text-lg font-bold uppercase tracking-tight text-white mb-8">
+              {language === 'es' ? 'ESTADO EN TIEMPO REAL' : 'LIVE ORDER STATUS'}
+            </h1>
           
           <form onSubmit={handleSearch} className="relative w-full max-w-lg group">
             <input
@@ -82,12 +83,15 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate }) => {
           </button>
         </div>
       </div>
+      </section>
+
 
       {/* Results - Structural Layout */}
-      {activeOrder && (
-        <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
-          
-          {/* Left Column: Order Data */}
+      {activeOrder ? (
+        <section className="w-full flex-1 bg-[#383838] py-16 px-6 lg:px-12">
+          <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
+            
+            {/* Left Column: Order Data */}
           <div className="lg:col-span-4 flex flex-col gap-12 lg:sticky lg:top-32">
             
             <div className="flex flex-col pb-12 border-b border-white/10">
@@ -195,7 +199,10 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate }) => {
               })}
             </div>
           </div>
-        </div>
+          </div>
+        </section>
+      ) : (
+        <div className="flex-1 bg-[#383838]" />
       )}
     </div>
   );

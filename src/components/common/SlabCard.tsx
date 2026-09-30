@@ -50,9 +50,9 @@ export const SlabCard: React.FC<SlabCardProps> = ({
   };
 
   const scaleClasses = {
-    sm: 'w-64 max-w-full',
-    md: 'w-80 sm:w-[370px] max-w-full',
-    lg: 'w-96 sm:w-[420px] max-w-full'
+    sm: 'w-72 max-w-full',
+    md: 'w-[360px] sm:w-[420px] max-w-full',
+    lg: 'w-[400px] sm:w-[480px] max-w-full'
   };
 
   const isPristine = card.grade === 10;
@@ -83,73 +83,63 @@ export const SlabCard: React.FC<SlabCardProps> = ({
           }}
         />
 
-        {/* TOP SLAB METALLIC / HOLOGRAPHIC HEADER */}
-        <div className={`relative mb-3.5 rounded-none p-3 sm:p-3.5 border shadow-xl overflow-hidden transition-colors ${
-          isPristine
-            ? 'bg-gradient-to-r from-[#062419] via-[#09151F] to-[#062419] border-[#00DF81]/60 text-white'
-            : isGold
-            ? 'bg-gradient-to-r from-[#141210] via-[#1F1B16] to-[#141210] border-amber-500/50 text-white'
-            : 'bg-[#0B1017] border-white/20 text-white'
-        }`}>
-          
-          {/* Metallic Micro-texture background */}
-          <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
+        {/* TOP SLAB WHITE LABEL */}
+        <div className="relative mb-3.5 p-3 border shadow-sm bg-white text-black font-sans flex flex-col justify-between" style={{ minHeight: '90px' }}>
+          {/* Subtle noise texture */}
+          <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] pointer-events-none" />
 
-          <div className="flex items-start justify-between gap-3 relative z-10">
-            {/* Card Information */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5 mb-1">
-                <span className="px-2 py-0.5 rounded bg-[#00DF81]/20 text-[#00DF81] font-mono text-[9px] font-bold border border-[#00DF81]/40 tracking-wider">
-                  GORILLA SONIC SLAB
-                </span>
-                <span className="text-[10px] text-slate-400 font-mono">
-                  #{card.certNumber}
-                </span>
+          {!isFlipped ? (
+            /* FRONT LABEL */
+            <div className="flex justify-between items-stretch relative z-10 w-full h-full">
+              {/* Left Column */}
+              <div className="flex flex-col justify-between items-start">
+                <div className="flex items-center gap-1 font-black text-xl leading-none tracking-tighter">
+                   <ShieldCheck className="w-5 h-5 text-black" fill="black" stroke="white" />
+                   GGI
+                </div>
+                <div className="text-[42px] font-black leading-[0.8] mt-2 mb-1 tracking-tighter">
+                  {card.grade === 10 ? '10' : card.grade.toFixed(1)}
+                </div>
+                <div className="text-[10px] tracking-tight font-medium uppercase text-black/80">
+                  {card.certNumber}
+                </div>
               </div>
-              <h3 className="font-display font-extrabold text-xs sm:text-sm leading-snug truncate text-white tracking-tight">
-                {card.name}
-              </h3>
-              <p className="text-[11px] text-slate-300 truncate font-sans">
-                {card.year} • {card.set} • #{card.cardNumber}
-              </p>
-              <p className="text-[10px] text-slate-400 font-mono">
-                {card.game} | {card.language} | {card.rarity}
-              </p>
-            </div>
 
-            {/* Big Grade Box */}
-            <div className="shrink-0 flex flex-col items-center justify-center px-3.5 py-1.5 rounded-none bg-[#07090C]/90 border border-[#00DF81]/60 shadow-[inset_0_0_12px_rgba(0,0,0,0.8)]">
-              <div className="text-[9px] font-mono uppercase tracking-widest text-[#00DF81] font-bold">
-                {card.gradeLabel.split(' ')[0]}
+              {/* Right Column */}
+              <div className="flex flex-col justify-between items-end text-right w-2/3">
+                <div className="flex flex-col items-end leading-[1.15] w-full">
+                  <div className="text-[11px] font-bold uppercase truncate w-full">{card.year} {card.game}</div>
+                  <div className="text-[10px] uppercase text-black/90 truncate w-full">{card.language} / {card.rarity}</div>
+                  <div className="text-[12px] font-black uppercase mt-1 truncate w-full">{card.name}</div>
+                </div>
+                
+                {/* Subgrades Grid */}
+                <div className="grid grid-cols-2 gap-x-3 gap-y-0 text-[9px] uppercase font-semibold mt-3 text-right">
+                  <div>CENTERING {card.subgrades.centering.score.toFixed(1)}</div>
+                  <div>CORNERS {card.subgrades.corners.score.toFixed(1)}</div>
+                  <div>EDGES {card.subgrades.edges.score.toFixed(1)}</div>
+                  <div>SURFACE {card.subgrades.surface.score.toFixed(1)}</div>
+                </div>
               </div>
-              <div className="text-lg sm:text-lg font-display font-black text-white tracking-tighter leading-none my-0.5">
-                {card.grade.toFixed(1)}
+            </div>
+          ) : (
+            /* BACK LABEL */
+            <div className="flex justify-between items-center relative z-10 w-full h-full px-1">
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="w-12 h-12 text-black" fill="black" stroke="white" />
+                <div className="flex flex-col leading-none">
+                  <span className="font-black text-xl tracking-tighter">GORILA GRADING</span>
+                  <span className="text-[11px] tracking-widest font-medium mt-1">International</span>
+                </div>
               </div>
-              <div className="text-[8px] font-mono text-slate-400 tracking-wider">
-                MAX 10.0
+              <div className="w-14 h-14 bg-white border-2 border-black rounded-md p-1 flex items-center justify-center relative">
+                 <QrCode className="w-full h-full text-black" />
+                 <div className="absolute inset-0 m-auto w-4 h-4 bg-white flex items-center justify-center">
+                   <ShieldCheck className="w-3.5 h-3.5 text-black" fill="black" stroke="white" />
+                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Subgrades 4-Quadrant Row */}
-          <div className="mt-3 pt-2.5 border-t border-white/10 grid grid-cols-4 gap-1 text-center font-mono relative z-10">
-            <div className="bg-[#454545]/40 py-1 rounded-none px-1 border border-white/5">
-              <div className="text-[8px] text-slate-400 uppercase tracking-wider">{t('verify.subCentering')}</div>
-              <div className="text-xs font-bold text-[#00DF81]">{card.subgrades.centering.score.toFixed(1)}</div>
-            </div>
-            <div className="bg-[#454545]/40 py-1 rounded-none px-1 border border-white/5">
-              <div className="text-[8px] text-slate-400 uppercase tracking-wider">{t('verify.subCorners')}</div>
-              <div className="text-xs font-bold text-[#00DF81]">{card.subgrades.corners.score.toFixed(1)}</div>
-            </div>
-            <div className="bg-[#454545]/40 py-1 rounded-none px-1 border border-white/5">
-              <div className="text-[8px] text-slate-400 uppercase tracking-wider">{t('verify.subEdges')}</div>
-              <div className="text-xs font-bold text-[#00DF81]">{card.subgrades.edges.score.toFixed(1)}</div>
-            </div>
-            <div className="bg-[#454545]/40 py-1 rounded-none px-1 border border-white/5">
-              <div className="text-[8px] text-slate-400 uppercase tracking-wider">{t('verify.subSurface')}</div>
-              <div className="text-xs font-bold text-[#00DF81]">{card.subgrades.surface.score.toFixed(1)}</div>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* CARD PROTAGONIST RECESSED CRADLE */}

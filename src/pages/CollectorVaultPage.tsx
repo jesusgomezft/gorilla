@@ -10,8 +10,9 @@ interface CollectorVaultPageProps {
 
 export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'overview' | 'submissions' | 'vault'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'submissions' | 'vault' | 'invoices'>('overview');
   const [filterGame, setFilterGame] = useState('ALL');
+  const [showInvoiceModal, setShowInvoiceModal] = useState<string | null>(null);
 
   const userCards = MOCK_GRADED_CARDS;
   const activeOrder = MOCK_ORDERS[0];
@@ -26,16 +27,17 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
   // TABS
   const tabs = [
     { id: 'overview', label: language === 'es' ? 'RESUMEN' : 'OVERVIEW' },
-    { id: 'submissions', label: language === 'es' ? 'ENVÍOS' : 'SUBMISSIONS' },
-    { id: 'vault', label: language === 'es' ? 'MI BÓVEDA' : 'MY VAULT' },
+    { id: 'submissions', label: language === 'es' ? 'PEDIDOS' : 'ORDERS' },
+    { id: 'vault', label: language === 'es' ? 'CARTAS GRADUADAS' : 'GRADED CARDS' },
+    { id: 'invoices', label: language === 'es' ? 'FACTURAS' : 'INVOICES' },
   ];
 
   return (
-    <div className="min-h-screen bg-[#454545] text-white selection:bg-[#48C765] selection:text-white pt-24 pb-20 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-[#14170F] text-white selection:bg-[#48C765] selection:text-white pt-24 pb-20 relative overflow-hidden flex flex-col">
       
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#48C765]/[0.03] blur-[150px] pointer-events-none rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-black/20 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-white/[0.02] blur-[150px] pointer-events-none" />
 
       {/* Main Container */}
       <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-12 relative z-10 flex-1 flex flex-col lg:flex-row gap-12">
@@ -44,13 +46,13 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
         <aside className="lg:w-[320px] shrink-0 flex flex-col gap-8">
           
           {/* Profile Card */}
-          <div className="bg-black/20 border border-white/5 p-6 relative overflow-hidden group">
+          <div className="bg-white/[0.02] border border-white/[0.05] p-6 relative overflow-hidden group">
             <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
             {/* Accent Line */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#48C765] to-transparent opacity-70" />
             
             <div className="flex items-center gap-5 mb-8">
-              <div className="w-16 h-16 bg-[#2A2A2A] border border-white/10 flex items-center justify-center relative">
+              <div className="w-16 h-16 bg-[#2A2A2A] border border-white/[0.05] flex items-center justify-center relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#48C765]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <span className="font-['Oswald'] text-2xl text-white tracking-widest relative z-10">CM</span>
               </div>
@@ -105,7 +107,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center justify-between p-4 border transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] ${
                   activeTab === tab.id 
-                    ? 'bg-white/[0.05] border-[#48C765]/30 text-white' 
+                    ? 'bg-white/[0.02] border-[#48C765]/30 text-white' 
                     : 'bg-transparent border-transparent text-[#A4ACA1] hover:text-white hover:bg-white/[0.02]'
                 }`}
               >
@@ -125,106 +127,165 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
           
           {/* TAB: OVERVIEW */}
           {activeTab === 'overview' && (
-            <div className="space-y-12 animate-in fade-in duration-700">
+            <div className="space-y-8 animate-in fade-in duration-700">
               
-              {/* Header */}
-              <div>
-                <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
-                  {language === 'es' ? 'Panel de Control' : 'Dashboard Overview'}
-                </h2>
-                <p className="font-sans text-xs sm:text-sm text-[#A4ACA1]">
-                  {language === 'es' ? 'Métricas de tu colección certificada.' : 'Metrics for your certified collection.'}
-                </p>
-              </div>
-
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Premium Greeting Banner */}
+              <div className="relative overflow-hidden bg-black/40 border border-white/[0.05] p-8 sm:p-10 shadow-2xl group">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#48C765]/10 to-transparent opacity-50 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay" />
+                <div className="absolute top-0 right-0 w-64 h-full bg-gradient-to-l from-black/80 to-transparent z-0" />
                 
-                {/* Value Card */}
-                <div className="bg-black/20 border border-white/5 p-6 md:p-8 relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 pointer-events-none mix-blend-overlay z-0" />
-                  
-                  <div className="absolute top-0 right-0 h-full w-[2px] bg-gradient-to-b from-[#48C765]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  
-                  <p className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.3em] mb-4 relative z-10 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#48C765]/50 rounded-sm"></span>
-                    {language === 'es' ? 'Valor Total Estimado' : 'Total Portfolio Value'}
-                  </p>
-                  <div className="flex items-baseline gap-1 relative z-10">
-                    <span className="font-mono text-xl text-[#48C765]">€</span>
-                    <span className="font-['Oswald'] text-4xl sm:text-5xl text-white">{totalVaultValue.toLocaleString()}</span>
+                <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                  <div>
+                    <div className="mb-4">
+                      <span className="font-sans font-bold text-[10px] text-[#48C765] uppercase tracking-[0.3em]">
+                        {language === 'es' ? 'SISTEMA ONLINE' : 'SYSTEM ONLINE'}
+                      </span>
+                    </div>
+                    <h2 className="font-['Oswald'] text-3xl sm:text-4xl text-white uppercase tracking-wide leading-none mb-2">
+                      {language === 'es' ? 'Bienvenido,' : 'Welcome,'} <span className="text-[#A4ACA1]">Carlos</span>
+                    </h2>
+                    <p className="font-sans text-sm text-[#A4ACA1] max-w-md">
+                      {language === 'es' 
+                        ? 'Tu bóveda digital está segura. Tienes 1 envío en proceso de autenticación óptica de alta precisión.' 
+                        : 'Your digital vault is secure. You have 1 submission undergoing high-precision optical authentication.'}
+                    </p>
                   </div>
                 </div>
-
-                {/* Cards Card */}
-                <div className="bg-black/20 border border-white/5 p-6 md:p-8 relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 pointer-events-none mix-blend-overlay z-0" />
-                  
-                  <div className="absolute top-0 right-0 h-full w-[2px] bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                  <p className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.3em] mb-4 relative z-10 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-white/30 rounded-sm"></span>
-                    {language === 'es' ? 'Cartas Certificadas' : 'Certified Slabs'}
-                  </p>
-                  <div className="flex items-baseline gap-3 relative z-10">
-                    <span className="font-['Oswald'] text-4xl sm:text-5xl text-white">{userCards.length}</span>
-                    <span className="font-mono text-[10px] text-[#A4ACA1] tracking-[0.3em]">{language === 'es' ? 'UNIDADES' : 'UNITS'}</span>
-                  </div>
-                </div>
-
               </div>
 
-              {/* Active Order Highlight */}
-              {activeOrder && (
-                <div className="bg-black/30 border border-white/5 relative overflow-hidden group flex flex-col sm:flex-row">
-                  {/* Left Accent Bar */}
-                  <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#48C765] to-[#48C765]/10" />
-                  
-                  {/* Noise Texture */}
-                  <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 pointer-events-none mix-blend-overlay z-0" />
-                  
-                  {/* Content Left (Info) */}
-                  <div className="p-6 md:p-8 relative z-10 flex-1 border-b sm:border-b-0 sm:border-r border-white/5">
-                    <div className="flex items-center gap-4 mb-4">
-                      {/* Tech indicator instead of blinking circle */}
-                      <div className="flex gap-[2px] h-3 items-end text-[#48C765]">
-                        <div className="w-[1px] h-[60%] bg-current"></div>
-                        <div className="w-[2px] h-[100%] bg-current"></div>
-                        <div className="w-[1px] h-[40%] bg-current"></div>
-                      </div>
-                      <span className="font-mono text-[9px] text-[#48C765] uppercase tracking-[0.3em] font-bold">
-                        {language === 'es' ? 'Envío Activo' : 'Active Submission'}
-                      </span>
-                    </div>
-                    
-                    <h3 className="font-['Oswald'] text-2xl sm:text-3xl text-white tracking-wide uppercase mb-1 leading-none">
-                      {activeOrder.items.length} {language === 'es' ? 'Cartas en Proceso' : 'Cards in Progress'}
-                    </h3>
-                    
-                    <div className="flex items-center gap-3 mt-4">
-                      <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-[0.2em] bg-white/5 px-2 py-1">
-                        ID: {activeOrder.id}
-                      </span>
-                      <span className="font-mono text-[10px] text-white uppercase tracking-[0.2em] bg-[#48C765]/10 border border-[#48C765]/20 px-2 py-1">
-                        {activeOrder.status.replace('_', ' ')}
-                      </span>
-                    </div>
+              {/* Stats Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {/* Stat 1 */}
+                <div className="bg-white/[0.02] border border-white/[0.05] p-6 flex flex-col justify-between relative overflow-hidden group/stat">
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#48C765]/0 group-hover/stat:border-[#48C765]/50 transition-colors duration-500" />
+                  <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4">
+                    {language === 'es' ? 'Cartas Certificadas' : 'Certified Slabs'}
+                  </span>
+                  <div className="flex items-end gap-2">
+                    <span className="font-['Oswald'] text-4xl text-white leading-none">{userCards.length}</span>
+                    <span className="font-mono text-[10px] text-[#48C765] mb-1">TOTAL</span>
                   </div>
+                </div>
 
-                  {/* Content Right (Action) */}
-                  <div className="p-6 md:p-8 relative z-10 sm:w-[30%] flex items-center justify-center bg-white/[0.01]">
+                {/* Stat 2 */}
+                <div className="bg-white/[0.02] border border-white/[0.05] p-6 flex flex-col justify-between relative overflow-hidden group/stat">
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/0 group-hover/stat:border-white/[0.05] transition-colors duration-500" />
+                  <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4">
+                    {language === 'es' ? 'Pedidos Históricos' : 'Historical Orders'}
+                  </span>
+                  <div className="flex items-end gap-2">
+                    <span className="font-['Oswald'] text-4xl text-white leading-none">{MOCK_ORDERS.length}</span>
+                    <span className="font-mono text-[10px] text-[#A4ACA1] mb-1">ORDERS</span>
+                  </div>
+                </div>
+
+                {/* Stat 3 */}
+                <div className="bg-[#48C765]/5 border border-[#48C765]/20 p-6 flex flex-col justify-between relative overflow-hidden group/stat">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#48C765]/10 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500" />
+                  <span className="font-mono text-[9px] text-[#48C765] uppercase tracking-[0.2em] mb-4">
+                    {language === 'es' ? 'Rango Coleccionista' : 'Collector Rank'}
+                  </span>
+                  <div className="flex items-end gap-2 relative z-10">
+                    <span className="font-['Oswald'] text-2xl text-white leading-none mt-2">VIP ELITE</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Active Order Tracker */}
+              {activeOrder && (
+                <div className="bg-white/[0.02] border border-white/[0.05] p-6 md:p-8 relative">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="px-2 py-1 bg-[#48C765]/20 border border-[#48C765]/30 text-[#48C765] font-mono text-[9px] uppercase tracking-widest">
+                          {language === 'es' ? 'EN PROCESO' : 'IN PROGRESS'}
+                        </span>
+                        <span className="font-mono text-xs text-[#A4ACA1]">ID: {activeOrder.id}</span>
+                      </div>
+                      <h3 className="font-['Oswald'] text-2xl text-white uppercase tracking-wide">
+                        {activeOrder.items.length} {language === 'es' ? 'Cartas' : 'Cards'} - Optical Grading
+                      </h3>
+                    </div>
                     <button
                       onClick={() => onNavigate('/track')}
-                      className="w-full relative z-10 bg-transparent border border-white/10 hover:border-[#48C765] text-[#A4ACA1] hover:text-[#48C765] px-6 py-4 font-mono text-[10px] uppercase tracking-[0.3em] transition-colors flex items-center justify-center gap-3 group/btn"
+                      className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-2 transition-colors"
                     >
-                      <span>{language === 'es' ? 'Seguimiento' : 'Live Tracking'}</span>
-                      <svg className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
+                      {language === 'es' ? 'Rastreo en Vivo' : 'Live Tracking'}
+                      <span>→</span>
                     </button>
+                  </div>
+
+                  {/* Progress Bar UI */}
+                  <div className="relative pt-8 pb-4">
+                    {/* Background Track */}
+                    <div className="absolute top-1/2 left-0 w-full h-[2px] bg-white/10 -translate-y-1/2" />
+                    {/* Active Track */}
+                    <div className="absolute top-1/2 left-0 w-[60%] h-[2px] bg-[#48C765] -translate-y-1/2 shadow-[0_0_10px_#48C765]" />
+                    
+                    {/* Steps */}
+                    <div className="relative z-10 flex justify-between items-center px-1">
+                      {['RECEIVED', 'CLEANROOM', 'SPECTROMETRY', 'GRADING', 'ENCAPSULATION'].map((step, idx) => {
+                        const isActive = idx < 3; // Mock current step
+                        const isCurrent = idx === 2;
+                        return (
+                          <div key={step} className="flex flex-col items-center gap-3 group/step relative">
+                            <div className={`w-3 h-3 rotate-45 border transition-all duration-300 ${
+                              isCurrent ? 'bg-[#48C765] border-[#48C765] shadow-[0_0_15px_#48C765] scale-150' 
+                              : isActive ? 'bg-[#48C765] border-[#48C765]' 
+                              : 'bg-[#454545] border-white/[0.05]'
+                            }`} />
+                            <span className={`absolute top-6 font-mono text-[8px] uppercase tracking-widest whitespace-nowrap ${
+                              isCurrent ? 'text-[#48C765] font-bold' 
+                              : isActive ? 'text-white' 
+                              : 'text-[#A4ACA1]'
+                            }`}>
+                              {step}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               )}
+
+              {/* Showcase / Highlight */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="bg-[url('/images/step_3_spectrometry.jpg')] bg-cover bg-center border border-white/[0.05] relative overflow-hidden group min-h-[250px]">
+                  <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="font-mono text-[9px] text-[#48C765] uppercase tracking-widest mb-2 block">
+                      {language === 'es' ? 'Descubre la Tecnología' : 'Discover the Tech'}
+                    </span>
+                    <h3 className="font-['Oswald'] text-2xl text-white uppercase tracking-wide mb-4">
+                      {language === 'es' ? 'Espectrometría en Detalle' : 'Spectrometry in Detail'}
+                    </h3>
+                    <button onClick={() => onNavigate('/technology')} className="text-white hover:text-[#48C765] font-mono text-[9px] uppercase tracking-widest flex items-center gap-2 transition-colors w-fit border-b border-white/[0.05] hover:border-[#48C765] pb-1">
+                      {language === 'es' ? 'Leer Más' : 'Read More'} <span>→</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="bg-[url('/images/preservar.png')] bg-cover bg-center border border-white/[0.05] relative overflow-hidden group min-h-[250px]">
+                  <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="font-mono text-[9px] text-white/50 uppercase tracking-widest mb-2 block">
+                      {language === 'es' ? 'Tu Colección' : 'Your Collection'}
+                    </span>
+                    <h3 className="font-['Oswald'] text-2xl text-white uppercase tracking-wide mb-4">
+                      {language === 'es' ? 'Ver Cartas Graduadas' : 'View Graded Cards'}
+                    </h3>
+                    <button onClick={() => setActiveTab('vault')} className="text-white hover:text-[#48C765] font-mono text-[9px] uppercase tracking-widest flex items-center gap-2 transition-colors w-fit border-b border-white/[0.05] hover:border-[#48C765] pb-1">
+                      {language === 'es' ? 'Ir a la Bóveda' : 'Go to Vault'} <span>→</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
 
             </div>
           )}
@@ -263,7 +324,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                           <span className={`inline-flex items-center px-2 py-1 font-mono text-[9px] uppercase tracking-widest border ${
                             idx === 0 
                               ? 'border-[#48C765]/30 text-[#48C765] bg-[#48C765]/10' 
-                              : 'border-white/20 text-[#A4ACA1] bg-white/5'
+                              : 'border-white/[0.05] text-[#A4ACA1] bg-white/5'
                           }`}>
                             {order.status.replace('_', ' ')}
                           </span>
@@ -302,7 +363,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 border border-white/[0.1] p-1 bg-white/[0.02]">
+                <div className="flex items-center gap-2 border border-white/[0.05] p-1 bg-white/[0.02]">
                   {['ALL', 'POKEMON', 'MAGIC'].map(game => (
                     <button
                       key={game}
@@ -338,7 +399,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                       </div>
                       <button
                         onClick={() => onNavigate('/certificates/demo')}
-                        className="w-8 h-8 flex items-center justify-center border border-white/20 text-[#A4ACA1] hover:border-[#48C765] hover:text-[#48C765] rounded-full transition-colors"
+                        className="w-8 h-8 flex items-center justify-center border border-white/[0.05] text-[#A4ACA1] hover:border-[#48C765] hover:text-[#48C765] rounded-full transition-colors"
                       >
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -352,9 +413,207 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             </div>
           )}
 
+          {/* TAB: INVOICES */}
+          {activeTab === 'invoices' && (
+            <div className="space-y-12 animate-in fade-in duration-700">
+              <div>
+                <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
+                  {language === 'es' ? 'Facturación' : 'Billing & Invoices'}
+                </h2>
+                <p className="font-sans text-xs sm:text-sm text-[#A4ACA1]">
+                  {language === 'es' ? 'Historial de facturas asociadas a tus pedidos.' : 'History of invoices associated with your orders.'}
+                </p>
+              </div>
+
+              <div className="bg-white/[0.02] border border-white/[0.05] overflow-hidden">
+                <table className="w-full text-left font-sans text-sm">
+                  <thead>
+                    <tr className="border-b border-white/[0.05] bg-white/[0.01]">
+                      <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
+                        {language === 'es' ? 'Nº Factura' : 'Invoice ID'}
+                      </th>
+                      <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
+                        {language === 'es' ? 'Fecha' : 'Date'}
+                      </th>
+                      <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
+                        {language === 'es' ? 'Pedido Asociado' : 'Order Ref'}
+                      </th>
+                      <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
+                        {language === 'es' ? 'Total' : 'Amount'}
+                      </th>
+                      <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
+                        {language === 'es' ? 'Estado' : 'Status'}
+                      </th>
+                      <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
+                        {language === 'es' ? 'Acción' : 'Action'}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/[0.05]">
+                    <tr className="hover:bg-white/[0.02] transition-colors group">
+                      <td className="px-6 py-5 font-mono text-white text-xs">INV-2026-0892</td>
+                      <td className="px-6 py-5 text-[#A4ACA1]">Sep 15, 2026</td>
+                      <td className="px-6 py-5 font-mono text-[#A4ACA1] text-xs">GG-ORD-88219</td>
+                      <td className="px-6 py-5 text-white font-['Oswald'] tracking-wide">€45.00</td>
+                      <td className="px-6 py-5">
+                        <span className="inline-flex items-center px-2 py-1 font-mono text-[9px] uppercase tracking-widest border border-[#48C765]/30 text-[#48C765] bg-[#48C765]/10">
+                          {language === 'es' ? 'PAGADO' : 'PAID'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-5">
+                        <div className="flex items-center gap-4">
+                          <button 
+                            onClick={() => setShowInvoiceModal('INV-2026-0892')}
+                            className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1 opacity-70 group-hover:opacity-100 transition-opacity"
+                          >
+                            <span>{language === 'es' ? 'Ver' : 'View'}</span>
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                          </button>
+                          <button className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                            <span>{language === 'es' ? 'Descargar' : 'Download'}</span>
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-white/[0.02] transition-colors group">
+                      <td className="px-6 py-5 font-mono text-white text-xs">INV-2026-0741</td>
+                      <td className="px-6 py-5 text-[#A4ACA1]">Aug 02, 2026</td>
+                      <td className="px-6 py-5 font-mono text-[#A4ACA1] text-xs">GG-ORD-88102</td>
+                      <td className="px-6 py-5 text-white font-['Oswald'] tracking-wide">€120.00</td>
+                      <td className="px-6 py-5">
+                        <span className="inline-flex items-center px-2 py-1 font-mono text-[9px] uppercase tracking-widest border border-[#48C765]/30 text-[#48C765] bg-[#48C765]/10">
+                          {language === 'es' ? 'PAGADO' : 'PAID'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-5">
+                        <div className="flex items-center gap-4">
+                          <button 
+                            onClick={() => setShowInvoiceModal('INV-2026-0741')}
+                            className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1 opacity-70 group-hover:opacity-100 transition-opacity"
+                          >
+                            <span>{language === 'es' ? 'Ver' : 'View'}</span>
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                          </button>
+                          <button className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                            <span>{language === 'es' ? 'Descargar' : 'Download'}</span>
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
         </div>
 
       </div>
+      {/* Invoice Modal */}
+      {showInvoiceModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-[#14170F]/90 backdrop-blur-sm" onClick={() => setShowInvoiceModal(null)} />
+          <div className="relative bg-[#2B302B] border border-white/[0.05] shadow-2xl w-full max-w-3xl flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-white/[0.05]">
+              <div>
+                <h3 className="font-['Oswald'] text-2xl uppercase tracking-wide">
+                  {language === 'es' ? 'FACTURA' : 'INVOICE'} <span className="text-[#48C765]">{showInvoiceModal}</span>
+                </h3>
+                <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mt-1">
+                  Gorilla Grading Europe S.L.
+                </p>
+              </div>
+              <button onClick={() => setShowInvoiceModal(null)} className="p-2 hover:bg-white/[0.05] transition-colors rounded-full text-[#A4ACA1] hover:text-white">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div className="p-6 md:p-8 overflow-y-auto">
+              <div className="flex flex-col md:flex-row justify-between mb-12 gap-8">
+                <div>
+                  <h4 className="font-sans text-[10px] font-bold text-[#A4ACA1] uppercase tracking-widest mb-2">{language === 'es' ? 'FACTURAR A:' : 'BILLED TO:'}</h4>
+                  <p className="text-sm">Miguel García</p>
+                  <p className="text-sm text-[#A4ACA1]">Calle Principal 123</p>
+                  <p className="text-sm text-[#A4ACA1]">28001 Madrid, España</p>
+                </div>
+                <div className="md:text-right">
+                  <h4 className="font-sans text-[10px] font-bold text-[#A4ACA1] uppercase tracking-widest mb-2">{language === 'es' ? 'DETALLES:' : 'DETAILS:'}</h4>
+                  <p className="text-sm"><span className="text-[#A4ACA1]">{language === 'es' ? 'Fecha:' : 'Date:'}</span> Sep 15, 2026</p>
+                  <p className="text-sm"><span className="text-[#A4ACA1]">{language === 'es' ? 'Pedido:' : 'Order:'}</span> GG-ORD-88219</p>
+                  <p className="text-sm"><span className="text-[#A4ACA1]">{language === 'es' ? 'Estado:' : 'Status:'}</span> <span className="text-[#48C765]">{language === 'es' ? 'PAGADO' : 'PAID'}</span></p>
+                </div>
+              </div>
+
+              <div className="border border-white/[0.05] rounded-none overflow-hidden mb-8">
+                <table className="w-full text-left font-sans text-sm">
+                  <thead className="bg-white/[0.02] border-b border-white/[0.05]">
+                    <tr>
+                      <th className="px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">{language === 'es' ? 'Descripción' : 'Description'}</th>
+                      <th className="px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal text-center">{language === 'es' ? 'Cant.' : 'Qty'}</th>
+                      <th className="px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal text-right">{language === 'es' ? 'Precio' : 'Price'}</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/[0.05]">
+                    <tr>
+                      <td className="px-4 py-4">Standard Grading Service (15 Days)</td>
+                      <td className="px-4 py-4 text-center text-[#A4ACA1]">1</td>
+                      <td className="px-4 py-4 text-right">€30.00</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-4">Sub-Grades Addon</td>
+                      <td className="px-4 py-4 text-center text-[#A4ACA1]">1</td>
+                      <td className="px-4 py-4 text-right">€5.00</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-4">Insured Return Shipping (EU)</td>
+                      <td className="px-4 py-4 text-center text-[#A4ACA1]">1</td>
+                      <td className="px-4 py-4 text-right">€10.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="flex justify-end">
+                <div className="w-full max-w-[250px]">
+                  <div className="flex justify-between py-2 border-b border-white/[0.05] text-sm text-[#A4ACA1]">
+                    <span>Subtotal</span>
+                    <span>€45.00</span>
+                  </div>
+                  <div className="flex justify-between py-2 border-b border-white/[0.05] text-sm text-[#A4ACA1]">
+                    <span>IVA (21%)</span>
+                    <span>€0.00</span>
+                  </div>
+                  <div className="flex justify-between py-4 text-lg font-['Oswald'] tracking-wide text-white">
+                    <span>Total</span>
+                    <span className="text-[#48C765]">€45.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-6 border-t border-white/[0.05] bg-white/[0.01] flex justify-end">
+              <button 
+                onClick={() => setShowInvoiceModal(null)}
+                className="px-6 py-2.5 border border-white/[0.1] hover:bg-white/[0.05] text-white font-mono text-[10px] uppercase tracking-widest transition-colors mr-4"
+              >
+                {language === 'es' ? 'Cerrar' : 'Close'}
+              </button>
+              <button className="px-6 py-2.5 bg-[#48C765] hover:bg-[#38B554] text-[#14170F] font-mono text-[10px] font-bold tracking-widest uppercase transition-colors flex items-center gap-2">
+                <span>{language === 'es' ? 'Descargar PDF' : 'Download PDF'}</span>
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
