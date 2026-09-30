@@ -26,13 +26,13 @@ export const CompanyStorySection: React.FC = () => {
           <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-6xl uppercase tracking-wide leading-tight mb-8">
             {language === 'es' ? 'REDEFINIENDO EL ESTÁNDAR ' : 'REDEFINING THE STANDARD '}
             <br/>
-            <span className="text-[#48C765]">EN EUROPA</span>
+            <span className="text-[#48C765]">{language === 'es' ? 'A NIVEL MUNDIAL' : 'GLOBALLY'}</span>
           </h1>
           
           <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-2xl leading-relaxed">
             {language === 'es' 
-              ? 'Nacimos de la frustración de coleccionistas europeos cansados de enviar sus tesoros al otro lado del Atlántico. Gorilla Grading surge para ofrecer precisión óptica, velocidad y total transparencia sin fronteras.' 
-              : 'Born from the frustration of European collectors tired of shipping their treasures across the Atlantic. Gorilla Grading emerged to offer optical precision, speed, and total transparency without borders.'}
+              ? 'Nacimos de la frustración de coleccionistas de todo el mundo cansados de servicios lentos y subjetivos. Gorilla Grading surge para ofrecer precisión óptica, velocidad y total transparencia a escala internacional.' 
+              : 'Born from the frustration of collectors worldwide tired of slow and subjective services. Gorilla Grading emerged to offer optical precision, speed, and total transparency on an international scale.'}
           </p>
         </div>
 
@@ -47,12 +47,12 @@ export const CompanyStorySection: React.FC = () => {
               </svg>
             </div>
             <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white mb-4">
-              {language === 'es' ? 'RAÍCES EUROPEAS' : 'EUROPEAN ROOTS'}
+              {language === 'es' ? 'ALCANCE GLOBAL' : 'GLOBAL REACH'}
             </h3>
             <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed">
               {language === 'es' 
-                ? 'Con laboratorios gemelos en Madrid y Lisboa, eliminamos por fin el estrés de las aduanas, los aranceles sorpresa y los plazos de meses.' 
-                : 'With twin laboratories in Madrid and Lisbon, we finally eliminate the stress of customs, surprise tariffs, and months-long wait times.'}
+                ? 'Con laboratorios y logística optimizada, ofrecemos un servicio de graduación rápido y seguro para coleccionistas sin importar de dónde vengan, eliminando los tiempos de espera absurdos.' 
+                : 'With optimized laboratories and logistics, we offer a fast and secure grading service for collectors no matter where they are from, eliminating absurd wait times.'}
             </p>
           </div>
 

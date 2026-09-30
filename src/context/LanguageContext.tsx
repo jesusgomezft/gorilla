@@ -27,7 +27,7 @@ export const translations = {
     'ref.hero.desc': 'Impulsado por tecnología avanzada y expertos.',
     'ref.hero.ctaPrimary': 'Iniciar Solicitud',
     'ref.hero.ctaSecondary': 'Ver Nuestra Tecnología',
-    'ref.hero.trustedBy': 'Coleccionistas en toda Europa',
+    'ref.hero.trustedBy': 'Coleccionistas en todo el mundo',
     'ref.hero.rating': '4.9/5',
     'ref.hero.ratingSub': 'Envíos de prototipo verificados',
     'ref.hero.categories': 'TCG  //  SPORTS  //  COLECCIONABLES',
@@ -67,17 +67,17 @@ export const translations = {
     'ref.pillar2.desc': 'Espectrometría óptica y análisis de roseta a 1200 DPI. Validación de tintas químicas y fluorescencia UV a 365 nm para detección inequívoca de alteraciones o reproducciones.',
     'ref.pillar2.cta': 'VERIFICAR CRITERIOS',
     'ref.pillar3.title': 'COMPRENDER',
-    'ref.pillar3.desc': 'Telemetría láser submilimétrica a 0.01 mm y 4 sub-grados en décimas (Centrado, Esquinas, Bordes, Superficie), con trazabilidad criptográfica inmutable en registro europeo.',
+    'ref.pillar3.desc': 'Telemetría láser submilimétrica a 0.01 mm y 4 sub-grados en décimas (Centrado, Esquinas, Bordes, Superficie), con trazabilidad criptográfica inmutable en registro global.',
     'ref.pillar3.cta': 'VER TELEMETRÍA',
     'ref.pillar4.title': 'PERTENECER',
-    'ref.pillar4.desc': 'Cadena de custodia unificada y liquidez europea. Tránsito blindado puerta a puerta con cobertura asegurada y cero aranceles aduaneros entre los 27 Estados Miembros.',
+    'ref.pillar4.desc': 'Cadena de custodia unificada y liquidez internacional. Tránsito blindado con cobertura asegurada y procesos optimizados para envíos globales.',
     'ref.pillar4.cta': 'ENTRAR EN BÓVEDA',
 
     // Section 04 Mission (Authoritative Institutional Manifesto)
     'ref.mission.eyebrow': 'NUESTRA MISIÓN',
-    'ref.mission.title': 'UN ESTÁNDAR NUMISMÁTICO DEFINITIVO PARA EUROPA',
+    'ref.mission.title': 'UN ESTÁNDAR NUMISMÁTICO DEFINITIVO A NIVEL GLOBAL',
     'ref.mission.title2': 'POR UN FUTURO DEL COLECCIONISMO MÁS FUERTE',
-    'ref.mission.desc': 'Sustituimos la subjetividad artesanal y la fricción transatlántica por metrología óptica reproducible, trazabilidad digital inmutable y rigor de laboratorio. Diseñado en Europa para blindar el patrimonio del coleccionista moderno.',
+    'ref.mission.desc': 'Sustituimos la subjetividad artesanal por metrología óptica reproducible, trazabilidad digital inmutable y rigor de laboratorio. Diseñado a nivel internacional para blindar el patrimonio del coleccionista moderno.',
     'ref.mission.desc2': 'Creemos en un mercado de coleccionables transparente, accesible y de confianza. Gorilla Grading está creado para coleccionistas, por coleccionistas, con una visión a largo plazo.',
     'ref.mission.cta': 'CONOCE NUESTRO LABORATORIO',
     'ref.mission.btn1': 'Nuestra Misión',
@@ -88,7 +88,7 @@ export const translations = {
     'ref.mission.community': 'COMUNIDAD',
 
     // Section: Tarifas & Servicios (Bilingual Senior Pricing)
-    'pricing.kicker': 'ESTÁNDAR EUROPEO · CERO ADUANAS TRANSATLÁNTICAS',
+    'pricing.kicker': 'ESTÁNDAR GLOBAL · OPERACIONES INTERNACIONALES',
     'pricing.title': 'TARIFAS Y NIVELES DE SERVICIO',
     'pricing.desc': 'Rendimiento de laboratorio con tiempos garantizados en días laborables, seguro de reposición total y trazabilidad en tiempo real.',
     'pricing.cardUnit': '/ carta',
@@ -101,19 +101,19 @@ export const translations = {
     'pricing.feat.subgrades': '4 Sub-grados en escala 0.1 (Centrado, Esquinas, Bordes, Superficie)',
     'pricing.feat.scans': 'Escaneos microscópicos de campo oscuro a 40x',
     'pricing.feat.slab': 'Encapsulado sónico hermético a 35 kHz con filtro UV 99.4%',
-    'pricing.feat.nfc': 'Chip criptográfico NFC y registro público europeo',
+    'pricing.feat.nfc': 'Chip criptográfico NFC y registro público global',
     'pricing.feat.insurance': 'Seguro de tránsito intracomunitario incluido',
     'pricing.feat.priority': 'Cola preferente en cámara acorazada',
     'pricing.feat.dualAudit': 'Doble peritaje independiente por Conservador Jefe',
 
     // Section: Nosotros & Laboratorio (Bilingual Senior Lab Protocol)
-    'how.kicker': 'PROTOCOLO EUROPEO DE METROLOGÍA NUMISMÁTICA',
+    'how.kicker': 'PROTOCOLO GLOBAL DE METROLOGÍA NUMISMÁTICA',
     'how.title': 'EL VIAJE DESDE CARTA CRUDA HASTA SLAB CERTIFICADO',
     'how.desc': 'Conoce cómo Gorilla Grading combina diagnóstico óptico multiespectral, química de polímeros de archivo y una cadena de custodia con trazabilidad total.',
     'how.step1.num': '01',
     'how.step1.title': 'Admisión Blindada & Trazabilidad Barcode',
     'how.step1.sub': 'Apertura bajo grabación continua en cámara acorazada.',
-    'how.step1.desc': 'Los paquetes se recepcionan en nuestras sedes europeas y se abren bajo videocámaras 4K continuas. Cada pieza recibe un identificador criptográfico único para trazabilidad ininterrumpida.',
+    'how.step1.desc': 'Los paquetes se recepcionan en nuestras sedes internacionales y se abren bajo videocámaras 4K continuas. Cada pieza recibe un identificador criptográfico único para trazabilidad ininterrumpida.',
     'how.step2.num': '02',
     'how.step2.title': 'Desionización y Purga en Sala Limpia ISO',
     'how.step2.sub': 'Eliminación electrostática de micropartículas.',
@@ -133,7 +133,7 @@ export const translations = {
     'how.step6.num': '06',
     'how.step6.title': 'Encapsulado Ultrasónico a 35 kHz & Tag NFC',
     'how.step6.sub': 'Fusión molecular en acrílico virgen con filtro UV 99.4%.',
-    'how.step6.desc': 'La carta descansa en una cuna interior suspendida sin presión y el estuche se suelda herméticamente mediante ultrasonidos a 35 kHz. Se integra un chip NFC encriptado que enlaza al registro oficial europeo.',
+    'how.step6.desc': 'La carta descansa en una cuna interior suspendida sin presión y el estuche se suelda herméticamente mediante ultrasonidos a 35 kHz. Se integra un chip NFC encriptado que enlaza al registro oficial global.',
 
 
     // Navigation (Classic)
@@ -144,7 +144,7 @@ export const translations = {
     'nav.vault': 'Bóveda de Colección',
     'nav.compare': 'Matriz de Conceptos',
     'nav.submit': 'Enviar Cartas',
-    'nav.registrySubtitle': 'Registro Europeo de Precisión',
+    'nav.registrySubtitle': 'Registro Internacional de Precisión',
     
     // Concept Switcher
     'switcher.prototype': 'PROTOTIPO:',
@@ -157,7 +157,7 @@ export const translations = {
     'lab.tag': 'MODELO 01: LABORATORIO ÓPTICO — PRECISIÓN MILIMÉTRICA',
     'lab.heroTitle': 'Graduación sin especulaciones.',
     'lab.heroSubtitle': 'Respaldada por evidencia óptica submilimétrica.',
-    'lab.heroDesc': 'El estándar europeo para cartas coleccionables. Sustituimos la arbitrariedad subjetiva por telemetría láser multieje, mapeo de defectos por campo oscuro a 40x y encapsulado sónico hermético.',
+    'lab.heroDesc': 'El estándar definitivo para cartas coleccionables. Sustituimos la arbitrariedad subjetiva por telemetría láser multieje, mapeo de defectos por campo oscuro a 40x y encapsulado sónico hermético.',
     'lab.metricCentering': 'Precisión Centrado',
     'lab.metricCenteringVal': '0.01 mm',
     'lab.metricDarkfield': 'Campo Oscuro',
@@ -302,7 +302,7 @@ export const translations = {
     'ref.hero.desc': 'Powered by advanced technology and experts.',
     'ref.hero.ctaPrimary': 'Start Your Submission',
     'ref.hero.ctaSecondary': 'See Our Technology',
-    'ref.hero.trustedBy': 'Trusted by collectors all over Europe',
+    'ref.hero.trustedBy': 'Trusted by collectors worldwide',
     'ref.hero.rating': '4.9/5',
     'ref.hero.ratingSub': 'From 2,500+ submissions',
     'ref.hero.categories': 'TCG  //  SPORTS  //  COLLECTIBLES',
@@ -342,10 +342,10 @@ export const translations = {
     'ref.pillar2.desc': 'Optical micro-spectrometry and 1200 DPI rosette pattern analysis. Validating genuine factory ink chemistry under 365 nm UV fluorescence to expose rebacks, recoloring, or counterfeit stocks.',
     'ref.pillar2.cta': 'VERIFY CRITERIA',
     'ref.pillar3.title': 'UNDERSTAND',
-    'ref.pillar3.desc': 'Sub-millimeter laser telemetry at 0.01 mm and 4-quadrant subgrades on a 0.1 scale (Centering, Corners, Edges, Surface), archived with cryptographic proof on the European registry.',
+    'ref.pillar3.desc': 'Sub-millimeter laser telemetry at 0.01 mm and 4-quadrant subgrades on a 0.1 scale (Centering, Corners, Edges, Surface), archived with cryptographic proof on the global registry.',
     'ref.pillar3.cta': 'VIEW TELEMETRY',
     'ref.pillar4.title': 'BELONG',
-    'ref.pillar4.desc': 'Unified European collector ecosystem and market liquidity. Armored door-to-door transit with full replacement insurance and zero transatlantic customs friction across all 27 EU member states.',
+    'ref.pillar4.desc': 'Unified international collector ecosystem and market liquidity. Armored door-to-door transit with full replacement insurance and optimized global logistics.',
     'ref.pillar4.cta': 'ENTER VAULT',
 
     // Section 04 Mission (Authoritative Institutional Manifesto)
@@ -363,7 +363,7 @@ export const translations = {
     'ref.mission.community': 'COMMUNITY',
 
     // Section: Tarifas & Servicios (Bilingual Senior Pricing)
-    'pricing.kicker': 'EUROPEAN STANDARD · ZERO TRANSATLANTIC CUSTOMS',
+    'pricing.kicker': 'GLOBAL STANDARD · INTERNATIONAL OPERATIONS',
     'pricing.title': 'GRADING TIERS & PRICING',
     'pricing.desc': 'Laboratory precision with guaranteed business-day turnarounds, full replacement insurance, and real-time European vault telemetry.',
     'pricing.cardUnit': '/ card',
@@ -382,7 +382,7 @@ export const translations = {
     'pricing.feat.dualAudit': 'Independent dual audit by Senior Numismatic Conservator',
 
     // Section: Nosotros & Laboratorio (Bilingual Senior Lab Protocol)
-    'how.kicker': 'EUROPEAN NUMISMATIC METROLOGY PROTOCOL',
+    'how.kicker': 'GLOBAL NUMISMATIC METROLOGY PROTOCOL',
     'how.title': 'THE JOURNEY FROM RAW CARD TO CERTIFIED SLAB',
     'how.desc': 'Discover how Gorilla Grading integrates multispectral optical diagnostics, archival polymer chemistry, and uninterrupted chain-of-custody tracking.',
     'how.step1.num': '01',
@@ -418,7 +418,7 @@ export const translations = {
     'nav.vault': 'Collector Vault',
     'nav.compare': 'Concepts Matrix',
     'nav.submit': 'Submit Cards',
-    'nav.registrySubtitle': 'European Precision Registry',
+    'nav.registrySubtitle': 'International Precision Registry',
     
     // Concept Switcher
     'switcher.prototype': 'PROTOTYPE:',

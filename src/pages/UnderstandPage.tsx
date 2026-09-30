@@ -2,7 +2,11 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { ArrowLeft } from 'lucide-react';
 
-export const UnderstandPage: React.FC = () => {
+interface PageProps {
+  onNavigate: (path: string) => void;
+}
+
+export const UnderstandPage: React.FC<PageProps> = ({ onNavigate }) => {
   const { t, language } = useLanguage();
 
   return (
@@ -12,12 +16,12 @@ export const UnderstandPage: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#48C765]/5 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Back Button */}
-      <a href="/" className="absolute top-8 left-6 sm:left-12 flex items-center gap-3 text-white/40 hover:text-[#48C765] transition-colors group z-20">
+      <button onClick={() => onNavigate('/')} className="absolute top-8 left-6 sm:left-12 flex items-center gap-3 text-white/40 hover:text-[#48C765] transition-colors group z-20">
         <div className="w-10 h-10 rounded-full border border-white/[0.05] flex items-center justify-center group-hover:border-[#48C765]/50 group-hover:bg-[#48C765]/10 transition-all">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         </div>
         <span className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase mt-0.5">{language === 'es' ? 'Volver' : 'Back'}</span>
-      </a>
+      </button>
 
       <div className="relative z-10 max-w-[1000px] mx-auto text-center space-y-10">
         
