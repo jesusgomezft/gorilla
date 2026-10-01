@@ -21,11 +21,11 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="w-full bg-[#2B302B] text-white py-16 px-6 lg:px-12 border-t border-white/[0.06] select-none">
+    <footer className="w-full bg-[#2B302B] text-white pt-10 sm:pt-12 pb-6 px-6 lg:px-12 border-t border-white/[0.06] select-none">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Top Footer Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-14 border-b border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-8 sm:pb-10 border-b border-white/[0.06]">
           
           {/* Brand Info */}
           <div className="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -169,7 +169,7 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#5A6357] text-center md:text-left">
+        <div className="pt-5 sm:pt-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#5A6357] text-center md:text-left">
           <div className="font-mono order-3 md:order-1 text-[11px]">
             © 2026 GORILLA GRADING · {language === 'es' ? 'TODOS LOS DERECHOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
           </div>
