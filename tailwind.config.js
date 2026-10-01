@@ -46,6 +46,7 @@ export default {
         display: ['"Space Grotesk"', 'sans-serif'],
         condensed: ['"Space Grotesk"', 'sans-serif'],
         mono: ['"Nunito Sans"', 'sans-serif'],
+        nunito: ['"Nunito Sans"', '"Nunito"', 'sans-serif'],
       },
       boxShadow: {
         'slab': '0 30px 60px -20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.12)',

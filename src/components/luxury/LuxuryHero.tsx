@@ -68,7 +68,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex items-center gap-3 mb-4 sm:mb-6"
           >
-            <span className="font-mono text-xs font-semibold tracking-[0.28em] text-[#A4ACA1] uppercase drop-shadow-md">
+            <span className="font-nunito text-xs font-bold tracking-[0.25em] text-[#A4ACA1] uppercase drop-shadow-md">
               {t('ref.hero.eyebrow')}
             </span>
           </motion.div>
@@ -164,7 +164,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             <div className="font-sans text-xs tracking-wide text-[#A0A7A1]">
               Planes desde <span className="text-white font-medium">15 €</span> <span className="mx-1.5 opacity-50">·</span> Plazos desde <span className="text-white font-medium">5 días</span>
             </div>
-            <div className="font-mono text-[11px] tracking-[0.25em] text-[#A4ACA1] uppercase">
+            <div className="font-nunito text-xs font-bold tracking-[0.25em] text-[#A4ACA1] uppercase">
               {t('ref.hero.categories')}
             </div>
           </motion.div>

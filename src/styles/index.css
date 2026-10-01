@@ -58,6 +58,10 @@
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
 }
 
+.font-nunito {
+  font-family: 'Nunito Sans', 'Nunito', sans-serif !important;
+}
+
 @keyframes crossfadeUp {
   0% {
     opacity: 0;
