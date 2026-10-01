@@ -46,7 +46,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
 
         {/* Infinite Scrolling Marquee */}
         <div className="relative flex overflow-x-hidden pt-4 mask-edges group">
-          <div className="animate-marquee whitespace-nowrap flex w-max items-center gap-16 sm:gap-24 px-8 shrink-0" style={{ animationDuration: '240s' }}>
+          <div className="animate-marquee transform-gpu will-change-transform whitespace-nowrap flex w-max items-center gap-16 sm:gap-24 px-8 shrink-0" style={{ animationDuration: '240s' }}>
             {marqueeBrands.map((brand, idx) => (
               <div 
                 key={`${brand.id}-${idx}`}

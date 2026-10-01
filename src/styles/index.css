@@ -423,89 +423,72 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   COLOR OVERRIDES — Pricing card inline gradient bg
-   Keep dark cards on light background (premium pattern).
-   Restore white text and proper styling inside these cards.
+   LIGHT THEME — Pricing Cards & Technical Blueprints
+   Replaces dark block with luxury porcelain surface & dark
+   architectural blueprint drafting lines.
    ═══════════════════════════════════════════════════════ */
 
-/* Keep the dark gradient on pricing cards */
-.light-theme [style*="linear-gradient(160deg"] {
-  background: linear-gradient(160deg, #1A1E1B 0%, #0E110F 100%) !important;
+/* Architectural blueprint technical drawings inside light pricing cards */
+.light-theme .blueprint-svg .stroke-white\/90 {
+  stroke: rgba(26, 29, 26, 0.85) !important;
+}
+.light-theme .blueprint-svg .stroke-white\/80 {
+  stroke: rgba(26, 29, 26, 0.75) !important;
+}
+.light-theme .blueprint-svg .stroke-white\/60 {
+  stroke: rgba(26, 29, 26, 0.55) !important;
+}
+.light-theme .blueprint-svg .stroke-white\/50 {
+  stroke: rgba(26, 29, 26, 0.45) !important;
+}
+.light-theme .blueprint-svg .stroke-white\/40 {
+  stroke: rgba(26, 29, 26, 0.35) !important;
+}
+.light-theme .blueprint-svg .stroke-white\/30 {
+  stroke: rgba(26, 29, 26, 0.25) !important;
+}
+.light-theme .blueprint-svg .stroke-white\/20 {
+  stroke: rgba(26, 29, 26, 0.18) !important;
+}
+.light-theme .blueprint-svg .stroke-\[\#454545\] {
+  stroke: #8B918A !important;
+}
+.light-theme .blueprint-svg .mix-blend-screen {
+  mix-blend-mode: normal !important;
+  opacity: 0.85 !important;
 }
 
-/* Restore white text inside dark pricing cards */
-.light-theme [style*="linear-gradient(160deg"] .text-white {
+/* ── Dark Card & Featured Pricing Protection in Light Theme ── */
+.light-theme .dark-card,
+.light-theme [data-dark-card="true"] {
+  color-scheme: dark;
+}
+.light-theme .dark-card h3,
+.light-theme .dark-card .text-white,
+.light-theme [data-dark-card="true"] h3,
+.light-theme [data-dark-card="true"] .text-white {
   color: #FFFFFF !important;
 }
-
-.light-theme [style*="linear-gradient(160deg"] .text-\[\#EAEAEA\] {
-  color: #EAEAEA !important;
+.light-theme .dark-card .text-\[\#EAEAEA\],
+.light-theme [data-dark-card="true"] .text-\[\#EAEAEA\] {
+  color: #F0F4EF !important;
 }
-
-.light-theme [style*="linear-gradient(160deg"] .text-\[\#A4ACA1\] {
-  color: #A4ACA1 !important;
+.light-theme .dark-card .text-\[\#B4BDB1\],
+.light-theme [data-dark-card="true"] .text-\[\#B4BDB1\] {
+  color: #C0CBBF !important;
 }
-
-.light-theme [style*="linear-gradient(160deg"] .text-white\/40 {
-  color: rgba(255, 255, 255, 0.4) !important;
+.light-theme .dark-card .text-\[\#A4ACA1\],
+.light-theme [data-dark-card="true"] .text-\[\#A4ACA1\] {
+  color: #A6B0A3 !important;
 }
-
-/* Restore borders inside dark pricing cards */
-.light-theme [style*="linear-gradient(160deg"] .border-white\/10 {
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Restore badge text in pricing cards */
-.light-theme [style*="linear-gradient(160deg"] .bg-white.text-black {
+.light-theme .dark-card .popular-badge,
+.light-theme [data-dark-card="true"] .popular-badge {
   background-color: #FFFFFF !important;
-  color: #000000 !important;
+  color: #0E100F !important;
 }
-
-/* Restore hover states inside dark pricing cards */
-.light-theme [style*="linear-gradient(160deg"] .hover\:bg-white\/5:hover {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-.light-theme [style*="linear-gradient(160deg"] .hover\:text-white:hover {
-  color: #FFFFFF !important;
-}
-
-/* Restore blur/glow orbs inside dark pricing cards */
-.light-theme [style*="linear-gradient(160deg"] .blur-\[60px\] {
-  opacity: 0.20 !important;
-}
-
-/* ── Restore and boost Blueprint drawings inside dark pricing cards ── */
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/90 {
-  stroke: rgba(255, 255, 255, 0.95) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/80 {
-  stroke: rgba(255, 255, 255, 0.88) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/60 {
-  stroke: rgba(255, 255, 255, 0.75) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/50 {
-  stroke: rgba(255, 255, 255, 0.65) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/40 {
-  stroke: rgba(255, 255, 255, 0.55) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/30 {
-  stroke: rgba(255, 255, 255, 0.45) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-white\/20 {
-  stroke: rgba(255, 255, 255, 0.35) !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .stroke-\[\#454545\] {
-  stroke: #252A26 !important;
-}
-.light-theme [style*="linear-gradient(160deg"] .opacity-40 {
-  opacity: 0.85 !important; /* Make blueprint drawings immediately clear and visible */
-}
-.light-theme [style*="linear-gradient(160deg"] .mix-blend-screen {
-  mix-blend-mode: screen !important;
-  opacity: 1 !important;
+.light-theme .dark-card .border-white\/10,
+.light-theme [data-dark-card="true"] .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 /* ── Dark HUD Telemetry Console Protection in Light Theme ── */

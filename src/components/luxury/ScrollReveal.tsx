@@ -12,13 +12,25 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children, 
   direction = 'up',
   delay = 0,
-  duration = 0.8, // Duration isn't strictly needed for Tailwind unless we use inline styles, but we'll stick to a standard 1000ms tailwind class.
+  duration = 0.7,
   className = ""
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // If IntersectionObserver is unavailable or user prefers reduced motion, reveal immediately
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -26,19 +38,24 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px" }
+      { 
+        threshold: 0.02, 
+        rootMargin: "0px 0px -40px 0px" 
+      }
     );
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
-  const baseStyle = "transition-all duration-[1200ms] ease-out";
+  // Hardware-accelerated transitions targeted strictly to transform & opacity (zero layout thrashing)
+  const baseStyle = "transform-gpu transition-[opacity,transform] ease-[cubic-bezier(0.16,1,0.3,1)]";
+  
   const hiddenStyle = {
-    up: "opacity-0 translate-y-24",
-    down: "opacity-0 -translate-y-24",
-    left: "opacity-0 translate-x-24",
-    right: "opacity-0 -translate-x-24",
+    up: "opacity-0 translate-y-8",
+    down: "opacity-0 -translate-y-8",
+    left: "opacity-0 translate-x-8",
+    right: "opacity-0 -translate-x-8",
     none: "opacity-0"
   }[direction];
 
@@ -48,9 +65,14 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <div 
       ref={ref} 
       className={`${className} ${baseStyle} ${isVisible ? visibleStyle : hiddenStyle}`}
-      style={{ transitionDelay: `${delay}s` }}
+      style={{ 
+        transitionDuration: `${duration}s`,
+        transitionDelay: `${delay}s`,
+        willChange: isVisible ? 'auto' : 'transform, opacity'
+      }}
     >
       {children}
     </div>
   );
 };
+

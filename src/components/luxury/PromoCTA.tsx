@@ -47,7 +47,7 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
 
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
-            onClick={() => onNavigate && onNavigate('/events')}
+            onClick={() => onNavigate && onNavigate('/faq/dropoff')}
             className="group relative inline-flex items-center justify-center px-8 py-3 bg-[#48C765] hover:bg-[#3A9F50] text-[#14170F] font-bold text-xs tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)]"
           >
             <span>{language === 'es' ? 'Encuentra tu Evento' : 'Find Nearest Event'}</span>

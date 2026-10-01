@@ -49,24 +49,38 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
     }
   ];
 
+  const isLight = theme === 'light';
+
   return (
     <section 
       id="how-it-works" 
-      className="relative w-full text-white overflow-hidden select-none"
+      className={`relative w-full overflow-hidden select-none transition-colors duration-300 ${
+        isLight ? 'bg-[#F1ECE5] text-[#1C201D]' : 'bg-[#14170F] text-white'
+      }`}
     >
       {/* Full Width Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${theme === 'dark' ? '/images/Dark/tecnoSeccion.png' : '/images/tecnoSeccion.png?v=7'}')` }}
+        style={{ backgroundImage: `url('${isLight ? '/images/tecnoSeccion.png?v=7' : '/images/Dark/tecnoSeccion.png'}')` }}
       />
       
-      {/* Dark overlay to ensure text is readable */}
+      {/* Subtle overlay to ensure text is readable without muddying the clean background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[#454545]/85 lg:hidden" />
+        <div className={`absolute inset-0 lg:hidden ${
+          isLight ? 'bg-[#F1ECE5]/85' : 'bg-[#14170F]/85'
+        }`} />
         <div className="hidden lg:flex w-full h-full">
-          <div className="w-2/5 bg-gradient-to-r from-[#454545] via-[#454545]/90 to-transparent" />
+          <div className={`w-2/5 bg-gradient-to-r ${
+            isLight 
+              ? 'from-[#F1ECE5] via-[#F1ECE5]/90 to-transparent' 
+              : 'from-[#14170F] via-[#14170F]/90 to-transparent'
+          }`} />
           <div className="w-1/5" />
-          <div className="w-2/5 bg-gradient-to-l from-[#454545] via-[#454545]/80 to-transparent" />
+          <div className={`w-2/5 bg-gradient-to-l ${
+            isLight 
+              ? 'from-[#F1ECE5] via-[#F1ECE5]/85 to-transparent' 
+              : 'from-[#14170F] via-[#14170F]/85 to-transparent'
+          }`} />
         </div>
       </div>
 
@@ -76,14 +90,22 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
           
           {/* Left Copy Overlay */}
           <div className="lg:col-span-5 flex flex-col justify-center opacity-100">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase mb-4">
+            <p className={`font-mono text-[10px] tracking-[0.2em] uppercase mb-4 ${
+              isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
+            }`}>
               {language === 'es' ? 'EL PROCESO' : 'SUBMISSION PROCESS'}
             </p>
-            <h2 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] text-white uppercase leading-[1.05] mb-5 whitespace-pre-line">
+            <h2 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] uppercase leading-[1.05] mb-5 whitespace-pre-line ${
+              isLight ? 'text-[#1C201D]' : 'text-white'
+            }`}>
               {language === 'es' ? 'CÓMO FUNCIONA' : 'HOW IT WORKS'}
             </h2>
-            <div className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-[360px] font-normal leading-relaxed mb-8">
-              <p className="font-bold text-white mb-2 tracking-wide uppercase">
+            <div className={`font-sans text-sm sm:text-base max-w-[360px] font-normal leading-relaxed mb-8 ${
+              isLight ? 'text-[#555C54]' : 'text-[#A4ACA1]'
+            }`}>
+              <p className={`font-bold mb-2 tracking-wide uppercase ${
+                isLight ? 'text-[#14170F]' : 'text-white'
+              }`}>
                 {language === 'es' ? 'SIMPLE | SEGURO | TRANSPARENTE' : 'SIMPLE | SECURE | TRANSPARENT'}
               </p>
               <p>
@@ -95,7 +117,11 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
             
             <button
               onClick={() => onNavigate ? onNavigate('/pricing') : window.location.href = '/pricing'}
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-none border border-[#48C765] text-[#48C765] hover:bg-[#48C765] hover:text-[#14170F] text-sm font-medium transition-all group w-fit"
+              className={`inline-flex items-center justify-center px-6 py-2.5 rounded-none border text-sm font-medium transition-all group w-fit ${
+                isLight
+                  ? 'border-[#2D9A46] text-[#2D9A46] hover:bg-[#2D9A46] hover:text-white'
+                  : 'border-[#48C765] text-[#48C765] hover:bg-[#48C765] hover:text-[#14170F]'
+              }`}
             >
               <span>{language === 'es' ? 'Empezar ahora' : 'Start Submission'}</span>
               <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,7 +135,9 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
 
           {/* Right Steps */}
           <div className="lg:col-span-4 flex flex-col justify-center lg:pl-10">
-            <div className="flex flex-col border-l border-white/10 overflow-hidden">
+            <div className={`flex flex-col border-l overflow-hidden ${
+              isLight ? 'border-black/15' : 'border-white/10'
+            }`}>
               
               {steps.map((step, index) => {
                 const isRevealed = activeStep >= index;
@@ -118,20 +146,36 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
                 return (
                   <div 
                     key={step.id} 
-                    className={`flex gap-6 py-5 px-6 border-b border-white/5 relative transition-all duration-300 ease-out transform ${
+                    className={`flex gap-6 py-5 px-6 border-b relative transition-all duration-300 ease-out transform ${
+                      isLight ? 'border-black/10' : 'border-white/5'
+                    } ${
                       isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    } ${isCurrent ? 'bg-gradient-to-r from-white/[0.04] to-transparent' : 'bg-transparent'}`}
+                    } ${
+                      isCurrent 
+                        ? (isLight ? 'bg-gradient-to-r from-black/[0.04] to-transparent' : 'bg-gradient-to-r from-white/[0.04] to-transparent')
+                        : 'bg-transparent'
+                    }`}
                   >
                     <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-300 ${
-                      isRevealed ? 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100' : 'scale-y-0 bg-transparent'
+                      isRevealed 
+                        ? (isLight ? 'bg-gradient-to-b from-[#2D9A46] to-transparent scale-y-100' : 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100')
+                        : 'scale-y-0 bg-transparent'
                     }`}></div>
                     
-                    <span className={`font-mono text-lg font-bold transition-colors duration-300 ${isCurrent ? 'text-[#48C765]' : 'text-white/40'}`}>
+                    <span className={`font-mono text-lg font-bold transition-colors duration-300 ${
+                      isCurrent 
+                        ? (isLight ? 'text-[#2D9A46]' : 'text-[#48C765]')
+                        : (isLight ? 'text-[#1C201D]/40' : 'text-white/40')
+                    }`}>
                       {step.id}
                     </span>
                     <div>
-                      <h4 className="font-sans font-bold text-sm tracking-widest text-white uppercase mb-1">{step.title}</h4>
-                      <p className="text-xs text-[#A4ACA1]">{step.desc}</p>
+                      <h4 className={`font-sans font-bold text-sm tracking-widest uppercase mb-1 ${
+                        isLight ? 'text-[#1C201D]' : 'text-white'
+                      }`}>{step.title}</h4>
+                      <p className={`text-xs ${
+                        isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
+                      }`}>{step.desc}</p>
                     </div>
                   </div>
                 );

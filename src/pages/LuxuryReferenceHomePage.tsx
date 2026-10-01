@@ -47,7 +47,7 @@ export const LuxuryReferenceHomePage: React.FC<LuxuryReferenceHomePageProps> = (
 
       {/* 5. Step by Step / Process */}
       <ScrollReveal direction="up" delay={0.1}>
-        <TechnologySection />
+        <TechnologySection onNavigate={onNavigate} />
       </ScrollReveal>
 
       {/* 7. Influencer Testimonials (Placeholder) */}
