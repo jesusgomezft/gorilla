@@ -508,7 +508,38 @@
   opacity: 1 !important;
 }
 
-/* Pricing info box stays light */
+/* ── Dark HUD Telemetry Console Protection in Light Theme ── */
+.dark-hud,
+.dark-hud * {
+  color-scheme: dark;
+}
+.light-theme .dark-hud .text-white {
+  color: #FFFFFF !important;
+}
+.light-theme .dark-hud .text-white\/90 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.light-theme .dark-hud .text-white\/80 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.light-theme .dark-hud .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.light-theme .dark-hud .text-white\/60 {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.light-theme .dark-hud .text-white\/40 {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+.light-theme .dark-hud .text-\[\#A4ACA1\] {
+  color: #A4ACA1 !important;
+}
+.light-theme .dark-hud .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.light-theme .dark-hud .border-white\/5 {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
 
 /* ═══════════════════════════════════════════════════════
    COLOR OVERRIDES — Shadows (dark shadows → subtle light)
