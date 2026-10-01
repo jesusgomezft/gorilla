@@ -162,22 +162,27 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
                         : 'scale-y-0 bg-transparent'
                     }`} />
                     
-                    <span className={`font-mono text-lg font-bold transition-colors duration-300 shrink-0 ${
-                      isCurrent 
-                        ? (isLight ? 'text-[#15803D]' : 'text-[#48C765]')
-                        : (isLight ? 'text-[#14170F]/70' : 'text-white/60')
-                    }`}>
+                    <span 
+                      className="font-mono text-lg font-bold transition-colors duration-300 shrink-0"
+                      style={{ 
+                        color: isCurrent 
+                          ? (isLight ? '#15803D' : '#48C765') 
+                          : (isLight ? '#2D332D' : '#A4ACA1') 
+                      }}
+                    >
                       {step.id}
                     </span>
                     <div>
-                      <h4 className={`font-sans font-bold text-sm tracking-widest uppercase mb-1.5 ${
-                        isLight ? 'text-[#14170F]' : 'text-white'
-                      }`}>
+                      <h4 
+                        className="font-sans font-bold text-sm tracking-widest uppercase mb-1"
+                        style={{ color: isLight ? '#111311' : '#FFFFFF' }}
+                      >
                         {step.title}
                       </h4>
-                      <p className={`text-xs leading-relaxed font-semibold ${
-                        isLight ? 'text-[#242A25]' : 'text-[#C5CDC2]'
-                      }`}>
+                      <p 
+                        className="text-xs leading-relaxed font-semibold"
+                        style={{ color: isLight ? '#1A1D1A' : '#D4DDD0' }}
+                      >
                         {step.desc}
                       </p>
                     </div>
