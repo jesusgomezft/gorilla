@@ -133,10 +133,10 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
           {/* Empty spacer for center image focus */}
           <div className="hidden lg:block lg:col-span-3"></div>
 
-          {/* Right Steps */}
+          {/* Right Steps - Open layout without box, with enhanced text legibility */}
           <div className="lg:col-span-4 flex flex-col justify-center lg:pl-10">
             <div className={`flex flex-col border-l overflow-hidden ${
-              isLight ? 'border-black/15' : 'border-white/10'
+              isLight ? 'border-black/20' : 'border-white/10'
             }`}>
               
               {steps.map((step, index) => {
@@ -158,24 +158,28 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
                   >
                     <div className={`absolute top-0 left-[-1px] w-[2px] h-full transition-all duration-300 ${
                       isRevealed 
-                        ? (isLight ? 'bg-gradient-to-b from-[#2D9A46] to-transparent scale-y-100' : 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100')
+                        ? (isLight ? 'bg-gradient-to-b from-[#15803D] to-transparent scale-y-100' : 'bg-gradient-to-b from-[#48C765] to-transparent scale-y-100')
                         : 'scale-y-0 bg-transparent'
-                    }`}></div>
+                    }`} />
                     
-                    <span className={`font-mono text-lg font-bold transition-colors duration-300 ${
+                    <span className={`font-mono text-lg font-bold transition-colors duration-300 shrink-0 ${
                       isCurrent 
-                        ? (isLight ? 'text-[#2D9A46]' : 'text-[#48C765]')
-                        : (isLight ? 'text-[#1C201D]/40' : 'text-white/40')
+                        ? (isLight ? 'text-[#15803D]' : 'text-[#48C765]')
+                        : (isLight ? 'text-[#14170F]/70' : 'text-white/60')
                     }`}>
                       {step.id}
                     </span>
                     <div>
-                      <h4 className={`font-sans font-bold text-sm tracking-widest uppercase mb-1 ${
-                        isLight ? 'text-[#1C201D]' : 'text-white'
-                      }`}>{step.title}</h4>
-                      <p className={`text-xs ${
-                        isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
-                      }`}>{step.desc}</p>
+                      <h4 className={`font-sans font-bold text-sm tracking-widest uppercase mb-1.5 ${
+                        isLight ? 'text-[#14170F]' : 'text-white'
+                      }`}>
+                        {step.title}
+                      </h4>
+                      <p className={`text-xs leading-relaxed font-semibold ${
+                        isLight ? 'text-[#242A25]' : 'text-[#C5CDC2]'
+                      }`}>
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
                 );
