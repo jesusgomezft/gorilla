@@ -698,13 +698,22 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                       )}
                     </div>
                     
-                    <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide leading-tight mb-1.5 font-bold text-white">
-                      {tier.name}
-                    </h3>
-                    
-                    <p className="text-xs font-sans leading-relaxed max-w-[95%] mb-3 text-[#C8D1C5]">
-                      {tier.tagline}
-                    </p>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide leading-tight mb-1.5 font-bold text-white">
+                          {tier.name}
+                        </h3>
+                        
+                        <p className="text-xs font-sans leading-relaxed max-w-[95%] mb-3 text-[#C8D1C5]">
+                          {tier.tagline}
+                        </p>
+                      </div>
+
+                      {/* Blueprint SVG Graphic */}
+                      <div className="hidden sm:flex w-20 h-16 sm:w-24 sm:h-20 items-center justify-center shrink-0 my-auto group-hover/card:scale-105 transition-transform duration-500">
+                        <tier.Blueprint color={tier.color} isLight={false} />
+                      </div>
+                    </div>
 
                     <div className="flex flex-col gap-2 mt-auto">
                       {tier.features.map((feat, idx) => (
@@ -773,7 +782,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
   return (
     <section 
       id="pricing" 
-      className="w-full bg-[#F8F9FA] text-[#1A1D1A] py-12 lg:py-16 px-5 lg:px-8 border-b border-black/[0.06] select-none relative overflow-hidden transition-colors duration-700"
+      className="w-full bg-[#F3EFE6] text-[#1A1D1A] py-12 lg:py-16 px-5 lg:px-8 border-b border-black/[0.06] select-none relative overflow-hidden transition-colors duration-700"
     >
       <div className="max-w-[850px] mx-auto relative z-10 flex flex-col">
         <div className="mb-8 text-center lg:text-left">
@@ -791,7 +800,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           {lightTiers.map((tier) => (
             <div 
               key={tier.id}
-              className="relative w-full rounded-2xl overflow-hidden border shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.07)] hover:scale-[1.01] transition-all duration-300 cursor-pointer"
+              className="relative w-full rounded-2xl overflow-hidden border shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.07)] hover:scale-[1.01] transition-all duration-300 cursor-pointer group/card"
               style={{
                 background: tier.cornerGradient,
                 borderColor: tier.borderColor
@@ -842,13 +851,22 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                     )}
                   </div>
                   
-                  <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide leading-tight mb-1.5 font-bold text-neutral-900">
-                    {tier.name}
-                  </h3>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide leading-tight mb-1.5 font-bold text-neutral-900">
+                        {tier.name}
+                      </h3>
 
-                  <p className="text-xs font-sans text-neutral-500 leading-relaxed mb-3">
-                    {tier.tagline}
-                  </p>
+                      <p className="text-xs font-sans text-neutral-500 leading-relaxed mb-3">
+                        {tier.tagline}
+                      </p>
+                    </div>
+
+                    {/* Blueprint SVG Graphic */}
+                    <div className="hidden sm:flex w-20 h-16 sm:w-24 sm:h-20 items-center justify-center shrink-0 my-auto group-hover/card:scale-105 transition-transform duration-500">
+                      <tier.Blueprint color={tier.color} isLight={true} />
+                    </div>
+                  </div>
 
                   <div className="flex flex-col gap-2 mt-auto">
                     {tier.features.map((feat, idx) => (
