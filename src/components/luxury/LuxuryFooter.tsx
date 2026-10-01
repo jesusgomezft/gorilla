@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { GorillaLogo } from './GorillaLogo';
+import { GradedCardsCounter } from './GradedCardsCounter';
 
 interface LuxuryFooterProps {
   onNavigate?: (path: string) => void;
@@ -41,12 +42,6 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
                 : 'The European standard for sub-millimeter optical grading, forensic multispectral authentication, and ultrasonic hermetic encapsulation.'
               }
             </p>
-
-            <div className="flex items-center justify-center lg:justify-start gap-4 font-mono text-[10px] text-[#5A6357] mb-8">
-              <span>MADRID LAB</span>
-              <span>•</span>
-              <span>LISBON LAB</span>
-            </div>
 
             {/* Social Media */}
             <div className="flex flex-col items-center lg:items-start gap-3">
@@ -165,6 +160,9 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
                   </svg>
                 </button>
               </form>
+
+              {/* Graded Cards Counter — Below search */}
+              <GradedCardsCounter />
             </div>
           </div>
 

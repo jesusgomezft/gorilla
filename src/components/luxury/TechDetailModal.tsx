@@ -48,7 +48,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/75 backdrop-blur-md animate-fadeIn">
       <div 
-        className={`relative w-full max-w-5xl rounded-none shadow-2xl overflow-hidden flex flex-col max-h-[92vh] border transition-colors duration-300 ${
+        className={`relative w-full max-w-5xl rounded-none shadow-2xl overflow-hidden flex flex-col max-h-[90vh] border transition-colors duration-300 ${
           isLight 
             ? 'bg-[#FAF8F5] border-[#DDD6C9] text-[#1A1D1A]' 
             : 'bg-[#121613] border-white/10 text-white'
@@ -57,30 +57,30 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
       >
         
         {/* ── 1. MODAL HEADER ── */}
-        <div className={`px-4 sm:px-6 py-4 sm:py-5 border-b flex items-center justify-between transition-colors ${
+        <div className={`shrink-0 px-4 sm:px-6 py-2.5 sm:py-4 border-b flex items-center justify-between transition-colors ${
           isLight 
             ? 'bg-[#ECE5D8] border-[#DDD6C9]' 
             : 'bg-[#181E19] border-white/10'
         }`}>
-          <div className="flex items-center gap-3 min-w-0">
-            <div className={`w-8 h-8 rounded-none border flex items-center justify-center shrink-0 ${
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-none border flex items-center justify-center shrink-0 ${
               isLight 
                 ? 'bg-[#2D9A46]/10 border-[#2D9A46]/40 text-[#2D9A46]' 
                 : 'bg-[#48C765]/10 border-[#48C765]/30 text-[#48C765]'
             }`}>
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 2.18l7 3.89v4.93c0 4.54-3.14 8.79-7 9.92-3.86-1.13-7-5.38-7-9.92V8.07l7-3.89z" />
               </svg>
             </div>
             <div className="min-w-0">
-              <h3 className={`font-['Oswald'] font-bold text-sm sm:text-base tracking-wide uppercase truncate ${
+              <h3 className={`font-['Oswald'] font-bold text-xs sm:text-base tracking-wide uppercase truncate ${
                 isLight ? 'text-[#1A1D1A]' : 'text-white'
               }`}>
-                {language === 'es' ? 'Protocolo Óptico de Telemetría Gorilla' : 'Gorilla Optical Telemetry Protocol'}
+                {language === 'es' ? 'Protocolo Óptico Gorilla' : 'Gorilla Optical Protocol'}
               </h3>
-              <div className="flex items-center gap-2 mt-0.5">
+              <div className="hidden sm:flex items-center gap-2 mt-0.5">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#48C765] animate-pulse" />
-                <span className={`font-mono text-[9px] sm:text-[10px] tracking-wider uppercase truncate ${
+                <span className={`font-mono text-[10px] tracking-wider uppercase truncate ${
                   isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
                 }`}>
                   SPEC V4.2 // CALIBRACIÓN 0.01mm // ISO-17025 LAB
@@ -91,7 +91,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
 
           <button
             onClick={onClose}
-            className={`w-8 h-8 rounded-none border flex items-center justify-center text-sm transition-colors shrink-0 ml-3 ${
+            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-none border flex items-center justify-center text-xs sm:text-sm transition-colors shrink-0 ml-2 sm:ml-3 ${
               isLight 
                 ? 'border-[#DDD6C9] text-[#6B7268] hover:text-[#1A1D1A] hover:border-[#1A1D1A] hover:bg-black/5' 
                 : 'border-white/10 text-[#A4ACA1] hover:text-white hover:border-white/30 hover:bg-white/5'
@@ -103,7 +103,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
         </div>
 
         {/* ── 2. NAVIGATION TABS (Responsive) ── */}
-        <div className={`border-b transition-colors overflow-x-auto scrollbar-none ${
+        <div className={`shrink-0 border-b transition-colors overflow-x-auto scrollbar-none ${
           isLight 
             ? 'bg-[#F3EFE6] border-[#DDD6C9]' 
             : 'bg-[#0E120F] border-white/10'
@@ -115,7 +115,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 px-3 sm:px-5 py-3 sm:py-3.5 font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all whitespace-nowrap border-b-2 flex items-center justify-center gap-1.5 sm:gap-2 ${
+                  className={`flex-1 px-3 sm:px-5 py-2.5 sm:py-3.5 font-mono text-[10px] sm:text-xs font-bold tracking-wider uppercase transition-all whitespace-nowrap border-b-2 flex items-center justify-center gap-1 sm:gap-2 ${
                     isActive
                       ? isLight
                         ? 'border-[#2D9A46] text-[#2D9A46] bg-[#2D9A46]/10'
@@ -125,7 +125,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                         : 'border-transparent text-[#A4ACA1] hover:text-white hover:bg-white/[0.02]'
                   }`}
                 >
-                  <span className={`text-[9px] sm:text-[10px] opacity-60 font-normal`}>{tab.num}.</span>
+                  <span className={`text-[8px] sm:text-[10px] opacity-60 font-normal`}>{tab.num}.</span>
                   <span className="hidden sm:inline">{tab.label}</span>
                   <span className="sm:hidden">{tab.shortLabel}</span>
                 </button>
@@ -135,7 +135,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
         </div>
 
         {/* ── 3. CONTENT AREA ── */}
-        <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-6 flex-1">
+        <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-6 flex-1 min-h-0">
           <AnimatePresence mode="wait">
             
             {/* ── TAB 01: 1200 DPI SCAN ── */}
@@ -149,7 +149,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
               >
                 {/* HUD Viewport (Left) */}
-                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-[#48C765]/20 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[300px] sm:min-h-[350px]">
+                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-[#48C765]/20 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[250px] sm:min-h-[350px]">
                   {/* Subtle Grid Matrix Background */}
                   <div className="absolute inset-0 bg-[radial-gradient(#48C765_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none" />
                   
@@ -272,7 +272,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
               >
                 {/* HUD Viewport (Left) with REAL 400x UV Rosette Halftone Photo */}
-                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-cyan-500/30 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[300px] sm:min-h-[350px]">
+                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-cyan-500/30 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[250px] sm:min-h-[350px]">
                   {/* Top HUD Telemetry Bar */}
                   <div className="flex items-center justify-between text-[9px] font-mono text-[#A4ACA1] border-b border-white/10 pb-2 relative z-10">
                     <span className="flex items-center gap-1.5 text-cyan-400">
@@ -388,7 +388,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
               >
                 {/* HUD Viewport (Left) with REAL Caliper Telemetry Simulation */}
-                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-[#48C765]/40 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[320px] sm:min-h-[360px]">
+                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-[#48C765]/40 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[260px] sm:min-h-[360px]">
                   {/* Grid background */}
                   <div className="absolute inset-0 bg-[radial-gradient(#48C765_1px,transparent_1px)] [background-size:14px_14px] opacity-20 pointer-events-none" />
 
@@ -526,7 +526,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
               >
                 {/* HUD Viewport (Left) with Real Macro Ultrasonic Slab Photo */}
-                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-emerald-500/30 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[300px] sm:min-h-[350px]">
+                <div className="dark-hud lg:col-span-6 bg-[#080C09] border border-emerald-500/30 p-4 sm:p-5 relative overflow-hidden shadow-2xl flex flex-col justify-between min-h-[250px] sm:min-h-[350px]">
                   {/* Top HUD Telemetry Bar */}
                   <div className="flex items-center justify-between text-[9px] font-mono text-[#A4ACA1] border-b border-white/10 pb-2 relative z-10">
                     <span className="flex items-center gap-1.5 text-[#48C765]">
@@ -638,7 +638,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
         </div>
 
         {/* ── 4. FOOTER ACTIONS (Mobile thumb-accessible) ── */}
-        <div className={`px-4 sm:px-6 py-3.5 sm:py-4 border-t flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 transition-colors ${
+        <div className={`shrink-0 px-4 sm:px-6 py-3 sm:py-4 border-t flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 transition-colors ${
           isLight 
             ? 'bg-[#ECE5D8] border-[#DDD6C9]' 
             : 'bg-[#181E19] border-white/10'

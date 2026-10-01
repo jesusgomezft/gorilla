@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 
 interface HowItWorksPageProps {
   onNavigate: (path: string) => void;
@@ -7,6 +8,8 @@ interface HowItWorksPageProps {
 
 export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) => {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   const steps = [
     {
@@ -85,22 +88,51 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
   ];
 
   return (
-    <div className="w-full min-h-screen bg-[#454545] text-white py-16 px-6 lg:px-12 select-none">
+    <div className={`w-full min-h-screen py-16 px-6 lg:px-12 select-none transition-colors duration-300 ${
+      isLight ? 'bg-[#FAF8F5] text-[#1A1D1A]' : 'bg-[#454545] text-white'
+    }`}>
       <div className="max-w-[1400px] mx-auto">
         
         {/* Top Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-white/[0.04] border border-white/10 text-[#48C765] font-mono text-[11px] font-bold tracking-[0.25em] uppercase mb-4">
-            <span className="w-1.5 h-1.5 rounded-none bg-[#48C765]" />
-            <span>{t('how.kicker')}</span>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            {/* Left decorative line */}
+            <div className={`hidden sm:block h-[1px] w-12 ${
+              isLight ? 'bg-[#2D9A46]/30' : 'bg-[#48C765]/30'
+            }`} />
+            
+            {/* Badge content */}
+            <div className="flex items-center gap-2.5">
+              <div className={`w-5 h-5 flex items-center justify-center ${
+                isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
+              }`}>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+                </svg>
+              </div>
+              <span className={`font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase ${
+                isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
+              }`}>
+                {t('how.kicker')}
+              </span>
+            </div>
+
+            {/* Right decorative line */}
+            <div className={`hidden sm:block h-[1px] w-12 ${
+              isLight ? 'bg-[#2D9A46]/30' : 'bg-[#48C765]/30'
+            }`} />
           </div>
 
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl text-white uppercase tracking-[0.01em] leading-[0.94] mb-5">
+          <h1 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-[0.01em] leading-[0.94] mb-5 ${
+            isLight ? 'text-[#1A1D1A]' : 'text-white'
+          }`}>
             {language === 'es' ? 'EL VIAJE DESDE CARTA CRUDA HASTA ' : 'THE JOURNEY FROM RAW CARD TO '}
-            <span className="text-[#48C765]">{language === 'es' ? 'SLAB CERTIFICADO' : 'CERTIFIED SLAB'}</span>
+            <span className={isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'}>{language === 'es' ? 'SLAB CERTIFICADO' : 'CERTIFIED SLAB'}</span>
           </h1>
 
-          <p className="font-sans text-base text-[#A4ACA1] max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className={`font-sans text-base max-w-2xl mx-auto leading-relaxed font-normal ${
+            isLight ? 'text-[#4A5048]' : 'text-[#A4ACA1]'
+          }`}>
             {t('how.desc')}
           </p>
         </div>
@@ -110,47 +142,75 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="p-8 rounded-none bg-[#454545] border border-white/[0.08] hover:border-[#48C765]/40 shadow-xl flex flex-col md:flex-row items-start md:items-center gap-8 transition-all duration-300 hover:bg-[#151B16] group"
+              className={`p-8 rounded-none border shadow-xl flex flex-col md:flex-row items-start md:items-center gap-8 transition-all duration-300 group ${
+                isLight
+                  ? 'bg-white border-[#DDD6C9] hover:border-[#2D9A46]/40 hover:bg-[#F5F2EC] hover:shadow-[0_8px_30px_rgba(45,154,70,0.06)]'
+                  : 'bg-[#454545] border-white/[0.08] hover:border-[#48C765]/40 hover:bg-[#151B16]'
+              }`}
             >
               {/* Numeric Indicator */}
               <div className="flex items-center gap-4 shrink-0">
-                <span className="font-['Oswald'] font-[700] text-lg text-[#48C765] tracking-tight group-hover:scale-105 transition-transform">
+                <span className={`font-['Oswald'] font-[700] text-lg tracking-tight group-hover:scale-105 transition-transform ${
+                  isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
+                }`}>
                   {step.num}
                 </span>
-                <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-[#A4ACA1] uppercase px-3 py-1 rounded bg-white/[0.04] border border-white/5">
+                <span className={`font-mono text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded border ${
+                  isLight
+                    ? 'text-[#4A5048] bg-[#ECE5D8] border-[#DDD6C9]'
+                    : 'text-[#A4ACA1] bg-white/[0.04] border-white/5'
+                }`}>
                   {step.tag}
                 </span>
               </div>
 
               {/* Text Info */}
               <div className="flex-1 space-y-1.5">
-                <h3 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-[0.01em] group-hover:text-[#48C765] transition-colors">
+                <h3 className={`font-['Oswald'] font-[700] text-lg uppercase tracking-[0.01em] transition-colors ${
+                  isLight
+                    ? 'text-[#1A1D1A] group-hover:text-[#2D9A46]'
+                    : 'text-white group-hover:text-[#48C765]'
+                }`}>
                   {step.title}
                 </h3>
-                <h4 className="font-mono text-xs text-[#A2B5A5] font-medium leading-snug">
+                <h4 className={`font-mono text-xs font-medium leading-snug ${
+                  isLight ? 'text-[#2D9A46]' : 'text-[#A2B5A5]'
+                }`}>
                   {step.sub}
                 </h4>
-                <p className="text-xs sm:text-sm text-[#A4ACA1] leading-relaxed font-normal pt-1">
+                <p className={`text-xs sm:text-sm leading-relaxed font-normal pt-1 ${
+                  isLight ? 'text-[#4A5048]' : 'text-[#A4ACA1]'
+                }`}>
                   {step.desc}
                 </p>
               </div>
 
               {/* Telemetry Badge */}
-              <div className="shrink-0 self-center md:self-auto hidden lg:flex flex-col items-end text-right font-mono text-[10px] text-[#A4ACA1] border-l border-white/[0.06] pl-6 py-2">
-                <span className="text-[#A4ACA1] font-semibold">{language === 'es' ? 'AUDITORÍA ÓPTICA' : 'OPTICAL AUDIT'}</span>
-                <span className="text-[#48C765] font-bold">100% REPRODUCIBLE</span>
+              <div className={`shrink-0 self-center md:self-auto hidden lg:flex flex-col items-end text-right font-mono text-[10px] border-l pl-6 py-2 ${
+                isLight ? 'text-[#6B7268] border-[#DDD6C9]' : 'text-[#A4ACA1] border-white/[0.06]'
+              }`}>
+                <span className="font-semibold">{language === 'es' ? 'AUDITORÍA ÓPTICA' : 'OPTICAL AUDIT'}</span>
+                <span className={`font-bold ${isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'}`}>100% REPRODUCIBLE</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Technical Lab Specifications Matrix */}
-        <div className="rounded-none bg-[#0E130F] border border-white/[0.08] p-8 lg:p-12 mb-20">
+        <div className={`rounded-none border p-8 lg:p-12 mb-20 transition-colors duration-300 ${
+          isLight
+            ? 'bg-[#ECE5D8] border-[#DDD6C9]'
+            : 'bg-[#0E130F] border-white/[0.08]'
+        }`}>
           <div className="mb-10">
-            <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#48C765] uppercase block mb-2">
+            <span className={`font-mono text-xs font-bold tracking-[0.25em] uppercase block mb-2 ${
+              isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
+            }`}>
               {language === 'es' ? 'ESPECIFICACIONES DEL LABORATORIO' : 'LABORATORY SPECIFICATIONS'}
             </span>
-            <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl text-white uppercase tracking-tight">
+            <h2 className={`font-['Oswald'] font-[700] text-3xl sm:text-4xl uppercase tracking-tight ${
+              isLight ? 'text-[#1A1D1A]' : 'text-white'
+            }`}>
               {language === 'es' ? 'Ingeniería y Parámetros Numismáticos' : 'Engineering & Numismatic Parameters'}
             </h2>
           </div>
@@ -159,20 +219,38 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             {labSpecs.map((spec, idx) => (
               <div 
                 key={idx} 
-                className="bg-[#121814] hover:bg-[#161d18] p-8 rounded-none border border-white/[0.06] hover:border-[#48C765]/40 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(72,199,101,0.08)] relative overflow-hidden"
+                className={`p-8 rounded-none border flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden ${
+                  isLight
+                    ? 'bg-white border-[#DDD6C9] hover:border-[#2D9A46]/40 hover:shadow-[0_8px_30px_rgba(45,154,70,0.08)]'
+                    : 'bg-[#121814] hover:bg-[#161d18] border-white/[0.06] hover:border-[#48C765]/40 hover:shadow-[0_8px_30px_rgba(72,199,101,0.08)]'
+                }`}
               >
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#48C765]/0 to-transparent group-hover:via-[#48C765]/80 transition-all duration-500" />
+                <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent to-transparent transition-all duration-500 ${
+                  isLight 
+                    ? 'via-[#2D9A46]/0 group-hover:via-[#2D9A46]/80' 
+                    : 'via-[#48C765]/0 group-hover:via-[#48C765]/80'
+                }`} />
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-1.5 h-1.5 bg-[#48C765] rounded-none opacity-80 group-hover:animate-pulse" />
-                    <span className="font-mono text-xs text-[#48C765] font-bold tracking-[0.15em]">
+                    <span className={`w-1.5 h-1.5 rounded-none opacity-80 group-hover:animate-pulse ${
+                      isLight ? 'bg-[#2D9A46]' : 'bg-[#48C765]'
+                    }`} />
+                    <span className={`font-mono text-xs font-bold tracking-[0.15em] ${
+                      isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
+                    }`}>
                       {spec.spec}
                     </span>
                   </div>
-                  <h4 className="font-['Oswald'] font-[700] text-xl text-white uppercase tracking-wide mb-3 group-hover:text-[#48C765] transition-colors duration-300">
+                  <h4 className={`font-['Oswald'] font-[700] text-xl uppercase tracking-wide mb-3 transition-colors duration-300 ${
+                    isLight
+                      ? 'text-[#1A1D1A] group-hover:text-[#2D9A46]'
+                      : 'text-white group-hover:text-[#48C765]'
+                  }`}>
                     {spec.title}
                   </h4>
-                  <p className="text-sm text-[#A4ACA1] leading-relaxed font-normal">
+                  <p className={`text-sm leading-relaxed font-normal ${
+                    isLight ? 'text-[#4A5048]' : 'text-[#A4ACA1]'
+                  }`}>
                     {spec.desc}
                   </p>
                 </div>
@@ -182,17 +260,27 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
         </div>
 
         {/* Institutional Mission & Founders Ethos */}
-        <div className="rounded-none bg-gradient-to-r from-[#121E15] via-[#0E1611] to-[#121E15] border border-[#48C765]/30 p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className={`rounded-none border p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 transition-colors duration-300 ${
+          isLight
+            ? 'bg-gradient-to-r from-[#2D9A46]/8 via-[#2D9A46]/4 to-[#2D9A46]/8 border-[#2D9A46]/25'
+            : 'bg-gradient-to-r from-[#121E15] via-[#0E1611] to-[#121E15] border-[#48C765]/30'
+        }`}>
           <div className="max-w-2xl">
-            <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#48C765] uppercase mb-2 block">
+            <span className={`font-mono text-xs font-bold tracking-[0.25em] uppercase mb-2 block ${
+              isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
+            }`}>
               {language === 'es' ? 'MISIÓN INSTITUCIONAL' : 'INSTITUTIONAL ETHOS'}
             </span>
-            <h3 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-tight mb-3">
+            <h3 className={`font-['Oswald'] font-[700] text-lg uppercase tracking-tight mb-3 ${
+              isLight ? 'text-[#1A1D1A]' : 'text-white'
+            }`}>
               {language === 'es' 
                 ? 'Nuestra Misión: Erradicar la Subjetividad Ocular en Europa' 
                 : 'Our Mission: Eliminating Ocular Subjectivity in Europe'}
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#A4ACA1] leading-relaxed mb-4">
+            <p className={`font-sans text-xs sm:text-sm leading-relaxed mb-4 ${
+              isLight ? 'text-[#4A5048]' : 'text-[#A4ACA1]'
+            }`}>
               {language === 'es'
                 ? 'Durante décadas, los coleccionistas europeos han dependido de empresas transatlánticas con aranceles aduaneros abusivos, meses de espera y criterios de graduación opacos e irreproducibles. Gorilla Grading nace para ofrecer la certeza científica de la óptica de precisión con soberanía logística europea.'
                 : 'For decades, European collectors have endured punitive customs duties, months of carrier delays, and opaque, subjective grading criteria. Gorilla Grading was founded to deliver scientific certainty via optical metrology backed by seamless European logistics.'}
@@ -202,13 +290,21 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
           <div className="shrink-0 flex items-center gap-4">
             <button
               onClick={() => onNavigate('/services')}
-              className="px-6 py-4 rounded-none border border-white/20 hover:border-[#48C765] text-white hover:text-[#48C765] font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all bg-white/[0.03] hover:bg-[#48C765]/10 cursor-pointer"
+              className={`px-6 py-4 rounded-none border font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
+                isLight
+                  ? 'border-[#2D9A46]/30 text-[#2D9A46] hover:border-[#2D9A46] hover:bg-[#2D9A46]/10 bg-white/60'
+                  : 'border-white/20 hover:border-[#48C765] text-white hover:text-[#48C765] bg-white/[0.03] hover:bg-[#48C765]/10'
+              }`}
             >
               {language === 'es' ? 'VER TARIFAS' : 'VIEW PRICING'}
             </button>
             <button
               onClick={() => onNavigate('/submit')}
-              className="px-8 py-4 rounded-none bg-[#48C765] hover:bg-[#38B554] text-[#14170F] font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all shadow-[0_4px_20px_rgba(72,199,101,0.35)] cursor-pointer"
+              className={`px-8 py-4 rounded-none font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
+                isLight
+                  ? 'bg-[#2D9A46] hover:bg-[#248A3B] text-white shadow-[0_4px_20px_rgba(45,154,70,0.25)]'
+                  : 'bg-[#48C765] hover:bg-[#38B554] text-[#14170F] shadow-[0_4px_20px_rgba(72,199,101,0.35)]'
+              }`}
             >
               {language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}
             </button>

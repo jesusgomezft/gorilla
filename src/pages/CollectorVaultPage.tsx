@@ -254,7 +254,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
               {/* Showcase / Highlight */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="bg-[url('/images/step_3_spectrometry.jpg')] bg-cover bg-center border border-white/[0.05] relative overflow-hidden group min-h-[250px]">
+                <div className="bg-[url('/images/step_3_spectrometry.jpg')] bg-cover bg-center border border-black/20 relative overflow-hidden group min-h-[250px] rounded-none">
                   <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                   
@@ -271,7 +271,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   </div>
                 </div>
 
-                <div className="bg-[url('/images/preservar.png')] bg-cover bg-center border border-white/[0.05] relative overflow-hidden group min-h-[250px]">
+                <div className="bg-[url('/images/preservar.png')] bg-cover bg-center border border-black/20 relative overflow-hidden group min-h-[250px] rounded-none">
                   <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                   
