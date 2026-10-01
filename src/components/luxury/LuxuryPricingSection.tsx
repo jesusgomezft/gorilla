@@ -232,83 +232,84 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
   ];
 
   // ==========================================
-  // 2. LIGHT MODE DATA (Compact Modern Lab Cards)
+  // ==========================================
+  // 2. LIGHT MODE DATA (Clean Cards with Corner Glow & Blueprint SVGs)
   // ==========================================
   const lightTiers = [
     {
       id: 'regular',
       name: language === 'es' ? 'COLECCIONISTA REGULAR' : 'COLLECTOR REGULAR',
+      tagline: language === 'es' 
+        ? 'Volumen y sets modernos. Ideal para colecciones personales.' 
+        : 'Volume & modern sets. Ideal for personal collections.',
       price: '15',
       turnaround: language === 'es' ? '20 días hábiles' : '20 business days',
-      color: '#5A6B7A',
-      topBarColor: '#5A6B7A',
+      color: '#8B5CF6',
+      glowColor: 'rgba(139, 92, 246, 0.22)',
       code: 'RCDM.00',
-      badge: null,
-      isFeatured: false,
+      badge: '#8B5CF6',
       Blueprint: BlueprintScanner,
-      btnClass: 'border border-neutral-300 text-neutral-800 hover:border-neutral-900 hover:bg-neutral-50',
-      btnText: language === 'es' ? 'ELEGIR SERVICIO' : 'SELECT TIER',
       features: [
-        { text: language === 'es' ? 'Carcasa Premium' : 'Premium Slab', icon: <Box className="w-3.5 h-3.5 text-[#5A6B7A] shrink-0" /> },
-        { text: language === 'es' ? 'Chip NFC' : 'NFC Chip', icon: <Cpu className="w-3.5 h-3.5 text-[#5A6B7A] shrink-0" /> },
-        { text: language === 'es' ? 'Escaneo Básico' : 'Basic Scan', icon: <Scan className="w-3.5 h-3.5 text-[#5A6B7A] shrink-0" /> }
+        { text: language === 'es' ? 'Carcasa Premium' : 'Premium Slab', icon: <Box className="w-3.5 h-3.5 text-[#8B5CF6] shrink-0" /> },
+        { text: language === 'es' ? 'Chip NFC' : 'NFC Chip', icon: <Cpu className="w-3.5 h-3.5 text-[#8B5CF6] shrink-0" /> },
+        { text: language === 'es' ? 'Escaneo Básico' : 'Basic Scan', icon: <Scan className="w-3.5 h-3.5 text-[#8B5CF6] shrink-0" /> }
       ]
     },
     {
       id: 'standard',
       name: language === 'es' ? 'PRECISIÓN ESTÁNDAR' : 'PRECISION STANDARD',
+      tagline: language === 'es' 
+        ? 'El equilibrio perfecto. Subnotas y registro público en alta definición.' 
+        : 'The perfect balance. Subgrades and HD public registry.',
       price: '28',
       turnaround: language === 'es' ? '10 días hábiles' : '10 business days',
-      color: '#1E7E4E',
-      topBarColor: '#1E7E4E',
+      color: '#2D9A46',
+      glowColor: 'rgba(45, 154, 70, 0.22)',
       code: 'RCDM.01',
       badge: language === 'es' ? 'MÁS ELEGIDO' : 'MOST POPULAR',
-      isFeatured: true,
       Blueprint: BlueprintCaliper,
-      btnClass: 'bg-[#1E7E4E] text-white hover:bg-[#166534] shadow-sm',
-      btnText: language === 'es' ? 'MÁS ELEGIDO' : 'MOST POPULAR',
       features: [
-        { text: language === 'es' ? 'Subgrados detallados' : 'Detailed Subgrades', icon: <BarChart className="w-3.5 h-3.5 text-[#1E7E4E] shrink-0" /> },
-        { text: language === 'es' ? 'Escaneo 4K HD' : '4K HD Scan', icon: <Scan className="w-3.5 h-3.5 text-[#1E7E4E] shrink-0" /> },
-        { text: language === 'es' ? 'Registro público en blockchain' : 'Blockchain Public Registry', icon: <Link className="w-3.5 h-3.5 text-[#1E7E4E] shrink-0" /> }
+        { text: language === 'es' ? 'Subgrados detallados' : 'Detailed Subgrades', icon: <BarChart className="w-3.5 h-3.5 text-[#2D9A46] shrink-0" /> },
+        { text: language === 'es' ? 'Escaneo 4K HD' : '4K HD Scan', icon: <Scan className="w-3.5 h-3.5 text-[#2D9A46] shrink-0" /> },
+        { text: language === 'es' ? 'Registro público en blockchain' : 'Blockchain Public Registry', icon: <Link className="w-3.5 h-3.5 text-[#2D9A46] shrink-0" /> }
       ]
     },
     {
       id: 'express',
       name: language === 'es' ? 'PRIORIDAD EXPRÉS' : 'PRIORITY EXPRESS',
+      tagline: language === 'es' 
+        ? 'Procesamiento acelerado en cola preferente para alta demanda.' 
+        : 'Accelerated processing in priority queue for high demand.',
       price: '65',
       turnaround: language === 'es' ? '5 días hábiles' : '5 business days',
-      color: '#E67E22',
-      topBarColor: '#E67E22',
+      color: '#F97316',
+      glowColor: 'rgba(249, 115, 22, 0.22)',
       code: 'RCDM.02',
       badge: language === 'es' ? 'PRIORIDAD' : 'PRIORITY',
-      isFeatured: false,
       Blueprint: BlueprintMagnifier,
-      btnClass: 'border border-neutral-300 text-neutral-800 hover:border-neutral-900 hover:bg-neutral-50',
-      btnText: language === 'es' ? 'ELEGIR SERVICIO' : 'SELECT TIER',
       features: [
-        { text: language === 'es' ? 'Acelerado' : 'Fast-Track', icon: <Zap className="w-3.5 h-3.5 text-[#E67E22] shrink-0" /> },
-        { text: language === 'es' ? 'Soporte Directo' : 'Direct Support', icon: <Headset className="w-3.5 h-3.5 text-[#E67E22] shrink-0" /> },
-        { text: language === 'es' ? 'Fila Preferente' : 'Priority Queue', icon: <ListOrdered className="w-3.5 h-3.5 text-[#E67E22] shrink-0" /> }
+        { text: language === 'es' ? 'Acelerado' : 'Fast-Track', icon: <Zap className="w-3.5 h-3.5 text-[#F97316] shrink-0" /> },
+        { text: language === 'es' ? 'Soporte Directo' : 'Direct Support', icon: <Headset className="w-3.5 h-3.5 text-[#F97316] shrink-0" /> },
+        { text: language === 'es' ? 'Fila Preferente' : 'Priority Queue', icon: <ListOrdered className="w-3.5 h-3.5 text-[#F97316] shrink-0" /> }
       ]
     },
     {
       id: 'walkthrough',
       name: language === 'es' ? 'PASE MAESTRO' : 'MASTER WALK-THROUGH',
+      tagline: language === 'es' 
+        ? 'Tratamiento exclusivo de guante blanco para piezas históricas.' 
+        : 'Exclusive white-glove treatment for historic grails.',
       price: '140',
       turnaround: language === 'es' ? '48 horas' : '48 hours',
-      color: '#B4833E',
-      topBarColor: '#B4833E',
+      color: '#D4AF37',
+      glowColor: 'rgba(212, 175, 55, 0.25)',
       code: 'RCDM.MASTER',
       badge: language === 'es' ? 'GUANTE BLANCO' : 'WHITE GLOVE',
-      isFeatured: false,
       Blueprint: BlueprintBriefcase,
-      btnClass: 'border border-neutral-300 text-neutral-800 hover:border-neutral-900 hover:bg-neutral-50',
-      btnText: language === 'es' ? 'ELEGIR SERVICIO' : 'SELECT TIER',
       features: [
-        { text: language === 'es' ? 'Doble Auditoría' : 'Dual Audit', icon: <ShieldCheck className="w-3.5 h-3.5 text-[#B4833E] shrink-0" /> },
-        { text: language === 'es' ? 'Maletín Blindado' : 'Armored Case', icon: <Briefcase className="w-3.5 h-3.5 text-[#B4833E] shrink-0" /> },
-        { text: language === 'es' ? 'Master Grader Asignado' : 'Assigned Master Grader', icon: <Crown className="w-3.5 h-3.5 text-[#B4833E] shrink-0" /> }
+        { text: language === 'es' ? 'Doble Auditoría' : 'Dual Audit', icon: <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" /> },
+        { text: language === 'es' ? 'Maletín Blindado' : 'Armored Case', icon: <Briefcase className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" /> },
+        { text: language === 'es' ? 'Master Grader Asignado' : 'Assigned Master Grader', icon: <Crown className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" /> }
       ]
     }
   ];
@@ -457,12 +458,12 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
     }
 
     // ------------------------------------------
-    // B) LIGHT MODE (Compact Modern Lab Style)
+    // B) LIGHT MODE (Modern Clean Cards with Corner Glow & Blueprint SVGs)
     // ------------------------------------------
     return (
       <section 
         id="pricing" 
-        className="w-full bg-[#F8F9FA] border-b border-black/[0.06] text-[#1A1D1A] py-12 lg:py-16 px-5 lg:px-8 select-none relative flex flex-col items-center z-20 transition-colors duration-500"
+        className="w-full bg-[#F4F1EA] border-b border-black/[0.06] text-[#1A1D1A] py-12 lg:py-16 px-5 lg:px-8 select-none relative flex flex-col items-center z-20 transition-colors duration-500"
       >
         <div className="mb-8 flex items-center justify-center gap-6 w-full opacity-80">
           <div className="h-[1px] w-14 bg-gradient-to-r from-transparent to-black/20" />
@@ -477,53 +478,51 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           {lightTiers.map((tier) => (
             <div 
               key={tier.id}
-              className={`relative w-full bg-white overflow-hidden rounded-xl transition-all duration-300 cursor-pointer group/card hover:-translate-y-1.5 flex flex-col justify-between ${
-                tier.isFeatured
-                  ? 'border-2 border-[#1E7E4E] shadow-[0_10px_25px_rgba(30,126,78,0.12)]'
-                  : 'border border-neutral-200/90 shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.07)]'
-              }`}
+              className="relative w-full rounded-2xl overflow-hidden border border-neutral-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+              style={{
+                background: `radial-gradient(circle at 100% 0%, ${tier.glowColor} 0%, transparent 60%), #FFFFFF`
+              }}
               onClick={() => onNavigate && onNavigate(`/submit?tier=${tier.id}`)}
             >
-              {/* Top Colored Accent Stripe */}
-              <div 
-                className="w-full h-1.5" 
-                style={{ backgroundColor: tier.topBarColor }} 
-              />
-
-              <div className="w-full flex flex-col flex-1 p-5 sm:p-5.5 justify-between">
+              <div className="w-full flex flex-col flex-1 p-5 sm:p-6 justify-between relative z-10">
                 {/* Info Top */}
                 <div className="flex flex-col">
                   {/* Badges */}
                   <div className="flex items-center gap-1.5 mb-2.5 min-h-[22px]">
                     {tier.id === 'regular' && (
-                      <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-gray-300 bg-gray-100/90 text-gray-700">
-                        {tier.code}
+                      <div className="px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded bg-[#8B5CF6] text-white shadow-sm">
+                        #8B5CF6
                       </div>
                     )}
 
                     {tier.id === 'standard' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-[#1E7E4E]/30 bg-[#EBF7EE] text-[#1E7E4E]">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-[#2D9A46]/40 bg-[#2D9A46]/10 text-[#2D9A46]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#1E7E4E] text-white">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-neutral-300 bg-white text-neutral-900 shadow-sm">
                           {tier.badge}
                         </div>
                       </>
                     )}
 
                     {tier.id === 'express' && (
-                      <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-amber-300 bg-amber-50 text-amber-800">
-                        {tier.code}
-                      </div>
+                      <>
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
+                          {tier.code}
+                        </div>
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#F97316] text-white shadow-sm">
+                          {tier.badge}
+                        </div>
+                      </>
                     )}
 
                     {tier.id === 'walkthrough' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-amber-200 bg-amber-50/90 text-amber-800">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-amber-200 bg-amber-50/90 text-amber-800">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#D4AF37] text-white shadow-sm">
                           {tier.badge}
                         </div>
                       </>
@@ -531,20 +530,28 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide leading-tight text-neutral-900 mb-2">
+                  <h3 className="font-['Oswald'] text-2xl sm:text-[26px] font-bold uppercase tracking-wide leading-tight text-neutral-900 mb-1.5">
                     {tier.name}
                   </h3>
 
+                  {/* Tagline */}
+                  <p className="text-xs font-sans text-neutral-500 leading-relaxed mb-2.5 min-h-[32px]">
+                    {tier.tagline}
+                  </p>
+
                   {/* Blueprint SVG Graphic */}
-                  <div className="w-full h-16 sm:h-20 flex items-center justify-center my-1.5 group-hover/card:scale-105 transition-transform duration-500">
+                  <div className="w-full h-16 sm:h-20 flex items-center justify-center my-2 text-neutral-400 group-hover/card:scale-105 transition-transform duration-500">
                     <tier.Blueprint color={tier.color} isLight={true} />
                   </div>
 
-                  {/* Features with Lucide Icons */}
-                  <div className="flex flex-col gap-2 mt-2.5">
+                  {/* Features with matching colored dots */}
+                  <div className="flex flex-col gap-2.5 mt-2">
                     {tier.features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-center gap-2.5">
-                        {feat.icon}
+                        <span 
+                          className="w-2 h-2 rounded-full shrink-0" 
+                          style={{ backgroundColor: tier.color }} 
+                        />
                         <span className="font-sans text-xs font-medium tracking-wide text-neutral-700">
                           {feat.text}
                         </span>
@@ -554,7 +561,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 </div>
 
                 {/* Price & CTA Bottom */}
-                <div className="mt-5 pt-3.5 border-t border-neutral-200/80 flex flex-col items-center">
+                <div className="mt-5 pt-4 border-t border-neutral-200/80 flex flex-col items-center">
                   <div className="flex flex-col items-center w-full mb-3">
                     <span className="font-mono text-[8.5px] uppercase tracking-[0.2em] text-neutral-400 mb-0.5">
                       {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
@@ -566,7 +573,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5 mt-0.5">
-                      <svg className="w-3 h-3 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3.5 h-3.5" style={{ color: tier.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
                       <span className="font-sans text-[11px] text-neutral-500">
@@ -575,9 +582,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                     </div>
                   </div>
 
+                  {/* Button: Light, matching card background */}
                   <div className="w-full">
-                    <div className={`w-full py-2.5 text-center text-[10.5px] font-bold tracking-[0.15em] uppercase rounded-md transition-all duration-300 ${tier.btnClass}`}>
-                      {tier.btnText}
+                    <div className="w-full py-2.5 text-center text-[10.5px] font-bold tracking-[0.18em] uppercase rounded-lg border border-neutral-300 bg-white text-neutral-900 hover:border-neutral-900 hover:bg-neutral-50 transition-all duration-300 shadow-sm cursor-pointer">
+                      {language === 'es' ? 'ELEGIR SERVICIO' : 'SELECT TIER'}
                     </div>
                   </div>
                 </div>
@@ -756,66 +764,71 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           {lightTiers.map((tier) => (
             <div 
               key={tier.id}
-              className={`relative w-full bg-white overflow-hidden rounded-xl transition-all duration-300 cursor-pointer group/card hover:scale-[1.01] ${
-                tier.isFeatured
-                  ? 'border-2 border-[#1E7E4E] shadow-[0_10px_25px_rgba(30,126,78,0.12)]'
-                  : 'border border-neutral-200/90 shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.07)]'
-              }`}
+              className="relative w-full rounded-2xl overflow-hidden border border-neutral-200/90 shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.07)] hover:scale-[1.01] transition-all duration-300 cursor-pointer"
+              style={{
+                background: `radial-gradient(circle at 100% 0%, ${tier.glowColor} 0%, transparent 45%), #FFFFFF`
+              }}
               onClick={() => {
                 setSelectedTier(tier.id);
                 onNavigate && onNavigate(`/submit?tier=${tier.id}`);
               }}
             >
-              {/* Top Colored Accent Stripe */}
-              <div 
-                className="w-full h-1.5" 
-                style={{ backgroundColor: tier.topBarColor }} 
-              />
-
               <div className="w-full flex flex-col md:flex-row relative z-10 h-full">
                 {/* Left Side: Info */}
                 <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
                     {tier.id === 'regular' && (
-                      <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-gray-300 bg-gray-100/90 text-gray-700">
-                        {tier.code}
+                      <div className="px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded bg-[#8B5CF6] text-white shadow-sm">
+                        #8B5CF6
                       </div>
                     )}
                     {tier.id === 'standard' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-[#1E7E4E]/30 bg-[#EBF7EE] text-[#1E7E4E]">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-[#2D9A46]/40 bg-[#2D9A46]/10 text-[#2D9A46]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#1E7E4E] text-white">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-neutral-300 bg-white text-neutral-900 shadow-sm">
                           {tier.badge}
                         </div>
                       </>
                     )}
                     {tier.id === 'express' && (
-                      <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-amber-300 bg-amber-50 text-amber-800">
-                        {tier.code}
-                      </div>
+                      <>
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
+                          {tier.code}
+                        </div>
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#F97316] text-white shadow-sm">
+                          {tier.badge}
+                        </div>
+                      </>
                     )}
                     {tier.id === 'walkthrough' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-amber-200 bg-amber-50/90 text-amber-800">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-semibold tracking-wider uppercase rounded border border-amber-200 bg-amber-50/90 text-amber-800">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#D4AF37] text-white shadow-sm">
                           {tier.badge}
                         </div>
                       </>
                     )}
                   </div>
                   
-                  <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide leading-tight mb-2.5 font-bold text-neutral-900">
+                  <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide leading-tight mb-1.5 font-bold text-neutral-900">
                     {tier.name}
                   </h3>
 
+                  <p className="text-xs font-sans text-neutral-500 leading-relaxed mb-3">
+                    {tier.tagline}
+                  </p>
+
                   <div className="flex flex-col gap-2 mt-auto">
                     {tier.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        {feat.icon}
+                      <div key={idx} className="flex items-center gap-2.5">
+                        <span 
+                          className="w-2 h-2 rounded-full shrink-0" 
+                          style={{ backgroundColor: tier.color }} 
+                        />
                         <span className="font-sans text-xs font-medium tracking-wide text-neutral-700">
                           {feat.text}
                         </span>
@@ -825,9 +838,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 </div>
 
                 {/* Right Side: Price & CTA (Ticket Stub Style) */}
-                <div className={`w-full md:w-[30%] lg:w-[26%] p-5 sm:p-6 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l border-neutral-200/80 ${
-                  tier.isFeatured ? 'bg-[#F9FCFA]' : 'bg-neutral-50/60'
-                }`}>
+                <div className="w-full md:w-[30%] lg:w-[26%] p-5 sm:p-6 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l border-neutral-200/80 bg-neutral-50/50">
                   <div className="flex flex-col items-start md:items-end w-full mb-3">
                     <span className="font-mono text-[8.5px] uppercase tracking-[0.2em] mb-1 text-neutral-400">
                       {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
@@ -840,7 +851,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                     </div>
                     
                     <div className="flex items-center gap-1.5 text-right mt-0.5">
-                      <svg className="w-3 h-3 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3.5 h-3.5" style={{ color: tier.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
                       <span className="font-sans text-[11px] font-medium text-neutral-500">
@@ -850,8 +861,8 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   </div>
 
                   <div className="mt-auto w-full pt-1">
-                    <div className={`w-full py-2.5 text-center text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 rounded-md ${tier.btnClass}`}>
-                      {tier.btnText}
+                    <div className="w-full py-2.5 text-center text-[10.5px] font-bold tracking-[0.18em] uppercase rounded-lg border border-neutral-300 bg-white text-neutral-900 hover:border-neutral-900 hover:bg-neutral-50 transition-all duration-300 shadow-sm cursor-pointer">
+                      {language === 'es' ? 'ELEGIR' : 'SELECT'}
                     </div>
                   </div>
                 </div>
