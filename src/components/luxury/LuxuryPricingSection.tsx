@@ -233,7 +233,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
   // ==========================================
   // ==========================================
-  // 2. LIGHT MODE DATA (Clean Cards with Corner Glow & Blueprint SVGs)
+  // 2. LIGHT MODE DATA (Clean Cards with Vivid Corner Glow & Blueprint SVGs)
   // ==========================================
   const lightTiers = [
     {
@@ -245,7 +245,8 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
       price: '15',
       turnaround: language === 'es' ? '20 días hábiles' : '20 business days',
       color: '#8B5CF6',
-      glowColor: 'rgba(139, 92, 246, 0.22)',
+      cornerGradient: 'radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.6) 0%, rgba(139, 92, 246, 0.3) 35%, rgba(139, 92, 246, 0.08) 60%, transparent 75%), #FFFFFF',
+      borderColor: 'rgba(139, 92, 246, 0.35)',
       code: 'RCDM.00',
       badge: '#8B5CF6',
       Blueprint: BlueprintScanner,
@@ -263,15 +264,16 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         : 'The perfect balance. Subgrades and HD public registry.',
       price: '28',
       turnaround: language === 'es' ? '10 días hábiles' : '10 business days',
-      color: '#2D9A46',
-      glowColor: 'rgba(45, 154, 70, 0.22)',
+      color: '#16A34A',
+      cornerGradient: 'radial-gradient(circle at 100% 0%, rgba(22, 163, 74, 0.6) 0%, rgba(22, 163, 74, 0.3) 35%, rgba(22, 163, 74, 0.08) 60%, transparent 75%), #FFFFFF',
+      borderColor: 'rgba(22, 163, 74, 0.35)',
       code: 'RCDM.01',
       badge: language === 'es' ? 'MÁS ELEGIDO' : 'MOST POPULAR',
       Blueprint: BlueprintCaliper,
       features: [
-        { text: language === 'es' ? 'Subgrados detallados' : 'Detailed Subgrades', icon: <BarChart className="w-3.5 h-3.5 text-[#2D9A46] shrink-0" /> },
-        { text: language === 'es' ? 'Escaneo 4K HD' : '4K HD Scan', icon: <Scan className="w-3.5 h-3.5 text-[#2D9A46] shrink-0" /> },
-        { text: language === 'es' ? 'Registro público en blockchain' : 'Blockchain Public Registry', icon: <Link className="w-3.5 h-3.5 text-[#2D9A46] shrink-0" /> }
+        { text: language === 'es' ? 'Subgrados detallados' : 'Detailed Subgrades', icon: <BarChart className="w-3.5 h-3.5 text-[#16A34A] shrink-0" /> },
+        { text: language === 'es' ? 'Escaneo 4K HD' : '4K HD Scan', icon: <Scan className="w-3.5 h-3.5 text-[#16A34A] shrink-0" /> },
+        { text: language === 'es' ? 'Registro público en blockchain' : 'Blockchain Public Registry', icon: <Link className="w-3.5 h-3.5 text-[#16A34A] shrink-0" /> }
       ]
     },
     {
@@ -282,15 +284,16 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         : 'Accelerated processing in priority queue for high demand.',
       price: '65',
       turnaround: language === 'es' ? '5 días hábiles' : '5 business days',
-      color: '#F97316',
-      glowColor: 'rgba(249, 115, 22, 0.22)',
+      color: '#EA580C',
+      cornerGradient: 'radial-gradient(circle at 100% 0%, rgba(249, 115, 22, 0.65) 0%, rgba(249, 115, 22, 0.32) 35%, rgba(249, 115, 22, 0.08) 60%, transparent 75%), #FFFFFF',
+      borderColor: 'rgba(249, 115, 22, 0.35)',
       code: 'RCDM.02',
       badge: language === 'es' ? 'PRIORIDAD' : 'PRIORITY',
       Blueprint: BlueprintMagnifier,
       features: [
-        { text: language === 'es' ? 'Acelerado' : 'Fast-Track', icon: <Zap className="w-3.5 h-3.5 text-[#F97316] shrink-0" /> },
-        { text: language === 'es' ? 'Soporte Directo' : 'Direct Support', icon: <Headset className="w-3.5 h-3.5 text-[#F97316] shrink-0" /> },
-        { text: language === 'es' ? 'Fila Preferente' : 'Priority Queue', icon: <ListOrdered className="w-3.5 h-3.5 text-[#F97316] shrink-0" /> }
+        { text: language === 'es' ? 'Acelerado' : 'Fast-Track', icon: <Zap className="w-3.5 h-3.5 text-[#EA580C] shrink-0" /> },
+        { text: language === 'es' ? 'Soporte Directo' : 'Direct Support', icon: <Headset className="w-3.5 h-3.5 text-[#EA580C] shrink-0" /> },
+        { text: language === 'es' ? 'Fila Preferente' : 'Priority Queue', icon: <ListOrdered className="w-3.5 h-3.5 text-[#EA580C] shrink-0" /> }
       ]
     },
     {
@@ -301,15 +304,16 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         : 'Exclusive white-glove treatment for historic grails.',
       price: '140',
       turnaround: language === 'es' ? '48 horas' : '48 hours',
-      color: '#D4AF37',
-      glowColor: 'rgba(212, 175, 55, 0.25)',
+      color: '#CA8A04',
+      cornerGradient: 'radial-gradient(circle at 100% 0%, rgba(234, 179, 8, 0.65) 0%, rgba(234, 179, 8, 0.32) 35%, rgba(234, 179, 8, 0.08) 60%, transparent 75%), #FFFFFF',
+      borderColor: 'rgba(234, 179, 8, 0.4)',
       code: 'RCDM.MASTER',
       badge: language === 'es' ? 'GUANTE BLANCO' : 'WHITE GLOVE',
       Blueprint: BlueprintBriefcase,
       features: [
-        { text: language === 'es' ? 'Doble Auditoría' : 'Dual Audit', icon: <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" /> },
-        { text: language === 'es' ? 'Maletín Blindado' : 'Armored Case', icon: <Briefcase className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" /> },
-        { text: language === 'es' ? 'Master Grader Asignado' : 'Assigned Master Grader', icon: <Crown className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" /> }
+        { text: language === 'es' ? 'Doble Auditoría' : 'Dual Audit', icon: <ShieldCheck className="w-3.5 h-3.5 text-[#CA8A04] shrink-0" /> },
+        { text: language === 'es' ? 'Maletín Blindado' : 'Armored Case', icon: <Briefcase className="w-3.5 h-3.5 text-[#CA8A04] shrink-0" /> },
+        { text: language === 'es' ? 'Master Grader Asignado' : 'Assigned Master Grader', icon: <Crown className="w-3.5 h-3.5 text-[#CA8A04] shrink-0" /> }
       ]
     }
   ];
@@ -478,9 +482,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           {lightTiers.map((tier) => (
             <div 
               key={tier.id}
-              className="relative w-full rounded-2xl overflow-hidden border border-neutral-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+              className="relative w-full rounded-2xl overflow-hidden border shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between"
               style={{
-                background: `radial-gradient(circle at 100% 0%, ${tier.glowColor} 0%, transparent 60%), #FFFFFF`
+                background: tier.cornerGradient,
+                borderColor: tier.borderColor
               }}
               onClick={() => onNavigate && onNavigate(`/submit?tier=${tier.id}`)}
             >
@@ -490,17 +495,17 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   {/* Badges */}
                   <div className="flex items-center gap-1.5 mb-2.5 min-h-[22px]">
                     {tier.id === 'regular' && (
-                      <div className="px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded bg-[#8B5CF6] text-white shadow-sm">
+                      <div className="px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded-md bg-[#8B5CF6] shadow-sm" style={{ color: '#FFFFFF' }}>
                         #8B5CF6
                       </div>
                     )}
 
                     {tier.id === 'standard' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-[#2D9A46]/40 bg-[#2D9A46]/10 text-[#2D9A46]">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-[#16A34A]/40 bg-[#16A34A]/10 text-[#15803D]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-neutral-300 bg-white text-neutral-900 shadow-sm">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-neutral-300 bg-white text-neutral-900 shadow-sm">
                           {tier.badge}
                         </div>
                       </>
@@ -508,10 +513,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
                     {tier.id === 'express' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-[#EA580C]/40 bg-[#EA580C]/10 text-[#C2410C]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#F97316] text-white shadow-sm">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md bg-[#EA580C] shadow-sm" style={{ color: '#FFFFFF' }}>
                           {tier.badge}
                         </div>
                       </>
@@ -519,10 +524,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
                     {tier.id === 'walkthrough' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-[#CA8A04]/40 bg-[#CA8A04]/15 text-[#854D0E]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#D4AF37] text-white shadow-sm">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md bg-[#CA8A04] shadow-sm" style={{ color: '#FFFFFF' }}>
                           {tier.badge}
                         </div>
                       </>
@@ -764,9 +769,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           {lightTiers.map((tier) => (
             <div 
               key={tier.id}
-              className="relative w-full rounded-2xl overflow-hidden border border-neutral-200/90 shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.07)] hover:scale-[1.01] transition-all duration-300 cursor-pointer"
+              className="relative w-full rounded-2xl overflow-hidden border shadow-[0_3px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.07)] hover:scale-[1.01] transition-all duration-300 cursor-pointer"
               style={{
-                background: `radial-gradient(circle at 100% 0%, ${tier.glowColor} 0%, transparent 45%), #FFFFFF`
+                background: tier.cornerGradient,
+                borderColor: tier.borderColor
               }}
               onClick={() => {
                 setSelectedTier(tier.id);
@@ -778,36 +784,36 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
                     {tier.id === 'regular' && (
-                      <div className="px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded bg-[#8B5CF6] text-white shadow-sm">
+                      <div className="px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded-md bg-[#8B5CF6] shadow-sm" style={{ color: '#FFFFFF' }}>
                         #8B5CF6
                       </div>
                     )}
                     {tier.id === 'standard' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-[#2D9A46]/40 bg-[#2D9A46]/10 text-[#2D9A46]">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-[#16A34A]/40 bg-[#16A34A]/10 text-[#15803D]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-neutral-300 bg-white text-neutral-900 shadow-sm">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-neutral-300 bg-white text-neutral-900 shadow-sm">
                           {tier.badge}
                         </div>
                       </>
                     )}
                     {tier.id === 'express' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-[#EA580C]/40 bg-[#EA580C]/10 text-[#C2410C]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#F97316] text-white shadow-sm">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md bg-[#EA580C] shadow-sm" style={{ color: '#FFFFFF' }}>
                           {tier.badge}
                         </div>
                       </>
                     )}
                     {tier.id === 'walkthrough' && (
                       <>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 text-white">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md border border-[#CA8A04]/40 bg-[#CA8A04]/15 text-[#854D0E]">
                           {tier.code}
                         </div>
-                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#D4AF37] text-white shadow-sm">
+                        <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded-md bg-[#CA8A04] shadow-sm" style={{ color: '#FFFFFF' }}>
                           {tier.badge}
                         </div>
                       </>
