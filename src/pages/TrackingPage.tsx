@@ -125,22 +125,26 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
               </div>
 
               <div className="flex flex-col">
-                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-4">
                   {language === 'es' ? 'Cartas en Lote' : 'Cards in Batch'} ({activeOrder.items.length})
                 </span>
                 
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-4">
                   {activeOrder.items.map((item, idx) => (
-                    <div key={item.id} className="flex items-center gap-3 group">
+                    <div key={item.id} className="flex items-center gap-4 group">
                       <span className="font-mono text-[9px] text-white/30 w-4">{String(idx + 1).padStart(2, '0')}</span>
-                      <div className="w-10 h-13 bg-[#454545] border border-white/10 overflow-hidden shrink-0">
-                        <img src={item.frontImagePreview} alt="" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0" />
+                      <div className="w-12 h-16 bg-[#454545] border border-white/10 overflow-hidden shrink-0">
+                        <img 
+                          src={item.frontImagePreview} 
+                          alt="" 
+                          className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0" 
+                        />
                       </div>
                       <div className="flex flex-col min-w-0">
-                        <span className="font-mono text-xs uppercase text-white tracking-widest truncate max-w-[200px] font-medium">
+                        <span className="font-mono text-xs uppercase text-white tracking-widest truncate max-w-[180px]">
                           {item.cardName}
                         </span>
-                        <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-widest truncate">
+                        <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-widest">
                           {item.game} • {item.set}
                         </span>
                       </div>
