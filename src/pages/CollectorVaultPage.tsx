@@ -40,45 +40,45 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
       <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-white/[0.02] blur-[150px] pointer-events-none" />
 
       {/* Main Container */}
-      <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-12 relative z-10 flex-1 flex flex-col lg:flex-row gap-12">
+      <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-12 relative z-10 flex-1 flex flex-col lg:flex-row gap-8 lg:gap-12">
         
         {/* LEFT COLUMN: Sidebar Profile */}
-        <aside className="lg:w-[320px] shrink-0 flex flex-col gap-8">
+        <aside className="lg:w-[320px] shrink-0 flex flex-col gap-6 lg:gap-8">
           
           {/* Profile Card */}
-          <div className="bg-white/[0.02] border border-white/[0.05] p-6 relative overflow-hidden group">
+          <div className="bg-white/[0.02] border border-white/[0.05] p-5 sm:p-6 relative overflow-hidden group">
             <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 pointer-events-none mix-blend-overlay z-0" />
             {/* Accent Line */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#48C765] to-transparent opacity-70" />
             
-            <div className="flex items-center gap-5 mb-8">
-              <div className="w-16 h-16 bg-[#2A2A2A] border border-white/[0.05] flex items-center justify-center relative">
+            <div className="flex items-center gap-4 sm:gap-5 mb-6 sm:mb-8">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#2A2A2A] border border-white/[0.05] flex items-center justify-center relative shrink-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#48C765]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="font-['Oswald'] text-2xl text-white tracking-widest relative z-10">CM</span>
+                <span className="font-['Oswald'] text-xl sm:text-2xl text-white tracking-widest relative z-10">CM</span>
               </div>
-              <div className="flex flex-col z-10">
+              <div className="flex flex-col z-10 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <div className="flex gap-[2px] h-2.5 items-end opacity-50 text-[#48C765]">
                     <div className="w-[2px] h-full bg-current"></div>
                     <div className="w-[1px] h-[70%] bg-current"></div>
                     <div className="w-[1px] h-[100%] bg-current"></div>
                   </div>
-                  <span className="font-mono text-[8px] text-[#48C765] uppercase tracking-[0.3em] leading-none">
+                  <span className="font-mono text-[8px] text-[#48C765] uppercase tracking-[0.3em] leading-none truncate">
                     VIP COLLECTOR
                   </span>
                 </div>
-                <h1 className="font-['Oswald'] text-2xl uppercase tracking-wide text-white leading-none">
+                <h1 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide text-white leading-none truncate">
                   Carlos Mendes
                 </h1>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex justify-between items-center border-b border-white/[0.05] pb-3">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex justify-between items-center border-b border-white/[0.05] pb-2.5 sm:pb-3">
                 <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest">Client ID</span>
                 <span className="font-mono text-xs text-white">#GOR-8821</span>
               </div>
-              <div className="flex justify-between items-center border-b border-white/[0.05] pb-3">
+              <div className="flex justify-between items-center border-b border-white/[0.05] pb-2.5 sm:pb-3">
                 <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest">Member Since</span>
                 <span className="font-mono text-xs text-white">2025</span>
               </div>
@@ -90,7 +90,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
             <button
               onClick={() => onNavigate('/submit')}
-              className="mt-8 w-full relative z-10 bg-transparent border border-[#48C765]/30 hover:border-[#48C765] hover:bg-[#48C765]/5 text-[#48C765] font-mono text-[10px] font-bold tracking-[0.2em] uppercase py-3.5 transition-all flex items-center justify-center gap-3 group"
+              className="mt-6 sm:mt-8 w-full relative z-10 bg-transparent border border-[#48C765]/30 hover:border-[#48C765] hover:bg-[#48C765]/5 text-[#48C765] font-mono text-[10px] font-bold tracking-[0.2em] uppercase py-3 sm:py-3.5 transition-all flex items-center justify-center gap-3 group"
             >
               <span>{language === 'es' ? 'NUEVO ENVÍO' : 'NEW SUBMISSION'}</span>
               <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -100,20 +100,20 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
           </div>
 
           {/* Navigation Tabs */}
-          <nav className="flex flex-col gap-2">
+          <nav className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:flex-col gap-2">
             {tabs.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center justify-between p-4 border transition-all duration-300 font-mono text-[11px] uppercase tracking-[0.2em] ${
+                className={`flex items-center justify-center lg:justify-between p-3 sm:p-4 text-center lg:text-left border transition-all duration-300 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.2em] ${
                   activeTab === tab.id 
-                    ? 'bg-white/[0.02] border-[#48C765]/30 text-white' 
-                    : 'bg-transparent border-transparent text-[#A4ACA1] hover:text-white hover:bg-white/[0.02]'
+                    ? 'bg-[#48C765]/10 border-[#48C765]/50 text-[#48C765] font-bold shadow-[0_0_15px_rgba(72,199,101,0.15)]' 
+                    : 'bg-white/[0.02] border-white/[0.05] text-[#A4ACA1] hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <span>{tab.label}</span>
+                <span className="truncate">{tab.label}</span>
                 {activeTab === tab.id && (
-                  <svg className="w-3.5 h-3.5 text-[#48C765]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="hidden lg:block w-3.5 h-3.5 text-[#48C765] shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                   </svg>
                 )}
@@ -217,34 +217,36 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   </div>
 
                   {/* Progress Bar UI */}
-                  <div className="relative pt-8 pb-4">
-                    {/* Background Track */}
-                    <div className="absolute top-1/2 left-0 w-full h-[2px] bg-white/10 -translate-y-1/2" />
-                    {/* Active Track */}
-                    <div className="absolute top-1/2 left-0 w-[60%] h-[2px] bg-[#48C765] -translate-y-1/2 shadow-[0_0_10px_#48C765]" />
-                    
-                    {/* Steps */}
-                    <div className="relative z-10 flex justify-between items-center px-1">
-                      {['RECEIVED', 'CLEANROOM', 'SPECTROMETRY', 'GRADING', 'ENCAPSULATION'].map((step, idx) => {
-                        const isActive = idx < 3; // Mock current step
-                        const isCurrent = idx === 2;
-                        return (
-                          <div key={step} className="flex flex-col items-center gap-3 group/step relative">
-                            <div className={`w-3 h-3 rotate-45 border transition-all duration-300 ${
-                              isCurrent ? 'bg-[#48C765] border-[#48C765] shadow-[0_0_15px_#48C765] scale-150' 
-                              : isActive ? 'bg-[#48C765] border-[#48C765]' 
-                              : 'bg-[#454545] border-white/[0.05]'
-                            }`} />
-                            <span className={`absolute top-6 font-mono text-[8px] uppercase tracking-widest whitespace-nowrap ${
-                              isCurrent ? 'text-[#48C765] font-bold' 
-                              : isActive ? 'text-white' 
-                              : 'text-[#A4ACA1]'
-                            }`}>
-                              {step}
-                            </span>
-                          </div>
-                        );
-                      })}
+                  <div className="overflow-x-auto pb-6 pt-6 -mx-2 px-2 scrollbar-none">
+                    <div className="min-w-[460px] sm:min-w-full relative pt-4 pb-2">
+                      {/* Background Track */}
+                      <div className="absolute top-1/2 left-0 w-full h-[2px] bg-white/10 -translate-y-1/2" />
+                      {/* Active Track */}
+                      <div className="absolute top-1/2 left-0 w-[60%] h-[2px] bg-[#48C765] -translate-y-1/2 shadow-[0_0_10px_#48C765]" />
+                      
+                      {/* Steps */}
+                      <div className="relative z-10 flex justify-between items-center px-1">
+                        {['RECEIVED', 'CLEANROOM', 'SPECTROMETRY', 'GRADING', 'ENCAPSULATION'].map((step, idx) => {
+                          const isActive = idx < 3; // Mock current step
+                          const isCurrent = idx === 2;
+                          return (
+                            <div key={step} className="flex flex-col items-center gap-3 group/step relative">
+                              <div className={`w-3 h-3 rotate-45 border transition-all duration-300 ${
+                                isCurrent ? 'bg-[#48C765] border-[#48C765] shadow-[0_0_15px_#48C765] scale-150' 
+                                : isActive ? 'bg-[#48C765] border-[#48C765]' 
+                                : 'bg-[#454545] border-white/[0.05]'
+                              }`} />
+                              <span className={`absolute top-6 font-mono text-[8px] uppercase tracking-widest whitespace-nowrap ${
+                                isCurrent ? 'text-[#48C765] font-bold' 
+                                : isActive ? 'text-white' 
+                                : 'text-[#A4ACA1]'
+                              }`}>
+                                {step}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -292,7 +294,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
           {/* TAB: SUBMISSIONS */}
           {activeTab === 'submissions' && (
-            <div className="space-y-12 animate-in fade-in duration-700">
+            <div className="space-y-8 sm:space-y-12 animate-in fade-in duration-700">
               
               <div>
                 <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
@@ -303,8 +305,40 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 </p>
               </div>
 
-              <div className="bg-white/[0.02] border border-white/[0.05] overflow-hidden">
-                <table className="w-full text-left font-sans text-sm">
+              {/* Mobile Card View (< md) */}
+              <div className="flex flex-col gap-3.5 md:hidden">
+                {[activeOrder, ...pastOrders].map((order, idx) => (
+                  <div key={order.id} className="bg-white/[0.02] border border-white/[0.06] p-4 flex flex-col gap-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-white text-xs font-bold tracking-wider">{order.id}</span>
+                      <span className={`inline-flex items-center px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest border ${
+                        idx === 0 
+                          ? 'border-[#48C765]/30 text-[#48C765] bg-[#48C765]/10' 
+                          : 'border-white/[0.05] text-[#A4ACA1] bg-white/5'
+                      }`}>
+                        {order.status.replace('_', ' ')}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-[#A4ACA1] border-t border-b border-white/[0.04] py-2">
+                      <span className="font-mono text-[11px]">{order.createdAt}</span>
+                      <span className="text-white font-medium">{order.items.length} {language === 'es' ? 'cartas' : 'cards'}</span>
+                    </div>
+                    <div className="flex justify-end pt-0.5">
+                      <button
+                        onClick={() => onNavigate('/track')}
+                        className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1.5 py-1"
+                      >
+                        <span>{language === 'es' ? 'Ver Seguimiento' : 'View Tracking'}</span>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View (>= md) */}
+              <div className="hidden md:block bg-white/[0.02] border border-white/[0.05] overflow-x-auto">
+                <table className="w-full text-left font-sans text-sm min-w-[620px] whitespace-nowrap">
                   <thead>
                     <tr className="border-b border-white/[0.05] bg-white/[0.01]">
                       <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">Order ID</th>
@@ -415,7 +449,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
           {/* TAB: INVOICES */}
           {activeTab === 'invoices' && (
-            <div className="space-y-12 animate-in fade-in duration-700">
+            <div className="space-y-8 sm:space-y-12 animate-in fade-in duration-700">
               <div>
                 <h2 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase tracking-wide mb-2">
                   {language === 'es' ? 'Facturación' : 'Billing & Invoices'}
@@ -425,8 +459,60 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 </p>
               </div>
 
-              <div className="bg-white/[0.02] border border-white/[0.05] overflow-hidden">
-                <table className="w-full text-left font-sans text-sm">
+              {/* Mobile Card View (< md) */}
+              <div className="flex flex-col gap-3.5 md:hidden">
+                {[
+                  { id: 'INV-2026-0892', date: 'Sep 15, 2026', orderRef: 'GG-ORD-88219', amount: '€45.00' },
+                  { id: 'INV-2026-0741', date: 'Aug 02, 2026', orderRef: 'GG-ORD-88102', amount: '€120.00' },
+                ].map((inv) => (
+                  <div key={inv.id} className="bg-white/[0.02] border border-white/[0.06] p-4 flex flex-col gap-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-white text-xs font-bold tracking-wider">{inv.id}</span>
+                      <span className="inline-flex items-center px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest border border-[#48C765]/30 text-[#48C765] bg-[#48C765]/10">
+                        {language === 'es' ? 'PAGADO' : 'PAID'}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs border-t border-b border-white/[0.04] py-2.5">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-wider">{language === 'es' ? 'Fecha' : 'Date'}</span>
+                        <span className="text-white text-xs font-mono">{inv.date}</span>
+                      </div>
+                      <div className="flex flex-col gap-0.5 items-center">
+                        <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-wider">{language === 'es' ? 'Pedido' : 'Order'}</span>
+                        <span className="text-[#A4ACA1] text-xs font-mono">{inv.orderRef}</span>
+                      </div>
+                      <div className="flex flex-col gap-0.5 items-end">
+                        <span className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-wider">Total</span>
+                        <span className="font-['Oswald'] text-base text-white">{inv.amount}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-end gap-3 pt-0.5">
+                      <button 
+                        onClick={() => setShowInvoiceModal(inv.id)}
+                        className="text-[#48C765] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1.5 py-1"
+                      >
+                        <span>{language === 'es' ? 'Ver' : 'View'}</span>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                      </button>
+                      <button className="text-[#A4ACA1] hover:text-white font-mono text-[10px] uppercase tracking-widest flex items-center gap-1.5 py-1">
+                        <span>{language === 'es' ? 'Descargar' : 'Download'}</span>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View (>= md) */}
+              <div className="hidden md:block bg-white/[0.02] border border-white/[0.05] overflow-x-auto">
+                <table className="w-full text-left font-sans text-sm min-w-[650px] whitespace-nowrap">
                   <thead>
                     <tr className="border-b border-white/[0.05] bg-white/[0.01]">
                       <th className="px-6 py-4 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">
@@ -513,16 +599,16 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
       </div>
       {/* Invoice Modal */}
       {showInvoiceModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4">
           <div className="absolute inset-0 bg-[#14170F]/90 backdrop-blur-sm" onClick={() => setShowInvoiceModal(null)} />
-          <div className="relative bg-[#2B302B] border border-white/[0.05] shadow-2xl w-full max-w-3xl flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-[#2B302B] border border-white/[0.05] shadow-2xl w-full max-w-3xl flex flex-col max-h-[92vh] animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/[0.05]">
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/[0.05]">
               <div>
-                <h3 className="font-['Oswald'] text-2xl uppercase tracking-wide">
+                <h3 className="font-['Oswald'] text-xl sm:text-2xl uppercase tracking-wide">
                   {language === 'es' ? 'FACTURA' : 'INVOICE'} <span className="text-[#48C765]">{showInvoiceModal}</span>
                 </h3>
-                <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mt-1">
+                <p className="font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest mt-0.5 sm:mt-1">
                   Gorilla Grading Europe S.L.
                 </p>
               </div>
@@ -534,15 +620,15 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             </div>
             
             {/* Content */}
-            <div className="p-6 md:p-8 overflow-y-auto">
-              <div className="flex flex-col md:flex-row justify-between mb-12 gap-8">
+            <div className="p-4 sm:p-6 md:p-8 overflow-y-auto">
+              <div className="flex flex-col sm:flex-row justify-between mb-8 sm:mb-12 gap-6 sm:gap-8">
                 <div>
                   <h4 className="font-sans text-[10px] font-bold text-[#A4ACA1] uppercase tracking-widest mb-2">{language === 'es' ? 'FACTURAR A:' : 'BILLED TO:'}</h4>
                   <p className="text-sm">Miguel García</p>
                   <p className="text-sm text-[#A4ACA1]">Calle Principal 123</p>
                   <p className="text-sm text-[#A4ACA1]">28001 Madrid, España</p>
                 </div>
-                <div className="md:text-right">
+                <div className="sm:text-right">
                   <h4 className="font-sans text-[10px] font-bold text-[#A4ACA1] uppercase tracking-widest mb-2">{language === 'es' ? 'DETALLES:' : 'DETAILS:'}</h4>
                   <p className="text-sm"><span className="text-[#A4ACA1]">{language === 'es' ? 'Fecha:' : 'Date:'}</span> Sep 15, 2026</p>
                   <p className="text-sm"><span className="text-[#A4ACA1]">{language === 'es' ? 'Pedido:' : 'Order:'}</span> GG-ORD-88219</p>
@@ -550,30 +636,30 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 </div>
               </div>
 
-              <div className="border border-white/[0.05] rounded-none overflow-hidden mb-8">
-                <table className="w-full text-left font-sans text-sm">
+              <div className="border border-white/[0.05] rounded-none overflow-x-auto mb-6 sm:mb-8">
+                <table className="w-full text-left font-sans text-xs sm:text-sm min-w-[340px] sm:min-w-full">
                   <thead className="bg-white/[0.02] border-b border-white/[0.05]">
                     <tr>
-                      <th className="px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">{language === 'es' ? 'Descripción' : 'Description'}</th>
-                      <th className="px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal text-center">{language === 'es' ? 'Cant.' : 'Qty'}</th>
-                      <th className="px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal text-right">{language === 'es' ? 'Precio' : 'Price'}</th>
+                      <th className="px-3 sm:px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal">{language === 'es' ? 'Descripción' : 'Description'}</th>
+                      <th className="px-3 sm:px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal text-center">{language === 'es' ? 'Cant.' : 'Qty'}</th>
+                      <th className="px-3 sm:px-4 py-3 font-mono text-[10px] text-[#A4ACA1] uppercase tracking-widest font-normal text-right">{language === 'es' ? 'Precio' : 'Price'}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/[0.05]">
                     <tr>
-                      <td className="px-4 py-4">Standard Grading Service (15 Days)</td>
-                      <td className="px-4 py-4 text-center text-[#A4ACA1]">1</td>
-                      <td className="px-4 py-4 text-right">€30.00</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4">Standard Grading Service (15 Days)</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4 text-center text-[#A4ACA1]">1</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4 text-right">€30.00</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-4">Sub-Grades Addon</td>
-                      <td className="px-4 py-4 text-center text-[#A4ACA1]">1</td>
-                      <td className="px-4 py-4 text-right">€5.00</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4">Sub-Grades Addon</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4 text-center text-[#A4ACA1]">1</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4 text-right">€5.00</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-4">Insured Return Shipping (EU)</td>
-                      <td className="px-4 py-4 text-center text-[#A4ACA1]">1</td>
-                      <td className="px-4 py-4 text-right">€10.00</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4">Insured Return Shipping (EU)</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4 text-center text-[#A4ACA1]">1</td>
+                      <td className="px-3 sm:px-4 py-3 sm:py-4 text-right">€10.00</td>
                     </tr>
                   </tbody>
                 </table>
@@ -589,7 +675,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     <span>IVA (21%)</span>
                     <span>€0.00</span>
                   </div>
-                  <div className="flex justify-between py-4 text-lg font-['Oswald'] tracking-wide text-white">
+                  <div className="flex justify-between py-3 sm:py-4 text-lg font-['Oswald'] tracking-wide text-white">
                     <span>Total</span>
                     <span className="text-[#48C765]">€45.00</span>
                   </div>
@@ -598,14 +684,14 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-white/[0.05] bg-white/[0.01] flex justify-end">
+            <div className="p-4 sm:p-6 border-t border-white/[0.05] bg-white/[0.01] flex flex-col-reverse sm:flex-row sm:justify-end gap-3 sm:gap-4">
               <button 
                 onClick={() => setShowInvoiceModal(null)}
-                className="px-6 py-2.5 border border-white/[0.1] hover:bg-white/[0.05] text-white font-mono text-[10px] uppercase tracking-widest transition-colors mr-4"
+                className="w-full sm:w-auto px-6 py-2.5 border border-white/[0.1] hover:bg-white/[0.05] text-white font-mono text-[10px] uppercase tracking-widest transition-colors text-center"
               >
                 {language === 'es' ? 'Cerrar' : 'Close'}
               </button>
-              <button className="px-6 py-2.5 bg-[#48C765] hover:bg-[#38B554] text-[#14170F] font-mono text-[10px] font-bold tracking-widest uppercase transition-colors flex items-center gap-2">
+              <button className="w-full sm:w-auto justify-center px-6 py-2.5 bg-[#48C765] hover:bg-[#38B554] text-[#14170F] font-mono text-[10px] font-bold tracking-widest uppercase transition-colors flex items-center gap-2">
                 <span>{language === 'es' ? 'Descargar PDF' : 'Download PDF'}</span>
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
               </button>
