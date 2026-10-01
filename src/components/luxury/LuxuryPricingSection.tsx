@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { Box, Cpu, Scan, BarChart, Link, Zap, Headset, ListOrdered, ShieldCheck, Briefcase, Crown } from 'lucide-react';
 
-const BlueprintScanner = ({ color, isLight }: { color: string; isLight?: boolean }) => {
+export const BlueprintScanner = ({ color, isLight }: { color: string; isLight?: boolean }) => {
   const lineStroke = isLight ? color : 'rgba(255, 255, 255, 0.8)';
   const subStroke = isLight ? `${color}99` : 'rgba(255, 255, 255, 0.6)';
   const dimStroke = isLight ? `${color}40` : 'rgba(255, 255, 255, 0.3)';
@@ -40,7 +40,7 @@ const BlueprintScanner = ({ color, isLight }: { color: string; isLight?: boolean
   );
 };
 
-const BlueprintCaliper = ({ color, isLight }: { color: string; isLight?: boolean }) => {
+export const BlueprintCaliper = ({ color, isLight }: { color: string; isLight?: boolean }) => {
   const lineStroke = isLight ? color : 'rgba(255, 255, 255, 0.8)';
   const subStroke = isLight ? `${color}80` : 'rgba(255, 255, 255, 0.5)';
 
@@ -65,7 +65,7 @@ const BlueprintCaliper = ({ color, isLight }: { color: string; isLight?: boolean
   );
 };
 
-const BlueprintMagnifier = ({ color, isLight }: { color: string; isLight?: boolean }) => {
+export const BlueprintMagnifier = ({ color, isLight }: { color: string; isLight?: boolean }) => {
   const lineStroke = isLight ? color : 'rgba(255, 255, 255, 0.9)';
   const subStroke = isLight ? `${color}80` : 'rgba(255, 255, 255, 0.5)';
   const dimStroke = isLight ? `${color}40` : 'rgba(255, 255, 255, 0.3)';
@@ -92,7 +92,7 @@ const BlueprintMagnifier = ({ color, isLight }: { color: string; isLight?: boole
   );
 };
 
-const BlueprintBriefcase = ({ color, isLight }: { color: string; isLight?: boolean }) => {
+export const BlueprintBriefcase = ({ color, isLight }: { color: string; isLight?: boolean }) => {
   const lineStroke = isLight ? color : 'rgba(255, 255, 255, 0.8)';
   const subStroke = isLight ? `${color}80` : 'rgba(255, 255, 255, 0.4)';
   const dimStroke = isLight ? `${color}40` : 'rgba(255, 255, 255, 0.2)';
