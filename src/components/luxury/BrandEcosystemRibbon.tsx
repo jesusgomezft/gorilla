@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 import { 
   PokemonLogo, 
   MagicLogo, 
@@ -11,6 +12,8 @@ import {
 
 export const BrandEcosystemRibbon: React.FC = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   const brands = [
     { id: 'pokemon', name: 'Pokémon', component: <img src="/images/logos/pokemon.png" alt="Pokémon" className="h-8 sm:h-10 object-contain" /> },
@@ -34,12 +37,15 @@ export const BrandEcosystemRibbon: React.FC = () => {
   const marqueeBrands = [...brands, ...brands, ...brands, ...brands];
 
   return (
-    <section className="w-full bg-[#2F3430] text-[#EAE8E3] select-none border-b border-black/20 py-8 overflow-hidden">
-      <div className="flex flex-col gap-5">
+    <section className="w-full bg-[#2F3430] text-[#EAE8E3] select-none border-b border-black/10 py-7 overflow-hidden">
+      <div className="flex flex-col gap-4">
         
-        {/* Top Kicker Label */}
-        <div className="px-6 lg:px-12 max-w-[1400px] mx-auto w-full">
-          <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-[#A69F93] uppercase">
+        {/* Top Kicker Label - Centered & Refined Typography */}
+        <div className="px-6 max-w-[1400px] mx-auto w-full flex items-center justify-center">
+          <span 
+            className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.24em] uppercase text-center select-none"
+            style={{ color: isLight ? '#71766E' : '#A69F93' }}
+          >
             {t('ref.ribbon.title')}
           </span>
         </div>

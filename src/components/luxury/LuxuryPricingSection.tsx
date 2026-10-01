@@ -331,12 +331,23 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           id="pricing" 
           className="w-full bg-[#454545] border-b border-white/[0.05] text-white py-12 lg:py-16 px-5 lg:px-8 select-none relative flex flex-col items-center z-20"
         >
-          <div className="mb-8 flex items-center justify-center gap-6 w-full opacity-80">
-            <div className="h-[1px] w-14 bg-gradient-to-r from-transparent to-white/30" />
-            <h2 className="font-mono text-xs tracking-[0.4em] text-white uppercase text-center font-semibold">
+          {/* Section Header */}
+          <div className="mb-10 sm:mb-12 flex flex-col items-center justify-center text-center px-4">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2.5 opacity-90">
+              <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent to-[#48C765]" />
+              <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#48C765] uppercase">
+                {language === 'es' ? 'TARIFAS Y SERVICIOS' : 'TIERS & RATES'}
+              </span>
+              <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent to-[#48C765]" />
+            </div>
+            <h2 className="font-['Oswald'] text-3xl sm:text-4xl md:text-5xl font-bold tracking-[0.03em] text-white uppercase">
               {language === 'es' ? 'NUESTROS SERVICIOS' : 'OUR SERVICES'}
             </h2>
-            <div className="h-[1px] w-14 bg-gradient-to-l from-transparent to-white/30" />
+            <p className="mt-2.5 text-xs sm:text-sm text-[#A4ACA1] max-w-[500px] leading-relaxed">
+              {language === 'es' 
+                ? 'Planes de certificación y encapsulado de alta precisión adaptados a cada nivel de colección.' 
+                : 'Precision certification and gem-grade encapsulation tailored to every tier of collector.'}
+            </p>
           </div>
 
           {/* 4-Column Grid for Dark Mode */}
@@ -469,12 +480,23 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         id="pricing" 
         className="w-full bg-[#F4F1EA] border-b border-black/[0.06] text-[#1A1D1A] py-12 lg:py-16 px-5 lg:px-8 select-none relative flex flex-col items-center z-20 transition-colors duration-500"
       >
-        <div className="mb-8 flex items-center justify-center gap-6 w-full opacity-80">
-          <div className="h-[1px] w-14 bg-gradient-to-r from-transparent to-black/20" />
-          <h2 className="font-mono text-xs tracking-[0.4em] text-[#1A1D1A] uppercase text-center font-semibold transition-colors duration-500">
+        {/* Section Header */}
+        <div className="mb-10 sm:mb-12 flex flex-col items-center justify-center text-center px-4">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2.5 opacity-90">
+            <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-r from-transparent to-[#16A34A]" />
+            <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#16A34A] uppercase">
+              {language === 'es' ? 'TARIFAS Y SERVICIOS' : 'TIERS & RATES'}
+            </span>
+            <div className="h-[1px] w-8 sm:w-14 bg-gradient-to-l from-transparent to-[#16A34A]" />
+          </div>
+          <h2 className="font-['Oswald'] text-3xl sm:text-4xl md:text-5xl font-bold tracking-[0.03em] text-[#1A1D1A] uppercase transition-colors duration-500">
             {language === 'es' ? 'NUESTROS SERVICIOS' : 'OUR SERVICES'}
           </h2>
-          <div className="h-[1px] w-14 bg-gradient-to-l from-transparent to-black/20" />
+          <p className="mt-2.5 text-xs sm:text-sm text-[#636A61] max-w-[500px] leading-relaxed">
+            {language === 'es' 
+              ? 'Planes de certificación y encapsulado de alta precisión adaptados a cada nivel de colección.' 
+              : 'Precision certification and gem-grade encapsulation tailored to every tier of collector.'}
+          </p>
         </div>
 
         {/* 4-Column Grid for Light Mode */}
