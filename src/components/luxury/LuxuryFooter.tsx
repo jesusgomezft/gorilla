@@ -27,36 +27,36 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-14 border-b border-white/[0.06]">
           
           {/* Brand Info */}
-          <div className="lg:col-span-3 flex flex-col items-start">
+          <div className="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left">
             <div 
               onClick={() => onNavigate && onNavigate('/')}
-              className="cursor-pointer mb-8"
+              className="cursor-pointer mb-8 flex justify-center lg:justify-start w-full"
             >
               <GorillaLogo shieldSize="h-20 sm:h-28" />
             </div>
             
-            <p className="text-xs text-[#A4ACA1] max-w-sm leading-relaxed mb-6 font-normal">
+            <p className="text-xs text-[#A4ACA1] max-w-sm leading-relaxed mb-6 font-normal text-center lg:text-left mx-auto lg:mx-0">
               {language === 'es'
                 ? 'El estándar europeo de graduación óptica submilimétrica, autenticación forense multiespectral y encapsulado sónico hermético.'
                 : 'The European standard for sub-millimeter optical grading, forensic multispectral authentication, and ultrasonic hermetic encapsulation.'
               }
             </p>
 
-            <div className="flex items-center gap-4 font-mono text-[10px] text-[#5A6357] mb-8">
+            <div className="flex items-center justify-center lg:justify-start gap-4 font-mono text-[10px] text-[#5A6357] mb-8">
               <span>MADRID LAB</span>
               <span>•</span>
               <span>LISBON LAB</span>
             </div>
 
             {/* Social Media */}
-            <div className="flex flex-col gap-3">
-              <a href="https://instagram.com/gorillagradinginternational" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-[#A4ACA1] hover:text-white transition-colors">
+            <div className="flex flex-col items-center lg:items-start gap-3">
+              <a href="https://instagram.com/gorillagradinginternational" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center lg:justify-start gap-2 text-xs text-[#A4ACA1] hover:text-white transition-colors">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                 </svg>
                 <span className="font-sans font-medium tracking-wide">@gorillagradinginternational</span>
               </a>
-              <a href="https://tiktok.com/@gorillagrading" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-[#A4ACA1] hover:text-white transition-colors">
+              <a href="https://tiktok.com/@gorillagrading" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center lg:justify-start gap-2 text-xs text-[#A4ACA1] hover:text-white transition-colors">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.34 2.88 2.88 0 012.31-4.66 2.94 2.94 0 011.66.52V9.38a6.32 6.32 0 00-1.66-.22 6.35 6.35 0 00-6.35 6.35 6.35 6.35 0 0012.7 0v-8.62a8.3 8.3 0 005.76 2.33v-3.45a4.84 4.84 0 01-2-1.08z"/>
                 </svg>
@@ -66,71 +66,71 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
           </div>
 
           {/* Quick Nav */}
-          <div className="lg:col-span-2 flex flex-col gap-3">
+          <div className="lg:col-span-2 flex flex-col items-center text-center lg:items-start lg:text-left gap-3">
             <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'SERVICIOS' : 'SERVICES'}
             </span>
-            <button onClick={() => onNavigate && onNavigate('/submit')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/submit')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Enviar Cartas' : 'Submit Cards'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/verify')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/verify')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Verificar Certificado' : 'Verify Certificate'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/pricing')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/pricing')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Tarifas & Plazos' : 'Pricing & Tiers'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/track')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/track')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Seguimiento en Vivo' : 'Live Tracking'}
             </button>
           </div>
 
           {/* Company & Support */}
-          <div className="lg:col-span-2 flex flex-col gap-3">
+          <div className="lg:col-span-2 flex flex-col items-center text-center lg:items-start lg:text-left gap-3">
             <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'COMPAÑÍA' : 'COMPANY'}
             </span>
-            <button onClick={() => onNavigate && onNavigate('/about')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/about')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Sobre Nosotros' : 'About Us'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/contact')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/contact')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Contacto' : 'Contact'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/faq')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/faq')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Preguntas Frecuentes' : 'FAQ'}
             </button>
           </div>
 
           {/* Legal */}
-          <div className="lg:col-span-2 flex flex-col gap-3">
+          <div className="lg:col-span-2 flex flex-col items-center text-center lg:items-start lg:text-left gap-3">
             <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
               {language === 'es' ? 'LEGAL' : 'LEGAL'}
             </span>
-            <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Aviso Legal' : 'Legal Notice'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/terms')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/terms')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/privacy')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/privacy')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/refund')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/refund')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Política de Reembolso' : 'Refund Policy'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/cookies')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/cookies')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Política de Cookies' : 'Cookie Policy'}
             </button>
-            <button onClick={() => onNavigate && onNavigate('/cookie-consent')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/cookie-consent')} className="text-center lg:text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-0 lg:hover:translate-x-1 transition-all duration-300 w-fit mx-auto lg:mx-0">
               {language === 'es' ? 'Consentimiento de Cookies' : 'Cookie Consent'}
             </button>
           </div>
 
           {/* Standards & Certifications */}
-          <div className="lg:col-span-3 flex flex-col gap-3">
-            <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2">
+          <div className="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left gap-3">
+            <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2 text-center lg:text-left">
               {language === 'es' ? 'ESTÁNDARES ÓPTICOS' : 'OPTICAL STANDARDS'}
             </span>
-            <div className="bg-transparent p-4 rounded-none border border-white/[0.07] flex flex-col gap-2 relative overflow-hidden group">
+            <div className="w-full max-w-sm mx-auto lg:mx-0 bg-transparent p-4 rounded-none border border-white/[0.07] flex flex-col gap-2 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="flex items-center justify-between text-xs font-mono relative z-10">
                 <span className="text-[#A4ACA1]">CALIBRE LÁSER:</span>
@@ -147,8 +147,8 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             </div>
 
             {/* Certificate Search Input */}
-            <div className="mt-4">
-              <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2 block">
+            <div className="mt-4 w-full max-w-sm mx-auto lg:mx-0">
+              <span className="font-sans text-xs tracking-widest text-[#A4ACA1] uppercase font-bold mb-2 block text-center lg:text-left">
                 {language === 'es' ? 'BUSCADOR DE CERTIFICADOS' : 'CERTIFICATE SEARCH'}
               </span>
               <form onSubmit={handleSearch} className="relative flex items-center w-full group">
