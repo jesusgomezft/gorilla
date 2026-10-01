@@ -34,7 +34,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
     <div className="w-full min-h-screen bg-[#454545] text-white flex flex-col font-sans selection:bg-[#48C765] selection:text-[#14170F]">
       
       {/* Editorial Search Section - Exact original design with optimized vertical padding */}
-      <section className="w-full bg-[#454545] pt-20 sm:pt-24 pb-6 px-6 lg:px-12 border-b border-white/[0.04]">
+      <section className="w-full bg-[#454545] pt-5 sm:pt-6 pb-5 px-6 lg:px-12 border-b border-white/[0.04]">
         <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6 lg:gap-8">
           <div className="flex flex-col max-w-2xl w-full">
             <div className="flex items-center gap-3 text-[#48C765] font-mono text-[10px] tracking-[0.2em] uppercase mb-2">
