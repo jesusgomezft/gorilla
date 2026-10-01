@@ -33,42 +33,42 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
   return (
     <div className="w-full min-h-screen bg-[#454545] text-white flex flex-col font-sans selection:bg-[#48C765] selection:text-[#14170F]">
       
-      {/* Editorial Search Section - Exact original design with optimized vertical padding */}
-      <section className="w-full bg-[#454545] pt-5 sm:pt-6 pb-5 px-6 lg:px-12 border-b border-white/[0.04]">
-        <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6 lg:gap-8">
-          <div className="flex flex-col max-w-2xl w-full">
-            <div className="flex items-center gap-3 text-[#48C765] font-mono text-[10px] tracking-[0.2em] uppercase mb-2">
-              <ScanLine className="w-4 h-4" />
+      {/* Editorial Search Section - Compact refined header */}
+      <section className="w-full bg-[#454545] pt-3.5 sm:pt-4 pb-3.5 px-6 lg:px-12 border-b border-white/[0.04]">
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4 lg:gap-8">
+          <div className="flex flex-col max-w-xl w-full">
+            <div className="flex items-center gap-2 text-[#48C765] font-mono text-[9px] tracking-[0.2em] uppercase mb-1">
+              <ScanLine className="w-3.5 h-3.5" />
               <span>{language === 'es' ? 'Seguimiento de Custodia' : 'Chain of Custody Tracker'}</span>
             </div>
-            <h1 className="font-['Oswald'] text-lg md:text-xl font-bold uppercase tracking-tight text-white mb-4">
+            <h1 className="font-['Oswald'] text-base md:text-lg font-bold uppercase tracking-tight text-white mb-2">
               {language === 'es' ? 'ESTADO EN TIEMPO REAL' : 'LIVE ORDER STATUS'}
             </h1>
           
-            <form onSubmit={handleSearch} className="relative w-full max-w-lg group">
+            <form onSubmit={handleSearch} className="relative w-full max-w-md group">
               <input
                 type="text"
                 placeholder="ENTER TRACKING # OR ORDER ID"
                 value={searchTracking}
                 onChange={(e) => setSearchTracking(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-white/20 px-0 py-2 text-base md:text-lg text-white placeholder-white/30 focus:outline-none focus:border-[#48C765] transition-colors font-mono uppercase tracking-widest pr-12"
+                className="w-full bg-transparent border-b border-white/20 px-0 py-1 text-xs md:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#48C765] transition-colors font-mono uppercase tracking-widest pr-8"
               />
               <button 
                 type="submit"
                 aria-label="Search"
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-[#48C765] hover:text-[#48C765] transition-colors cursor-pointer"
+                className="absolute right-1 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-[#48C765] hover:text-[#48C765] transition-colors cursor-pointer"
               >
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </button>
             </form>
             {errorMsg && (
-              <span className="text-red-400 font-mono text-[10px] tracking-widest uppercase mt-2">
+              <span className="text-red-400 font-mono text-[9px] tracking-widest uppercase mt-1">
                 {errorMsg}
               </span>
             )}
           </div>
 
-          <div className="flex flex-col gap-1.5 font-mono text-[10px] tracking-[0.2em] uppercase text-white/50 shrink-0">
+          <div className="flex flex-col gap-1 font-mono text-[9px] tracking-[0.15em] uppercase text-white/50 shrink-0">
             <span className="text-white/30">{language === 'es' ? 'Ejemplos de Búsqueda' : 'Sample Searches'}</span>
             <button
               type="button"
