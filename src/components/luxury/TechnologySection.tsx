@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface TechnologySectionProps {
   onNavigate?: (path: string) => void;
@@ -7,6 +8,7 @@ interface TechnologySectionProps {
 
 export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [activeStep, setActiveStep] = React.useState(-1);
 
   React.useEffect(() => {
@@ -55,7 +57,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
       {/* Full Width Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/tecnoSeccion.png?v=7')" }}
+        style={{ backgroundImage: `url('${theme === 'dark' ? '/images/Dark/tecnoSeccion.png' : '/images/tecnoSeccion.png?v=7'}')` }}
       />
       
       {/* Dark overlay to ensure text is readable */}

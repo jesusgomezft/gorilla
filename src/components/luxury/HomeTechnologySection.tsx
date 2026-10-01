@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface HomeTechnologySectionProps {
   onNavigate: (path: string) => void;
@@ -7,6 +8,7 @@ interface HomeTechnologySectionProps {
 
 export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
 
   return (
     <section className="relative w-full bg-[#383838] text-white py-20 lg:py-24 px-6 lg:px-12 border-b border-white/[0.06] overflow-hidden select-none">
@@ -46,7 +48,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({ on
           <div className="lg:col-span-8 flex items-center justify-end">
             <div className="relative w-full max-w-[880px]">
               <img 
-                src="/images/tecnologia.png" 
+                src={theme === 'dark' ? '/images/Dark/tecnologia.png' : '/images/tecnologia.png'} 
                 alt="Gorilla Optical Technology Sequence"
                 className="w-full h-auto object-contain scale-105 origin-right"
                 style={{ 

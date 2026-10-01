@@ -21,6 +21,8 @@ import { TechnologyPage } from './pages/TechnologyPage';
 
 import { PricingPage } from './pages/PricingPage';
 import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
+import { FAQPage } from './pages/FAQPage';
 import { LegalPage } from './pages/LegalPage';
 
 import { PreservePage } from './pages/PreservePage';
@@ -64,6 +66,10 @@ export const AppContent: React.FC = () => {
         return <PricingPage onNavigate={handleNavigate} />;
       case '/about':
         return <AboutPage onNavigate={handleNavigate} />;
+      case '/contact':
+        return <ContactPage onNavigate={handleNavigate} />;
+      case '/faq':
+        return <FAQPage onNavigate={handleNavigate} />;
       case '/concepts':
         return <ConceptsComparisonPage onNavigate={handleNavigate} />;
       case '/services':

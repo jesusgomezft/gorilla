@@ -42,7 +42,7 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
               {language === 'es' ? '¿Cuánto tardan los tiempos de respuesta (turnaround)?' : 'How long are the turnaround times?'}
             </h1>
 
-            <div className="space-y-6 font-sans text-sm text-[#A4ACA1] leading-relaxed">
+            <div className="space-y-6 font-sans text-sm text-[#A4ACA1] leading-relaxed text-justify">
               <p>
                 {language === 'es' 
                   ? 'Nuestra promesa de marca es la transparencia. Los tiempos de respuesta estimados son estrictos e inician exclusivamente en el momento en que tu paquete es escaneado y registrado en nuestro sistema (fase de admisión).' 

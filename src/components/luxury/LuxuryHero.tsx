@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface LuxuryHeroProps {
   onNavigate?: (path: string) => void;
@@ -8,6 +9,11 @@ interface LuxuryHeroProps {
 
 export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechModal }) => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
+
+  const heroImageSrc = theme === 'dark' 
+    ? '/images/Dark/alakazam_hero.jpg.png' 
+    : '/images/alakazam_hero.png';
 
   return (
     <section 
@@ -19,10 +25,11 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden flex justify-end items-center px-4 lg:px-12"
       >
         <motion.img 
+          key={heroImageSrc}
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 0.95, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          src={`/images/alakazam_hero.png?v=${Date.now()}`}
+          src={heroImageSrc}
           alt="Gorilla Grading - Master Artwork" 
           className="w-full md:w-[85%] lg:w-[60%] h-[85%] lg:h-[100%] object-contain object-right lg:object-center lg:mr-4 xl:mr-12 relative z-0"
         />

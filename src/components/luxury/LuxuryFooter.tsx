@@ -92,10 +92,10 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             <button onClick={() => onNavigate && onNavigate('/about')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Sobre Nosotros' : 'About Us'}
             </button>
-            <a href="mailto:info@gorillagrading.com" className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            <button onClick={() => onNavigate && onNavigate('/contact')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Contacto' : 'Contact'}
-            </a>
-            <button onClick={() => onNavigate && onNavigate('/faq/prepare')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
+            </button>
+            <button onClick={() => onNavigate && onNavigate('/faq')} className="text-left text-xs text-[#A4ACA1] hover:text-[#48C765] hover:translate-x-1 transition-all duration-300 w-fit">
               {language === 'es' ? 'Preguntas Frecuentes' : 'FAQ'}
             </button>
           </div>

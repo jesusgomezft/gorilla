@@ -42,7 +42,7 @@ export const FAQDropoffPage: React.FC<FAQDropoffPageProps> = ({ onNavigate }) =>
               {language === 'es' ? '¿Puedo entregar mis cartas en persona?' : 'Can I drop off my cards in person?'}
             </h1>
 
-            <div className="space-y-6 font-sans text-sm text-[#A4ACA1] leading-relaxed">
+            <div className="space-y-6 font-sans text-sm text-[#A4ACA1] leading-relaxed text-justify">
               <p>
                 {language === 'es' 
                   ? 'Entendemos el valor emocional y económico de tu colección. Por eso, además del envío postal asegurado, ofrecemos la posibilidad de entregar tus cartas en mano.' 

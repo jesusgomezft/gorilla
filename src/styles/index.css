@@ -372,12 +372,12 @@
 }
 
 .light-theme .bg-gradient-to-b.from-\[\#454545\] {
-  background-image: linear-gradient(to bottom, #F3EFE6 0%, rgba(243, 239, 230, 0) 100%) !important;
+  display: none !important;
 }
 
-/* Bottom blend gradient: fade from bone color to transparent bone */
+/* Bottom blend gradient: hide in light theme to avoid dark shading under card */
 .light-theme .bg-gradient-to-t.from-\[\#2F3430\] {
-  background-image: linear-gradient(to top, #F3EFE6 0%, rgba(243, 239, 230, 0.95) 50%, rgba(243, 239, 230, 0) 100%) !important;
+  display: none !important;
 }
 
 /* Secondary hero button: "See Our Technology" */
@@ -562,13 +562,17 @@
    ═══════════════════════════════════════════════════════ */
 
 .light-theme input.bg-\[\#161B16\],
-.light-theme input.bg-white\/\[0\.02\] {
+.light-theme textarea.bg-\[\#161B16\],
+.light-theme select.bg-\[\#161B16\],
+.light-theme input.bg-white\/\[0\.02\],
+.light-theme textarea.bg-white\/\[0\.02\] {
   background-color: #EFE9DE !important;
   color: #1A1D1A !important;
   border-color: rgba(35, 30, 25, 0.1) !important;
 }
 
-.light-theme input::placeholder {
+.light-theme input::placeholder,
+.light-theme textarea::placeholder {
   color: #8B918A !important;
 }
 

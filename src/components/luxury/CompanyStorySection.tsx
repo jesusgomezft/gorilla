@@ -29,7 +29,7 @@ export const CompanyStorySection: React.FC = () => {
             <span className="text-[#48C765]">{language === 'es' ? 'A NIVEL MUNDIAL' : 'GLOBALLY'}</span>
           </h1>
           
-          <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-2xl leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-2xl leading-relaxed text-justify">
             {language === 'es' 
               ? 'Nacimos de la frustración de coleccionistas de todo el mundo cansados de servicios lentos y subjetivos. Gorilla Grading surge para ofrecer precisión óptica, velocidad y total transparencia a escala internacional.' 
               : 'Born from the frustration of collectors worldwide tired of slow and subjective services. Gorilla Grading emerged to offer optical precision, speed, and total transparency on an international scale.'}
@@ -49,7 +49,7 @@ export const CompanyStorySection: React.FC = () => {
             <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white mb-4">
               {language === 'es' ? 'ALCANCE GLOBAL' : 'GLOBAL REACH'}
             </h3>
-            <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed">
+            <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed text-justify">
               {language === 'es' 
                 ? 'Con laboratorios y logística optimizada, ofrecemos un servicio de graduación rápido y seguro para coleccionistas sin importar de dónde vengan, eliminando los tiempos de espera absurdos.' 
                 : 'With optimized laboratories and logistics, we offer a fast and secure grading service for collectors no matter where they are from, eliminating absurd wait times.'}
@@ -66,7 +66,7 @@ export const CompanyStorySection: React.FC = () => {
             <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white mb-4">
               {language === 'es' ? 'VERDAD ABSOLUTA' : 'ABSOLUTE TRUTH'}
             </h3>
-            <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed">
+            <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed text-justify">
               {language === 'es' 
                 ? 'Se acabó el depender del "buen o mal día" de un graduador humano. Implementamos tecnología óptica y láser porque los números no mienten.' 
                 : 'No more depending on a human grader\'s "good or bad day". We implemented optical and laser technology because numbers don\'t lie.'}
@@ -83,7 +83,7 @@ export const CompanyStorySection: React.FC = () => {
             <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white mb-4">
               {language === 'es' ? 'PARA COLECCIONISTAS' : 'FOR COLLECTORS'}
             </h3>
-            <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed">
+            <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed text-justify">
               {language === 'es' 
                 ? 'No somos un fondo de inversión sin alma. Somos entusiastas de los TCG, diseñando el producto que siempre quisimos usar para nuestras propias colecciones.' 
                 : 'We are not a soulless investment fund. We are TCG enthusiasts, building the exact product we always wanted to use for our own collections.'}

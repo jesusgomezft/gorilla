@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface MissionBannerProps {
   onNavigate?: (path: string) => void;
@@ -7,7 +8,10 @@ interface MissionBannerProps {
 
 export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [activeStep, setActiveStep] = useState(0);
+
+  const missionImgSrc = theme === 'dark' ? '/images/Dark/ourmission.png' : '/images/ourmission.png?v=7';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,7 +25,7 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
       
       {/* The Box Image with CSS Mask for perfect edge blending */}
       <img 
-        src="/images/ourmission.png?v=7"
+        src={missionImgSrc}
         alt="Gorilla Grading Box" 
         className="absolute left-0 top-0 h-full w-full lg:w-[55%] object-cover object-center lg:object-right opacity-90 z-0"
         style={{

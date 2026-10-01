@@ -42,7 +42,7 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
               {language === 'es' ? '¿Cómo preparo mis cartas para enviarlas?' : 'How should I prepare my cards for shipping?'}
             </h1>
 
-            <div className="space-y-6 font-sans text-sm text-[#A4ACA1] leading-relaxed">
+            <div className="space-y-6 font-sans text-sm text-[#A4ACA1] leading-relaxed text-justify">
               <p>
                 {language === 'es' 
                   ? 'Preparar tus cartas adecuadamente es el paso más crítico para asegurar que lleguen en perfectas condiciones a nuestras instalaciones.' 

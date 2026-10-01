@@ -78,7 +78,7 @@ export const InfluencerTestimonialsPlaceholder: React.FC = () => {
 
 export const SocialProofPlaceholder: React.FC = () => {
   return (
-    <section className="w-full bg-[#454545] py-16 px-6 lg:px-12 border-b border-white/[0.04]">
+    <section className="w-full bg-[#2B302B] py-16 px-6 lg:px-12 border-b border-white/[0.04]">
       <div className="max-w-[1400px] mx-auto">
         <div className="w-full h-24 border border-dashed border-white/20 flex items-center justify-center bg-white/[0.01]">
           <span className="font-mono text-xs text-[#A4ACA1] tracking-widest uppercase">

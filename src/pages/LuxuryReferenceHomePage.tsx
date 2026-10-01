@@ -62,7 +62,7 @@ export const LuxuryReferenceHomePage: React.FC<LuxuryReferenceHomePageProps> = (
 
       {/* 9. FAQs */}
       <ScrollReveal direction="up" delay={0.1}>
-        <FAQSection />
+        <FAQSection onNavigate={onNavigate} />
       </ScrollReveal>
 
       {/* 10. Social Proof Reinforcement (Placeholder) */}

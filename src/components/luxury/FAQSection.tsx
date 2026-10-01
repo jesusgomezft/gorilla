@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 
-export const FAQSection: React.FC = () => {
+interface FAQSectionProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -50,12 +54,15 @@ export const FAQSection: React.FC = () => {
           <h2 className="font-['Oswald'] font-[700] text-4xl text-white uppercase leading-[1.1] mb-6">
             {language === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
           </h2>
-          <p className="font-sans text-sm text-[#C2C9C3] mb-8">
+          <p className="font-sans text-sm text-[#C2C9C3] mb-8 text-justify leading-relaxed">
             {language === 'es' 
               ? 'Encuentra respuestas rápidas a las consultas más comunes sobre el proceso de grading y envíos.' 
               : 'Find quick answers to common questions about the grading and shipping process.'}
           </p>
-          <button className="text-[#48C765] hover:text-white font-mono text-xs tracking-wider uppercase flex items-center gap-2 transition-colors w-fit">
+          <button 
+            onClick={() => onNavigate && onNavigate('/faq')}
+            className="text-[#48C765] hover:text-white font-mono text-xs tracking-wider uppercase flex items-center gap-2 transition-colors w-fit cursor-pointer"
+          >
             <span>{language === 'es' ? 'Ir al Centro de Ayuda' : 'Go to Help Center'}</span>
             <span>→</span>
           </button>
@@ -69,7 +76,7 @@ export const FAQSection: React.FC = () => {
               <div key={idx} className="border-b border-white/10">
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full py-6 flex items-center justify-between text-left focus:outline-none group"
+                  className="w-full py-6 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
                 >
                   <span className={`font-sans font-bold text-lg pr-8 transition-colors ${isOpen ? 'text-[#48C765]' : 'text-white group-hover:text-[#48C765]'}`}>
                     {faq.q}
@@ -83,17 +90,20 @@ export const FAQSection: React.FC = () => {
                 <div 
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-60 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
                 >
-                  <p className="font-sans text-[#A4ACA1] text-sm leading-relaxed pr-8 mb-4">
+                  <p className="font-sans text-[#A4ACA1] text-sm leading-relaxed pr-8 mb-4 text-justify">
                     {faq.a}
                   </p>
                   {faq.route && faq.linkText && (
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        // This component doesn't take onNavigate currently, so we use window.location or we need to add onNavigate
-                        window.location.href = faq.route;
+                        if (onNavigate) {
+                          onNavigate(faq.route);
+                        } else {
+                          window.location.href = faq.route;
+                        }
                       }}
-                      className="mt-4 px-4 py-1.5 bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765] font-mono text-[9px] font-bold tracking-[0.15em] uppercase transition-all flex items-center gap-2 w-fit"
+                      className="mt-4 px-4 py-1.5 bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765] font-mono text-[9px] font-bold tracking-[0.15em] uppercase transition-all flex items-center gap-2 w-fit cursor-pointer"
                     >
                       <span>{faq.linkText}</span>
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
