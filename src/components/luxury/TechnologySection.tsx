@@ -167,7 +167,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
                       style={{ 
                         color: isCurrent 
                           ? (isLight ? '#15803D' : '#48C765') 
-                          : (isLight ? '#2D332D' : '#A4ACA1') 
+                          : (isLight ? '#525B51' : '#A4ACA1') 
                       }}
                     >
                       {step.id}
@@ -175,13 +175,13 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
                     <div>
                       <h4 
                         className="font-sans font-bold text-sm tracking-widest uppercase mb-1"
-                        style={{ color: isLight ? '#111311' : '#FFFFFF' }}
+                        style={{ color: isLight ? '#14170F' : '#FFFFFF' }}
                       >
                         {step.title}
                       </h4>
                       <p 
-                        className="text-xs leading-relaxed font-semibold"
-                        style={{ color: isLight ? '#1A1D1A' : '#D4DDD0' }}
+                        className="text-xs leading-relaxed font-medium"
+                        style={{ color: isLight ? '#474E46' : '#C8D2C5' }}
                       >
                         {step.desc}
                       </p>
