@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ConceptProvider } from './context/ConceptContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { LuxuryNavbar } from './components/luxury/LuxuryNavbar';
 import { LuxuryFooter } from './components/luxury/LuxuryFooter';
 
@@ -131,12 +132,15 @@ export const AppContent: React.FC = () => {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ConceptProvider>
-        <AuthProvider>
-          <AppContent />
-        </AuthProvider>
-      </ConceptProvider>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <ConceptProvider>
+          <AuthProvider>
+            <AppContent />
+          </AuthProvider>
+        </ConceptProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
+

@@ -154,14 +154,30 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
             {t('ref.nav.submit')}
           </button>
 
-          {/* Account/Dashboard Button */}
+          {/* Account/Dashboard Button — Theme-Aware Standalone Icon */}
           <button
             onClick={() => onNavigate && onNavigate('/account')}
-            className="hidden sm:flex p-2 text-[#A4ACA1] hover:text-[#48C765] transition-colors items-center justify-center"
-            title="Login"
+            className="hidden sm:flex p-2 navbar-account-btn transition-all duration-300 hover:scale-110 items-center justify-center cursor-pointer group"
+            title={language === 'es' ? 'Bóveda del Coleccionista' : 'Collector Vault'}
+            aria-label="Account"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            <svg 
+              className="w-5 h-5 transition-all" 
+              viewBox="0 0 24 24" 
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle 
+                cx="12" 
+                cy="7" 
+                r="4" 
+              />
+              <path 
+                d="M4 21v-1.5C4 16.2 7.6 13.8 12 13.8C16.4 13.8 20 16.2 20 19.5V21" 
+              />
             </svg>
           </button>
 

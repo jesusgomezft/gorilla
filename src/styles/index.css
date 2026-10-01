@@ -99,3 +99,933 @@
 .animate-heartbeat {
   animation: heartbeat 1.6s ease-in-out infinite;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT THEME OVERRIDES — Editorial Luxury "Color Hueso" (Bone) Palette
+   Activated via .light-theme class on <html>
+   
+   Design tokens:
+     Base background:     #F3EFE6  (authentic warm bone / color hueso refinado)
+     Surface (cards):     #FAF8F5  (creamy bone card surface)
+     Surface elevated:    #ECE5D8  (deeper bone tone for alternate sections)
+     Secondary surface:   #E4DDD0  (warm soft stone)
+     Accent green:        #2D9A46  (deep forest emerald)
+     Accent hover:        #248A3B
+     Primary text:        #1A1D1A  (deep charcoal for maximum legibility)
+     Secondary text:      #4A5048  (dark olive)
+     Muted text:          #6B7268  (warm sage)
+     Border:              rgba(35, 30, 25, 0.08)
+     Border subtle:       #DDD6C9
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Base ── */
+.light-theme {
+  --brand-base: #F3EFE6;
+  --brand-surface: #FAF8F5;
+  --brand-surface-elevated: #ECE5D8;
+  --brand-accent: #2D9A46;
+  --brand-accent-hover: #248A3B;
+  --brand-deep-green: #E4F1E7;
+  --brand-text: #1A1D1A;
+  --brand-muted: #6B7268;
+  --brand-subtle: #6B7268;
+  --brand-ribbon-sand: #1A1D1A;
+  --brand-ribbon-ink: #F3EFE6;
+  --border-subtle: rgba(35, 30, 25, 0.08);
+}
+
+.light-theme,
+.light-theme body {
+  background-color: #F3EFE6 !important;
+  color: #1A1D1A !important;
+}
+
+.light-theme ::-webkit-scrollbar-track {
+  background: #F3EFE6;
+}
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #D5CEBF;
+}
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #BCB4A3;
+}
+
+/* ── Cinematic Glow (light version) ── */
+.light-theme .cinematic-glow {
+  background: radial-gradient(circle, rgba(45, 154, 70, 0.08) 0%, rgba(243, 239, 230, 0) 70%);
+}
+
+.light-theme .text-stroke-subtle {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Background colors (Color Hueso)
+   ═══════════════════════════════════════════════════════ */
+
+/* Main app wrapper bg-[#454545] */
+.light-theme .bg-\[\#454545\] {
+  background-color: #F3EFE6 !important;
+}
+
+/* Dark panels bg-[#2B302B] */
+.light-theme .bg-\[\#2B302B\] {
+  background-color: #FAF8F5 !important;
+}
+
+/* Darker panels bg-[#2F3430] */
+.light-theme .bg-\[\#2F3430\] {
+  background-color: #ECE5D8 !important;
+}
+
+/* Section alternate bg-[#383838] */
+.light-theme .bg-\[\#383838\] {
+  background-color: #ECE5D8 !important;
+}
+
+/* Deep charcoal panels bg-[#161B16] */
+.light-theme .bg-\[\#161B16\] {
+  background-color: #FAF8F5 !important;
+}
+
+/* Brand base bg-[#14170F] */
+.light-theme .bg-\[\#14170F\] {
+  background-color: #F3EFE6 !important;
+}
+
+/* Panel bg-[#1B1E1A] */
+.light-theme .bg-\[\#1B1E1A\] {
+  background-color: #FAF8F5 !important;
+}
+
+/* Panel2 bg-[#1D231E] */
+.light-theme .bg-\[\#1D231E\] {
+  background-color: #EFE9DE !important;
+}
+
+/* Card backgrounds bg-[#121613] */
+.light-theme .bg-\[\#121613\] {
+  background-color: #FAF8F5 !important;
+}
+
+/* Brand charcoal bg-[#111311] */
+.light-theme .bg-\[\#111311\] {
+  background-color: #F3EFE6 !important;
+}
+
+/* bg-[#0A0D0B] used in pricing cards */
+.light-theme .bg-\[\#0A0D0B\] {
+  background-color: #FAF8F5 !important;
+}
+
+/* bg-[#0D1A10] */
+.light-theme .bg-\[\#0D1A10\] {
+  background-color: #E4F1E7 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Navbar/Header with backdrop
+   ═══════════════════════════════════════════════════════ */
+
+/* Navbar bg-[#454545]/85 */
+.light-theme .bg-\[\#454545\]\/85 {
+  background-color: rgba(243, 239, 230, 0.92) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Text Colors
+   ═══════════════════════════════════════════════════════ */
+
+/* Primary white text → dark charcoal */
+.light-theme .text-white {
+  color: #1A1D1A !important;
+}
+
+/* Light off-white text → dark charcoal */
+.light-theme .text-\[\#F4F6F0\] {
+  color: #1A1D1A !important;
+}
+
+.light-theme .text-\[\#F0F1F2\] {
+  color: #1A1D1A !important;
+}
+
+.light-theme .text-\[\#EAEAEA\] {
+  color: #2D312D !important;
+}
+
+/* Muted text → darker for readability */
+.light-theme .text-\[\#A4ACA1\] {
+  color: #6B7268 !important;
+}
+
+.light-theme .text-\[\#A0A7A1\] {
+  color: #6B7268 !important;
+}
+
+.light-theme .text-\[\#C2C9C3\] {
+  color: #4A5048 !important;
+}
+
+.light-theme .text-\[\#A69F93\] {
+  color: #6B7268 !important;
+}
+
+/* Very dark muted text → medium */
+.light-theme .text-\[\#5A6357\] {
+  color: #8B918A !important;
+}
+
+/* Green accent text → deeper forest for contrast */
+.light-theme .text-\[\#48C765\] {
+  color: #2D9A46 !important;
+}
+
+.light-theme .text-\[\#61B663\] {
+  color: #2D9A46 !important;
+}
+
+/* Keep the green on text that's on green bg → dark */
+.light-theme .bg-\[\#48C765\] .text-\[\#14170F\] {
+  color: #FFFFFF !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Accent / CTA Buttons
+   ═══════════════════════════════════════════════════════ */
+
+/* Green CTA buttons */
+.light-theme .bg-\[\#48C765\] {
+  background-color: #2D9A46 !important;
+}
+.light-theme .hover\:bg-\[\#3A9F50\]:hover {
+  background-color: #248A3B !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Borders
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .border-white\/\[0\.06\] {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-theme .border-white\/\[0\.04\] {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-theme .border-white\/\[0\.05\] {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-theme .border-white\/\[0\.07\] {
+  border-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+.light-theme .border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-theme .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.light-theme .border-black\/20 {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Semi-transparent backgrounds
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .bg-white\/\[0\.02\] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+.light-theme .bg-white\/\[0\.04\] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.light-theme .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.light-theme .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Gradients used in hero/sections
+   ═══════════════════════════════════════════════════════ */
+
+/* Hero gradients with authentic bone color interpolation (avoids sRGB dark transparent midpoint) */
+.light-theme .bg-gradient-to-r.from-\[\#454545\] {
+  background-image: linear-gradient(to right, #F3EFE6 0%, rgba(243, 239, 230, 0.95) 55%, rgba(243, 239, 230, 0) 100%) !important;
+}
+
+.light-theme .bg-gradient-to-l.from-\[\#454545\] {
+  background-image: linear-gradient(to left, #F3EFE6 0%, rgba(243, 239, 230, 0) 100%) !important;
+}
+
+.light-theme .bg-gradient-to-b.from-\[\#454545\] {
+  background-image: linear-gradient(to bottom, #F3EFE6 0%, rgba(243, 239, 230, 0) 100%) !important;
+}
+
+/* Bottom blend gradient: fade from bone color to transparent bone */
+.light-theme .bg-gradient-to-t.from-\[\#2F3430\] {
+  background-image: linear-gradient(to top, #F3EFE6 0%, rgba(243, 239, 230, 0.95) 50%, rgba(243, 239, 230, 0) 100%) !important;
+}
+
+/* Secondary hero button: "See Our Technology" */
+.light-theme .bg-\[\#454545\]\/60 {
+  background-color: rgba(30, 25, 20, 0.05) !important;
+  color: #1A1D1A !important;
+  border-color: rgba(30, 25, 20, 0.15) !important;
+}
+.light-theme .bg-\[\#454545\]\/60:hover {
+  background-color: rgba(30, 25, 20, 0.09) !important;
+  border-color: rgba(30, 25, 20, 0.3) !important;
+  color: #1A1D1A !important;
+}
+
+/* Mobile overlay bg-[#454545]/85 */
+.light-theme .bg-\[\#454545\]\/85 {
+  background-color: rgba(243, 239, 230, 0.92) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Glass/transparency effects
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .via-white\/\[0\.07\] {
+  --tw-gradient-via: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* White text opacity → dark text opacity */
+.light-theme .text-white\/40 {
+  color: rgba(26, 29, 26, 0.4) !important;
+}
+
+.light-theme .text-white\/50 {
+  color: rgba(26, 29, 26, 0.5) !important;
+}
+
+.light-theme .text-white\/20 {
+  color: rgba(26, 29, 26, 0.2) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Pricing card inline gradient bg
+   Keep dark cards on light background (premium pattern).
+   Restore white text and proper styling inside these cards.
+   ═══════════════════════════════════════════════════════ */
+
+/* Keep the dark gradient on pricing cards */
+.light-theme [style*="linear-gradient(160deg"] {
+  background: linear-gradient(160deg, #1A1E1B 0%, #0E110F 100%) !important;
+}
+
+/* Restore white text inside dark pricing cards */
+.light-theme [style*="linear-gradient(160deg"] .text-white {
+  color: #FFFFFF !important;
+}
+
+.light-theme [style*="linear-gradient(160deg"] .text-\[\#EAEAEA\] {
+  color: #EAEAEA !important;
+}
+
+.light-theme [style*="linear-gradient(160deg"] .text-\[\#A4ACA1\] {
+  color: #A4ACA1 !important;
+}
+
+.light-theme [style*="linear-gradient(160deg"] .text-white\/40 {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Restore borders inside dark pricing cards */
+.light-theme [style*="linear-gradient(160deg"] .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Restore badge text in pricing cards */
+.light-theme [style*="linear-gradient(160deg"] .bg-white.text-black {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+/* Restore hover states inside dark pricing cards */
+.light-theme [style*="linear-gradient(160deg"] .hover\:bg-white\/5:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.light-theme [style*="linear-gradient(160deg"] .hover\:text-white:hover {
+  color: #FFFFFF !important;
+}
+
+/* Restore blur/glow orbs inside dark pricing cards */
+.light-theme [style*="linear-gradient(160deg"] .blur-\[60px\] {
+  opacity: 0.20 !important;
+}
+
+/* ── Restore and boost Blueprint drawings inside dark pricing cards ── */
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/90 {
+  stroke: rgba(255, 255, 255, 0.95) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/80 {
+  stroke: rgba(255, 255, 255, 0.88) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/60 {
+  stroke: rgba(255, 255, 255, 0.75) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/50 {
+  stroke: rgba(255, 255, 255, 0.65) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/40 {
+  stroke: rgba(255, 255, 255, 0.55) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/30 {
+  stroke: rgba(255, 255, 255, 0.45) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-white\/20 {
+  stroke: rgba(255, 255, 255, 0.35) !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .stroke-\[\#454545\] {
+  stroke: #252A26 !important;
+}
+.light-theme [style*="linear-gradient(160deg"] .opacity-40 {
+  opacity: 0.85 !important; /* Make blueprint drawings immediately clear and visible */
+}
+.light-theme [style*="linear-gradient(160deg"] .mix-blend-screen {
+  mix-blend-mode: screen !important;
+  opacity: 1 !important;
+}
+
+/* Pricing info box stays light */
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Shadows (dark shadows → subtle light)
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .shadow-\[0_20px_60px_-15px_rgba\(0\,0\,0\,0\.8\)\] {
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light-theme .shadow-\[0_30px_70px_-15px_rgba\(0\,0\,0\,0\.9\)\] {
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.12) !important;
+}
+
+.light-theme .shadow-\[0_10px_40px_-10px_rgba\(0\,0\,0\,0\.8\)\] {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-theme .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Green glow shadows → more subtle */
+.light-theme .shadow-\[0_0_20px_rgba\(72\,199\,101\,0\.2\)\] {
+  box-shadow: 0 0 20px rgba(45, 154, 70, 0.12) !important;
+}
+
+.light-theme .shadow-\[0_0_30px_rgba\(72\,199\,101\,0\.4\)\] {
+  box-shadow: 0 0 30px rgba(45, 154, 70, 0.2) !important;
+}
+
+.light-theme .shadow-\[0_0_15px_rgba\(72\,199\,101\,0\.15\)\] {
+  box-shadow: 0 0 15px rgba(45, 154, 70, 0.1) !important;
+}
+
+.light-theme .shadow-\[0_0_15px_rgba\(255\,255\,255\,0\.3\)\] {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — SVG Logo fill override
+   ═══════════════════════════════════════════════════════ */
+
+/* GorillaLogo SVG text — "GORILLA" letters: white → dark */
+.light-theme g[fill="#F0F1F2"] {
+  fill: #1A1D1A !important;
+}
+
+/* GorillaLogo SVG text — "GRADING" letters: green stays green but deeper */
+.light-theme g[fill="#61B663"] {
+  fill: #2D9A46 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Input/Form fields
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme input.bg-\[\#161B16\],
+.light-theme input.bg-white\/\[0\.02\] {
+  background-color: #EFE9DE !important;
+  color: #1A1D1A !important;
+  border-color: rgba(35, 30, 25, 0.1) !important;
+}
+
+.light-theme input::placeholder {
+  color: #8B918A !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — White badge/pill (stays white → stays)
+   Pricing badges with bg-white text-black are fine as-is
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .bg-white.text-black {
+  background-color: #1A1D1A !important;
+  color: #FFFFFF !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Drop shadow adjustments
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .drop-shadow-lg {
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.03)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.04)) !important;
+}
+
+.light-theme .drop-shadow-md {
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.04)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.04)) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Heart animation color keeps red
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .text-\[\#D03B3B\] {
+  color: #D03B3B !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Hover states
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .hover\:text-white:hover {
+  color: #1A1D1A !important;
+}
+
+.light-theme .hover\:text-\[\#F4F6F0\]:hover {
+  color: #1A1D1A !important;
+}
+
+.light-theme .hover\:text-\[\#48C765\]:hover {
+  color: #2D9A46 !important;
+}
+
+.light-theme .hover\:text-gray-300:hover {
+  color: #4A5048 !important;
+}
+
+.light-theme .hover\:border-white\/60:hover {
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.light-theme .hover\:border-\[\#48C765\]:hover {
+  border-color: #2D9A46 !important;
+}
+
+.light-theme .hover\:bg-\[\#48C765\]\/10:hover {
+  background-color: rgba(45, 154, 70, 0.08) !important;
+}
+
+.light-theme .hover\:bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.light-theme .hover\:bg-\[\#161B16\]:hover {
+  background-color: #ECE5D8 !important;
+}
+
+.light-theme .hover\:bg-\[\#454545\]:hover {
+  background-color: #ECE5D8 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Green accent backgrounds
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .bg-\[\#48C765\]\/10 {
+  background-color: rgba(45, 154, 70, 0.08) !important;
+}
+
+.light-theme .bg-\[\#48C765\]\/5 {
+  background-color: rgba(45, 154, 70, 0.05) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Green accent borders
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .border-\[\#48C765\]\/50 {
+  border-color: rgba(45, 154, 70, 0.4) !important;
+}
+
+.light-theme .border-\[\#48C765\]\/30 {
+  border-color: rgba(45, 154, 70, 0.25) !important;
+}
+
+.light-theme .border-\[\#48C765\]\/20 {
+  border-color: rgba(45, 154, 70, 0.18) !important;
+}
+
+.light-theme .border-\[\#48C765\] {
+  border-color: #2D9A46 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Focus states
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .focus\:border-\[\#48C765\]\/50:focus {
+  border-color: rgba(45, 154, 70, 0.4) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Navbar search input bg-[#161B16]
+   with border-[#48C765]/50
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme input.bg-\[\#161B16\] {
+  background-color: #EFE9DE !important;
+  color: #1A1D1A !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Gradient "from-white" adjustments
+   (gradient overlays that use white-to-transparent)
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .from-transparent.to-white\/30 {
+  --tw-gradient-to: rgba(0, 0, 0, 0.12) !important;
+}
+
+.light-theme .bg-gradient-to-r.from-transparent.to-white\/30,
+.light-theme .bg-gradient-to-l.from-transparent.to-white\/30 {
+  --tw-gradient-to: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Blur/glow orbs in pricing
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .blur-\[60px\] {
+  opacity: 0.08 !important;
+}
+
+.light-theme .blur-\[150px\] {
+  opacity: 0.06 !important;
+}
+
+.light-theme .blur-\[120px\] {
+  opacity: 0.04 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR OVERRIDES — Noise texture overlay
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .mix-blend-overlay {
+  opacity: 0.05 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON STYLES
+   ═══════════════════════════════════════════════════════ */
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #A4ACA1;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.theme-toggle-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.light-theme .theme-toggle-btn {
+  border-color: rgba(0, 0, 0, 0.10);
+  background: rgba(0, 0, 0, 0.03);
+  color: #6B7268;
+}
+
+.light-theme .theme-toggle-btn:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #1A1D1A;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Navbar logo: use dark version
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .group-hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Keep green fill (#61B663) on the shield in both themes */
+.light-theme path[fill="#61B663"] {
+  fill: #2D9A46 !important;
+}
+
+/* Inner shield stroke stays dark */
+.light-theme path[fill="none"][stroke="#2A2A2A"] {
+  stroke: #FFFFFF !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Technology section background image
+   overlay adjustments
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .bg-\[\#454545\]\/85 {
+  background-color: rgba(243, 239, 230, 0.88) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Ring hover on pricing
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .hover\:ring-white\/20:hover {
+  --tw-ring-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Floor reflection adjustments
+   (floor-reflection.png is dark-room reflection; hide in light theme
+   for pure, spotless luxury aesthetic)
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme [alt="Glossy Floor Reflection"],
+.light-theme img[src*="floor-reflection"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+.light-theme .mix-blend-screen {
+  mix-blend-mode: normal !important;
+  opacity: 0.3 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Pricing card watermark opacity
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .opacity-\[0\.03\] {
+  opacity: 0.04 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Company Story Pillars (Redefining The Standard)
+   ═══════════════════════════════════════════════════════ */
+
+.light-theme .bg-\[\#161B16\]\/50 {
+  background-color: #FAF8F5 !important; /* Creamy bone card surface */
+  border: 1px solid rgba(35, 30, 25, 0.09) !important;
+  box-shadow: 0 4px 20px -2px rgba(35, 30, 25, 0.05) !important;
+}
+
+.light-theme .bg-\[\#161B16\]\/50:hover,
+.light-theme .group:hover .bg-\[\#161B16\]\/50 {
+  background-color: #FFFFFF !important;
+  border-color: rgba(45, 154, 70, 0.35) !important;
+  box-shadow: 0 10px 30px -4px rgba(35, 30, 25, 0.09) !important;
+}
+
+.light-theme .bg-\[\#161B16\]\/50 h3,
+.light-theme .bg-\[\#161B16\]\/50 .text-white {
+  color: #1A1D1A !important;
+  font-weight: 700 !important;
+}
+
+.light-theme .bg-\[\#161B16\]\/50 p,
+.light-theme .bg-\[\#161B16\]\/50 .text-\[\#A4ACA1\] {
+  color: #383E36 !important; /* Rich dark olive slate for 100% crystal-clear readability */
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  font-weight: 450 !important;
+}
+
+.light-theme .bg-\[\#161B16\]\/50 .bg-\[\#48C765\]\/10 {
+  background-color: rgba(45, 154, 70, 0.1) !important;
+  border-color: rgba(45, 154, 70, 0.3) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Collector Vault / Account Page
+   ═══════════════════════════════════════════════════════ */
+
+/* Vault Sidebar Profile Card */
+.light-theme aside .bg-white\/\[0\.02\] {
+  background-color: #FAF8F5 !important;
+  border: 1px solid rgba(35, 30, 25, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(35, 30, 25, 0.04) !important;
+}
+
+/* User avatar initials box (CM) */
+.light-theme aside .bg-\[\#2A2A2A\] {
+  background-color: #EFE8DC !important;
+  border: 1px solid rgba(35, 30, 25, 0.1) !important;
+}
+.light-theme aside .bg-\[\#2A2A2A\] span {
+  color: #1A1D1A !important;
+}
+
+/* Navigation tabs in sidebar */
+.light-theme aside nav button {
+  color: #4A5048 !important;
+}
+.light-theme aside nav button:hover {
+  background-color: rgba(35, 30, 25, 0.04) !important;
+  color: #1A1D1A !important;
+}
+.light-theme aside nav button.border-\[\#48C765\]\/30 {
+  background-color: #FAF8F5 !important;
+  border-color: rgba(45, 154, 70, 0.4) !important;
+  color: #1A1D1A !important;
+  font-weight: 600 !important;
+}
+
+/* Greeting Banner */
+.light-theme .shadow-2xl.bg-black\/40 {
+  background: linear-gradient(135deg, #FAF8F5 0%, #EFE8DC 100%) !important;
+  border: 1px solid rgba(35, 30, 25, 0.1) !important;
+  box-shadow: 0 10px 30px -5px rgba(35, 30, 25, 0.06) !important;
+}
+
+/* Neutralize the harsh black shadow gradient in greeting banner */
+.light-theme .shadow-2xl.bg-black\/40 .from-black\/80 {
+  display: none !important;
+}
+
+.light-theme .shadow-2xl.bg-black\/40 h2 {
+  color: #1A1D1A !important;
+}
+.light-theme .shadow-2xl.bg-black\/40 h2 span {
+  color: #2D9A46 !important;
+  font-weight: 700 !important;
+}
+.light-theme .shadow-2xl.bg-black\/40 p {
+  color: #4A5048 !important;
+}
+.light-theme .shadow-2xl.bg-black\/40 span.text-\[\#48C765\] {
+  color: #2D9A46 !important;
+}
+
+/* Vault Stat Cards & Order Tracker */
+.light-theme .space-y-8 .bg-white\/\[0\.02\] {
+  background-color: #FAF8F5 !important;
+  border: 1px solid rgba(35, 30, 25, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(35, 30, 25, 0.04) !important;
+}
+
+.light-theme .space-y-8 .bg-white\/\[0\.02\] .text-white {
+  color: #1A1D1A !important;
+}
+
+.light-theme .space-y-8 .bg-white\/\[0\.02\] .text-\[\#A4ACA1\] {
+  color: #5A6258 !important;
+  font-weight: 500 !important;
+}
+
+/* Active Order Tracker Step Markers */
+.light-theme .space-y-8 .bg-white\/10 {
+  background-color: rgba(35, 30, 25, 0.12) !important;
+}
+
+/* Vault Bottom Showcase Cards (Spectrometry in Detail & View Graded Cards) */
+/* These have dark photographic backgrounds: keep white text with drop shadows for cinematic brilliance! */
+.light-theme [class*="step_3_spectrometry"],
+.light-theme [class*="preservar"] {
+  border: 1px solid rgba(35, 30, 25, 0.1) !important;
+  box-shadow: 0 10px 30px -5px rgba(35, 30, 25, 0.08) !important;
+}
+
+.light-theme [class*="step_3_spectrometry"] .bg-black\/70,
+.light-theme [class*="preservar"] .bg-black\/70 {
+  background-color: rgba(10, 15, 12, 0.55) !important;
+}
+
+.light-theme [class*="step_3_spectrometry"] h3,
+.light-theme [class*="step_3_spectrometry"] .text-white,
+.light-theme [class*="step_3_spectrometry"] button,
+.light-theme [class*="preservar"] h3,
+.light-theme [class*="preservar"] .text-white,
+.light-theme [class*="preservar"] button {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+.light-theme [class*="step_3_spectrometry"] .text-\[\#48C765\] {
+  color: #48C765 !important;
+  text-shadow: 0 0 12px rgba(72, 199, 101, 0.6) !important;
+  font-weight: 700 !important;
+}
+
+.light-theme [class*="preservar"] .text-white\/50 {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.light-theme [class*="step_3_spectrometry"] button:hover,
+.light-theme [class*="preservar"] button:hover {
+  color: #48C765 !important;
+  border-color: #48C765 !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAVBAR ACCOUNT ICON — Distinct Colors Per Theme
+   ═══════════════════════════════════════════════════════ */
+
+/* Dark Mode: Signature Vibrant Gorilla Emerald Green (#22C55E) — Clean & Sharp without blur/glow */
+.navbar-account-btn {
+  color: #22C55E !important;
+  filter: none !important;
+}
+.navbar-account-btn:hover {
+  color: #4ADE80 !important;
+  filter: none !important;
+}
+
+/* Light Mode: Distinct Deep Forest Green (#15803D) — Clean & Sharp without blur/glow */
+.light-theme .navbar-account-btn {
+  color: #15803D !important;
+  filter: none !important;
+}
+.light-theme .navbar-account-btn:hover {
+  color: #166534 !important;
+  filter: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT THEME — Transition smoothness
+   ═══════════════════════════════════════════════════════ */
+
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
