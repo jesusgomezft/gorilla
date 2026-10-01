@@ -171,12 +171,12 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#5A6357]">
-          <div className="font-mono">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#5A6357] text-center md:text-left">
+          <div className="font-mono order-3 md:order-1 text-[11px]">
             © 2026 GORILLA GRADING · {language === 'es' ? 'TODOS LOS DERECHOS RESERVADOS' : 'ALL RIGHTS RESERVED'}
           </div>
 
-          <div className="font-sans text-[13px] text-[#A4ACA1] flex items-center justify-center gap-1.5">
+          <div className="font-sans text-[13px] text-[#A4ACA1] flex items-center justify-center gap-1.5 order-2 md:order-2">
             {language === 'es' ? 'Hecho con' : 'Made with'} 
             <svg className="w-3.5 h-3.5 text-[#D03B3B] fill-current animate-heartbeat" viewBox="0 0 24 24">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -184,46 +184,56 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             {language === 'es' ? 'en Madrid y Lisboa' : 'in Madrid & Lisbon'}
           </div>
 
-          <div className="flex items-center gap-6">
-            {/* Theme Toggle Button */}
-            <button 
-              onClick={toggleTheme}
-              className="theme-toggle-btn"
-              title={theme === 'dark' 
-                ? (language === 'es' ? 'Cambiar a modo claro' : 'Switch to light mode')
-                : (language === 'es' ? 'Cambiar a modo oscuro' : 'Switch to dark mode')
-              }
-            >
-              {theme === 'dark' ? (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <circle cx="12" cy="12" r="5" />
-                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-                  </svg>
-                  <span>{language === 'es' ? 'CLARO' : 'LIGHT'}</span>
-                </>
-              ) : (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                  </svg>
-                  <span>{language === 'es' ? 'OSCURO' : 'DARK'}</span>
-                </>
-              )}
-            </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 order-1 md:order-3 w-full md:w-auto">
+            {/* Theme & Language row */}
+            <div className="flex items-center justify-center gap-3">
+              {/* Theme Toggle Button */}
+              <button 
+                onClick={toggleTheme}
+                className="theme-toggle-btn"
+                title={theme === 'dark' 
+                  ? (language === 'es' ? 'Cambiar a modo claro' : 'Switch to light mode')
+                  : (language === 'es' ? 'Cambiar a modo oscuro' : 'Switch to dark mode')
+                }
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <circle cx="12" cy="12" r="5" />
+                      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <span>{language === 'es' ? 'CLARO' : 'LIGHT'}</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                    </svg>
+                    <span>{language === 'es' ? 'OSCURO' : 'DARK'}</span>
+                  </>
+                )}
+              </button>
 
-            <button 
-              onClick={() => setLanguage(language === 'es' ? 'en' : 'es')} 
-              className="hover:text-white transition-colors text-white font-bold flex items-center gap-1"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {language === 'es' ? 'ES' : 'EN'}
-            </button>
-            <button onClick={() => onNavigate && onNavigate('/privacy')} className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'PRIVACIDAD' : 'PRIVACY'}</button>
-            <button onClick={() => onNavigate && onNavigate('/terms')} className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'TÉRMINOS' : 'TERMS'}</button>
-            <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="hover:text-gray-300 transition-colors cursor-pointer">{language === 'es' ? 'AVISO LEGAL' : 'LEGAL NOTICE'}</button>
+              <button 
+                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')} 
+                className="theme-toggle-btn"
+                title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{language === 'es' ? 'ES' : 'EN'}</span>
+              </button>
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-sans text-[#A4ACA1] tracking-wider uppercase">
+              <button onClick={() => onNavigate && onNavigate('/privacy')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">{language === 'es' ? 'PRIVACIDAD' : 'PRIVACY'}</button>
+              <span className="text-[#5A6357]/60 select-none">•</span>
+              <button onClick={() => onNavigate && onNavigate('/terms')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">{language === 'es' ? 'TÉRMINOS' : 'TERMS'}</button>
+              <span className="text-[#5A6357]/60 select-none">•</span>
+              <button onClick={() => onNavigate && onNavigate('/legal-notice')} className="hover:text-white transition-colors cursor-pointer whitespace-nowrap">{language === 'es' ? 'AVISO LEGAL' : 'LEGAL NOTICE'}</button>
+            </div>
           </div>
         </div>
 
