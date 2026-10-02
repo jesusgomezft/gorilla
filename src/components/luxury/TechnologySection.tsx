@@ -89,18 +89,18 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 w-full items-center">
           
           {/* Left Copy Overlay */}
-          <div className="lg:col-span-5 flex flex-col justify-center opacity-100">
-            <p className={`font-mono text-[10px] tracking-[0.2em] uppercase mb-4 ${
+          <div className="lg:col-span-5 flex flex-col justify-center items-center lg:items-start text-center lg:text-left opacity-100">
+            <p className={`font-mono text-[10px] tracking-[0.2em] uppercase mb-4 text-center lg:text-left ${
               isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
             }`}>
               {language === 'es' ? 'EL PROCESO' : 'SUBMISSION PROCESS'}
             </p>
-            <h2 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] uppercase leading-[1.05] mb-5 whitespace-pre-line ${
+            <h2 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] uppercase leading-[1.05] mb-5 whitespace-pre-line text-center lg:text-left ${
               isLight ? 'text-[#1C201D]' : 'text-white'
             }`}>
               {language === 'es' ? 'CÓMO FUNCIONA' : 'HOW IT WORKS'}
             </h2>
-            <div className={`font-sans text-sm sm:text-base max-w-[360px] font-normal leading-relaxed mb-8 ${
+            <div className={`font-sans text-sm sm:text-base max-w-[360px] font-normal leading-relaxed mb-8 mx-auto lg:mx-0 text-center lg:text-left ${
               isLight ? 'text-[#555C54]' : 'text-[#A4ACA1]'
             }`}>
               <p className={`font-bold mb-2 tracking-wide uppercase ${
@@ -117,7 +117,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
             
             <button
               onClick={() => onNavigate ? onNavigate('/pricing') : window.location.href = '/pricing'}
-              className={`inline-flex items-center justify-center px-6 py-2.5 rounded-none border text-sm font-medium transition-all group w-fit ${
+              className={`inline-flex items-center justify-center px-6 py-2.5 rounded-none border text-sm font-medium transition-all group w-fit mx-auto lg:mx-0 ${
                 isLight
                   ? 'border-[#2D9A46] text-[#2D9A46] hover:bg-[#2D9A46] hover:text-white'
                   : 'border-[#48C765] text-[#48C765] hover:bg-[#48C765] hover:text-[#14170F]'

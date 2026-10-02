@@ -45,20 +45,20 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
         <div className="hidden lg:block lg:w-[40%] shrink-0"></div>
 
         {/* Text and buttons (always pushed to the right side on desktop, stacked on mobile) */}
-        <div className="w-full lg:w-[35%] flex flex-col justify-center mt-8 lg:mt-0 z-10 bg-transparent p-0 rounded-none lg:pr-8">
-          <p className="font-mono text-[10px] tracking-[0.2em] text-[#48C765] uppercase mb-4">
+        <div className="w-full lg:w-[35%] flex flex-col justify-center items-center lg:items-start text-center lg:text-left mt-8 lg:mt-0 z-10 bg-transparent p-0 rounded-none lg:pr-8">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-[#48C765] uppercase mb-4 text-center lg:text-left">
             {language === 'es' ? 'NUESTRA PROMESA' : 'OUR PROMISE'}
           </p>
-          <h2 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] text-white uppercase leading-[1.05] mb-5 tracking-[0.01em]">
+          <h2 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] text-white uppercase leading-[1.05] mb-5 tracking-[0.01em] text-center lg:text-left">
             {language === 'es' ? 'DISEÑADO PARA TU COLECCIÓN' : 'BUILT AROUND YOUR COLLECTION'}
           </h2>
-          <p className="font-sans text-sm sm:text-base text-[#C2C9C3] max-w-[480px] font-normal leading-relaxed mb-8">
+          <p className="font-sans text-sm sm:text-base text-[#C2C9C3] max-w-[480px] font-normal leading-relaxed mb-8 mx-auto lg:mx-0 text-center lg:text-left">
             {language === 'es'
               ? 'Un servicio de graduación premium pensado para darte total tranquilidad en cada paso de la cadena de custodia.'
               : 'A premium grading service designed to give you complete peace of mind at every step of the chain of custody.'}
           </p>
           
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mx-auto lg:mx-0">
             <button
               onClick={() => onNavigate && onNavigate('/submit')}
               className="inline-flex items-center justify-center px-8 py-3 rounded-none bg-[#48C765] hover:bg-[#3A9F50] text-[#14170F] text-xs tracking-widest font-bold uppercase transition-all shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)] group"

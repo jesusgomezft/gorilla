@@ -103,17 +103,17 @@ export const AppContent: React.FC = () => {
       case '/account':
         return isLoggedIn ? <CollectorVaultPage onNavigate={handleNavigate} /> : <LoginPage onNavigate={handleNavigate} />;
       case '/terms':
-        return <LegalPage type="terms" />;
+        return <LegalPage type="terms" onNavigate={handleNavigate} />;
       case '/privacy':
-        return <LegalPage type="privacy" />;
+        return <LegalPage type="privacy" onNavigate={handleNavigate} />;
       case '/refund':
-        return <LegalPage type="refund" />;
+        return <LegalPage type="refund" onNavigate={handleNavigate} />;
       case '/cookies':
-        return <LegalPage type="cookies" />;
+        return <LegalPage type="cookies" onNavigate={handleNavigate} />;
       case '/cookie-consent':
-        return <LegalPage type="cookie-consent" />;
+        return <LegalPage type="cookie-consent" onNavigate={handleNavigate} />;
       case '/legal-notice':
-        return <LegalPage type="legal-notice" />;
+        return <LegalPage type="legal-notice" onNavigate={handleNavigate} />;
       default:
         if (currentPath.startsWith('/certificates/')) {
           const certId = currentPath.replace('/certificates/', '');

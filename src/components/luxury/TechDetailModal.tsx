@@ -9,6 +9,76 @@ interface TechDetailModalProps {
   onNavigate?: (path: string) => void;
 }
 
+const TechStageBadge: React.FC<{
+  stage: string;
+  label: string;
+  code?: string;
+  color?: string;
+  isLight: boolean;
+}> = ({ stage, label, code = 'SPEC.V4.2', color = '#48C765', isLight }) => {
+  const accentColor = isLight ? '#1B7332' : color;
+  const badgeBg = isLight ? '#FAF8F5' : '#0B110D';
+  const borderColor = isLight ? 'rgba(27, 115, 50, 0.35)' : 'rgba(72, 199, 101, 0.4)';
+
+  return (
+    <div className="inline-flex items-stretch select-none group relative">
+      <div 
+        className="absolute -inset-[1px] opacity-20 group-hover:opacity-40 transition-opacity blur-[2px]"
+        style={{ backgroundColor: accentColor }}
+      />
+      
+      <div 
+        className="relative flex items-center border shadow-sm overflow-hidden"
+        style={{
+          backgroundColor: badgeBg,
+          borderColor: borderColor,
+        }}
+      >
+        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t-2 border-l-2" style={{ borderColor: accentColor }} />
+        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b-2 border-r-2" style={{ borderColor: accentColor }} />
+
+        <div 
+          className="px-2.5 py-1 flex items-center gap-1.5 border-r font-mono text-[9px] font-extrabold tracking-widest uppercase"
+          style={{
+            backgroundColor: isLight ? 'rgba(27, 115, 50, 0.08)' : 'rgba(72, 199, 101, 0.15)',
+            borderColor: borderColor,
+            color: accentColor,
+          }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full animate-ping" style={{ backgroundColor: accentColor }} />
+          <span>{stage}</span>
+        </div>
+
+        <div className="px-3 py-1 flex items-center gap-2">
+          <span 
+            className="font-mono text-[10px] font-bold tracking-[0.18em] uppercase"
+            style={{ color: isLight ? '#1A1D1A' : '#F4F6F0' }}
+          >
+            {label}
+          </span>
+          <span 
+            className="font-mono text-[8px] font-semibold tracking-wider opacity-60 hidden sm:inline"
+            style={{ color: accentColor }}
+          >
+            // {code}
+          </span>
+        </div>
+
+        <div 
+          className="px-2 py-1 border-l flex items-center font-mono text-[8px] font-bold"
+          style={{
+            borderColor: borderColor,
+            backgroundColor: isLight ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.02)',
+            color: accentColor,
+          }}
+        >
+          <span className="opacity-75">0.01mm</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClose, onNavigate }) => {
   const { language } = useLanguage();
   const { theme } = useTheme();
@@ -216,9 +286,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
 
                 {/* Technical Specifications (Right) */}
                 <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#48C765]/10 border border-[#48C765]/30 text-[#48C765] font-mono text-[10px] font-bold tracking-widest uppercase">
-                    ETAPA 01 // CAPTURA INDUSTRIAL
-                  </div>
+                  <TechStageBadge
+                    stage={language === 'es' ? 'ETAPA 01' : 'STAGE 01'}
+                    label={language === 'es' ? 'CAPTURA INDUSTRIAL' : 'INDUSTRIAL CAPTURE'}
+                    code="OPT-5000K"
+                    color="#48C765"
+                    isLight={isLight}
+                  />
 
                   <h4 className={`font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide ${
                     isLight ? 'text-[#1A1D1A]' : 'text-white'
@@ -332,9 +406,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
 
                 {/* Technical Specifications (Right) */}
                 <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-[10px] font-bold tracking-widest uppercase">
-                    ETAPA 02 // DETECCIÓN FORENSE
-                  </div>
+                  <TechStageBadge
+                    stage={language === 'es' ? 'ETAPA 02' : 'STAGE 02'}
+                    label={language === 'es' ? 'DETECCIÓN FORENSE' : 'FORENSIC DETECTION'}
+                    code="UV-365nm"
+                    color="#06B6D4"
+                    isLight={isLight}
+                  />
 
                   <h4 className={`font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide ${
                     isLight ? 'text-[#1A1D1A]' : 'text-white'
@@ -470,9 +548,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
 
                 {/* Technical Specifications (Right) */}
                 <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#48C765]/10 border border-[#48C765]/30 text-[#48C765] font-mono text-[10px] font-bold tracking-widest uppercase">
-                    ETAPA 03 // MEDICIÓN VECTORIAL
-                  </div>
+                  <TechStageBadge
+                    stage={language === 'es' ? 'ETAPA 03' : 'STAGE 03'}
+                    label={language === 'es' ? 'MEDICIÓN VECTORIAL' : 'VECTORIAL MEASUREMENT'}
+                    code="CNC-800PTS"
+                    color="#48C765"
+                    isLight={isLight}
+                  />
 
                   <h4 className={`font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide ${
                     isLight ? 'text-[#1A1D1A]' : 'text-white'
@@ -589,9 +671,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
 
                 {/* Technical Specifications (Right) */}
                 <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#48C765]/10 border border-[#48C765]/30 text-[#48C765] font-mono text-[10px] font-bold tracking-widest uppercase">
-                    ETAPA 04 // PROTECCIÓN HERMÉTICA
-                  </div>
+                  <TechStageBadge
+                    stage={language === 'es' ? 'ETAPA 04' : 'STAGE 04'}
+                    label={language === 'es' ? 'PROTECCIÓN HERMÉTICA' : 'HERMETIC PROTECTION'}
+                    code="35kHz-NFC"
+                    color="#48C765"
+                    isLight={isLight}
+                  />
 
                   <h4 className={`font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide ${
                     isLight ? 'text-[#1A1D1A]' : 'text-white'

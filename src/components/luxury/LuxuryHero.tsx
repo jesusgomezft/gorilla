@@ -59,16 +59,16 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 items-center">
         
         {/* Column: Headlines, Copy, Mobile Slab, Buttons */}
-        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center py-8 sm:py-12 pl-0 sm:pl-4 lg:pl-28 xl:pl-40">
+        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-8 sm:py-12 pl-0 sm:pl-4 lg:pl-28 xl:pl-40">
           
           {/* Technical Kicker */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex items-center gap-3 mb-4 sm:mb-6"
+            className="flex items-center justify-center lg:justify-start gap-3 mb-4 sm:mb-6"
           >
-            <span className="font-nunito text-xs font-bold tracking-[0.25em] text-[#A4ACA1] uppercase drop-shadow-md">
+            <span className="font-nunito text-xs font-bold tracking-[0.25em] text-[#A4ACA1] uppercase drop-shadow-md text-center lg:text-left">
               {t('ref.hero.eyebrow')}
             </span>
           </motion.div>
@@ -78,7 +78,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="font-['Oswald'] font-[700] text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl leading-[0.95] tracking-[0.01em] text-white mb-5 sm:mb-7 uppercase drop-shadow-lg"
+            className="font-['Oswald'] font-[700] text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl leading-[0.95] tracking-[0.01em] text-white mb-5 sm:mb-7 uppercase drop-shadow-lg text-center lg:text-left"
           >
             {t('ref.hero.title1')}<br />
             {t('ref.hero.title2')}<span className="text-[#48C765]">{t('ref.hero.titleGreen')}</span>
@@ -91,7 +91,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="relative mb-5 sm:mb-9"
           >
-            <p className="relative font-sans text-base sm:text-lg text-[#F4F6F0] max-w-[490px] leading-relaxed font-medium">
+            <p className="relative font-sans text-base sm:text-lg text-[#F4F6F0] max-w-[490px] leading-relaxed font-medium text-center lg:text-left mx-auto lg:mx-0">
               {t('ref.hero.desc')}
             </p>
           </motion.div>
@@ -119,12 +119,12 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-8 sm:mb-12 w-full sm:w-auto"
           >
             {/* Primary Capsule Button */}
             <button
               onClick={() => onNavigate && onNavigate('/submit')}
-              className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-3 rounded-none bg-[#48C765] hover:bg-[#3A9F50] transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)]"
+              className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-3 rounded-none bg-[#48C765] hover:bg-[#3A9F50] transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)]"
             >
               <span className="relative z-10 font-sans font-bold text-xs tracking-widest text-[#14170F] uppercase select-none">
                 {t('ref.hero.ctaPrimary')}
@@ -141,7 +141,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                   onOpenTechModal();
                 }
               }}
-              className="group inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-3 rounded-none bg-[#454545]/60 hover:bg-[#454545] border border-[#48C765]/50 hover:border-[#48C765] transition-all duration-300 cursor-pointer"
+              className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-3 rounded-none bg-[#454545]/60 hover:bg-[#454545] border border-[#48C765]/50 hover:border-[#48C765] transition-all duration-300 cursor-pointer"
             >
               <span className="text-xs font-semibold tracking-wide text-white select-none">
                 {t('ref.hero.ctaSecondary')}
@@ -159,7 +159,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            className="mt-4 sm:mt-8 flex flex-col gap-2.5 sm:gap-3"
+            className="mt-4 sm:mt-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-2.5 sm:gap-3"
           >
             <div className="font-sans text-xs tracking-wide text-[#A0A7A1]">
               Planes desde <span className="text-white font-medium">15 €</span> <span className="mx-1.5 opacity-50">·</span> Plazos desde <span className="text-white font-medium">5 días</span>

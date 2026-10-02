@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface FAQSectionProps {
   onNavigate?: (path: string) => void;
@@ -7,6 +8,8 @@ interface FAQSectionProps {
 
 export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
@@ -43,25 +46,35 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <section className="w-full bg-[#454545] py-24 px-6 lg:px-12 border-b border-white/[0.04]">
+    <section className={`w-full py-24 px-6 lg:px-12 border-b transition-colors duration-300 ${
+      isLight ? 'bg-[#ECE7DF] text-[#1C201D] border-black/[0.06]' : 'bg-[#14170F] text-white border-white/[0.04]'
+    }`}>
       <div className="max-w-[1000px] mx-auto flex flex-col md:flex-row gap-12 lg:gap-20">
         
-        {/* Left Col: Header */}
-        <div className="md:w-1/3 flex flex-col">
-          <p className="font-mono text-[10px] tracking-[0.2em] text-[#A4ACA1] uppercase mb-4">
+        {/* Left Col: Header - Centered on mobile, left-aligned on desktop */}
+        <div className="w-full md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+          <p className={`font-mono text-[10px] tracking-[0.2em] uppercase mb-4 text-center md:text-left ${
+            isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
+          }`}>
             {language === 'es' ? 'SOPORTE AL CLIENTE' : 'CUSTOMER SUPPORT'}
           </p>
-          <h2 className="font-['Oswald'] font-[700] text-4xl text-white uppercase leading-[1.1] mb-6">
+          <h2 className={`font-['Oswald'] font-[700] text-4xl uppercase leading-[1.1] mb-6 text-center md:text-left ${
+            isLight ? 'text-[#1C201D]' : 'text-white'
+          }`}>
             {language === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
           </h2>
-          <p className="font-sans text-sm text-[#C2C9C3] mb-8 text-justify leading-relaxed">
+          <p className={`font-sans text-sm mb-8 leading-relaxed text-center md:text-left mx-auto md:mx-0 max-w-[360px] ${
+            isLight ? 'text-[#555C54]' : 'text-[#C2C9C3]'
+          }`}>
             {language === 'es' 
               ? 'Encuentra respuestas rápidas a las consultas más comunes sobre el proceso de grading y envíos.' 
               : 'Find quick answers to common questions about the grading and shipping process.'}
           </p>
           <button 
             onClick={() => onNavigate && onNavigate('/faq')}
-            className="text-[#48C765] hover:text-white font-mono text-xs tracking-wider uppercase flex items-center gap-2 transition-colors w-fit cursor-pointer"
+            className={`font-mono text-xs tracking-wider uppercase flex items-center gap-2 transition-colors w-fit cursor-pointer mx-auto md:mx-0 self-center md:self-start ${
+              isLight ? 'text-[#2D9A46] hover:text-[#1C201D]' : 'text-[#48C765] hover:text-white'
+            }`}
           >
             <span>{language === 'es' ? 'Ir al Centro de Ayuda' : 'Go to Help Center'}</span>
             <span>→</span>
@@ -69,20 +82,34 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
         </div>
 
         {/* Right Col: Accordion */}
-        <div className="md:w-2/3 flex flex-col border-t border-white/10">
+        <div className={`w-full md:w-2/3 flex flex-col border-t ${
+          isLight ? 'border-black/10' : 'border-white/10'
+        }`}>
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div key={idx} className="border-b border-white/10">
+              <div key={idx} className={`border-b ${isLight ? 'border-black/10' : 'border-white/10'}`}>
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full py-6 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
                 >
-                  <span className={`font-sans font-bold text-lg pr-8 transition-colors ${isOpen ? 'text-[#48C765]' : 'text-white group-hover:text-[#48C765]'}`}>
+                  <span className={`font-sans font-bold text-lg pr-8 transition-colors ${
+                    isOpen 
+                      ? (isLight ? 'text-[#2D9A46]' : 'text-[#48C765]') 
+                      : (isLight ? 'text-[#1C201D] group-hover:text-[#2D9A46]' : 'text-white group-hover:text-[#48C765]')
+                  }`}>
                     {faq.q}
                   </span>
-                  <div className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all ${isOpen ? 'border-[#48C765] bg-[#48C765]/10' : 'border-white/20'}`}>
-                    <svg className={`w-3 h-3 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#48C765]' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
+                    isOpen 
+                      ? (isLight ? 'border-[#2D9A46] bg-[#2D9A46]/10' : 'border-[#48C765] bg-[#48C765]/10') 
+                      : (isLight ? 'border-black/20' : 'border-white/20')
+                  }`}>
+                    <svg className={`w-3 h-3 transition-transform duration-300 ${
+                      isOpen 
+                        ? (isLight ? 'rotate-180 text-[#2D9A46]' : 'rotate-180 text-[#48C765]') 
+                        : (isLight ? 'text-[#1C201D]' : 'text-white')
+                    }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -90,7 +117,9 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
                 <div 
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-60 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
                 >
-                  <p className="font-sans text-[#A4ACA1] text-sm leading-relaxed pr-8 mb-4 text-justify">
+                  <p className={`font-sans text-sm leading-relaxed pr-8 mb-4 ${
+                    isLight ? 'text-[#555C54]' : 'text-[#A4ACA1]'
+                  }`}>
                     {faq.a}
                   </p>
                   {faq.route && faq.linkText && (
@@ -103,7 +132,11 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
                           window.location.href = faq.route;
                         }
                       }}
-                      className="mt-4 px-4 py-1.5 bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765] font-mono text-[9px] font-bold tracking-[0.15em] uppercase transition-all flex items-center gap-2 w-fit cursor-pointer"
+                      className={`mt-4 px-4 py-1.5 font-mono text-[9px] font-bold tracking-[0.15em] uppercase transition-all flex items-center gap-2 w-fit cursor-pointer ${
+                        isLight
+                          ? 'bg-[#2D9A46]/10 border border-[#2D9A46]/30 hover:bg-[#2D9A46] hover:text-white text-[#2D9A46]'
+                          : 'bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765]'
+                      }`}
                     >
                       <span>{faq.linkText}</span>
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

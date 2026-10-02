@@ -202,6 +202,16 @@
   background-color: #FAF8F5 !important;
 }
 
+/* Pillar badge bg-[#1A1E1C] and hover bg-[#1E2320] */
+.light-theme .bg-\[\#1A1E1C\] {
+  background-color: #FAF8F5 !important;
+}
+
+.light-theme .hover\:bg-\[\#1E2320\]:hover,
+.light-theme .group:hover .group-hover\:bg-\[\#1E2320\] {
+  background-color: #FFFFFF !important;
+}
+
 /* Panel2 bg-[#1D231E] */
 .light-theme .bg-\[\#1D231E\] {
   background-color: #EFE9DE !important;
@@ -409,17 +419,38 @@
   --tw-gradient-via: rgba(255, 255, 255, 0.35) !important;
 }
 
-/* White text opacity → dark text opacity */
-.light-theme .text-white\/40 {
-  color: rgba(26, 29, 26, 0.4) !important;
+/* White text opacity → dark text opacity with strong readable contrast */
+.light-theme .text-white\/50 {
+  color: rgba(26, 29, 26, 0.65) !important;
 }
 
-.light-theme .text-white\/50 {
-  color: rgba(26, 29, 26, 0.5) !important;
+.light-theme .text-white\/40 {
+  color: rgba(26, 29, 26, 0.6) !important;
+}
+
+.light-theme .text-white\/30 {
+  color: rgba(26, 29, 26, 0.55) !important;
 }
 
 .light-theme .text-white\/20 {
-  color: rgba(26, 29, 26, 0.2) !important;
+  color: rgba(26, 29, 26, 0.42) !important;
+}
+
+.light-theme .text-white\/10 {
+  color: rgba(26, 29, 26, 0.28) !important;
+}
+
+/* White background opacity lines/accents → subtle dark lines in light mode */
+.light-theme .bg-white\/30 {
+  background-color: rgba(26, 29, 26, 0.25) !important;
+}
+
+.light-theme .bg-white\/20 {
+  background-color: rgba(26, 29, 26, 0.15) !important;
+}
+
+.light-theme .bg-white\/10 {
+  background-color: rgba(26, 29, 26, 0.08) !important;
 }
 
 /* ═══════════════════════════════════════════════════════
