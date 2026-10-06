@@ -74,7 +74,7 @@ export const CertificateDetailPage: React.FC<CertificateDetailPageProps> = ({
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="px-3 py-1 rounded-none bg-gorilla-500/20 text-gorilla-400 font-mono text-xs font-bold border border-gorilla-500/40">
-                OFFICIAL EUROPEAN CERTIFICATE DOSSIER
+                OFFICIAL INTERNATIONAL CERTIFICATE DOSSIER
               </span>
               <span className="font-mono text-xs text-slate-400">
                 Issued: {card.certDate}
@@ -131,7 +131,7 @@ export const CertificateDetailPage: React.FC<CertificateDetailPageProps> = ({
               <span>CRYPTOGRAPHIC LEDGER INTEGRITY</span>
             </div>
             <p className="text-slate-400 text-[11px] leading-relaxed">
-              This card was authenticated using non-destructive spectral wavelength analysis and encapsulated in an ultrasonic hermetic acrylic case. The unique security hash matches the European central vault ledger.
+              This card was authenticated using non-destructive spectral wavelength analysis and encapsulated in an ultrasonic hermetic acrylic case. The unique security hash matches the international central vault ledger.
             </p>
             <div className="p-3 rounded-none bg-charcoal-950 border border-slate-800 text-[10px] text-slate-500 break-all">
               SHA256: {card.securityHash}

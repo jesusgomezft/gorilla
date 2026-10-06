@@ -188,12 +188,12 @@ export const SlabCard: React.FC<SlabCardProps> = ({
         {/* SLAB BASE: Cryptographic NFC & Barcode */}
         <div className="mt-3 flex items-center justify-between px-1 text-slate-400 text-[9px] font-mono">
           <div className="flex items-center gap-1.5 text-slate-300">
-            <span className="w-1.5 h-1.5 rounded-none bg-gorilla-neon animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-none bg-gorilla-neon" />
             <span>NFC ENCRIPTADO</span>
           </div>
           <div className="flex items-center gap-1">
             <QrCode className="w-3 h-3 text-slate-400" />
-            <span>EUROPEAN REGISTRY</span>
+            <span>INTERNATIONAL REGISTRY</span>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface GradedCardsCounterProps {
   /** 
@@ -24,6 +25,8 @@ export const GradedCardsCounter: React.FC<GradedCardsCounterProps> = ({
   count = 5000 
 }) => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   // Format number with locale-appropriate separators
   const formattedCount = count.toLocaleString(language === 'es' ? 'es-ES' : 'en-US');
@@ -32,17 +35,23 @@ export const GradedCardsCounter: React.FC<GradedCardsCounterProps> = ({
   const digits = formattedCount.split('');
 
   return (
-    <div className="w-full mt-5 pt-5 border-t border-white/[0.06]">
+    <div className={`w-full mt-5 pt-5 border-t ${isLight ? 'border-[#E5E1D8]' : 'border-white/[0.08]'}`}>
       {/* Label */}
-      <span className="font-sans text-[10px] tracking-[0.2em] text-[#5A6357] uppercase block mb-2.5">
+      <span className={`font-sans text-[10px] tracking-[0.2em] uppercase block mb-2.5 font-bold ${
+        isLight ? 'text-[#4A5248]' : 'text-[#A4ACA1]'
+      }`}>
         {language === 'es' ? 'CARTAS GRADUADAS' : 'CARDS GRADED'}
       </span>
 
       {/* Counter Row */}
       <div className="flex items-center gap-3">
         {/* Shield icon — brand-native, not generic */}
-        <div className="w-8 h-8 border border-[#48C765]/25 bg-[#48C765]/[0.06] flex items-center justify-center shrink-0">
-          <svg className="w-3.5 h-3.5 text-[#48C765]" fill="currentColor" viewBox="0 0 24 24">
+        <div className={`w-8 h-8 border flex items-center justify-center shrink-0 ${
+          isLight 
+            ? 'border-[#16A34A]/40 bg-[#16A34A]/10 text-[#16A34A]' 
+            : 'border-[#48C765]/25 bg-[#48C765]/[0.06] text-[#48C765]'
+        }`}>
+          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
             <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" />
           </svg>
         </div>
@@ -54,8 +63,12 @@ export const GradedCardsCounter: React.FC<GradedCardsCounterProps> = ({
               key={i}
               className={
                 char === '.' || char === ','
-                  ? "font-mono text-sm text-[#5A6357] mx-[1px] leading-none"
-                  : "font-['Oswald'] text-xl font-bold text-[#48C765] leading-none w-[18px] text-center inline-block bg-white/[0.02] border border-white/[0.05] py-0.5"
+                  ? `font-mono text-sm mx-[1px] leading-none ${isLight ? 'text-[#4A5248]' : 'text-[#7A8377]'}`
+                  : `font-['Oswald'] text-xl font-bold leading-none w-[18px] text-center inline-block py-0.5 border ${
+                      isLight 
+                        ? 'bg-white border-[#D5CEC2] text-[#16A34A] shadow-xs' 
+                        : 'bg-white/[0.04] border-white/[0.08] text-[#48C765]'
+                    }`
               }
             >
               {char}
@@ -66,3 +79,4 @@ export const GradedCardsCounter: React.FC<GradedCardsCounterProps> = ({
     </div>
   );
 };
+

@@ -314,7 +314,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
                           {faq.deepLink && (
                             <button
                               onClick={() => onNavigate(faq.deepLink!)}
-                              className="mt-2 py-2 px-4 bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765] font-mono text-[10px] font-bold tracking-wider uppercase transition-all flex items-center gap-2 w-fit"
+                              className="btn-gorilla-square-secondary mt-3 px-4 py-2 text-[10px] font-bold tracking-wider uppercase flex items-center gap-2 w-fit cursor-pointer"
                             >
                               <span>{language === 'es' ? faq.linkTextEs : faq.linkTextEn}</span>
                               <ExternalLink size={12} />
@@ -353,7 +353,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
 
           <button
             onClick={() => onNavigate('/contact')}
-            className="px-8 py-3.5 bg-[#48C765] hover:bg-[#3A9F50] text-[#14170F] font-mono font-bold text-xs uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(72,199,101,0.2)] shrink-0 flex items-center gap-2"
+            className="btn-gorilla-square px-8 py-3.5 text-xs font-extrabold tracking-widest shrink-0 flex items-center gap-2 shadow-lg"
           >
             <span>{language === 'es' ? 'Ir al Formulario de Contacto' : 'Go to Contact Form'}</span>
             <span>→</span>

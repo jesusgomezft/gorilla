@@ -3,8 +3,13 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { MOCK_SERVICES } from '../data/mockServices';
 import { OrderItem, ServiceTier } from '../types';
-import { Plus, Trash2, CheckCircle2 } from 'lucide-react';
-import { BlueprintScanner, BlueprintCaliper, BlueprintMagnifier, BlueprintBriefcase } from '../components/luxury/LuxuryPricingSection';
+import { Plus, Trash2, CheckCircle2, Clock, Check, ShieldCheck } from 'lucide-react';
+import { 
+  BlueprintCaliper, 
+  BlueprintScanner, 
+  BlueprintMagnifier, 
+  BlueprintBriefcase 
+} from '../components/luxury/LuxuryPricingSection';
 
 interface SubmissionWizardPageProps {
   onNavigate: (path: string) => void;
@@ -25,7 +30,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
       const found = MOCK_SERVICES.find(s => s.id === tierId);
       if (found) return found;
     }
-    return null;
+    return MOCK_SERVICES.find(s => s.id === 'standard') || MOCK_SERVICES[1];
   }); 
   
   const [items, setItems] = useState<OrderItem[]>([]);
@@ -116,21 +121,13 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => onNavigate('/account')}
-            className={`w-full sm:w-auto px-8 py-3 rounded-none font-mono text-xs font-bold uppercase tracking-widest transition-all ${
-              isLight 
-                ? 'bg-[#2D9A46] hover:bg-[#25823a] text-white shadow-lg shadow-[#2D9A46]/20' 
-                : 'bg-[#48C765] hover:bg-[#3ca352] text-black shadow-lg shadow-[#48C765]/20'
-            }`}
+            className="btn-gorilla-square w-full sm:w-auto px-8 py-3.5 text-xs font-extrabold tracking-widest shadow-lg"
           >
             {language === 'es' ? 'VER MIS PEDIDOS' : 'VIEW MY ORDERS'}
           </button>
           <button
             onClick={() => onNavigate('/')}
-            className={`w-full sm:w-auto px-8 py-3 rounded-none font-mono text-xs uppercase tracking-widest border transition-all ${
-              isLight
-                ? 'bg-white hover:bg-[#FAF7F2] text-[#1C201D] border-[#DCD5C3]'
-                : 'bg-white/5 hover:bg-white/10 text-white border-white/10'
-            }`}
+            className="btn-gorilla-square-secondary w-full sm:w-auto px-8 py-3.5 text-xs font-bold tracking-widest"
           >
             {language === 'es' ? 'VOLVER AL INICIO' : 'BACK TO HOME'}
           </button>
@@ -202,294 +199,342 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         </div>
 
         {/* ==============================================================
-            STEP 1: SERVICIO
+            STEP 1: SERVICIO (MISMA MATRIZ TÉCNICA OFICIAL QUE PRICING & TIERS)
         ============================================================== */}
-        {currentStep === 1 && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className={`font-['Oswald'] text-xl uppercase tracking-wide mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
-              {language === 'es' ? 'Elige el servicio' : 'Select Service'}
-            </h2>
-            <p className={`text-xs font-sans mb-8 ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
-              {language === 'es' 
-                ? 'El plazo cuenta desde que las cartas entran en nuestro sistema, no desde que las envías.'
-                : 'Turnaround starts when cards enter our system, not when shipped.'}
-            </p>
+        {currentStep === 1 && (() => {
+          const serviceLevels = [
+            {
+              code: 'RCDM.00',
+              id: 'regular',
+              name: language === 'es' ? 'COLECCIONISTA REGULAR' : 'REGULAR COLLECTOR',
+              purpose: language === 'es' 
+                ? 'Remesas de volumen, sets modernos y colecciones particulares.' 
+                : 'Volume submissions, modern sets, and personal binder collections.',
+              turnaround: language === 'es' ? '20 días hábiles' : '20 business days',
+              maxInsurance: '250 €',
+              maxInsuranceNum: 250,
+              scope: language === 'es' 
+                ? 'Encapsulado sónico 35 kHz · Chip NFC de seguridad · Escaneo maestro 1200 DPI' 
+                : '35 kHz ultrasonic encapsulation · NFC security chip · 1200 DPI master scan',
+              price: 15,
+              accentColor: '#3B82F6'
+            },
+            {
+              code: 'RCDM.01',
+              id: 'standard',
+              name: language === 'es' ? 'PRECISIÓN ESTÁNDAR' : 'PRECISION STANDARD',
+              purpose: language === 'es' 
+                ? 'El estándar del mercado. Cartas de valor medio-alto con subgrados métricos.' 
+                : 'The market standard. Mid-to-high value cards with micrometric subgrades.',
+              turnaround: language === 'es' ? '10 días hábiles' : '10 business days',
+              maxInsurance: '1.000 €',
+              maxInsuranceNum: 1000,
+              scope: language === 'es' 
+                ? '4 Subgrados láser 0.01mm · Escaneo forense 4K · Registro público en blockchain' 
+                : '4 Laser 0.01mm subgrades · 4K forensic scan · Blockchain public registry',
+              price: 28,
+              accentColor: '#16A34A'
+            },
+            {
+              code: 'RCDM.02',
+              id: 'express',
+              name: language === 'es' ? 'PRIORIDAD EXPRÉS' : 'PRIORITY EXPRESS',
+              purpose: language === 'es' 
+                ? 'Procesamiento en cola preferente para transacciones de mercado y eventos.' 
+                : 'Priority queue routing for urgent transactions, market timing, and conventions.',
+              turnaround: language === 'es' ? '5 días hábiles' : '5 business days',
+              maxInsurance: '2.500 €',
+              maxInsuranceNum: 2500,
+              scope: language === 'es' 
+                ? 'Cola preferente de laboratorio · Auditoría óptica doble · Canal directo de soporte' 
+                : 'Priority lab queue · Dual optical audit · Direct laboratory support channel',
+              price: 65,
+              accentColor: '#EA580C'
+            },
+            {
+              code: 'RCDM.MASTER',
+              id: 'walkthrough',
+              name: language === 'es' ? 'PASE MAESTRO (WALK-THROUGH)' : 'MASTER WALK-THROUGH',
+              purpose: language === 'es' 
+                ? 'Custodia acorazada y protocolo de guante blanco para piezas históricas y de museo.' 
+                : 'Armored vault custody and white-glove protocol for historic museum grails.',
+              turnaround: language === 'es' ? '48 horas' : '48 hours',
+              maxInsurance: language === 'es' ? 'Ilimitado (hasta 25.000 €)' : 'Unlimited (up to 25,000 €)',
+              maxInsuranceNum: 25000,
+              scope: language === 'es' 
+                ? 'Auditoría presencial por Master Grader · Maletín blindado · Seguro en tránsito VIP' 
+                : 'In-person Master Grader audit · Armored case delivery · VIP transit insurance',
+              price: 140,
+              accentColor: '#CA8A04'
+            }
+          ];
 
-            <div className="flex flex-col gap-6 sm:gap-8">
-              {MOCK_SERVICES.map((tier) => {
-                const isSelected = selectedTier?.id === tier.id;
+          const handleSelectTier = (lvlId: string) => {
+            const found = MOCK_SERVICES.find(s => s.id === lvlId) || MOCK_SERVICES[1];
+            setSelectedTier(found);
+            setCurrentStep(2);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          };
+
+          return (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              
+              {/* Header idéntico a PRICING & TIERS */}
+              <div className="flex flex-col items-start max-w-4xl mb-8">
+                <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-gray-500 mb-2">
+                  <span>[ {language === 'es' ? 'PASO 01 · MATRIZ OFICIAL DE TARIFAS DE LABORATORIO' : 'STEP 01 · OFFICIAL LABORATORY TARIFF MATRIX'} ]</span>
+                </div>
+
+                <h2 className={`font-['Oswald'] text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.01em] uppercase leading-tight ${isLight ? 'text-[#111827]' : 'text-white'}`}>
+                  {language === 'es' ? 'TARIFAS Y CONDICIONES DE SERVICIO' : 'LABORATORY RATES & SERVICE SPECIFICATIONS'}
+                </h2>
+
+                <p className={`mt-2 font-sans text-xs sm:text-sm max-w-2xl leading-relaxed ${isLight ? 'text-gray-600' : 'text-[#A4ACA1]'}`}>
+                  {language === 'es'
+                    ? 'Precios unitarios fijos por carta según el plazo de retorno requerido y el límite de valor asegurado en laboratorio. Selecciona el nivel de servicio para configurar tu remesa.'
+                    : 'Fixed unit fees per card determined strictly by required laboratory turnaround and declared insurance coverage. Select your service tier to begin.'}
+                </p>
+              </div>
+
+              {/* TECHNICAL TARIFF MATRIX (MISMO DISEÑO EXACTO QUE PRICING & TIERS) */}
+              <div className={`w-full border overflow-hidden shadow-sm mb-8 ${
+                isLight ? 'bg-white border-[#E5E7EB]' : 'bg-[#181B18] border-white/10'
+              }`}>
                 
-                let color = isLight ? '#2D9A46' : '#48C765';
-                let shortName = 'STANDARD';
-                let code = 'RCDM.01';
-                let badge: string | null = language === 'es' ? 'MÁS ELEGIDO' : 'MOST POPULAR';
-                let features = language === 'es' ? ['Subgrados detallados', 'Escaneo 4K HD', 'Registro público'] : ['Detailed Subgrades', '4K HD Scan', 'Public Registry'];
-                let Blueprint = BlueprintCaliper;
-                let cornerGradient = 'radial-gradient(circle at 100% 0%, rgba(45, 154, 70, 0.22) 0%, transparent 60%), #FFFFFF';
-                let borderColor = 'rgba(45, 154, 70, 0.2)';
-                
-                switch(tier.id) {
-                  case 'regular': 
-                    color = isLight ? '#8B5CF6' : '#8CA5B8';
-                    shortName = 'REGULAR';
-                    code = 'RCDM.00';
-                    badge = isLight ? '#8B5CF6' : null;
-                    Blueprint = BlueprintScanner;
-                    cornerGradient = 'radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.22) 0%, transparent 60%), #FFFFFF';
-                    borderColor = 'rgba(139, 92, 246, 0.2)';
-                    features = language === 'es' ? ['Carcasa Premium', 'Chip NFC', 'Escaneo Básico'] : ['Premium Slab', 'NFC Chip', 'Basic Scan'];
-                    break;
-                  case 'standard': 
-                    color = isLight ? '#2D9A46' : '#48C765';
-                    shortName = 'STANDARD';
-                    code = 'RCDM.01'; 
-                    badge = language === 'es' ? 'MÁS ELEGIDO' : 'MOST POPULAR';
-                    Blueprint = BlueprintCaliper;
-                    cornerGradient = 'radial-gradient(circle at 100% 0%, rgba(45, 154, 70, 0.22) 0%, transparent 60%), #FFFFFF';
-                    borderColor = 'rgba(45, 154, 70, 0.2)';
-                    features = language === 'es' ? ['Subgrados detallados', 'Escaneo 4K HD', 'Registro público'] : ['Detailed Subgrades', '4K HD Scan', 'Public Registry'];
-                    break;
-                  case 'express': 
-                    color = isLight ? '#EA580C' : '#F97316';
-                    shortName = 'EXPRESS';
-                    code = 'RCDM.02';
-                    badge = language === 'es' ? 'PRIORIDAD' : 'PRIORITY';
-                    Blueprint = BlueprintMagnifier;
-                    cornerGradient = 'radial-gradient(circle at 100% 0%, rgba(249, 115, 22, 0.65) 0%, rgba(249, 115, 22, 0.32) 35%, rgba(249, 115, 22, 0.08) 60%, transparent 75%), #FFFFFF';
-                    borderColor = 'rgba(249, 115, 22, 0.35)';
-                    features = language === 'es' ? ['Acelerado', 'Soporte Directo', 'Fila Preferente'] : ['Fast-Track', 'Direct Support', 'Priority Queue'];
-                    break;
-                  case 'walkthrough': 
-                    color = '#D4AF37';
-                    shortName = 'WALK-THROUGH';
-                    code = 'RCDM.MASTER';
-                    badge = language === 'es' ? 'GUANTE BLANCO' : 'WHITE GLOVE';
-                    Blueprint = BlueprintBriefcase;
-                    cornerGradient = 'radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.25) 0%, transparent 60%), #FFFFFF';
-                    borderColor = 'rgba(212, 175, 55, 0.25)';
-                    features = language === 'es' ? ['Doble Auditoría', 'Maletín Blindado', 'Master Grader Asignado'] : ['Dual Audit', 'Armored Case', 'Assigned Master Grader'];
-                    break;
-                }
-
-                return (
-                  <div 
-                    key={tier.id}
-                    className={`relative w-full overflow-hidden rounded-2xl transition-all duration-500 cursor-pointer group/card hover:scale-[1.01] ${
-                      isLight 
-                        ? `border shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] ${isSelected ? 'ring-2 ring-[#2D9A46]' : ''}`
-                        : `border shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)] hover:ring-2 hover:ring-white/20 ${isSelected ? 'ring-2 ring-white/50' : ''}`
-                    }`}
-                    style={isLight ? { 
-                      background: cornerGradient,
-                      borderColor: borderColor
-                    } : { 
-                      background: `linear-gradient(160deg, #161A17 0%, #0A0D0B 100%)`,
-                      borderColor: `${color}40`,
-                    }}
-                    onClick={() => {
-                      setSelectedTier(tier);
-                      setCurrentStep(2);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                  >
-                    
-                    {/* Massive Typography Watermark */}
-                    <div 
-                      className={`absolute -right-2 -bottom-4 text-[70px] sm:text-[90px] font-black pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald'] ${
-                        isLight ? 'opacity-[0.035]' : 'opacity-[0.03]'
-                      }`}
-                      style={{ color: color }}
-                    >
-                      {shortName}
-                    </div>
-
-                    {/* Glowing Orb inside the card (Dark Mode only) */}
-                    {!isLight && (
-                      <div 
-                        className="absolute top-0 right-0 w-[200px] h-[200px] blur-[60px] rounded-full pointer-events-none opacity-20 transition-colors duration-700 translate-x-1/3 -translate-y-1/3"
-                        style={{ backgroundColor: color }}
-                      />
-                    )}
-
-                    {/* Noise Texture Overlay */}
-                    <div className={`absolute inset-0 bg-[url('/images/noise.png')] pointer-events-none z-0 ${
-                      isLight ? 'opacity-5 mix-blend-multiply' : 'opacity-20 mix-blend-overlay'
-                    }`} />
-
-                    {/* Glass Reflection Sheen */}
-                    <div className={`absolute inset-0 bg-gradient-to-tr from-transparent to-transparent translate-x-[-150%] group-hover/card:translate-x-[150%] transition-transform duration-[1200ms] ease-in-out pointer-events-none z-20 ${
-                      isLight ? 'via-black/[0.03]' : 'via-white/[0.07]'
-                    }`} />
-
-                    <div className="w-full flex flex-col md:flex-row relative z-10 h-full">
-                      
-                      {/* Left Side: Info */}
-                      <div className="flex-1 p-5 sm:p-7 flex flex-col justify-center">
-                        <div className="flex flex-wrap items-center gap-2 mb-3">
-                          {isLight ? (
-                            <>
-                              {tier.id === 'regular' && (
-                                <div className="px-2.5 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#8B5CF6] shadow-sm" style={{ color: '#FFFFFF' }}>
-                                  #8B5CF6
-                                </div>
-                              )}
-                              {tier.id === 'standard' && (
-                                <>
-                                  <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-[#2D9A46]/40 bg-[#2D9A46]/10 text-[#2D9A46]">
-                                    {code}
-                                  </div>
-                                  <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded border border-neutral-300 bg-white text-neutral-900 shadow-sm">
-                                    {badge}
-                                  </div>
-                                </>
-                              )}
-                              {tier.id === 'express' && (
-                                <>
-                                  <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 shadow-sm" style={{ color: '#FFFFFF' }}>
-                                    {code}
-                                  </div>
-                                  <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#F97316] shadow-sm" style={{ color: '#FFFFFF' }}>
-                                    {badge}
-                                  </div>
-                                </>
-                              )}
-                              {tier.id === 'walkthrough' && (
-                                <>
-                                  <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-neutral-900 shadow-sm" style={{ color: '#FFFFFF' }}>
-                                    {code}
-                                  </div>
-                                  <div className="px-2 py-0.5 text-[9.5px] font-mono font-bold tracking-wider uppercase rounded bg-[#D4AF37] shadow-sm" style={{ color: '#FFFFFF' }}>
-                                    {badge}
-                                  </div>
-                                </>
-                              )}
-                            </>
-                          ) : (
-                            <>
-                              <div className="px-2 py-0.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase rounded-sm border backdrop-blur-sm"
-                                   style={{ backgroundColor: `${color}10`, color: color, borderColor: `${color}30` }}>
-                                {code}
-                              </div>
-                              {badge && (
-                                <div className="px-2 py-0.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase bg-white text-black rounded-sm shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                                  {badge}
-                                </div>
-                              )}
-                            </>
-                          )}
-                        </div>
-                        
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <h3 className={`font-['Oswald'] text-2xl sm:text-3xl uppercase tracking-wide leading-[1.1] mb-2 ${
-                              isLight ? 'text-neutral-900 font-bold' : 'text-white drop-shadow-lg'
-                            }`}>
-                              {tier.name}
-                            </h3>
-                            
-                            <p className={`text-xs sm:text-[13px] font-sans leading-relaxed max-w-[95%] mb-4 ${
-                              isLight ? 'text-neutral-600' : 'text-[#A4ACA1]'
-                            }`}>
-                              {tier.tagline}
-                            </p>
-                          </div>
-
-                          {/* Animated Blueprint Graphic */}
-                          <div className="hidden sm:flex w-20 h-16 sm:w-24 sm:h-20 items-center justify-center shrink-0 my-auto group-hover/card:scale-105 transition-transform duration-500">
-                            <Blueprint color={color} isLight={isLight} />
-                          </div>
-                        </div>
-
-                        <div className="flex flex-col gap-2 mt-auto">
-                          {features.map((feature, idx) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              {isLight ? (
-                                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                              ) : (
-                                <div className="w-1 h-1 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color: color }} />
-                              )}
-                              <span className={`font-sans text-xs sm:text-[13px] font-medium tracking-wide ${
-                                isLight ? 'text-neutral-800' : 'text-[#EAEAEA]'
-                              }`}>
-                                {feature}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Right Side: Price & CTA */}
-                      <div className={`w-full md:w-[30%] lg:w-[25%] p-5 sm:p-7 flex flex-col justify-center items-start md:items-end border-t md:border-t-0 md:border-l ${
-                        isLight 
-                          ? 'border-neutral-200/80 bg-neutral-50/60' 
-                          : 'border-white/10 backdrop-blur-md bg-black/20'
-                      }`}>
-                        
-                        <div className="flex flex-col items-start md:items-end w-full mb-4">
-                          <span className={`font-mono text-[9px] uppercase tracking-[0.2em] mb-1 ${
-                            isLight ? 'text-neutral-400' : 'text-[#A4ACA1]'
-                          }`}>
-                            {language === 'es' ? 'PRECIO BASE' : 'BASE PRICE'}
-                          </span>
-                          <div className="flex items-start mb-2">
-                            <span className={`font-mono text-base mt-1 mr-1 ${
-                              isLight ? 'text-neutral-400' : 'text-white/40'
-                            }`}>€</span>
-                            <span className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl leading-none tracking-tighter ${
-                              isLight ? 'text-neutral-900' : 'text-white'
-                            }`} style={!isLight ? { textShadow: `0 0 40px ${color}40` } : {}}>
-                              {tier.priceEur}
-                            </span>
-                          </div>
-                          
-                          <div className="flex items-center gap-1.5 text-right">
-                            <svg className="w-3.5 h-3.5 opacity-80" style={{ color: color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span className={`font-sans text-[10px] sm:text-[11px] font-medium ${
-                              isLight ? 'text-neutral-600' : 'text-[#A4ACA1]'
-                            }`}>
-                              {tier.turnaroundLabel}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="mt-auto w-full pt-3">
-                          <div 
-                            className={`w-full py-2.5 text-center text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 border rounded-sm ${
-                              isLight
-                                ? (isSelected ? 'bg-[#2D9A46] text-white border-[#2D9A46] shadow-sm' : 'border-[#2D9A46] text-[#2D9A46] hover:bg-[#2D9A46]/10')
-                                : (isSelected ? 'bg-[#48C765] text-black border-[#48C765]' : 'border-[currentColor] hover:bg-white/5')
-                            }`}
-                            style={!isLight ? (isSelected ? { backgroundColor: color, borderColor: color, color: '#000' } : { borderColor: color, color: color, boxShadow: `inset 0 0 20px ${color}00` }) : {}}
-                          >
-                            {isSelected ? (language === 'es' ? 'SELECCIONADO' : 'SELECTED') : (language === 'es' ? 'ELEGIR' : 'SELECT')}
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
+                {/* Matrix Top Header Bar */}
+                <div className={`px-6 py-3.5 border-b flex flex-wrap items-center justify-between gap-4 font-mono text-xs ${
+                  isLight ? 'bg-gray-50 border-[#E5E7EB] text-gray-600' : 'bg-white/[0.02] border-white/10 text-white/60'
+                }`}>
+                  <span className="font-bold tracking-wider uppercase">
+                    {language === 'es' ? 'CUADRO REGULATORIO DE GRADUACIÓN ÓPTICA' : 'OPTICAL GRADING REGULATORY MATRIX'}
+                  </span>
+                  <div className="flex items-center gap-4 text-[11px]">
+                    <span>ISO-9001 CLEANROOM AUDITED</span>
+                    <span>•</span>
+                    <span>{language === 'es' ? 'CALIBRE LÁSER 0.01mm' : '0.01mm LASER CALIPER'}</span>
                   </div>
-                );
-              })}
-            </div>
+                </div>
 
-            <div className={`mt-8 p-5 rounded-r-lg shadow-sm border-l-4 ${
-              isLight 
-                ? 'bg-white border border-[#E5DEC9] border-l-[#2D9A46]' 
-                : 'bg-[#454545] border border-white/[0.06] border-l-[#48C765] shadow-lg'
-            }`}>
-              <p className={`font-sans text-sm ${isLight ? 'text-[#3E453E]' : 'text-[#A2B5A5]'}`}>
-                <strong className={`font-semibold ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
-                  {language === 'es' ? 'Valor declarado. ' : 'Declared value. '}
-                </strong>
-                {language === 'es' 
-                  ? 'Cada nivel tiene un tope de valor por carta. Si alguna lo supera, tendrás que subirla al servicio siguiente; es lo que determina la cobertura del seguro.'
-                  : 'Each tier has a maximum value limit per card. If a card exceeds this, it must be bumped to the next tier.'}
-              </p>
+                {/* Desktop Table View */}
+                <div className="hidden lg:block overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className={`border-b font-mono text-[10.5px] uppercase tracking-wider ${
+                        isLight ? 'bg-gray-50/50 text-gray-500 border-gray-200' : 'bg-black/20 text-gray-400 border-white/10'
+                      }`}>
+                        <th className="py-3 px-6 font-semibold">{language === 'es' ? 'CÓDIGO' : 'CODE'}</th>
+                        <th className="py-3 px-6 font-semibold">{language === 'es' ? 'NIVEL DE SERVICIO' : 'SERVICE TIER'}</th>
+                        <th className="py-3 px-6 font-semibold">{language === 'es' ? 'PLAZO DE RETORNO' : 'ESTIMATED TURNAROUND'}</th>
+                        <th className="py-3 px-6 font-semibold">{language === 'es' ? 'COBERTURA ASEGURADA' : 'INSURANCE COVERAGE'}</th>
+                        <th className="py-3 px-6 font-semibold">{language === 'es' ? 'ALCANCE TÉCNICO' : 'TECHNICAL SCOPE'}</th>
+                        <th className="py-3 px-6 font-semibold text-right">{language === 'es' ? 'TARIFA / CARTA' : 'RATE / CARD'}</th>
+                        <th className="py-3 px-6 font-semibold text-center">{language === 'es' ? 'ACCIÓN' : 'ACTION'}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200/70 dark:divide-white/5 font-mono text-xs">
+                      {serviceLevels.map((lvl, index) => {
+                        const isSelected = selectedTier?.id === lvl.id;
+                        const isEven = index % 2 === 0;
+
+                        const rowBg = isSelected 
+                          ? (isLight ? 'bg-[#E7F6EA]' : 'bg-[#182B1B]') 
+                          : (isEven 
+                              ? (isLight ? 'bg-white' : 'bg-[#121612]') 
+                              : (isLight ? 'bg-[#F2EFE8]' : 'bg-[#1B201B]'));
+
+                        const hoverBg = isLight ? 'hover:bg-[#EBE5DA]' : 'hover:bg-[#232A23]';
+
+                        return (
+                          <tr 
+                            key={lvl.id}
+                            onClick={() => handleSelectTier(lvl.id)}
+                            className={`cursor-pointer transition-colors ${rowBg} ${hoverBg}`}
+                          >
+                            {/* Code */}
+                            <td className="py-4 px-6 font-bold" style={{ color: lvl.accentColor }}>
+                              {lvl.code}
+                            </td>
+
+                            {/* Name & Purpose */}
+                            <td className="py-4 px-6">
+                              <div className="font-['Oswald'] text-sm uppercase font-bold tracking-wide text-current">
+                                {lvl.name}
+                              </div>
+                              <div className="font-sans text-[11px] text-gray-500 dark:text-gray-400 max-w-xs mt-0.5">
+                                {lvl.purpose}
+                              </div>
+                            </td>
+
+                            {/* Turnaround */}
+                            <td className="py-4 px-6 font-bold">
+                              <div className="flex items-center gap-1.5">
+                                <Clock className="w-3.5 h-3.5 text-gray-400" />
+                                <span>{lvl.turnaround}</span>
+                              </div>
+                            </td>
+
+                            {/* Max Insurance */}
+                            <td className="py-4 px-6 font-medium text-gray-700 dark:text-gray-300">
+                              {lvl.maxInsurance}
+                            </td>
+
+                            {/* Scope */}
+                            <td className="py-4 px-6 font-sans text-xs text-gray-500 dark:text-gray-400 max-w-sm">
+                              {lvl.scope}
+                            </td>
+
+                            {/* Price */}
+                            <td className="py-4 px-6 text-right font-['Oswald'] text-xl font-bold">
+                              {lvl.price} €
+                              <span className="block font-mono text-[9px] text-gray-400 font-normal">
+                                {language === 'es' ? 'IVA INCLUIDO' : 'VAT INCLUDED'}
+                              </span>
+                            </td>
+
+                            {/* Action Button */}
+                            <td className="py-4 px-6 text-center">
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleSelectTier(lvl.id);
+                                }}
+                                className={
+                                  isSelected
+                                    ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-wider'
+                                    : 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-wider'
+                                }
+                              >
+                                {language === 'es'
+                                  ? (isSelected ? '✓ SELECCIONADO' : 'SELECCIONAR')
+                                  : (isSelected ? '✓ SELECTED' : 'SELECT')}
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Mobile Tabular List View (MISMO DISEÑO EXACTO QUE PRICING & TIERS) */}
+                <div className="lg:hidden divide-y divide-gray-200 dark:divide-white/10">
+                  {serviceLevels.map((lvl, index) => {
+                    const isSelected = selectedTier?.id === lvl.id;
+                    const isEven = index % 2 === 0;
+                    const mobileBg = isSelected 
+                      ? (isLight ? 'bg-[#E7F6EA]' : 'bg-[#182B1B]') 
+                      : (isEven 
+                          ? (isLight ? 'bg-white' : 'bg-[#121612]') 
+                          : (isLight ? 'bg-[#F2EFE8]' : 'bg-[#1B201B]'));
+
+                    return (
+                      <div 
+                        key={lvl.id}
+                        onClick={() => handleSelectTier(lvl.id)}
+                        className={`p-5 transition-colors cursor-pointer ${mobileBg}`}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-mono text-xs font-bold" style={{ color: lvl.accentColor }}>
+                            {lvl.code}
+                          </span>
+                          <span className="font-['Oswald'] text-xl font-bold">
+                            {lvl.price} € <span className="font-mono text-[10px] text-gray-400 font-normal">{language === 'es' ? '/ carta' : '/ card'}</span>
+                          </span>
+                        </div>
+
+                        <h3 className="font-['Oswald'] text-lg uppercase font-bold tracking-wide mb-1">
+                          {lvl.name}
+                        </h3>
+
+                        <p className="font-sans text-xs text-gray-500 mb-3">
+                          {lvl.purpose}
+                        </p>
+
+                        <div className={`p-3 border font-mono text-xs mb-3 space-y-1.5 ${
+                          isLight ? 'bg-gray-50 border-gray-200' : 'bg-black/30 border-white/10'
+                        }`}>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">{language === 'es' ? 'PLAZO RETORNO:' : 'TURNAROUND:'}</span>
+                            <span className="font-bold">{lvl.turnaround}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400">{language === 'es' ? 'VALOR ASEGURADO:' : 'INSURANCE COVERAGE:'}</span>
+                            <span>{lvl.maxInsurance}</span>
+                          </div>
+                          <div className="pt-1 border-t border-gray-200 dark:border-white/5 font-sans text-[11px] text-gray-500">
+                            {lvl.scope}
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSelectTier(lvl.id);
+                          }}
+                          className={
+                            isSelected
+                              ? 'btn-gorilla-square w-full py-2.5 text-xs font-extrabold tracking-wider'
+                              : 'btn-gorilla-square-secondary w-full py-2.5 text-xs font-bold tracking-wider'
+                          }
+                        >
+                          {language === 'es'
+                            ? (isSelected ? '✓ SELECCIONADO' : 'SELECCIONAR')
+                            : (isSelected ? '✓ SELECTED' : 'SELECT')}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </div>
+
+              {/* Action bar to continue to Step 2 */}
+              <div className={`p-4 sm:p-5 border flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 ${
+                isLight ? 'bg-white border-[#E5E7EB]' : 'bg-[#181B18] border-white/10'
+              }`}>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-gray-400 uppercase tracking-wider">
+                    {language === 'es' ? 'SERVICIO SELECCIONADO:' : 'SELECTED SERVICE:'}
+                  </span>
+                  <span className="font-['Oswald'] text-base uppercase font-bold text-[#16A34A] dark:text-[#4ADE80] tracking-wide">
+                    {selectedTier?.name || 'PRECISION STANDARD'} — {selectedTier?.priceEur || 28} €
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCurrentStep(2);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="btn-gorilla-square w-full sm:w-auto px-8 py-3 text-xs font-extrabold tracking-widest uppercase flex items-center justify-center gap-2 shadow-lg"
+                >
+                  <span>{language === 'es' ? 'CONTINUAR AL PASO 02 (CARTAS)' : 'CONTINUE TO STEP 02 (CARDS)'}</span>
+                  <span className="text-sm">→</span>
+                </button>
+              </div>
+
+              {/* Nota oficial de laboratorio */}
+              <div className={`p-5 border-l-4 shadow-sm ${
+                isLight 
+                  ? 'bg-white border border-[#E5DEC9] border-l-[#16A34A]' 
+                  : 'bg-[#121612] border border-white/10 border-l-[#22C55E]'
+              }`}>
+                <p className={`font-sans text-sm ${isLight ? 'text-gray-700' : 'text-gray-300'}`}>
+                  <strong className={`font-bold ${isLight ? 'text-black' : 'text-white'}`}>
+                    {language === 'es' ? 'Valor declarado y cobertura. ' : 'Declared value and insurance. '}
+                  </strong>
+                  {language === 'es' 
+                    ? 'Cada nivel tiene un tope de valor asegurado por carta. Si alguna de tus cartas supera dicho importe, el sistema te solicitará asignarla al nivel correspondiente para garantizar la cobertura total.'
+                    : 'Each tier specifies a maximum declared coverage per card. Cards exceeding this threshold are assigned to the appropriate protocol for full insured transit.'}
+                </p>
+              </div>
+
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* ==============================================================
             STEP 2: CARTAS
@@ -506,8 +551,8 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             </p>
 
             {/* Professional Mini-Form */}
-            <form onSubmit={handleAddCard} className={`w-full p-6 mb-8 flex flex-col gap-6 rounded-xl border ${
-              isLight ? 'bg-white border-[#E5DEC9] shadow-sm' : 'bg-[#383838] border-[#2A2E2A] shadow-inner'
+            <form onSubmit={handleAddCard} className={`w-full p-6 mb-8 flex flex-col gap-6 border ${
+              isLight ? 'bg-white border-[#E5DEC9] shadow-sm' : 'bg-[#151A15] border-white/10 shadow-lg'
             }`}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 
@@ -654,14 +699,10 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
               <div className={`flex justify-end pt-3 border-t mt-2 ${isLight ? 'border-[#E5DEC9]' : 'border-white/5'}`}>
                 <button 
                   type="submit" 
-                  className={`px-6 py-2.5 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded-sm ${
-                    isLight 
-                      ? 'bg-[#2D9A46] hover:bg-[#25823a] text-white shadow-md shadow-[#2D9A46]/20' 
-                      : 'bg-[#48C765] hover:bg-[#3ca352] text-black'
-                  }`}
+                  className="btn-gorilla-square px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider flex items-center gap-2 shadow-md"
                 >
-                  <Plus className="w-4 h-4" />
-                  {language === 'es' ? 'Añadir a la orden' : 'Add to Order'}
+                  <Plus className="w-4 h-4 text-white" />
+                  <span>{language === 'es' ? 'Añadir a la orden' : 'Add to Order'}</span>
                 </button>
               </div>
             </form>
@@ -726,46 +767,46 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
               <input 
                 type="text" 
                 placeholder={language === 'es' ? 'Nombre Completo' : 'Full Name'} 
-                className={`w-full p-4 rounded-xl text-sm focus:outline-none transition-colors border ${
+                className={`w-full p-4 text-sm focus:outline-none transition-colors border ${
                   isLight 
                     ? 'bg-white border-[#DCD5C3] text-[#1C201D] placeholder:text-[#9A9E96] focus:border-[#2D9A46]' 
-                    : 'bg-[#454545] border-[#2A2E2A] text-white focus:border-[#48C765]'
+                    : 'bg-[#151A15] border-white/10 text-white focus:border-[#48C765]'
                 }`} 
               />
               <input 
                 type="email" 
                 placeholder={language === 'es' ? 'Correo Electrónico' : 'Email Address'} 
-                className={`w-full p-4 rounded-xl text-sm focus:outline-none transition-colors border ${
+                className={`w-full p-4 text-sm focus:outline-none transition-colors border ${
                   isLight 
                     ? 'bg-white border-[#DCD5C3] text-[#1C201D] placeholder:text-[#9A9E96] focus:border-[#2D9A46]' 
-                    : 'bg-[#454545] border-[#2A2E2A] text-white focus:border-[#48C765]'
+                    : 'bg-[#151A15] border-white/10 text-white focus:border-[#48C765]'
                 }`} 
               />
               <input 
                 type="text" 
                 placeholder={language === 'es' ? 'Dirección' : 'Street Address'} 
-                className={`w-full p-4 rounded-xl text-sm focus:outline-none transition-colors border md:col-span-2 ${
+                className={`w-full p-4 text-sm focus:outline-none transition-colors border md:col-span-2 ${
                   isLight 
                     ? 'bg-white border-[#DCD5C3] text-[#1C201D] placeholder:text-[#9A9E96] focus:border-[#2D9A46]' 
-                    : 'bg-[#454545] border-[#2A2E2A] text-white focus:border-[#48C765]'
+                    : 'bg-[#151A15] border-white/10 text-white focus:border-[#48C765]'
                 }`} 
               />
               <input 
                 type="text" 
                 placeholder={language === 'es' ? 'Ciudad' : 'City'} 
-                className={`w-full p-4 rounded-xl text-sm focus:outline-none transition-colors border ${
+                className={`w-full p-4 text-sm focus:outline-none transition-colors border ${
                   isLight 
                     ? 'bg-white border-[#DCD5C3] text-[#1C201D] placeholder:text-[#9A9E96] focus:border-[#2D9A46]' 
-                    : 'bg-[#454545] border-[#2A2E2A] text-white focus:border-[#48C765]'
+                    : 'bg-[#151A15] border-white/10 text-white focus:border-[#48C765]'
                 }`} 
               />
               <input 
                 type="text" 
                 placeholder={language === 'es' ? 'Código Postal' : 'Postal Code'} 
-                className={`w-full p-4 rounded-xl text-sm focus:outline-none transition-colors border ${
+                className={`w-full p-4 text-sm focus:outline-none transition-colors border ${
                   isLight 
                     ? 'bg-white border-[#DCD5C3] text-[#1C201D] placeholder:text-[#9A9E96] focus:border-[#2D9A46]' 
-                    : 'bg-[#454545] border-[#2A2E2A] text-white focus:border-[#48C765]'
+                    : 'bg-[#151A15] border-white/10 text-white focus:border-[#48C765]'
                 }`} 
               />
             </div>
@@ -786,20 +827,20 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 : 'Verify all details. Upon confirmation, your encrypted shipping label will be issued.'}
             </p>
 
-            <div className={`rounded-xl p-6 font-mono text-sm space-y-4 border ${
+            <div className={`p-6 font-mono text-sm space-y-4 border ${
               isLight 
                 ? 'bg-white border-[#E5DEC9] shadow-sm text-[#1C201D]' 
-                : 'bg-[#454545] border-[#2A2E2A] text-white'
+                : 'bg-[#151A15] border-white/10 text-white shadow-lg'
             }`}>
-              <div className={`flex justify-between pb-3 border-b ${isLight ? 'border-[#E5DEC9]' : 'border-[#2A2E2A]'}`}>
+              <div className={`flex justify-between pb-3 border-b ${isLight ? 'border-[#E5DEC9]' : 'border-white/10'}`}>
                 <span className={isLight ? 'text-[#656E63]' : 'text-white'}>{language === 'es' ? 'Servicio Seleccionado' : 'Selected Service'}</span>
                 <span className={`font-bold ${isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'}`}>{selectedTier?.name || ''}</span>
               </div>
-              <div className={`flex justify-between pb-3 border-b ${isLight ? 'border-[#E5DEC9]' : 'border-[#2A2E2A]'}`}>
+              <div className={`flex justify-between pb-3 border-b ${isLight ? 'border-[#E5DEC9]' : 'border-white/10'}`}>
                 <span className={isLight ? 'text-[#656E63]' : 'text-white'}>{language === 'es' ? 'Total de Cartas' : 'Total Cards'}</span>
                 <span className="font-bold">{items.length}</span>
               </div>
-              <div className={`flex justify-between pb-3 border-b ${isLight ? 'border-[#E5DEC9]' : 'border-[#2A2E2A]'}`}>
+              <div className={`flex justify-between pb-3 border-b ${isLight ? 'border-[#E5DEC9]' : 'border-white/10'}`}>
                 <span className={isLight ? 'text-[#656E63]' : 'text-white'}>{language === 'es' ? 'Valor Declarado Total' : 'Total Declared Value'}</span>
                 <span className="font-bold">€{totalDeclaredValue.toLocaleString()}</span>
               </div>
@@ -820,10 +861,10 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
           {currentStep > 1 ? (
             <button
               onClick={() => setCurrentStep((currentStep - 1) as any)}
-              className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 rounded text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-colors border ${
+              className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-colors border ${
                 isLight 
                   ? 'bg-white hover:bg-[#FAF7F2] text-[#1C201D] border-[#DCD5C3]' 
-                  : 'bg-[#454545] hover:bg-[#1A221C] text-white border-[#2A2E2A]'
+                  : 'bg-[#151A15] hover:bg-white/10 text-white border-white/10'
               }`}
             >
               {language === 'es' ? 'ATRÁS' : 'BACK'}
@@ -838,19 +879,13 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 else if (currentStep === 3) setCurrentStep(4);
                 else if (currentStep === 4) handleFinalSubmit();
               }}
-              className={`w-full sm:w-auto px-6 sm:px-10 py-3.5 rounded text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 sm:gap-4 ${
-                isLight 
-                  ? 'bg-[#2D9A46] hover:bg-[#25823a] text-white shadow-lg shadow-[#2D9A46]/20' 
-                  : 'bg-[#3A9F50] hover:bg-[#48C765] text-black shadow-lg shadow-[#48C765]/10'
-              }`}
+              className="btn-gorilla-square w-full sm:w-auto px-6 sm:px-10 py-3.5 text-[11px] sm:text-xs font-extrabold tracking-widest uppercase flex items-center justify-center gap-2 sm:gap-4 shadow-lg"
             >
               <span>{language === 'es' ? (currentStep === 4 ? 'ENVIAR PEDIDO' : 'CONTINUAR') : (currentStep === 4 ? 'SUBMIT ORDER' : 'CONTINUE')}</span>
               
               {/* Show dynamic total price on the button */}
               {items.length > 0 && currentStep > 1 && (
-                <span className={`px-2 py-0.5 rounded-none shrink-0 truncate ${
-                  isLight ? 'bg-white/20 text-white' : 'bg-black/20 text-black'
-                }`}>
+                <span className="px-2 py-0.5 rounded-none shrink-0 truncate bg-black/25 text-white">
                   €{totalEstimatedCost.toFixed(2)}
                 </span>
               )}

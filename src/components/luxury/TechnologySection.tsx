@@ -117,15 +117,11 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
             
             <button
               onClick={() => onNavigate ? onNavigate('/pricing') : window.location.href = '/pricing'}
-              className={`inline-flex items-center justify-center px-6 py-2.5 rounded-none border text-sm font-medium transition-all group w-fit mx-auto lg:mx-0 ${
-                isLight
-                  ? 'border-[#2D9A46] text-[#2D9A46] hover:bg-[#2D9A46] hover:text-white'
-                  : 'border-[#48C765] text-[#48C765] hover:bg-[#48C765] hover:text-[#14170F]'
-              }`}
+              className="btn-gorilla-pill px-8 py-3.5 text-xs font-extrabold tracking-widest gap-2 shadow-lg group w-fit mx-auto lg:mx-0"
             >
               <span>{language === 'es' ? 'Empezar ahora' : 'Start Submission'}</span>
-              <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
           </div>

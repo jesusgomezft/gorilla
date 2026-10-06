@@ -59,7 +59,7 @@ export const UnderstandPage: React.FC<PageProps> = ({ onNavigate }) => {
           <ul className="space-y-4 text-[#A4ACA1] font-mono text-sm">
             <li className="flex gap-4 items-center"><span className="text-white bg-[#14170F] px-2 py-1 rounded text-xs">01</span> {language === 'es' ? 'Telemetría láser con precisión de 0.01 mm' : 'Laser telemetry with 0.01 mm precision'}</li>
             <li className="flex gap-4 items-center"><span className="text-white bg-[#14170F] px-2 py-1 rounded text-xs">02</span> {language === 'es' ? 'Sub-grados en escala 0.1 en 4 cuadrantes' : '0.1 scale subgrades across 4 quadrants'}</li>
-            <li className="flex gap-4 items-center"><span className="text-white bg-[#14170F] px-2 py-1 rounded text-xs">03</span> {language === 'es' ? 'Registro criptográfico europeo' : 'European cryptographic registry'}</li>
+            <li className="flex gap-4 items-center"><span className="text-white bg-[#14170F] px-2 py-1 rounded text-xs">03</span> {language === 'es' ? 'Registro criptográfico internacional' : 'International cryptographic registry'}</li>
             <li className="flex gap-4 items-center"><span className="text-white bg-[#14170F] px-2 py-1 rounded text-xs">04</span> {language === 'es' ? 'Mapeo microscópico de defectos' : 'Microscopic defect mapping'}</li>
           </ul>
         </div>

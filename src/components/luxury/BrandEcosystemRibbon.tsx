@@ -37,26 +37,42 @@ export const BrandEcosystemRibbon: React.FC = () => {
   const marqueeBrands = [...brands, ...brands, ...brands, ...brands];
 
   return (
-    <section className="w-full bg-[#2F3430] text-[#EAE8E3] select-none border-b border-black/10 py-7 overflow-hidden">
+    <section 
+      id="brands" 
+      className="w-full select-none border-y border-black/5 dark:border-white/5 py-7 overflow-hidden relative"
+      style={{ 
+        backgroundColor: isLight ? '#ECE7DF' : '#191C1A',
+        backgroundImage: isLight 
+          ? 'radial-gradient(circle, #D0C7B8 1.2px, transparent 1.2px)' 
+          : 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px)',
+        backgroundSize: '30px 30px',
+      }}
+    >
       <div className="flex flex-col gap-4">
         
         {/* Top Kicker Label - Centered & Refined Typography */}
         <div className="px-6 max-w-[1400px] mx-auto w-full flex items-center justify-center">
           <span 
             className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.24em] uppercase text-center select-none"
-            style={{ color: isLight ? '#71766E' : '#A69F93' }}
+            style={{ color: isLight ? '#6A7067' : '#A69F93' }}
           >
             {t('ref.ribbon.title')}
           </span>
         </div>
 
-        {/* Infinite Scrolling Marquee */}
-        <div className="relative flex overflow-x-hidden pt-4 mask-edges group">
+        {/* Infinite Scrolling Marquee with Edge Fade */}
+        <div 
+          className="relative flex overflow-x-hidden pt-4 group"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+            maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)'
+          }}
+        >
           <div className="animate-marquee transform-gpu will-change-transform whitespace-nowrap flex w-max items-center gap-16 sm:gap-24 px-8 shrink-0" style={{ animationDuration: '240s' }}>
             {marqueeBrands.map((brand, idx) => (
               <div 
                 key={`${brand.id}-${idx}`}
-                className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer drop-shadow-md shrink-0"
+                className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer drop-shadow-sm shrink-0"
                 title={brand.name}
               >
                 {brand.component}

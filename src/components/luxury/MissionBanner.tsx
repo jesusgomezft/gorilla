@@ -61,10 +61,10 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mx-auto lg:mx-0">
             <button
               onClick={() => onNavigate && onNavigate('/submit')}
-              className="inline-flex items-center justify-center px-8 py-3 rounded-none bg-[#48C765] hover:bg-[#3A9F50] text-[#14170F] text-xs tracking-widest font-bold uppercase transition-all shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)] group"
+              className="btn-gorilla-pill px-8 py-3.5 text-xs font-extrabold tracking-widest gap-2 shadow-lg group"
             >
               <span>{language === 'es' ? 'Empezar Envío' : 'Start Submission'}</span>
-              <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              <span className="ml-1 text-sm font-bold transition-transform group-hover:translate-x-1.5">→</span>
             </button>
           </div>
         </div>

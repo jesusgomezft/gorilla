@@ -132,14 +132,10 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
                           window.location.href = faq.route;
                         }
                       }}
-                      className={`mt-4 px-4 py-1.5 font-mono text-[9px] font-bold tracking-[0.15em] uppercase transition-all flex items-center gap-2 w-fit cursor-pointer ${
-                        isLight
-                          ? 'bg-[#2D9A46]/10 border border-[#2D9A46]/30 hover:bg-[#2D9A46] hover:text-white text-[#2D9A46]'
-                          : 'bg-[#48C765]/10 border border-[#48C765]/30 hover:bg-[#48C765] hover:text-[#14170F] text-[#48C765]'
-                      }`}
+                      className="btn-gorilla-square-secondary mt-4 px-4 py-2 text-[10px] font-bold tracking-[0.14em] uppercase flex items-center gap-2 w-fit cursor-pointer"
                     >
                       <span>{faq.linkText}</span>
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3 h-3 text-[#48C765]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </button>

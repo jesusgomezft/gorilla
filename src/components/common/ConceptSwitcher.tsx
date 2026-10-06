@@ -40,7 +40,7 @@ export const ConceptSwitcher: React.FC = () => {
       <div className="bg-[#0A0E14]/95 text-slate-100 backdrop-blur-2xl px-3 py-2 rounded-none border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex items-center gap-2 text-xs">
         
         <div className="hidden md:flex items-center gap-2 pl-2 pr-2 border-r border-white/10 text-slate-400 font-mono text-[11px]">
-          <span className="w-2 h-2 rounded-none bg-gorilla-neon animate-pulse" />
+          <span className="w-2 h-2 rounded-none bg-gorilla-neon" />
           <span className="font-bold text-slate-200 tracking-wider">{t('switcher.prototype')}</span>
         </div>
 

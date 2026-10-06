@@ -38,7 +38,7 @@ export const PrecisionLabHome: React.FC<PrecisionLabHomeProps> = ({ onNavigate }
             <div className="lg:col-span-7 space-y-6">
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-[#00DF81]/15 border border-[#00DF81]/40 text-[#00DF81] font-mono text-xs font-bold shadow-[0_0_15px_rgba(0,223,129,0.2)]">
-                <span className="w-2 h-2 rounded-none bg-[#00DF81] animate-pulse" />
+                <span className="w-2 h-2 rounded-none bg-[#00DF81]" />
                 <span>{t('lab.tag')}</span>
               </div>
 

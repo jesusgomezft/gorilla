@@ -232,7 +232,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
                 }`} />
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className={`w-1.5 h-1.5 rounded-none opacity-80 group-hover:animate-pulse ${
+                    <span className={`w-1.5 h-1.5 rounded-none opacity-80 ${
                       isLight ? 'bg-[#2D9A46]' : 'bg-[#48C765]'
                     }`} />
                     <span className={`font-mono text-xs font-bold tracking-[0.15em] ${
@@ -290,21 +290,13 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
           <div className="shrink-0 flex items-center gap-4">
             <button
               onClick={() => onNavigate('/services')}
-              className={`px-6 py-4 rounded-none border font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
-                isLight
-                  ? 'border-[#2D9A46]/30 text-[#2D9A46] hover:border-[#2D9A46] hover:bg-[#2D9A46]/10 bg-white/60'
-                  : 'border-white/20 hover:border-[#48C765] text-white hover:text-[#48C765] bg-white/[0.03] hover:bg-[#48C765]/10'
-              }`}
+              className="btn-gorilla-square-secondary px-6 py-4 text-xs font-bold tracking-[0.14em]"
             >
               {language === 'es' ? 'VER TARIFAS' : 'VIEW PRICING'}
             </button>
             <button
               onClick={() => onNavigate('/submit')}
-              className={`px-8 py-4 rounded-none font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
-                isLight
-                  ? 'bg-[#2D9A46] hover:bg-[#248A3B] text-white shadow-[0_4px_20px_rgba(45,154,70,0.25)]'
-                  : 'bg-[#48C765] hover:bg-[#38B554] text-[#14170F] shadow-[0_4px_20px_rgba(72,199,101,0.35)]'
-              }`}
+              className="btn-gorilla-square px-8 py-4 text-xs font-extrabold tracking-[0.14em] shadow-lg"
             >
               {language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}
             </button>

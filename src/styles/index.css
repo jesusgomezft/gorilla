@@ -18,6 +18,27 @@
     --border-subtle: rgba(255, 255, 255, 0.08);
   }
 
+  html.light-theme {
+    --brand-base: #FFFFFF;
+    --brand-surface: #F8F9FA;
+    --brand-surface-elevated: #FFFFFF;
+    --brand-accent: #16A34A;
+    --brand-accent-hover: #15803D;
+    --brand-deep-green: #F0FDF4;
+    --brand-text: #111827;
+    --brand-muted: #6B7280;
+    --brand-subtle: #9CA3AF;
+    --brand-ribbon-sand: #F3F4F6;
+    --brand-ribbon-ink: #111827;
+    --border-subtle: #E5E7EB;
+    background-color: #FFFFFF;
+  }
+
+  body.light-theme, html.light-theme body {
+    background-color: #FFFFFF;
+    color: #111827;
+  }
+
   html {
     scroll-behavior: smooth;
     background-color: #14170F;
@@ -1082,3 +1103,268 @@ html {
 body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
+
+/* ═══════════════════════════════════════════════════════
+   GORILLA 3D LUXURY BUTTONS — Precision Square System
+   Geometric architectural form (border-radius: 0) with
+   tactile cylindrical gradient, top specular highlight rim,
+   bottom bevel, and ambient Gorilla emerald glow.
+   ═══════════════════════════════════════════════════════ */
+
+.btn-gorilla-pill,
+.btn-gorilla-square {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px !important;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  
+  /* Cylindrical / physical extruded surface gradient in Gorilla Emerald */
+  background: linear-gradient(180deg, #22C55E 0%, #16A34A 52%, #15803D 100%) !important;
+  border: 1px solid rgba(187, 247, 208, 0.6) !important;
+  
+  /* Physical 3D lighting for square edges:
+     1. Inset top specular razor-sharp highlight rim
+     2. Inset bottom dark grounding bevel
+     3. Left/Right subtle dimensional catches
+     4. Ambient Gorilla emerald glow & drop shadow
+  */
+  box-shadow: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -2.5px 0 rgba(0, 0, 0, 0.45),
+    inset 1px 0 0 rgba(255, 255, 255, 0.2),
+    inset -1px 0 0 rgba(0, 0, 0, 0.25),
+    0 4px 18px -2px rgba(22, 163, 74, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.25) !important;
+  
+  /* Pure crisp white text in both light and dark themes */
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Ensure any nested span/svg/text stays crisp white in ALL modes */
+.btn-gorilla-pill *,
+.btn-gorilla-square *,
+.light-theme .btn-gorilla-pill,
+.light-theme .btn-gorilla-pill *,
+.light-theme .btn-gorilla-square,
+.light-theme .btn-gorilla-square * {
+  color: #FFFFFF !important;
+}
+
+.btn-gorilla-pill:hover,
+.btn-gorilla-square:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #34D399 0%, #22C55E 40%, #16A34A 100%) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2.5px 0 rgba(0, 0, 0, 0.4),
+    inset 1px 0 0 rgba(255, 255, 255, 0.3),
+    inset -1px 0 0 rgba(0, 0, 0, 0.25),
+    0 8px 26px -2px rgba(34, 197, 94, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.btn-gorilla-pill:active,
+.btn-gorilla-square:active {
+  transform: translateY(1px);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 2px 6px rgba(22, 163, 74, 0.3) !important;
+}
+
+/* Secondary 3D Square Button (Glass / Metallic outline companion) */
+.btn-gorilla-pill-secondary,
+.btn-gorilla-square-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px !important;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+
+  /* Dark mode: Frosted obsidian glass */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.35),
+    0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.btn-gorilla-pill-secondary *,
+.btn-gorilla-pill-secondary svg,
+.btn-gorilla-square-secondary *,
+.btn-gorilla-square-secondary svg {
+  color: #FFFFFF !important;
+}
+
+.btn-gorilla-pill-secondary:hover,
+.btn-gorilla-square-secondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(72, 199, 101, 0.75) !important;
+  background: linear-gradient(180deg, rgba(72, 199, 101, 0.18) 0%, rgba(72, 199, 101, 0.06) 100%) !important;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.35),
+    0 6px 20px rgba(72, 199, 101, 0.28) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-gorilla-pill-secondary:active,
+.btn-gorilla-square-secondary:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Light Mode variant for Secondary Square Button */
+.light-theme .btn-gorilla-pill-secondary,
+.light-theme .btn-gorilla-square-secondary {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F3EF 100%) !important;
+  border: 1px solid rgba(17, 24, 39, 0.25) !important;
+  color: #111827 !important;
+  text-shadow: none !important;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-theme .btn-gorilla-pill-secondary *,
+.light-theme .btn-gorilla-pill-secondary svg,
+.light-theme .btn-gorilla-square-secondary *,
+.light-theme .btn-gorilla-square-secondary svg {
+  color: #111827 !important;
+}
+
+.light-theme .btn-gorilla-pill-secondary:hover,
+.light-theme .btn-gorilla-square-secondary:hover {
+  border-color: #16A34A !important;
+  color: #15803D !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E8F5E9 100%) !important;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.08),
+    0 4px 14px rgba(22, 163, 74, 0.2) !important;
+}
+
+.light-theme .btn-gorilla-pill-secondary:hover *,
+.light-theme .btn-gorilla-square-secondary:hover * {
+  color: #15803D !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLLECTOR SPEC & RARITY LUXURY BADGE (Non-generic)
+   Authentic high-end metallic gold collectible seal
+   ═══════════════════════════════════════════════════════ */
+
+.badge-rarity-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 0px !important;
+  font-family: 'Montserrat', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.6875rem !important; /* 11px */
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  user-select: none;
+  
+  /* Rich warm metallic gold/amber 3D gradient */
+  background: linear-gradient(180deg, #F59E0B 0%, #D97706 48%, #92400E 100%) !important;
+  border: 1px solid rgba(254, 243, 199, 0.7) !important;
+  
+  /* Physical 3D rim highlight & depth bevel */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(217, 119, 6, 0.35) !important;
+  
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+.badge-rarity-gold *,
+.light-theme .badge-rarity-gold,
+.light-theme .badge-rarity-gold * {
+  color: #FFFFFF !important;
+}
+
+/* Forensic metallic chip (for NFC, QR & demo codes) */
+.chip-forensic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 0px !important;
+  font-family: 'Nunito Sans', monospace, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.6875rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+  color: #D1D5DB !important;
+}
+
+.chip-forensic:hover {
+  background: linear-gradient(180deg, rgba(72, 199, 101, 0.15) 0%, rgba(72, 199, 101, 0.05) 100%) !important;
+  border-color: rgba(72, 199, 101, 0.6) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+.chip-forensic.active {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.3) 0%, rgba(22, 163, 74, 0.15) 100%) !important;
+  border-color: #22C55E !important;
+  color: #FFFFFF !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 12px rgba(34, 197, 94, 0.3) !important;
+}
+
+.light-theme .chip-forensic {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F3EF 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+  color: #374151 !important;
+}
+
+.light-theme .chip-forensic:hover {
+  border-color: #16A34A !important;
+  color: #15803D !important;
+}
+
+.light-theme .chip-forensic.active {
+  background: linear-gradient(180deg, #DCFCE7 0%, #BBF7D0 100%) !important;
+  border-color: #16A34A !important;
+  color: #15803D !important;
+}
+
+

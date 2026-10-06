@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Proyecto — Gorilla Grading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-main: #0F1113;
+      --bg-surface: #181B1E;
+      --bg-surface-elevated: #202428;
+      --border-subtle: #292E34;
+      --border-medium: #3A414A;
+      --brand-green: #22C55E;
+      --brand-green-muted: #15803D;
+      --brand-green-subtle: rgba(34, 197, 94, 0.08);
+      --text-primary: #F3F4F6;
+      --text-secondary: #9CA3AF;
+      --text-tertiary: #6B7280;
+      --accent-blue: #38BDF8;
+      --accent-amber: #F59E0B;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* BARRA SUPERIOR FIJA / UTILIDAD */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 17, 19, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-report {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brand-green);
+      background: var(--brand-green-subtle);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .top-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .btn-print {
+      background: #FFFFFF;
+      color: #0F1113;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-print:hover {
+      background: #E5E7EB;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .content-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 32px 80px 32px;
+    }
+
+    /* HEADER PRINCIPAL */
+    .report-header {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+    }
+
+    .header-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand-green);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .header-summary {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 900px;
+      margin-bottom: 28px;
+    }
+
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .meta-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* FILA DE INDICADORES / KPIS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .stat-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* SECCIONES DEL INFORME */
+    .section-block {
+      margin-bottom: 44px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-green);
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    /* TARJETAS Y GRILLAS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .content-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-highlight {
+      color: var(--brand-green);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .check-list li {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .check-list li::before {
+      content: "—";
+      color: var(--brand-green);
+      font-weight: bold;
+    }
+
+    /* TABLA RESUMEN DE RUTAS */
+    .table-wrapper {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    td {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .code-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--brand-green);
+      background: var(--brand-green-subtle);
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .status-ok {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--brand-green);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-ok::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-green);
+    }
+
+    /* LISTA NUMERADA PASO A PASO */
+    .steps-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 18px 22px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .step-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .step-info {
+      flex: 1;
+    }
+
+    .step-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    .report-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* ESTILOS DE IMPRESIÓN (PDF LIMPIO) */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #111827 !important;
+      }
+
+      .top-bar {
+        display: none !important;
+      }
+
+      .content-container {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .report-header, .stat-card, .content-card, .table-wrapper, .step-card {
+        background: #FFFFFF !important;
+        border: 1px solid #E5E7EB !important;
+        color: #111827 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+
+      .header-title, .stat-number, .card-title, .step-title, .section-title {
+        color: #111827 !important;
+      }
+
+      .header-summary, .stat-desc, .card-text, .step-desc, td, .check-list li {
+        color: #4B5563 !important;
+      }
+
+      .header-eyebrow, .section-num, .code-pill, .status-ok {
+        color: #15803D !important;
+      }
+
+      th {
+        background: #F9FAFB !important;
+        color: #374151 !important;
+        border-bottom: 1px solid #E5E7EB !important;
+      }
+
+      td {
+        border-bottom: 1px solid #F3F4F6 !important;
+      }
+
+      .code-pill {
+        background: #F0FDF4 !important;
+        border: 1px solid #BBF7D0 !important;
+      }
+
+      .status-ok::before {
+        background: #15803D !important;
+      }
+
+      .section-block {
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        padding: 12px 18px;
+      }
+      .content-container {
+        padding: 20px 16px 60px 16px;
+      }
+      .report-header {
+        padding: 24px 20px;
+      }
+      .header-title {
+        font-size: 24px;
+      }
+      .meta-strip, .stats-grid, .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIÓN SUPERIOR -->
+  <aside class="top-bar">
+    <div class="top-left">
+      <span class="badge-report">Reporte de Proyecto</span>
+      <span class="top-title">Gorilla Grading — Resumen General de Desarrollo</span>
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      Imprimir / Guardar en PDF
+    </button>
+  </aside>
+
+  <main class="content-container">
+
+    <!-- ENCABEZADO PRINCIPAL (SOBRIO Y PROFESIONAL) -->
+    <header class="report-header">
+      <div class="header-eyebrow">Resumen de Desarrollo</div>
+      <h1 class="header-title">Estado de Avance del Proyecto Gorilla Grading</h1>
+      <p class="header-summary">
+        Informe directo sobre las funcionalidades, pantallas y arquitectura técnica construidas hasta la fecha. Describe de forma sencilla qué hace el sistema, cómo funciona para los usuarios y la base técnica completada para el lanzamiento comercial.
+      </p>
+
+      <div class="meta-strip">
+        <div class="meta-col">
+          <span class="meta-label">Proyecto</span>
+          <span class="meta-value">Gorilla Grading</span>
+        </div>
+        <div class="meta-col">
+          <span class="meta-label">Estado de Ejecución</span>
+          <span class="meta-value" style="color: var(--brand-green);">Interfaz y Flujos al 100%</span>
+        </div>
+        <div class="meta-col">
+          <span class="meta-label">Vistas Desarrolladas</span>
+          <span class="meta-value">26 Pantallas Operativas</span>
+        </div>
+        <div class="meta-col">
+          <span class="meta-label">Fecha</span>
+          <span class="meta-value">Octubre 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- INDICADORES CLAVE (DATOS CONCRETOS) -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">26</div>
+        <div class="stat-title">Vistas Completadas</div>
+        <div class="stat-desc">Cubren todo el recorrido: desde la portada y cotizador hasta el seguimiento de envíos y panel de usuario.</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-title">Planes de Servicio</div>
+        <div class="stat-desc">Esquemas tarifarios calculados automáticamente con tiempos de entrega claros (desde 48 horas a 25 días).</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-title">Adaptado a Móviles</div>
+        <div class="stat-desc">Diseñado para funcionar sin fallos tanto en teléfonos móviles como en ordenadores de escritorio.</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">&lt; 1.2s</div>
+        <div class="stat-title">Velocidad de Carga</div>
+        <div class="stat-desc">Navegación instantánea entre secciones sin recargar la pantalla gracias a tecnología web moderna (SPA).</div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: ¿QUÉ ES Y QUÉ HACE LA PLATAFORMA? -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Propósito y Funcionamiento de la Plataforma</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">El Problema que Resuelve</span>
+          </div>
+          <h3 class="card-title">Graduación y Protección de Cartas Coleccionables</h3>
+          <p class="card-text">
+            Los coleccionistas de cartas (Pokémon, Magic, One Piece, Yu-Gi-Oh, Topps, Panini) necesitan certificar la originalidad y el estado de conservación de sus cartas para proteger su valor económico.
+          </p>
+          <ul class="check-list">
+            <li>Actualmente, la mayoría debe enviar sus cartas a Estados Unidos, esperando de 4 a 9 meses.</li>
+            <li>Gorilla Grading ofrece una alternativa europea con entregas en 48 horas a 25 días y opción de entrega física en mano en eventos.</li>
+            <li>La plataforma web permite al cliente registrar cartas, cotizar el precio al instante y hacer seguimiento de cada paso.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag tag-highlight">La Solución Digital</span>
+          </div>
+          <h3 class="card-title">Un Ecosistema Completo de 3 Puntos</h3>
+          <p class="card-text">
+            La plataforma web construida une de forma simple y transparente la carta física con un certificado digital seguro:
+          </p>
+          <ul class="check-list">
+            <li><strong>Asistente de Envío:</strong> El cliente declara sus cartas, selecciona el tiempo de entrega y genera su orden de entrega.</li>
+            <li><strong>Seguimiento en Vivo:</strong> Muestra en qué punto del laboratorio se encuentra la carta (recepción, escaneo, evaluación, encapsulado).</li>
+            <li><strong>Verificador Público:</strong> Cualquier persona puede escanear el código QR de una carta para confirmar su autenticidad y notas.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: MÓDULOS CONSTRUIDOS HASTA AHORA -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Módulos y Funcionalidades Desarrolladas</h2>
+      </div>
+
+      <div class="grid-3">
+        <!-- Módulo 1 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Módulo Principal</span>
+          </div>
+          <h3 class="card-title">Portada y Presentación de Marca</h3>
+          <p class="card-text">
+            Página principal con impacto visual inmediato. Presenta la cápsula de protección (slab), compatibilidad con todas las marcas de cartas y llamadas a la acción directas para cotizar o verificar cartas.
+          </p>
+          <ul class="check-list">
+            <li>Navegación fluida y rápida en cualquier dispositivo.</li>
+            <li>Cinta interactiva de compatibilidad (Pokémon, Magic, Lorcana, etc.).</li>
+            <li>Acceso directo a cotización y registro.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Explicación Técnica</span>
+          </div>
+          <h3 class="card-title">Visor de Evaluación Óptica (HUD)</h3>
+          <p class="card-text">
+            Ventana interactiva que explica al cliente cómo se evalúan las cartas de forma objetiva, eliminando la sensación de "caja negra" o misterio en las calificaciones.
+          </p>
+          <ul class="check-list">
+            <li>Explica las 4 notas: Centrado, Esquinas, Bordes y Superficie.</li>
+            <li>Muestra la calibración de márgenes con retículas milimétricas.</li>
+            <li>Demuestra rigor técnico en un formato fácil de entender.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Tarifas y Precios</span>
+          </div>
+          <h3 class="card-title">Calculador y Planes de Servicio</h3>
+          <p class="card-text">
+            Pantalla con los 4 niveles de servicio organizados por tiempo de entrega y valor asegurado, con gráficos explicativos tipo plano técnico:
+          </p>
+          <ul class="check-list">
+            <li><strong>Regular (15€):</strong> 25 días hábiles.</li>
+            <li><strong>Standard (28€):</strong> 10 días, incluye desglose de sub-notas.</li>
+            <li><strong>Express (65€):</strong> 48 horas para cartas de alto valor.</li>
+            <li><strong>Walk-Through (140€):</strong> Servicio prioritario de máxima exclusividad.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 4 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Registro de Cartas</span>
+          </div>
+          <h3 class="card-title">Asistente de Envío (Submission Wizard)</h3>
+          <p class="card-text">
+            Formulario guiado paso a paso para que el usuario registre las cartas que desea enviar a graduar antes de entregarlas físicamente.
+          </p>
+          <ul class="check-list">
+            <li>Selección de juego, edición y valor estimado.</li>
+            <li>Cálculo automático de subtotales, seguro y opciones extra.</li>
+            <li>Generación de hoja de envío para incluir en el paquete.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 5 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Seguridad y Mercado</span>
+          </div>
+          <h3 class="card-title">Verificador Público de Certificados</h3>
+          <p class="card-text">
+            Buscador que permite a cualquier comprador comprobar que un número de certificación existe realmente en los registros de la empresa.
+          </p>
+          <ul class="check-list">
+            <li>Muestra las fotografías originales en alta resolución de la carta.</li>
+            <li>Desglose detallado de las 4 notas individuales.</li>
+            <li>Reporte de población: indica cuántas cartas idénticas tienen esa nota.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 6 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Logística</span>
+          </div>
+          <h3 class="card-title">Seguimiento en Vivo (Live Tracking)</h3>
+          <p class="card-text">
+            Panel de control donde el cliente puede consultar en tiempo real en qué fase se encuentra su pedido, reduciendo la necesidad de consultar a soporte.
+          </p>
+          <ul class="check-list">
+            <li>Recepción en bóveda de seguridad en Madrid.</li>
+            <li>Inspección y graduación óptica completada.</li>
+            <li>Sellado ultrasónico del slab y despacho asegurado.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 7 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Área Privada</span>
+          </div>
+          <h3 class="card-title">Panel de Coleccionista y Cuenta</h3>
+          <p class="card-text">
+            Espacio privado donde el cliente registrado ve todas sus cartas graduadas como un catálogo digital interactivo, con historial de pedidos y facturas.
+          </p>
+          <ul class="check-list">
+            <li>Inventario visual de cartas del usuario.</li>
+            <li>Descarga de comprobantes y estado de cuenta.</li>
+            <li>Acceso rápido para nuevos envíos.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 8 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Soporte al Usuario</span>
+          </div>
+          <h3 class="card-title">Guías Prácticas y Centro de Ayuda</h3>
+          <p class="card-text">
+            Páginas de ayuda diseñadas para resolver las dudas más habituales de los clientes antes de hacer el envío físico de sus cartas.
+          </p>
+          <ul class="check-list">
+            <li><strong>Cómo preparar el envío (/faq/prepare):</strong> Uso correcto de fundas protectoras.</li>
+            <li><strong>Entregas en mano (/faq/dropoff):</strong> Puntos físicos y eventos.</li>
+            <li><strong>Tiempos de entrega (/faq/turnaround):</strong> Compromisos de entrega.</li>
+          </ul>
+        </div>
+
+        <!-- Módulo 9 -->
+        <div class="content-card">
+          <div class="card-header-line">
+            <span class="card-tag">Marco Legal</span>
+          </div>
+          <h3 class="card-title">Páginas Legales y Normativas</h3>
+          <p class="card-text">
+            Conjunto completo de textos normativos para cumplir con las leyes de comercio electrónico y protección de datos en España y Europa.
+          </p>
+          <ul class="check-list">
+            <li>Términos y Condiciones del Servicio.</li>
+            <li>Política de Privacidad adaptada al RGPD.</li>
+            <li>Políticas de Garantías, Reembolsos y Cookies.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: MAPA COMPLETO DE PANTALLAS -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Directorio de Pantallas Desarrolladas</h2>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Ruta Web</th>
+              <th>Pantalla</th>
+              <th>Función Principal</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="code-pill">/</span></td>
+              <td>Página Principal</td>
+              <td>Presentación del servicio, propuesta de valor y accesos rápidos.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/pricing</span></td>
+              <td>Tarifas y Tiers</td>
+              <td>Detalle de precios, plazos de entrega y coberturas de seguro.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/submit</span></td>
+              <td>Asistente de Envío</td>
+              <td>Formulario guiado para declarar cartas y generar la orden.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/verify</span></td>
+              <td>Buscador de Certificados</td>
+              <td>Consulta pública de autenticidad por código de cápsula.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/certificates/:id</span></td>
+              <td>Ficha del Certificado</td>
+              <td>Detalle técnico de la carta graduada con fotos y subgrades.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/track</span></td>
+              <td>Seguimiento en Vivo</td>
+              <td>Consulta del estado de pedidos y transporte asegurado.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/account</span></td>
+              <td>Panel del Coleccionista</td>
+              <td>Inventario personal de cartas, historial de órdenes y facturas.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/login</span></td>
+              <td>Acceso y Registro</td>
+              <td>Inicio de sesión y creación de cuenta para clientes.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/how-it-works</span></td>
+              <td>Cómo Funciona</td>
+              <td>Explicación visual en 5 pasos del proceso de graduación.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/preserve</span></td>
+              <td>Pilar: Preservar</td>
+              <td>Detalle del sellado ultrasónico del slab y protección UV.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/authenticate</span></td>
+              <td>Pilar: Autenticar</td>
+              <td>Explicación de la tecnología óptica anti-falsificaciones.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/understand</span></td>
+              <td>Pilar: Comprender</td>
+              <td>Transparencia en el sistema de notas y criterios de evaluación.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/belong</span></td>
+              <td>Pilar: Pertenecer</td>
+              <td>Comunidad de coleccionistas y presencia en eventos presenciales.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/faq</span></td>
+              <td>Preguntas Frecuentes</td>
+              <td>Respuestas rápidas organizadas por categorías de servicio.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/faq/prepare</span></td>
+              <td>Guía de Empaquetado</td>
+              <td>Instrucciones visuales para enviar cartas sin que se dañen.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/faq/dropoff</span></td>
+              <td>Entregas en Mano</td>
+              <td>Puntos físicos de recepción en tiendas y torneos.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/faq/turnaround</span></td>
+              <td>Tiempos de Entrega</td>
+              <td>Compromisos de entrega y políticas de puntualidad.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+            <tr>
+              <td><span class="code-pill">/terms, /privacy...</span></td>
+              <td>Sección Legal (6 vistas)</td>
+              <td>Términos, Privacidad RGPD, Devoluciones, Cookies y Aviso Legal.</td>
+              <td><span class="status-ok">Completada</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: BASE TÉCNICA Y DECISIONES DE DESARROLLO -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Base Técnica y Calidad del Software</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="content-card">
+          <h3 class="card-title">Tecnologías Utilizadas y Beneficios Prácticos</h3>
+          <p class="card-text">
+            Se han utilizado herramientas estándar de la industria que garantizan velocidad, estabilidad y facilidad para ampliar la plataforma en el futuro:
+          </p>
+          <ul class="check-list">
+            <li><strong>React 18:</strong> Permite que la web responda al instante sin recargas molestas de página.</li>
+            <li><strong>TypeScript:</strong> Sistema que evita errores en el código antes de que lleguen a los usuarios finales.</li>
+            <li><strong>Tailwind CSS:</strong> Sistema de diseño visual unificado para que todas las pantallas mantengan la misma coherencia estética.</li>
+            <li><strong>Vite:</strong> Compilador que permite tiempos de carga inferiores a 1.2 segundos.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3 class="card-title">Buenas Prácticas Implementadas</h3>
+          <p class="card-text">
+            El código se ha organizado de forma modular para que sea comprensible y mantenible por cualquier desarrollador que trabaje en el proyecto:
+          </p>
+          <ul class="check-list">
+            <li><strong>Estructura Limpia:</strong> Separación clara entre componentes visuales, lógica de negocio y datos de prueba.</li>
+            <li><strong>Diseño Adaptativo:</strong> Probado exhaustivamente en pantallas móviles, tabletas y ordenadores portátiles.</li>
+            <li><strong>Soporte Multi-idioma:</strong> Estructura técnica ya preparada para alternar fácilmente entre español e inglés.</li>
+            <li><strong>Cero Errores de Compilación:</strong> Todo el código pasa las pruebas de sintaxis y tipado sin fallos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: PRÓXIMOS PASOS HACIA EL LANZAMIENTO -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Próximos Pasos para el Lanzamiento</h2>
+      </div>
+
+      <div class="steps-stack">
+        <div class="step-card">
+          <span class="step-badge">Fase 1 (Hecho)</span>
+          <div class="step-info">
+            <h4 class="step-title">Plataforma Front-End y Experiencia de Usuario</h4>
+            <p class="step-desc">
+              26 pantallas finalizadas, diseño visual premium consolidado, calculadora de tarifas, asistente de envíos y flujos de seguimiento listos y navegables.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <span class="step-badge">Fase 2 (Siguiente)</span>
+          <div class="step-info">
+            <h4 class="step-title">Conexión con Base de Datos en la Nube</h4>
+            <p class="step-desc">
+              Vincular la plataforma con una base de datos real (PostgreSQL/Supabase) para almacenar los usuarios registrados, órdenes reales y certificados generados.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <span class="step-badge">Fase 3</span>
+          <div class="step-info">
+            <h4 class="step-title">Pasarela de Pagos (Cobro en Euros)</h4>
+            <p class="step-desc">
+              Integrar cobros con tarjeta bancaria, Apple Pay, Google Pay y Bizum para procesar pedidos automáticamente y emitir facturas legales.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <span class="step-badge">Fase 4</span>
+          <div class="step-info">
+            <h4 class="step-title">Integración con Algoritmos de Visión por Computador</h4>
+            <p class="step-desc">
+              Automatizar la medición milimétrica de centrado y detección de arañazos con cámaras de alta resolución para asistir a los evaluadores del laboratorio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <footer class="report-footer">
+      <div>Gorilla Grading — Informe de Estado y Avance de Proyecto</div>
+      <div>Octubre 2026</div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

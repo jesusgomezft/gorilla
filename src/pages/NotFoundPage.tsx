@@ -20,7 +20,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate }) => {
           Unregistered Coordinate
         </h1>
         <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">
-          The requested certificate, submission manifest, or grading route could not be verified in the European Gorilla database.
+          The requested certificate, submission manifest, or grading route could not be verified in the Gorilla International database.
         </p>
       </div>
 

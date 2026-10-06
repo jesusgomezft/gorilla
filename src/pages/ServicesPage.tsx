@@ -115,7 +115,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       regular: true, standard: true, express: true, walkthrough: true
     },
     {
-      feature: language === 'es' ? 'Chip Criptográfico NFC con enlace al Registro Europeo' : 'Cryptographic NFC chip linked to European Registry',
+      feature: language === 'es' ? 'Chip Criptográfico NFC con enlace al Registro Internacional' : 'Cryptographic NFC chip linked to International Registry',
       regular: true, standard: true, express: true, walkthrough: true
     },
     {
@@ -301,8 +301,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             </span>
             <h3 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-tight mb-3">
               {language === 'es' 
-                ? 'Protección Integral Dentro del Espacio Económico Europeo' 
-                : 'Comprehensive Protection Across the European Economic Area'}
+                ? 'Protección Integral y Cobertura Internacional Asegurada' 
+                : 'Comprehensive Protection Across International Transit'}
             </h3>
             <p className="font-sans text-xs sm:text-sm text-[#A4ACA1] leading-relaxed">
               {language === 'es'
@@ -314,7 +314,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           <div className="shrink-0 flex items-center gap-4">
             <button
               onClick={() => onNavigate('/submit')}
-              className="px-8 py-4 rounded-none bg-[#48C765] hover:bg-[#38B554] text-[#14170F] font-mono text-xs font-bold tracking-[0.2em] uppercase transition-all shadow-[0_4px_20px_rgba(72,199,101,0.35)] cursor-pointer"
+              className="btn-gorilla-square px-8 py-4 text-xs font-extrabold tracking-[0.16em] shadow-lg cursor-pointer"
             >
               {language === 'es' ? 'INICIAR SOLICITUD AHORA' : 'START SUBMISSION NOW'}
             </button>

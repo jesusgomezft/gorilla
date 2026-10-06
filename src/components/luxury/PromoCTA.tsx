@@ -48,17 +48,17 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => onNavigate && onNavigate('/faq/dropoff')}
-            className="group relative inline-flex items-center justify-center px-8 py-3 bg-[#48C765] hover:bg-[#3A9F50] text-[#14170F] font-bold text-xs tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(72,199,101,0.2)] hover:shadow-[0_0_30px_rgba(72,199,101,0.4)]"
+            className="btn-gorilla-pill px-8 py-3.5 text-xs font-extrabold tracking-[0.1em] gap-2 group shadow-lg"
           >
             <span>{language === 'es' ? 'Encuentra tu Evento' : 'Find Nearest Event'}</span>
-            <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
           
           <button
             onClick={() => onNavigate && onNavigate('/how-it-works')}
-            className="inline-flex items-center justify-center px-8 py-3 border border-white/20 hover:border-white/60 bg-transparent text-white font-bold text-xs tracking-widest uppercase transition-all"
+            className="btn-gorilla-pill-secondary px-8 py-3.5 text-xs font-bold tracking-[0.08em]"
           >
             {language === 'es' ? 'Cómo Funciona la Entrega' : 'Drop-Off Info'}
           </button>

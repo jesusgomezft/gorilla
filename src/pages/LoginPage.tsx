@@ -47,7 +47,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
 
   return (
     <div 
-      className={`min-h-screen flex items-center justify-center p-6 relative overflow-hidden transition-colors duration-500 ${
+      className={`flex-1 min-h-[calc(100vh-5rem)] min-h-[calc(100dvh-5rem)] flex items-center justify-center p-4 sm:p-6 relative overflow-hidden transition-colors duration-500 ${
         isLight ? 'bg-[#F4F1EA] text-[#1A1D1A]' : 'bg-[#14170F] text-white'
       }`}
     >
@@ -141,11 +141,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                   
                   <button 
                     type="submit" 
-                    className={`w-full py-3.5 rounded-lg font-mono text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-200 shadow-md cursor-pointer ${
-                      isLight
-                        ? 'bg-[#16A34A] hover:bg-[#15803D] text-white hover:shadow-lg'
-                        : 'bg-[#48C765] hover:bg-[#38B554] text-[#14170F] hover:shadow-[0_0_20px_rgba(72,199,101,0.3)]'
-                    }`}
+                    className="btn-gorilla-square w-full py-3.5 text-xs font-extrabold tracking-[0.16em] shadow-lg"
                   >
                     {language === 'es' ? 'Recibir Código' : 'Get Code'}
                   </button>
@@ -171,11 +167,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => onNavigate('/submit')}
-                  className={`w-full py-3 px-4 rounded-lg border font-mono text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer ${
-                    isLight 
-                      ? 'border-[#16A34A]/50 bg-[#16A34A]/10 hover:bg-[#16A34A] text-[#15803D] hover:text-white shadow-sm'
-                      : 'border-[#48C765]/50 bg-[#48C765]/10 hover:bg-[#48C765] text-[#48C765] hover:text-[#14170F] shadow-[0_0_15px_rgba(72,199,101,0.1)]'
-                  }`}
+                  className="btn-gorilla-square-secondary w-full py-3 px-4 text-xs font-bold tracking-[0.14em] flex items-center justify-center gap-2 group"
                 >
                   <span>{language === 'es' ? 'Enviar Cartas a Graduar' : 'Submit Cards for Grading'}</span>
                   <span className="transition-transform duration-200 group-hover:translate-x-1 font-bold">→</span>
@@ -256,11 +248,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                   
                   <button 
                     type="submit" 
-                    className={`w-full py-3.5 rounded-lg font-mono text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-200 shadow-md cursor-pointer ${
-                      isLight
-                        ? 'bg-[#16A34A] hover:bg-[#15803D] text-white hover:shadow-lg'
-                        : 'bg-[#48C765] hover:bg-[#38B554] text-[#14170F] hover:shadow-[0_0_20px_rgba(72,199,101,0.3)]'
-                    }`}
+                    className="btn-gorilla-square w-full py-3.5 text-xs font-extrabold tracking-[0.16em] shadow-lg"
                   >
                     {language === 'es' ? 'Acceder al Perfil' : 'Access Vault'}
                   </button>

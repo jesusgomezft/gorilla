@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </span>
             </div>
             <p className="text-xs leading-relaxed max-w-sm mb-4 opacity-80">
-              Gorilla Grading is the European precision standard for collectible card authentication, optical subgrading, and sonic encapsulation. Built for serious collectors and community card shows.
+              Gorilla Grading is the international precision standard for collectible card authentication, optical subgrading, and sonic encapsulation. Built for serious collectors and community card shows.
             </p>
             <div className="flex items-center gap-2 text-xs font-mono text-gorilla-400">
               <span className="w-2 h-2 rounded-none bg-gorilla-400" />
@@ -148,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-75">
           <div>
-            &copy; {new Date().getFullYear()} Gorilla Grading Europe S.L. All rights reserved. Registered in Spain & Portugal.
+            &copy; {new Date().getFullYear()} Gorilla Grading International S.L. All rights reserved. Registered in Spain & Portugal.
           </div>
           <div className="flex items-center gap-4">
             <span>Privacy Policy</span>

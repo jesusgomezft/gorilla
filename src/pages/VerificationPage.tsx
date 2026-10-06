@@ -42,7 +42,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
         <div className="flex flex-col max-w-2xl w-full">
           <div className="flex items-center gap-3 text-[#48C765] font-mono text-[10px] tracking-[0.2em] uppercase mb-4">
             <ShieldCheck className="w-4 h-4" />
-            <span>{language === 'es' ? 'Autenticación Europea' : 'European Authentication'}</span>
+            <span>{language === 'es' ? 'Autenticación Internacional' : 'International Authentication'}</span>
           </div>
           <h1 className="font-['Oswald'] text-lg md:text-lg font-bold uppercase tracking-tight text-white mb-8">
             {t('verify.title')}
@@ -104,9 +104,10 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
             
             <button 
               onClick={() => onNavigate('/certificates/demo')}
-              className="mx-auto mt-4 px-8 py-3 border border-white/20 hover:border-[#48C765] text-white hover:text-[#48C765] font-mono text-[10px] tracking-[0.2em] uppercase transition-colors"
+              className="btn-gorilla-square mx-auto mt-4 px-8 py-3.5 text-xs font-extrabold tracking-widest gap-2 shadow-lg"
             >
-              {language === 'es' ? 'Ver Certificado Completo' : 'View Full Certificate'}
+              <span>{language === 'es' ? 'Ver Certificado Completo' : 'View Full Certificate'}</span>
+              <span>→</span>
             </button>
           </div>
 
@@ -140,7 +141,11 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-white/30">Rarity</span>
-                  <span className="text-white text-xs">{activeCard.rarity}</span>
+                  <div>
+                    <span className="badge-rarity-gold text-[9px] px-2 py-0.5">
+                      {activeCard.rarity}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

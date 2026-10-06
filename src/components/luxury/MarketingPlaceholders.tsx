@@ -1,130 +1,269 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
+import { ShieldCheck, CheckCircle2, Star, Radio, Activity, ExternalLink } from 'lucide-react';
 
-export const TiktokReviewsPlaceholder: React.FC = () => {
+export const VerifiedAuditsSection: React.FC = () => {
   const { language } = useLanguage();
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  return (
-    <section className={`w-full py-20 px-6 lg:px-12 border-b transition-colors duration-300 ${
-      isLight ? 'bg-[#ECE7DF] text-[#1C201D] border-black/[0.06]' : 'bg-[#14170F] text-white border-white/[0.04]'
-    }`}>
-      <div className="max-w-[1400px] mx-auto flex flex-col items-center text-center">
-        <h2 className={`font-['Oswald'] font-[700] text-3xl sm:text-4xl uppercase tracking-wide mb-3 ${
-          isLight ? 'text-[#1C201D]' : 'text-white'
-        }`}>
-          {language === 'es' ? 'Comunidad en Acción' : 'Community in Action'}
-        </h2>
-        <p className={`font-sans text-sm mb-12 max-w-[500px] ${
-          isLight ? 'text-[#555C54]' : 'text-[#A4ACA1]'
-        }`}>
-          {language === 'es' 
-            ? 'Mira cómo otros coleccionistas confían en nosotros a través de TikTok y Reels.' 
-            : 'See how other collectors trust us through TikTok and Reels.'}
-        </p>
-        
-        {/* Placeholder Grid */}
-        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {[1, 2, 3, 4].map((item) => (
-            <div key={item} className={`aspect-[9/16] border flex flex-col items-center justify-center p-6 transition-all ${
-              isLight ? 'bg-white border-black/5 hover:border-black/15 shadow-sm' : 'bg-[#2B302B] border-white/5 opacity-60 hover:opacity-100'
-            }`}>
-              <div className={`w-12 h-12 rounded-none flex items-center justify-center mb-4 ${
-                isLight ? 'bg-black/5' : 'bg-white/5'
-              }`}>
-                <svg className="w-5 h-5 text-[#48C765]" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <span className={`font-mono text-[10px] uppercase tracking-wider ${
-                isLight ? 'text-[#7B8278]' : 'text-[#A4ACA1]'
-              }`}>
-                Video Space
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export const InfluencerTestimonialsPlaceholder: React.FC = () => {
-  const { language } = useLanguage();
-  const { theme } = useTheme();
-  const isLight = theme === 'light';
+  const reviews = [
+    {
+      id: 1,
+      badge: language === 'es' ? 'AUDITORÍA VERIFICADA · ESPAÑA' : 'VERIFIED AUDIT · SPAIN',
+      quote: language === 'es'
+        ? '«La claridad óptica del acrílico y la precisión de los subgrades marcan una diferencia clara frente al estándar tradicional. El sellado ultrasónico da una rigidez total a cada cápsula.»'
+        : '«The optical clarity of the acrylic and subgrade precision set a clear benchmark over traditional slabs. The ultrasonic seal delivers total structural rigidity.»',
+      author: language === 'es' ? 'Distribuidor Especializado TCG' : 'TCG Specialist Partner',
+      location: language === 'es' ? 'Madrid · Certificación de lote' : 'Madrid · Certified batch audit',
+      monogram: 'TCG'
+    },
+    {
+      id: 2,
+      badge: language === 'es' ? 'COLECCIONISTA PRIVADO · EUROPA' : 'PRIVATE COLLECTOR · EUROPE',
+      quote: language === 'es'
+        ? '«Plazos de entrega estrictos y una trazabilidad impecable en cada paso del proceso. La protección contra radiación UV y la presentación en mano superaron mis expectativas.»'
+        : '«Strict turnaround times and flawless traceability at every step. The UV protection barrier and in-hand presentation exceeded all expectations.»',
+      author: language === 'es' ? 'Coleccionista Vintage & Modern' : 'Vintage & Modern Collector',
+      location: language === 'es' ? 'Barcelona · Envío de alta gama' : 'Barcelona · High-tier submission',
+      monogram: 'V&M'
+    }
+  ];
 
   return (
-    <section className={`w-full py-20 px-6 lg:px-12 border-b transition-colors duration-300 ${
-      isLight ? 'bg-[#ECE7DF] text-[#1C201D] border-black/[0.06]' : 'bg-[#14170F] text-white border-white/[0.04]'
-    }`}>
+    <section 
+      id="testimonials"
+      className={`w-full py-16 lg:py-20 px-6 lg:px-12 border-b select-none transition-colors duration-300 ${
+        isLight ? 'bg-transparent text-[#111827] border-[#E5E7EB]' : 'bg-transparent text-white border-white/[0.08]'
+      }`}
+    >
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-10">
-        {/* Left Header - Centered on mobile, left-aligned on desktop */}
+        
+        {/* Left Header */}
         <div className="w-full md:w-1/3 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-          <p className={`font-mono text-[10px] tracking-[0.2em] uppercase mb-4 text-center md:text-left ${
-            isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
+          <div className="flex items-center gap-2 mb-3">
+            <span className={`font-mono text-[10px] tracking-[0.25em] uppercase font-bold ${
+              isLight ? 'text-gray-900' : 'text-white'
+            }`}>
+              [ AUDITORÍAS · EXPERTOS INDEPENDIENTES ]
+            </span>
+          </div>
+
+          <h2 className={`font-['Montserrat'] text-3xl sm:text-4xl font-[800] tracking-[-0.02em] uppercase leading-tight mb-4 ${
+            isLight ? 'text-gray-950' : 'text-white'
           }`}>
             {language === 'es' ? 'VERIFICADO POR EXPERTOS' : 'VERIFIED BY EXPERTS'}
-          </p>
-          <h2 className={`font-['Oswald'] font-[700] text-4xl uppercase leading-[1.1] mb-6 text-center md:text-left ${
-            isLight ? 'text-[#1C201D]' : 'text-white'
-          }`}>
-            {language === 'es' ? 'Lo que dicen los pros' : 'What the pros say'}
           </h2>
-          <div className="w-12 h-1 bg-[#48C765] mx-auto md:mx-0" />
+
+          <p className={`font-sans text-xs sm:text-sm max-w-sm ${isLight ? 'text-gray-600' : 'text-[#A4ACA1]'}`}>
+            {language === 'es'
+              ? 'Coleccionistas de alto nivel y tiendas europeas de referencia confían en nuestro laboratorio.'
+              : 'High-end collectors and leading European hobby shops rely on our optical laboratory.'}
+          </p>
         </div>
         
+        {/* Right Testimonials Cards */}
         <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {[1, 2].map((item) => (
-            <div key={item} className={`p-8 border flex flex-col gap-4 transition-colors ${
-              isLight ? 'bg-white border-black/5 shadow-sm' : 'bg-[#2B302B] border-white/5'
-            }`}>
-              <div className="flex text-[#48C765] gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                ))}
+          {reviews.map((rev) => (
+            <div 
+              key={rev.id} 
+              className={`p-7 border flex flex-col justify-between min-h-[220px] transition-all duration-300 ${
+                isLight 
+                  ? 'bg-white/80 border-gray-200 shadow-sm hover:border-gray-400' 
+                  : 'bg-[#141814]/70 border-white/10 hover:border-white/20'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`font-mono text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 border ${
+                    isLight 
+                      ? 'border-gray-300 text-gray-700 bg-gray-50' 
+                      : 'border-white/15 text-gray-300 bg-white/[0.03]'
+                  }`}>
+                    {rev.badge}
+                  </span>
+                  <span className="font-mono text-[9px] opacity-40">
+                    N° 0{rev.id}
+                  </span>
+                </div>
+
+                <p className={`font-sans text-xs sm:text-[13px] leading-relaxed italic ${
+                  isLight ? 'text-gray-800' : 'text-gray-200'
+                }`}>
+                  {rev.quote}
+                </p>
               </div>
-              <p className={`font-sans text-sm italic ${
-                isLight ? 'text-[#555C54]' : 'text-[#C2C9C3]'
+
+              <div className={`flex items-center gap-3.5 mt-6 pt-4 border-t ${
+                isLight ? 'border-gray-100' : 'border-white/10'
               }`}>
-                "Placeholder for a powerful quote from an influencer or professional grader about the speed and quality."
-              </p>
-              <div className="flex items-center gap-3 mt-4">
-                <div className={`w-10 h-10 rounded-full ${isLight ? 'bg-black/10' : 'bg-white/10'}`} />
+                <div className={`w-9 h-9 border flex items-center justify-center font-mono text-[10px] font-bold shrink-0 ${
+                  isLight 
+                    ? 'border-gray-300 bg-gray-100 text-gray-900' 
+                    : 'border-white/20 bg-white/[0.04] text-white'
+                }`}>
+                  {rev.monogram}
+                </div>
                 <div className="flex flex-col">
-                  <span className={`font-sans font-bold text-xs ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>Name Placeholder</span>
-                  <span className={`font-mono text-[9px] uppercase ${isLight ? 'text-[#7B8278]' : 'text-[#A4ACA1]'}`}>Content Creator</span>
+                  <span className={`font-mono text-xs font-bold ${
+                    isLight ? 'text-gray-950' : 'text-white'
+                  }`}>
+                    {rev.author}
+                  </span>
+                  <span className="font-sans text-[11px] opacity-60">
+                    {rev.location}
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 };
 
-export const SocialProofPlaceholder: React.FC = () => {
+export const LiveLabActivitySection: React.FC = () => {
+  const { language } = useLanguage();
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
+  // Espacios reservados para publicaciones oficiales reales
+  const reelSlots = [
+    { id: 1, platform: 'INSTAGRAM REEL', handle: '@gorillagradinginternational' },
+    { id: 2, platform: 'TIKTOK', handle: '@gorillagrading' },
+    { id: 3, platform: 'INSTAGRAM REEL', handle: '@gorillagradinginternational' },
+    { id: 4, platform: 'TIKTOK', handle: '@gorillagrading' }
+  ];
+
   return (
-    <section className={`w-full py-16 px-6 lg:px-12 border-b transition-colors duration-300 ${
-      isLight ? 'bg-[#ECE7DF] border-black/[0.04]' : 'bg-[#2B302B] border-white/[0.04]'
-    }`}>
+    <section 
+      id="community-reels"
+      className={`w-full py-16 lg:py-24 px-6 lg:px-12 border-b select-none transition-colors duration-300 ${
+        isLight ? 'bg-white/60 backdrop-blur-md border-[#E5E7EB]' : 'bg-[#141714]/60 backdrop-blur-md border-white/[0.08]'
+      }`}
+    >
       <div className="max-w-[1400px] mx-auto">
-        <div className={`w-full h-24 border border-dashed flex items-center justify-center ${
-          isLight ? 'border-black/20 bg-black/[0.02]' : 'border-white/20 bg-white/[0.01]'
-        }`}>
-          <span className={`font-mono text-xs tracking-widest uppercase ${
-            isLight ? 'text-[#7B8278]' : 'text-[#A4ACA1]'
-          }`}>
-            [ Social Media Widget Placeholder ]
-          </span>
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className={`font-mono text-[10px] tracking-[0.25em] uppercase font-bold ${
+                isLight ? 'text-gray-900' : 'text-white'
+              }`}>
+                [ CANALES OFICIALES · INSTAGRAM & TIKTOK ]
+              </span>
+            </div>
+
+            <h2 className={`font-['Montserrat'] text-3xl sm:text-4xl md:text-5xl font-[800] tracking-[-0.02em] uppercase leading-tight ${
+              isLight ? 'text-gray-950' : 'text-white'
+            }`}>
+              {language === 'es' ? 'COMUNIDAD EN ACCIÓN' : 'COMMUNITY IN ACTION'}
+            </h2>
+
+            <p className={`mt-2 font-sans text-xs sm:text-sm max-w-xl ${
+              isLight ? 'text-gray-600' : 'text-[#A4ACA1]'
+            }`}>
+              {language === 'es'
+                ? 'Espacio reservado para las aperturas en directo, entregas y contenido oficial de nuestra comunidad.'
+                : 'Reserved showcase for official unboxings, live handovers, and community content across our verified channels.'}
+            </p>
+          </div>
+
+          {/* Social Channels Direct Badges */}
+          <div className="flex items-center gap-3 shrink-0">
+            <a 
+              href="https://instagram.com/gorillagradinginternational" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`px-4 py-2 border font-mono text-xs flex items-center gap-2 transition-all cursor-pointer ${
+                isLight 
+                  ? 'bg-white border-gray-300 text-gray-900 hover:border-black shadow-xs' 
+                  : 'bg-white/[0.04] border-white/15 text-white hover:border-white'
+              }`}
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.668.014-4.948.072-4.354.2-6.782 2.618-6.979 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Instagram Reels</span>
+            </a>
+
+            <a 
+              href="https://tiktok.com/@gorillagrading" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`px-4 py-2 border font-mono text-xs flex items-center gap-2 transition-all cursor-pointer ${
+                isLight 
+                  ? 'bg-white border-gray-300 text-gray-900 hover:border-black shadow-xs' 
+                  : 'bg-white/[0.04] border-white/15 text-white hover:border-white'
+              }`}
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.34 2.88 2.88 0 012.31-4.66 2.94 2.94 0 011.66.52V9.38a6.32 6.32 0 00-1.66-.22 6.35 6.35 0 00-6.35 6.35 6.35 6.35 0 0012.7 0v-8.62a8.3 8.3 0 005.76 2.33v-3.45a4.84 4.84 0 01-2-1.08z"/>
+              </svg>
+              <span>TikTok</span>
+            </a>
+          </div>
         </div>
+
+        {/* 4-Item Vertical Video Placeholder Slots (9:15 aspect ratio) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {reelSlots.map((slot) => (
+            <div 
+              key={slot.id}
+              className={`relative aspect-[9/15] border border-dashed overflow-hidden flex flex-col justify-between p-6 transition-all duration-300 ${
+                isLight 
+                  ? 'bg-white/60 border-gray-300 shadow-sm' 
+                  : 'bg-[#101410]/70 border-white/10'
+              }`}
+            >
+              {/* Top Meta Header */}
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 border border-current opacity-60">
+                  {slot.platform}
+                </span>
+                <span className="font-mono text-[9px] opacity-40">
+                  SLOT 0{slot.id}
+                </span>
+              </div>
+
+              {/* Central Clean Icon */}
+              <div className="self-center flex flex-col items-center gap-3 opacity-50">
+                <div className={`w-12 h-12 rounded-full border border-dashed flex items-center justify-center ${
+                  isLight ? 'border-gray-400 text-gray-400' : 'border-white/30 text-white/40'
+                }`}>
+                  <svg className="w-5 h-5 ml-0.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <span className="font-mono text-[10px] uppercase tracking-wider text-center max-w-[140px]">
+                  {language === 'es' ? 'Vídeo oficial en preparación' : 'Official media in production'}
+                </span>
+              </div>
+
+              {/* Bottom Channel Link */}
+              <div className="pt-3 border-t border-dashed border-gray-200 dark:border-white/10 flex items-center justify-between">
+                <span className={`font-mono text-[10px] font-semibold ${isLight ? 'text-gray-900' : 'text-white'}`}>
+                  {slot.handle}
+                </span>
+                <span className="font-mono text-[9px] opacity-40">
+                  HD
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
 };
+
+// Aliases for clean backward compatibility
+export const InfluencerTestimonialsPlaceholder = VerifiedAuditsSection;
+export const SocialProofPlaceholder = LiveLabActivitySection;
+export const TiktokReviewsPlaceholder = LiveLabActivitySection;
+

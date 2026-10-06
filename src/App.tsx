@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { ConceptProvider } from './context/ConceptContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { LuxuryNavbar } from './components/luxury/LuxuryNavbar';
 import { LuxuryFooter } from './components/luxury/LuxuryFooter';
+import { PrecisionScrollDatum } from './components/luxury/PrecisionScrollDatum';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -36,6 +37,7 @@ import { LoginPage } from './pages/LoginPage';
 
 export const AppContent: React.FC = () => {
   const { isLoggedIn } = useAuth();
+  const { theme } = useTheme();
   const [currentPath, setCurrentPath] = useState<string>(() => {
     return window.location.pathname || '/';
   });
@@ -124,10 +126,15 @@ export const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans transition-colors duration-300 bg-[#454545] text-[#F4F6F0]">
+    <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 relative ${
+      theme === 'light' ? 'bg-[#F9F7F2] text-[#111827]' : 'bg-[#0B0E0B] text-[#F4F6F0]'
+    }`}>
+      {/* Universal Fixed Studio Background Layer with Uploaded Smoke Texture & Lighting */}
+      <PrecisionScrollDatum />
+
       <LuxuryNavbar onNavigate={handleNavigate} />
       
-      <main className="flex-1">
+      <main className="flex-1 flex flex-col relative">
         {renderPage()}
       </main>
 

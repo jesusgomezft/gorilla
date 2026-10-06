@@ -86,7 +86,7 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
           <div className="flex flex-col sm:flex-row gap-4">
              <button
                 onClick={() => onNavigate && onNavigate('/submit')}
-                className="px-8 py-3.5 bg-[#48C765] hover:bg-[#38B554] text-[#14170F] font-mono text-[10px] font-bold tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-2"
+                className="btn-gorilla-square px-8 py-3.5 text-xs font-extrabold tracking-[0.14em] gap-2 shadow-lg"
               >
                 <span>{language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}</span>
                 <span>→</span>
