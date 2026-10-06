@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -35,11 +36,48 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
       window.removeEventListener('popstate', handleScroll);
     };
   }, []);
+  // Lock body scroll when mobile menu is open to prevent background scrolling
+  React.useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const go = (path: string) => {
     setCurrentPath(path);
     onNavigate && onNavigate(path);
   };
+
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  // Close search popover on click outside or Escape
+  useEffect(() => {
+    if (!isSearchOpen) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target as Node)) {
+        setIsSearchOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isSearchOpen]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,7 +111,11 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
   }`;
 
   // Header background class
-  const headerBgClass = !isScrolled
+  const headerBgClass = isMobileMenuOpen
+    ? (isLight 
+        ? 'bg-[#FAF9F6] border-b border-[#E5E7EB] text-[#111827] shadow-sm' 
+        : 'bg-[#0B0E0B] border-b border-white/10 text-white shadow-sm')
+    : !isScrolled
     ? (isLight 
         ? 'bg-[#EBF1EA]/90 backdrop-blur-md border-b border-[#D2DDD1] shadow-[0_4px_15px_rgba(0,0,0,0.03)]' 
         : 'bg-[#0A0D0A]/60 backdrop-blur-md border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]')
@@ -82,7 +124,10 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
         : 'bg-[#080A08]/95 border-b border-white/10 text-white backdrop-blur-xl shadow-md');
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${headerBgClass}`}>
+    <header 
+      className={`sticky top-0 w-full transition-all duration-300 ${isMobileMenuOpen ? 'z-[10000]' : 'z-50'} ${headerBgClass}`}
+      style={isMobileMenuOpen ? { backgroundColor: isLight ? '#FAF9F6' : '#0B0E0B' } : undefined}
+    >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between gap-4">
         
         {/* Brand Logo & Name */}
@@ -122,36 +167,89 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
 
         {/* Right Tools & CTAs */}
         <div className="flex items-center gap-1 sm:gap-2 lg:gap-3 shrink-0">
-          {/* Quick Search Trigger — clean icon without colliding pop-up text */}
-          <div className="relative flex items-center">
-            {isSearchOpen ? (
-              <form onSubmit={handleSearchSubmit} className="flex items-center">
-                <input
-                  type="text"
-                  placeholder="GG-892401..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  autoFocus
-                  className={`${isLight ? 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-gray-900' : 'bg-[#161B16] border border-white/20 text-white focus:border-white'} text-xs px-3 py-1.5 rounded-none w-36 focus:outline-none focus:w-44 transition-all font-mono`}
-                />
-                <button 
-                  type="button" 
-                  onClick={() => setIsSearchOpen(false)}
-                  className={`ml-2 text-xs ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-[#A4ACA1] hover:text-white'}`}
-                >
-                  ✕
-                </button>
-              </form>
-            ) : (
+          {/* Mobile Search Form (inline, exactly as it was before) */}
+          {isSearchOpen && (
+            <form onSubmit={handleSearchSubmit} className="flex md:hidden items-center">
+              <input
+                type="text"
+                placeholder="GG-892401..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                autoFocus
+                className={`${isLight ? 'bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-gray-900' : 'bg-[#161B16] border border-white/20 text-white focus:border-white'} text-xs px-3 py-1.5 rounded-none w-36 focus:outline-none focus:w-44 transition-all font-mono`}
+              />
               <button 
-                onClick={() => setIsSearchOpen(true)}
-                className={iconBtnClass}
-                title={language === 'es' ? 'Buscar certificado' : 'Search Certificate'}
+                type="button" 
+                onClick={() => setIsSearchOpen(false)}
+                className={`ml-2 text-xs ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-[#A4ACA1] hover:text-white'}`}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+                ✕
               </button>
+            </form>
+          )}
+
+          {/* Mobile Search Trigger Button (when search is closed) */}
+          {!isSearchOpen && (
+            <button 
+              onClick={() => setIsSearchOpen(true)}
+              className={`md:hidden ${iconBtnClass}`}
+              title={language === 'es' ? 'Buscar certificado' : 'Search Certificate'}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          )}
+
+          {/* Desktop Search Trigger & Dropdown Popover (md and above) */}
+          <div ref={searchContainerRef} className="hidden md:flex relative items-center">
+            <button 
+              onClick={() => setIsSearchOpen(prev => !prev)}
+              className={`${iconBtnClass} ${isSearchOpen ? (isLight ? 'text-[#16A34A]' : 'text-[#4ADE80]') : ''}`}
+              title={language === 'es' ? 'Buscar certificado' : 'Search Certificate'}
+              aria-expanded={isSearchOpen}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+
+            {isSearchOpen && (
+              <div className="absolute right-0 top-full mt-2 z-50">
+                <form onSubmit={handleSearchSubmit} className="relative flex items-center">
+                  <input
+                    type="text"
+                    placeholder="GG-892401..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    autoFocus
+                    className={`w-52 sm:w-56 text-xs pl-3 pr-12 py-1.5 border font-mono uppercase tracking-wider focus:outline-none transition-all shadow-xl ${
+                      isLight 
+                        ? 'bg-white border-black/30 text-[#111827] placeholder:text-black/35 focus:border-[#16A34A]' 
+                        : 'bg-[#141714] border-white/30 text-white placeholder:text-white/35 focus:border-[#4ADE80]'
+                    }`}
+                  />
+                  <button 
+                    type="submit" 
+                    aria-label="Submit Search"
+                    className={`absolute right-6 top-1/2 -translate-y-1/2 p-0.5 text-xs font-mono transition-colors cursor-pointer ${
+                      isLight ? 'text-gray-400 hover:text-[#16A34A]' : 'text-gray-400 hover:text-[#4ADE80]'
+                    }`}
+                  >
+                    ↵
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={() => setIsSearchOpen(false)}
+                    className={`absolute right-2 top-1/2 -translate-y-1/2 p-0.5 text-xs transition-colors cursor-pointer ${
+                      isLight ? 'text-gray-400 hover:text-black' : 'text-gray-400 hover:text-white'
+                    }`}
+                    title={language === 'es' ? 'Cerrar' : 'Close'}
+                  >
+                    ✕
+                  </button>
+                </form>
+              </div>
             )}
           </div>
 
@@ -228,159 +326,64 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
 
       </div>
 
-      {/* Mobile Menu Overlay - Executive Luxury Takeover */}
-      {isMobileMenuOpen && (
-        <div className={`md:hidden fixed top-20 left-0 w-full h-[calc(100vh-5rem)] flex flex-col justify-between py-6 px-6 z-40 animate-crossfade-up overflow-y-auto ${
-          isLight 
-            ? 'bg-[#FAF9F6]/98 backdrop-blur-2xl text-gray-900 border-t border-[#E5E7EB] shadow-2xl' 
-            : 'bg-[#0B0E0B]/98 backdrop-blur-2xl text-white border-t border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)]'
-        }`}>
-          {/* Top Section: Nav Links + Account */}
-          <div className="flex flex-col w-full">
-            
-            {/* Header kicker inside drawer */}
-            <div className="flex items-center justify-between pb-3 mb-2 border-b border-black/5 dark:border-white/5 font-mono text-[10px] tracking-[0.22em] text-gray-500 dark:text-gray-300 uppercase">
-              <span>{language === 'es' ? 'DIRECTORIO DE SERVICIOS' : 'SERVICES DIRECTORY'}</span>
-              <div className="flex items-center gap-1.5 text-emerald-500 font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>{language === 'es' ? 'LAB ACTIVO' : 'LAB ONLINE'}</span>
-              </div>
-            </div>
+      {/* Mobile Menu Overlay - Executive Luxury Takeover (Portaled directly to document.body to break free from header constraints) */}
+      {isMobileMenuOpen && typeof document !== 'undefined' && createPortal(
+        <div 
+          className={`md:hidden fixed top-20 inset-x-0 bottom-0 flex flex-col justify-between py-6 px-6 z-[9999] overflow-y-auto ${
+            isLight 
+              ? 'text-gray-900 border-t border-[#E5E7EB] shadow-2xl' 
+              : 'text-white border-t border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)]'
+          }`}
+          style={{ 
+            backgroundColor: isLight ? '#FAF9F6' : '#0B0E0B',
+            color: isLight ? '#111827' : '#FFFFFF'
+          }}
+        >
+          {/* Clean Navigation Links */}
+          <nav className="flex flex-col divide-y divide-black/10 dark:divide-white/10">
+            {navLinks.map((link) => {
+              const isActive = currentPath === link.path;
 
-            {/* Navigation links with Nunito Sans, index numbering & active highlight */}
-            <nav className="flex flex-col divide-y divide-black/5 dark:divide-white/5">
-              {navLinks.map((link, idx) => {
-                const isActive = currentPath === link.path;
-                const num = `0${idx + 1}`;
+              return (
+                <button
+                  key={link.path}
+                  onClick={() => { setIsMobileMenuOpen(false); go(link.path); }}
+                  className={`py-4 px-2 text-left font-['Nunito_Sans','Nunito',sans-serif] text-[15px] tracking-[0.14em] uppercase transition-colors cursor-pointer ${
+                    isActive 
+                      ? (isLight ? 'text-black font-black' : 'text-emerald-400 font-black') 
+                      : (isLight ? 'text-gray-700 hover:text-black font-bold' : 'text-gray-300 hover:text-white font-bold')
+                  }`}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
 
-                return (
-                  <button
-                    key={link.path}
-                    onClick={() => { setIsMobileMenuOpen(false); go(link.path); }}
-                    className={`group flex items-center justify-between py-3.5 px-2.5 text-left transition-all duration-200 cursor-pointer ${
-                      isActive 
-                        ? (isLight ? 'bg-black/[0.04] border-l-2 border-l-[#16A34A] text-black font-black' : 'bg-white/[0.06] border-l-2 border-l-[#22C55E] text-white font-black') 
-                        : (isLight ? 'text-gray-800 hover:text-black hover:bg-black/[0.02]' : 'text-gray-200 hover:text-white hover:bg-white/[0.03]')
-                    }`}
-                  >
-                    <div className="flex items-center gap-3.5">
-                      <span className={`font-mono text-[11px] font-bold ${
-                        isActive 
-                          ? 'text-emerald-500 font-extrabold' 
-                          : 'text-gray-400 dark:text-gray-400'
-                      }`}>
-                        {num}
-                      </span>
-                      <span className={`font-['Nunito_Sans','Nunito',sans-serif] text-[13.5px] tracking-[0.16em] uppercase ${
-                        isActive ? 'font-black' : 'font-extrabold'
-                      }`}>
-                        {link.label}
-                      </span>
-                    </div>
+            {/* Collector Vault / Login Row */}
+            <button
+              onClick={() => { setIsMobileMenuOpen(false); go('/account'); }}
+              className={`py-4 px-2 text-left font-['Nunito_Sans','Nunito',sans-serif] text-[15px] tracking-[0.14em] uppercase transition-colors cursor-pointer ${
+                currentPath === '/account'
+                  ? (isLight ? 'text-black font-black' : 'text-emerald-400 font-black')
+                  : (isLight ? 'text-gray-700 hover:text-black font-bold' : 'text-gray-300 hover:text-white font-bold')
+              }`}
+            >
+              {language === 'es' ? 'Bóveda del Coleccionista' : 'Collector Vault / Login'}
+            </button>
+          </nav>
 
-                    <span className={`font-mono text-xs transition-transform duration-200 ${
-                      isActive 
-                        ? 'text-emerald-500 translate-x-0 font-bold' 
-                        : 'text-gray-400 dark:text-gray-400 group-hover:translate-x-1 group-hover:text-white'
-                    }`}>
-                      →
-                    </span>
-                  </button>
-                );
-              })}
-
-              {/* Collector Vault / Login Row */}
-              <button
-                onClick={() => { setIsMobileMenuOpen(false); go('/account'); }}
-                className={`group flex items-center justify-between py-3.5 px-2.5 text-left transition-all duration-200 cursor-pointer ${
-                  currentPath === '/account'
-                    ? (isLight ? 'bg-black/[0.04] border-l-2 border-l-[#16A34A] text-black font-black' : 'bg-white/[0.06] border-l-2 border-l-[#22C55E] text-white font-black')
-                    : (isLight ? 'text-gray-800 hover:text-black hover:bg-black/[0.02]' : 'text-gray-200 hover:text-white hover:bg-white/[0.03]')
-                }`}
-              >
-                <div className="flex items-center gap-3.5">
-                  <span className="font-mono text-[11px] text-gray-400 dark:text-gray-400 font-bold">
-                    06
-                  </span>
-                  <span className="font-['Nunito_Sans','Nunito',sans-serif] text-[13.5px] font-extrabold tracking-[0.16em] uppercase">
-                    {language === 'es' ? 'Bóveda del Coleccionista' : 'Collector Vault / Login'}
-                  </span>
-                </div>
-                <span className="font-mono text-xs text-gray-400 dark:text-gray-400 group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
-              </button>
-            </nav>
-          </div>
-
-          {/* Bottom Section: Controls & Primary Action */}
-          <div className="pt-5 border-t border-black/5 dark:border-white/5 space-y-4">
-            
-            {/* Preferences Switchers: Language & Theme */}
-            <div className="flex items-center justify-between gap-3">
-              
-              {/* Language Pill Switch */}
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-300 font-semibold">
-                  {language === 'es' ? 'Idioma' : 'Lang'}:
-                </span>
-                <div className={`p-0.5 border flex items-center ${
-                  isLight ? 'border-gray-300 bg-gray-100' : 'border-white/10 bg-white/5'
-                }`}>
-                  <button 
-                    onClick={() => setLanguage('es')} 
-                    className={`px-2.5 py-1 font-mono text-[11px] font-bold transition-colors cursor-pointer ${
-                      language === 'es' 
-                        ? (isLight ? 'bg-white text-black shadow-xs font-black' : 'bg-white/20 text-white font-black') 
-                        : (isLight ? 'text-gray-600 hover:text-black' : 'text-gray-400 hover:text-white')
-                    }`}
-                  >
-                    ES
-                  </button>
-                  <button 
-                    onClick={() => setLanguage('en')} 
-                    className={`px-2.5 py-1 font-mono text-[11px] font-bold transition-colors cursor-pointer ${
-                      language === 'en' 
-                        ? (isLight ? 'bg-white text-black shadow-xs font-black' : 'bg-white/20 text-white font-black') 
-                        : (isLight ? 'text-gray-600 hover:text-black' : 'text-gray-400 hover:text-white')
-                    }`}
-                  >
-                    EN
-                  </button>
-                </div>
-              </div>
-
-              {/* Theme Mode Toggle Button */}
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className={`px-3 py-1 border flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider font-semibold transition-colors cursor-pointer ${
-                  isLight 
-                    ? 'border-gray-300 bg-gray-100 text-gray-800 hover:bg-gray-200' 
-                    : 'border-white/10 bg-white/5 text-gray-200 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <span>{isLight ? '☀ MODO CLARO' : '☾ MODO OSCURO'}</span>
-              </button>
-            </div>
-
-            {/* Signature Gorilla 3D CTA Button */}
+          {/* Bottom Submit Button */}
+          <div className="pt-4">
             <button
               onClick={() => { setIsMobileMenuOpen(false); go('/submit'); }}
-              className="btn-gorilla-pill w-full py-4 px-6 gap-2 shadow-lg cursor-pointer"
+              className="w-full py-3 px-4 flex items-center justify-center gap-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-['Nunito_Sans','Nunito',sans-serif] text-xs font-bold tracking-[0.16em] uppercase transition-colors cursor-pointer"
             >
-              <span className="font-['Nunito_Sans','Nunito',sans-serif] text-xs font-black tracking-[0.18em] uppercase text-white">
-                {t('ref.nav.submit')}
-              </span>
-              <span className="text-white text-sm font-bold ml-1">→</span>
+              <span>{t('ref.nav.submit')}</span>
+              <span aria-hidden="true" className="text-xs">→</span>
             </button>
-
-            {/* Technical Laboratory Footer stamp */}
-            <div className="text-center font-mono text-[9px] tracking-[0.2em] text-gray-400 dark:text-gray-400 uppercase">
-              GORILLA OPTICAL LAB · ISO-9001 AUDITED
-            </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );

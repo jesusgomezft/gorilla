@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { MOCK_SERVICES } from '../data/mockServices';
 import { OrderItem, ServiceTier } from '../types';
-import { Plus, Trash2, CheckCircle2, Clock, Check, ShieldCheck } from 'lucide-react';
+import { Plus, Trash2, CheckCircle2, Clock, Check, ShieldCheck, Edit2, X } from 'lucide-react';
 import { 
   BlueprintCaliper, 
   BlueprintScanner, 
@@ -19,10 +19,12 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
   const { language } = useLanguage();
   const { theme } = useTheme();
   const isLight = theme === 'light';
+
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3 | 4>(() => {
     const params = new URLSearchParams(window.location.search);
-    return params.get('tier') ? 2 : 1;
+    return params.get('tier') || params.get('qty') ? 2 : 1;
   });
+
   const [selectedTier, setSelectedTier] = useState<ServiceTier | null>(() => {
     const params = new URLSearchParams(window.location.search);
     const tierId = params.get('tier');
@@ -33,7 +35,27 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
     return MOCK_SERVICES.find(s => s.id === 'standard') || MOCK_SERVICES[1];
   }); 
   
-  const [items, setItems] = useState<OrderItem[]>([]);
+  const [items, setItems] = useState<OrderItem[]>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const qty = parseInt(params.get('qty') || '0', 10);
+    const tierId = params.get('tier');
+    const tier = (tierId ? MOCK_SERVICES.find(s => s.id === tierId) : null) || MOCK_SERVICES.find(s => s.id === 'standard') || MOCK_SERVICES[1];
+
+    if (qty > 0) {
+      return Array.from({ length: qty }, (_, i) => ({
+        id: `preset-${Date.now()}-${i}`,
+        cardName: language === 'es' ? `Carta #${i + 1} (${tier.name})` : `Card #${i + 1} (${tier.name})`,
+        game: 'Pokemon',
+        set: 'Base Set',
+        declaredValue: 100,
+        serviceTierId: tier.id,
+        notes: '',
+        frontImagePreview: 'https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=400&q=80'
+      }));
+    }
+    return [];
+  });
+
   const [newCardGame, setNewCardGame] = useState('Pokemon');
   const [newCardYear, setNewCardYear] = useState('');
   const [newCardSet, setNewCardSet] = useState('');
@@ -41,7 +63,47 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
   const [newCardLanguage, setNewCardLanguage] = useState('English');
   const [newCardRarity, setNewCardRarity] = useState('');
   const [newDeclaredValue, setNewDeclaredValue] = useState('');
-  const [newCardQuantity, setNewCardQuantity] = useState('1');
+  const [newCardQuantity, setNewCardQuantity] = useState<string>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('qty') || '1';
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tierId = params.get('tier');
+    const qtyParam = params.get('qty');
+
+    if (tierId) {
+      const found = MOCK_SERVICES.find(s => s.id === tierId);
+      if (found) {
+        setSelectedTier(found);
+      }
+      setCurrentStep(2);
+    }
+
+    if (qtyParam) {
+      const qty = parseInt(qtyParam, 10);
+      if (qty > 0) {
+        setNewCardQuantity(String(qty));
+        setItems(prevItems => {
+          if (prevItems.length === 0) {
+            const currentTier = (tierId ? MOCK_SERVICES.find(s => s.id === tierId) : null) || selectedTier || MOCK_SERVICES[1];
+            return Array.from({ length: qty }, (_, i) => ({
+              id: `preset-${Date.now()}-${i}`,
+              cardName: language === 'es' ? `Carta #${i + 1} (${currentTier.name})` : `Card #${i + 1} (${currentTier.name})`,
+              game: 'Pokemon',
+              set: 'Base Set',
+              declaredValue: 100,
+              serviceTierId: currentTier.id,
+              notes: '',
+              frontImagePreview: 'https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=400&q=80'
+            }));
+          }
+          return prevItems;
+        });
+      }
+    }
+  }, [language]);
 
   const [shippingMethod, setShippingMethod] = useState<'COURIER_INSURED' | 'CARD_SHOW_DROPOFF'>('COURIER_INSURED');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -83,6 +145,15 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
     setNewCardQuantity('1');
   };
 
+  const [editingItem, setEditingItem] = useState<OrderItem | null>(null);
+
+  const handleSaveEditedCard = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingItem) return;
+    setItems(items.map(it => it.id === editingItem.id ? editingItem : it));
+    setEditingItem(null);
+  };
+
   const handleRemoveCard = (id: string) => {
     setItems(items.filter(item => item.id !== id));
   };
@@ -105,10 +176,8 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
   if (isSubmitted) {
     return (
       <div className={`max-w-3xl mx-auto px-4 py-24 text-center ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
-        <div className={`w-20 h-20 rounded-none flex items-center justify-center mx-auto mb-8 border ${
-          isLight ? 'bg-[#2D9A46]/10 text-[#2D9A46] border-[#2D9A46]/30' : 'bg-[#48C765]/20 text-[#48C765] border-[#48C765]/50'
-        }`}>
-          <CheckCircle2 className="w-10 h-10" />
+        <div className="flex items-center justify-center mx-auto mb-6">
+          <CheckCircle2 className={`w-14 h-14 ${isLight ? 'text-[#16A34A]' : 'text-[#4ADE80]'}`} />
         </div>
         <h1 className="text-2xl font-['Oswald'] uppercase tracking-wide mb-4">
           {language === 'es' ? 'Pedido Confirmado' : 'Order Confirmed'}
@@ -517,14 +586,14 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
               </div>
 
               {/* Nota oficial de laboratorio */}
-              <div className={`p-5 border-l-4 shadow-sm ${
+              <div className={`p-4 border ${
                 isLight 
-                  ? 'bg-white border border-[#E5DEC9] border-l-[#16A34A]' 
-                  : 'bg-[#121612] border border-white/10 border-l-[#22C55E]'
+                  ? 'bg-white border-[#E5DEC9] text-gray-700' 
+                  : 'bg-[#141814] border-white/10 text-gray-300'
               }`}>
-                <p className={`font-sans text-sm ${isLight ? 'text-gray-700' : 'text-gray-300'}`}>
-                  <strong className={`font-bold ${isLight ? 'text-black' : 'text-white'}`}>
-                    {language === 'es' ? 'Valor declarado y cobertura. ' : 'Declared value and insurance. '}
+                <p className="font-sans text-xs leading-relaxed">
+                  <strong className={`font-mono font-bold uppercase tracking-wider mr-2 ${isLight ? 'text-black' : 'text-white'}`}>
+                    {language === 'es' ? 'VALOR DECLARADO Y COBERTURA:' : 'DECLARED VALUE & INSURANCE:'}
                   </strong>
                   {language === 'es' 
                     ? 'Cada nivel tiene un tope de valor asegurado por carta. Si alguna de tus cartas supera dicho importe, el sistema te solicitará asignarla al nivel correspondiente para garantizar la cobertura total.'
@@ -541,14 +610,29 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         ============================================================== */}
         {currentStep === 2 && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className={`font-['Oswald'] text-xl uppercase tracking-wide mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
-              {language === 'es' ? 'Suma tus cartas' : 'Add your cards'}
-            </h2>
-            <p className={`text-xs font-sans mb-8 ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
-              {language === 'es' 
-                ? 'Agrega una foto o escribe el nombre y valor de cada carta. Podrás añadir más después.'
-                : 'Add a photo or type the name and value of each card.'}
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-6">
+              <div>
+                <h2 className={`font-['Oswald'] text-xl uppercase tracking-wide mb-1 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
+                  {language === 'es' ? 'Suma tus cartas' : 'Add your cards'}
+                </h2>
+                <p className={`text-xs font-sans ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
+                  {items.length > 0
+                    ? (language === 'es' 
+                        ? `${items.length} ${items.length === 1 ? 'carta añadida' : 'cartas añadidas'} · ${selectedTier?.name || ''}`
+                        : `${items.length} ${items.length === 1 ? 'card added' : 'cards added'} · ${selectedTier?.name || ''}`)
+                    : (language === 'es' 
+                        ? 'Agrega una foto o escribe el nombre y valor de cada carta. Podrás añadir más después.'
+                        : 'Add a photo or type the name and value of each card.')}
+                </p>
+              </div>
+
+              {items.length > 0 && (
+                <div className={`font-mono text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'}`}>
+                  <span>{items.length} × {selectedTier?.priceEur || 0} € = </span>
+                  <strong className={`font-bold text-sm ${isLight ? 'text-gray-950' : 'text-white'}`}>{subtotalGrading} €</strong>
+                </div>
+              )}
+            </div>
 
             {/* Professional Mini-Form */}
             <form onSubmit={handleAddCard} className={`w-full p-6 mb-8 flex flex-col gap-6 border ${
@@ -709,33 +793,80 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
 
             {/* Horizontal Card Gallery */}
             {items.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {items.map((item, idx) => (
-                  <div 
-                    key={item.id} 
-                    className={`rounded-xl p-3 flex flex-col justify-between relative group h-28 border transition-all ${
-                      isLight 
-                        ? 'bg-white border-[#E5DEC9] shadow-sm' 
-                        : 'bg-[#454545] border-[#2A2E2A]'
-                    }`}
-                  >
-                    <div className={`text-xs font-semibold truncate pr-6 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
-                      {item.cardName}
-                    </div>
-                    <div className={`text-[10px] font-mono mt-auto ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
-                      ID: GG-{1000 + idx}
-                      <br/>€{item.declaredValue}
-                    </div>
-                    <button 
-                      onClick={() => handleRemoveCard(item.id)}
-                      className={`absolute bottom-3 right-3 transition-colors ${
-                        isLight ? 'text-[#8A9388] hover:text-red-500' : 'text-[#A4ACA1] hover:text-red-400'
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${isLight ? 'text-gray-700' : 'text-gray-300'}`}>
+                    {language === 'es' ? 'Cartas en la orden (haz clic para editar datos o valor):' : 'Cards in order (click to edit card data or value):'}
+                  </span>
+                  <span className={`font-mono text-[11px] ${isLight ? 'text-gray-500' : 'text-gray-400'}`}>
+                    {items.length} {items.length === 1 ? (language === 'es' ? 'carta' : 'card') : (language === 'es' ? 'cartas' : 'cards')}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
+                  {items.map((item, idx) => (
+                    <div 
+                      key={item.id} 
+                      onClick={() => setEditingItem({ ...item })}
+                      className={`rounded-none p-4 flex flex-col justify-between relative group border transition-all cursor-pointer select-none ${
+                        isLight 
+                          ? 'bg-white border-[#DCD5C3] hover:border-[#16A34A] hover:shadow-md' 
+                          : 'bg-[#181D18] border-white/10 hover:border-[#48C765] hover:bg-[#1E241E]'
                       }`}
                     >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                ))}
+                      {/* Top bar with ID & actions */}
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                          GG-{1000 + idx}
+                        </span>
+                        <div className="flex items-center gap-1.5" onClick={e => e.stopPropagation()}>
+                          <button
+                            type="button"
+                            title={language === 'es' ? 'Editar carta' : 'Edit card'}
+                            onClick={() => setEditingItem({ ...item })}
+                            className={`p-1.5 transition-colors ${
+                              isLight ? 'text-gray-500 hover:text-emerald-600 hover:bg-gray-100' : 'text-gray-400 hover:text-emerald-400 hover:bg-white/10'
+                            }`}
+                          >
+                            <Edit2 className="w-3.5 h-3.5" />
+                          </button>
+                          <button 
+                            type="button"
+                            title={language === 'es' ? 'Eliminar carta' : 'Delete card'}
+                            onClick={() => handleRemoveCard(item.id)}
+                            className={`p-1.5 transition-colors ${
+                              isLight ? 'text-gray-400 hover:text-red-500 hover:bg-gray-100' : 'text-gray-500 hover:text-red-400 hover:bg-white/10'
+                            }`}
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Card Name */}
+                      <div className={`text-xs font-bold leading-tight line-clamp-2 mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
+                        {item.cardName}
+                      </div>
+
+                      {/* Game & Set */}
+                      <div className={`text-[10px] font-mono truncate mb-3 ${isLight ? 'text-gray-500' : 'text-gray-400'}`}>
+                        {item.game} · {item.set || 'Base Set'}
+                      </div>
+
+                      {/* Bottom row: Declared Value */}
+                      <div className={`pt-2.5 border-t flex items-center justify-between font-mono text-[11px] ${
+                        isLight ? 'border-gray-100 text-gray-700' : 'border-white/5 text-gray-300'
+                      }`}>
+                        <span className="text-[9.5px] uppercase text-gray-500 dark:text-gray-400">
+                          {language === 'es' ? 'Seguro / Valor:' : 'Insurance / Decl:'}
+                        </span>
+                        <strong className="font-bold text-emerald-600 dark:text-emerald-400">
+                          €{item.declaredValue}
+                        </strong>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
             
@@ -892,6 +1023,131 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             </button>
           )}
         </div>
+
+        {/* Modal de Edición de Carta Individual */}
+        {editingItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className={`w-full max-w-lg p-6 border shadow-2xl relative ${
+              isLight ? 'bg-white border-[#DCD5C3] text-[#1C201D]' : 'bg-[#151A15] border-white/10 text-white'
+            }`}>
+              <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-white/10 mb-5">
+                <div>
+                  <h3 className="font-['Oswald'] text-lg uppercase tracking-wider font-bold">
+                    {language === 'es' ? 'Editar Especificaciones de la Carta' : 'Edit Card Specifications'}
+                  </h3>
+                  <p className="text-[11px] font-mono text-gray-500">
+                    ID: {editingItem.id}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEditingItem(null)}
+                  className={`p-1.5 transition-colors ${
+                    isLight ? 'text-gray-400 hover:text-black hover:bg-gray-100' : 'text-gray-400 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleSaveEditedCard} className="space-y-4">
+                <div>
+                  <label className="block text-[10px] uppercase font-mono tracking-wider text-gray-500 mb-1">
+                    {language === 'es' ? 'Nombre de la Carta' : 'Card Name'}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={editingItem.cardName}
+                    onChange={e => setEditingItem({ ...editingItem, cardName: e.target.value })}
+                    className={`w-full px-3 py-2 text-sm border focus:outline-none ${
+                      isLight ? 'bg-[#FAF7F2] border-[#DCD5C3] text-black focus:border-[#2D9A46]' : 'bg-[#222722] border-white/10 text-white focus:border-[#48C765]'
+                    }`}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[10px] uppercase font-mono tracking-wider text-gray-500 mb-1">
+                      {language === 'es' ? 'Juego / Colección' : 'Game / TCG'}
+                    </label>
+                    <select
+                      value={editingItem.game}
+                      onChange={e => setEditingItem({ ...editingItem, game: e.target.value })}
+                      className={`w-full px-3 py-2 text-sm border focus:outline-none ${
+                        isLight ? 'bg-[#FAF7F2] border-[#DCD5C3] text-black focus:border-[#2D9A46]' : 'bg-[#222722] border-white/10 text-white focus:border-[#48C765]'
+                      }`}
+                    >
+                      <option value="Pokemon">Pokémon TCG</option>
+                      <option value="Magic">Magic: The Gathering</option>
+                      <option value="Yu-Gi-Oh!">Yu-Gi-Oh!</option>
+                      <option value="Sports">Sports Cards</option>
+                      <option value="One Piece">One Piece TCG</option>
+                      <option value="Lorcana">Disney Lorcana</option>
+                      <option value="Other">Other / Misc</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] uppercase font-mono tracking-wider text-gray-500 mb-1">
+                      {language === 'es' ? 'Set / Expansión' : 'Set / Expansion'}
+                    </label>
+                    <input
+                      type="text"
+                      value={editingItem.set || ''}
+                      onChange={e => setEditingItem({ ...editingItem, set: e.target.value })}
+                      className={`w-full px-3 py-2 text-sm border focus:outline-none ${
+                        isLight ? 'bg-[#FAF7F2] border-[#DCD5C3] text-black focus:border-[#2D9A46]' : 'bg-[#222722] border-white/10 text-white focus:border-[#48C765]'
+                      }`}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[10px] uppercase font-mono tracking-wider text-gray-500 mb-1">
+                    {language === 'es' ? 'Valor Declarado (€) — Para Seguro de Tránsito' : 'Declared Value (€) — For Transit Insurance'}
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2 text-sm text-gray-500 font-mono">€</span>
+                    <input
+                      type="number"
+                      required
+                      min="1"
+                      value={editingItem.declaredValue}
+                      onChange={e => setEditingItem({ ...editingItem, declaredValue: Number(e.target.value) || 0 })}
+                      className={`w-full pl-7 pr-3 py-2 text-sm border focus:outline-none font-mono ${
+                        isLight ? 'bg-[#FAF7F2] border-[#DCD5C3] text-black focus:border-[#2D9A46]' : 'bg-[#222722] border-white/10 text-white focus:border-[#48C765]'
+                      }`}
+                    />
+                  </div>
+                  <p className="text-[10px] text-gray-500 mt-1 font-sans">
+                    {language === 'es'
+                      ? 'Este valor define la cobertura de la póliza de custodia y seguro ante pérdida/daño, no el precio del servicio de graduación.'
+                      : 'This value determines vault coverage and insurance limit, not the service fee.'}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => setEditingItem(null)}
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-wider border ${
+                      isLight ? 'border-gray-300 text-gray-700 hover:bg-gray-100' : 'border-white/10 text-gray-300 hover:bg-white/5'
+                    }`}
+                  >
+                    {language === 'es' ? 'Cancelar' : 'Cancel'}
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn-gorilla-square px-6 py-2 text-xs font-extrabold uppercase tracking-wider shadow-md"
+                  >
+                    {language === 'es' ? 'Guardar Cambios' : 'Save Changes'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>

@@ -50,9 +50,9 @@ export const SlabCard: React.FC<SlabCardProps> = ({
   };
 
   const scaleClasses = {
-    sm: 'w-72 max-w-full',
-    md: 'w-[360px] sm:w-[420px] max-w-full',
-    lg: 'w-[400px] sm:w-[480px] max-w-full'
+    sm: 'w-60 max-w-full',
+    md: 'w-[300px] sm:w-[340px] max-w-full',
+    lg: 'w-[340px] sm:w-[380px] max-w-full'
   };
 
   const isPristine = card.grade === 10;

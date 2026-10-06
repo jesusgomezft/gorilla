@@ -99,6 +99,7 @@ export const AppContent: React.FC = () => {
       case '/certificates/demo':
         return <CertificateDetailPage onNavigate={handleNavigate} certId="GG-892401" />;
       case '/track':
+      case '/tracking':
         return <TrackingPage onNavigate={handleNavigate} />;
       case '/login':
         return <LoginPage onNavigate={handleNavigate} />;

@@ -90,21 +90,21 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
 
       {/* Results - Split Layout */}
       {activeCard && (
-        <div className="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
+        <div className="w-full max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start">
           
           {/* Left Column: The Slab (Hero of the page) */}
-          <div className="lg:col-span-5 flex flex-col gap-8 sticky top-32">
-            <div className="w-full max-w-[420px] mx-auto relative group lg:mb-12">
-              {/* Subtle background glow to make the slab pop without looking like a cheap template */}
-              <div className="absolute inset-0 bg-[#48C765]/5 blur-[100px] rounded-none pointer-events-none transition-opacity duration-700 opacity-50 group-hover:opacity-100" />
-              <div className="relative z-10 scale-100 origin-top lg:scale-110">
-                <SlabCard card={activeCard} size="lg" />
+          <div className="lg:col-span-5 flex flex-col items-center gap-4 sticky top-24">
+            <div className="w-full max-w-[340px] mx-auto relative group">
+              {/* Subtle background glow */}
+              <div className="absolute inset-0 bg-[#48C765]/5 blur-[80px] pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity" />
+              <div className="relative z-10 flex justify-center">
+                <SlabCard card={activeCard} size="md" />
               </div>
             </div>
             
             <button 
               onClick={() => onNavigate('/certificates/demo')}
-              className="btn-gorilla-square mx-auto mt-4 px-8 py-3.5 text-xs font-extrabold tracking-widest gap-2 shadow-lg"
+              className="btn-gorilla-square mx-auto mt-2 px-6 py-2.5 text-xs font-extrabold tracking-widest gap-2 shadow-md"
             >
               <span>{language === 'es' ? 'Ver Certificado Completo' : 'View Full Certificate'}</span>
               <span>→</span>
@@ -115,32 +115,32 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
           <div className="lg:col-span-7 flex flex-col">
             
             {/* 1. Header Spec */}
-            <div className="pb-12 border-b border-white/10">
-              <div className="flex items-center gap-4 mb-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[#48C765]">
+            <div className="pb-5 border-b border-white/10">
+              <div className="flex items-center gap-3 mb-2 font-mono text-[10px] tracking-[0.2em] uppercase text-[#48C765]">
                 <span>CERT // {activeCard.certNumber}</span>
-                <span className="w-1 h-1 bg-[#48C765] rounded-none" />
+                <span className="w-1 h-1 bg-[#48C765]" />
                 <span>{activeCard.game}</span>
               </div>
               
-              <h2 className="font-['Oswald'] text-lg md:text-lg font-bold uppercase leading-[1.1] text-white mb-8">
+              <h2 className="font-['Oswald'] text-xl md:text-2xl font-bold uppercase leading-tight text-white mb-4">
                 {activeCard.name}
               </h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 font-mono text-[10px] tracking-[0.15em] uppercase text-[#A4ACA1]">
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30">Year</span>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-3 font-mono text-[10px] tracking-[0.15em] uppercase text-[#A4ACA1]">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-white/30 text-[9px]">Year</span>
                   <span className="text-white text-xs">{activeCard.year}</span>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30">Set</span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-white/30 text-[9px]">Set</span>
                   <span className="text-white text-xs truncate" title={activeCard.set}>{activeCard.set}</span>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30">Card No.</span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-white/30 text-[9px]">Card No.</span>
                   <span className="text-white text-xs">{activeCard.cardNumber}</span>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/30">Rarity</span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-white/30 text-[9px]">Rarity</span>
                   <div>
                     <span className="badge-rarity-gold text-[9px] px-2 py-0.5">
                       {activeCard.rarity}
@@ -150,18 +150,18 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
               </div>
             </div>
 
-            {/* 2. The Grade (Massive Typography) */}
-            <div className="py-12 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            {/* 2. The Grade (Harmonious Typography) */}
+            <div className="py-5 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="flex flex-col">
-                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-4">
+                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">
                   {t('verify.officialGrade')}
                 </span>
-                <div className="font-['Oswald'] text-lg md:text-[9rem] leading-none text-white font-bold tracking-tighter">
+                <div className="font-['Oswald'] text-5xl md:text-6xl lg:text-7xl leading-none text-white font-bold tracking-tight">
                   {activeCard.grade.toFixed(1)}
                 </div>
               </div>
-              <div className="flex flex-col items-start md:items-end gap-2 pb-3">
-                <span className="font-mono text-[14px] tracking-[0.2em] uppercase text-[#48C765]">
+              <div className="flex flex-col items-start md:items-end gap-1 pb-1">
+                <span className="font-mono text-xs sm:text-sm tracking-[0.2em] uppercase text-[#48C765] font-bold">
                   {activeCard.gradeLabel}
                 </span>
                 <span className="font-mono text-[10px] tracking-[0.1em] text-[#A4ACA1] max-w-xs md:text-right">
@@ -171,19 +171,19 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
             </div>
 
             {/* 3. Subgrades (Editorial List) */}
-            <div className="py-12 border-b border-white/10">
-              <span className="block font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-8">
+            <div className="py-5 border-b border-white/10">
+              <span className="block font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-3">
                 {language === 'es' ? 'Análisis Óptico (Sub-Grados)' : 'Optical Analysis (Sub-Grades)'}
               </span>
               
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
                 {[
                   { label: t('verify.subCentering'), score: activeCard.subgrades.centering.score, desc: activeCard.subgrades.centering.frontRatio.split(',')[0] },
                   { label: t('verify.subCorners'), score: activeCard.subgrades.corners.score, desc: '90° DIE CUT' },
                   { label: t('verify.subEdges'), score: activeCard.subgrades.edges.score, desc: 'NO WHITENING' },
                   { label: t('verify.subSurface'), score: activeCard.subgrades.surface.score, desc: 'SPECULAR OK' }
                 ].map((sub, i) => (
-                  <div key={i} className="flex items-center justify-between py-2 group">
+                  <div key={i} className="flex items-center justify-between py-1 group">
                     <div className="flex items-baseline gap-4 w-1/3">
                       <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-white">{sub.label}</span>
                     </div>
@@ -194,7 +194,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
                       <span className="font-mono text-[9px] tracking-widest uppercase text-[#A4ACA1] truncate text-right">
                         {sub.desc}
                       </span>
-                      <span className="font-['Oswald'] text-lg text-white font-bold w-12 text-right">
+                      <span className="font-['Oswald'] text-base text-white font-bold w-10 text-right">
                         {sub.score.toFixed(1)}
                       </span>
                     </div>
@@ -204,25 +204,25 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
             </div>
 
             {/* 4. Population Census */}
-            <div className="py-12">
-              <div className="grid grid-cols-3 gap-8">
-                <div className="flex flex-col gap-2">
+            <div className="py-5 border-b border-white/10">
+              <div className="grid grid-cols-3 gap-6">
+                <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Total Graded</span>
-                  <span className="font-['Oswald'] text-lg text-white">{activeCard.population.totalGraded}</span>
+                  <span className="font-['Oswald'] text-base text-white font-bold">{activeCard.population.totalGraded}</span>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Higher Grade</span>
-                  <span className="font-['Oswald'] text-lg text-white">{activeCard.population.higherCount}</span>
+                  <span className="font-['Oswald'] text-base text-white font-bold">{activeCard.population.higherCount}</span>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Equal Grade</span>
-                  <span className="font-['Oswald'] text-lg text-white">{activeCard.population.equalCount}</span>
+                  <span className="font-['Oswald'] text-base text-white font-bold">{activeCard.population.equalCount}</span>
                 </div>
               </div>
             </div>
 
             {/* 5. Defect Inspector (Full Width Module) */}
-            <div className="mt-8">
+            <div className="mt-5">
               <DefectInspector card={activeCard} />
             </div>
 

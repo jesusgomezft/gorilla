@@ -51,9 +51,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             {/* Box 1 */}
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-none bg-[#48C765]/10 border border-[#48C765]/30 flex items-center justify-center text-[#48C765]">
-                  <Microscope size={20} />
-                </div>
+                <Microscope size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
                 <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
                   {language === 'es' ? 'Precisión Nanométrica Imparcial' : 'Impartial Nanometric Precision'}
                 </h3>
@@ -68,9 +66,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             {/* Box 2 */}
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-none bg-[#48C765]/10 border border-[#48C765]/30 flex items-center justify-center text-[#48C765]">
-                  <ShieldCheck size={20} />
-                </div>
+                <ShieldCheck size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
                 <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
                   {language === 'es' ? 'Cadena de Custodia Inviolable' : 'Tamper-Evident Chain of Custody'}
                 </h3>
@@ -85,9 +81,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             {/* Box 3 */}
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-none bg-[#48C765]/10 border border-[#48C765]/30 flex items-center justify-center text-[#48C765]">
-                  <Award size={20} />
-                </div>
+                <Award size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
                 <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
                   {language === 'es' ? 'Transparencia de Datos en Blockchain' : 'Verifiable Public Cert Registry'}
                 </h3>
@@ -102,9 +96,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             {/* Box 4 */}
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-none bg-[#48C765]/10 border border-[#48C765]/30 flex items-center justify-center text-[#48C765]">
-                  <Users size={20} />
-                </div>
+                <Users size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
                 <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
                   {language === 'es' ? 'Construido por Coleccionistas Reales' : 'Built by Passionate Collectors'}
                 </h3>

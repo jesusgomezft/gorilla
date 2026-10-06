@@ -292,6 +292,11 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                           onClick={(e) => {
                             e.stopPropagation();
                             setSelectedTierId(lvl.id);
+                            if (onNavigate) {
+                              onNavigate(`/submit?tier=${lvl.id}`);
+                            } else {
+                              window.location.href = `/submit?tier=${lvl.id}`;
+                            }
                           }}
                           className={
                             isSelected
