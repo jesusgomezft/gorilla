@@ -65,8 +65,8 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
           {/* Left Column: Heading, Subtitle & Action Link */}
-          <div className="lg:col-span-4 flex flex-col justify-center text-left">
-            <h2 className={`font-['Oswald'] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-bold uppercase tracking-[-0.01em] leading-[1.05] title-3d ${
+          <div className="lg:col-span-4 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+            <h2 className={`font-['Oswald'] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-bold uppercase tracking-[-0.01em] leading-[1.05] text-center lg:text-left title-3d ${
               isLight ? 'text-[#14170F]' : 'text-white'
             }`}>
               {language === 'es' ? (
@@ -84,7 +84,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({
               )}
             </h2>
 
-            <p className={`mt-5 sm:mt-6 text-sm sm:text-base font-sans font-normal leading-relaxed max-w-sm ${
+            <p className={`mt-5 sm:mt-6 text-sm sm:text-base font-sans font-normal leading-relaxed max-w-sm text-center lg:text-left mx-auto lg:mx-0 ${
               isLight ? 'text-[#3E453B]' : 'text-[#D1D5DB]'
             }`}>
               {language === 'es'
@@ -92,7 +92,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({
                 : 'High-resolution imaging and advanced analysis where every detail matters.'}
             </p>
 
-            <div className="mt-8 sm:mt-10">
+            <div className="mt-8 sm:mt-10 flex justify-center lg:justify-start w-full">
               <button
                 type="button"
                 onClick={handleExplore}
