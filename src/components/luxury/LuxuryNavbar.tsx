@@ -96,9 +96,9 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
     { path: '/track', label: language === 'es' ? 'Estado del Pedido' : 'Order Status' },
   ];
 
-  // Executive nav link: Nunito Sans, tracked uppercase, senior aesthetic
+  // Executive nav link: Nunito, normal letter spacing
   const navLinkClass = (active: boolean) =>
-    `relative py-2 font-['Nunito_Sans','Nunito',sans-serif] text-[11px] lg:text-[12px] font-extrabold uppercase tracking-[0.16em] transition-colors cursor-pointer shrink-0
+    `relative py-2 font-['Nunito',sans-serif] text-[13px] lg:text-[14px] font-bold tracking-normal transition-colors cursor-pointer shrink-0
      after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:transition-all after:duration-300
      ${isLight ? 'after:bg-[#111827]' : 'after:bg-[#48C765]'}
      ${active ? 'after:w-full' : 'after:w-0 hover:after:w-full'}
@@ -141,12 +141,12 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
             className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <div className="flex flex-col items-center leading-none mt-1">
-            <span className={`font-display font-extrabold tracking-tight text-[15px] sm:text-[17px] uppercase ${
+            <span className={`font-['Nunito',sans-serif] font-black tracking-normal text-[16px] sm:text-[18px] uppercase ${
               isLight ? 'text-[#111827]' : 'text-[#F0F1F2]'
             }`}>
               GORILLA
             </span>
-            <span className="font-display font-bold text-[#16A34A] tracking-[0.25em] text-[7px] sm:text-[8px] uppercase mt-[2px]">
+            <span className="font-['Nunito',sans-serif] font-bold text-[#16A34A] tracking-normal text-[8px] sm:text-[9px] uppercase mt-[1px]">
               GRADING
             </span>
           </div>
@@ -299,7 +299,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
           {/* Submit a Card — High-end luxury outlined button */}
           <button
             onClick={() => go('/submit')}
-            className={`hidden sm:inline-flex items-center justify-center gap-1.5 px-4 lg:px-5 py-2.5 rounded-none font-['Nunito_Sans','Nunito',sans-serif] text-[11px] font-extrabold tracking-[0.16em] uppercase transition-all duration-200 cursor-pointer ${
+            className={`hidden sm:inline-flex items-center justify-center gap-1.5 px-4 lg:px-5 py-2.5 rounded-none font-['Nunito',sans-serif] text-xs font-bold tracking-normal transition-all duration-200 cursor-pointer ${
               isLight
                 ? 'border border-gray-900 text-gray-900 bg-transparent hover:bg-gray-900 hover:!text-white shadow-2xs'
                 : 'border border-white/25 text-white bg-transparent hover:border-white hover:bg-white/10'
@@ -348,7 +348,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
                 <button
                   key={link.path}
                   onClick={() => { setIsMobileMenuOpen(false); go(link.path); }}
-                  className={`py-4 px-2 text-left font-['Nunito_Sans','Nunito',sans-serif] text-[15px] tracking-[0.14em] uppercase transition-colors cursor-pointer ${
+                  className={`py-4 px-2 text-left font-['Nunito',sans-serif] text-base tracking-normal transition-colors cursor-pointer ${
                     isActive 
                       ? (isLight ? 'text-black font-black' : 'text-emerald-400 font-black') 
                       : (isLight ? 'text-gray-700 hover:text-black font-bold' : 'text-gray-300 hover:text-white font-bold')
@@ -362,7 +362,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
             {/* Collector Vault / Login Row */}
             <button
               onClick={() => { setIsMobileMenuOpen(false); go('/account'); }}
-              className={`py-4 px-2 text-left font-['Nunito_Sans','Nunito',sans-serif] text-[15px] tracking-[0.14em] uppercase transition-colors cursor-pointer ${
+              className={`py-4 px-2 text-left font-['Nunito',sans-serif] text-base tracking-normal transition-colors cursor-pointer ${
                 currentPath === '/account'
                   ? (isLight ? 'text-black font-black' : 'text-emerald-400 font-black')
                   : (isLight ? 'text-gray-700 hover:text-black font-bold' : 'text-gray-300 hover:text-white font-bold')
@@ -376,7 +376,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
           <div className="pt-4">
             <button
               onClick={() => { setIsMobileMenuOpen(false); go('/submit'); }}
-              className="w-full py-3 px-4 flex items-center justify-center gap-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-['Nunito_Sans','Nunito',sans-serif] text-xs font-bold tracking-[0.16em] uppercase transition-colors cursor-pointer"
+              className="w-full py-3 px-4 flex items-center justify-center gap-2 bg-[#16A34A] hover:bg-[#15803D] text-white font-['Nunito',sans-serif] text-sm font-bold tracking-normal uppercase transition-colors cursor-pointer"
             >
               <span>{t('ref.nav.submit')}</span>
               <span aria-hidden="true" className="text-xs">→</span>

@@ -42,11 +42,11 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Nunito Sans"', 'sans-serif'],
-        display: ['"Space Grotesk"', 'sans-serif'],
-        condensed: ['"Space Grotesk"', 'sans-serif'],
-        mono: ['"Nunito Sans"', 'sans-serif'],
-        nunito: ['"Nunito Sans"', '"Nunito"', 'sans-serif'],
+        sans: ['"Nunito"', 'sans-serif'],
+        display: ['"Nunito"', 'sans-serif'],
+        condensed: ['"Nunito"', 'sans-serif'],
+        mono: ['"Nunito"', 'monospace'],
+        nunito: ['"Nunito"', 'sans-serif'],
       },
       boxShadow: {
         'slab': '0 30px 60px -20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.12)',

@@ -59,14 +59,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className={`font-display font-extrabold tracking-tight text-lg uppercase ${isGallery ? 'text-[#141210]' : 'text-white'}`}>
+                  <span className={`font-['Nunito',sans-serif] font-black tracking-normal text-lg uppercase ${isGallery ? 'text-[#141210]' : 'text-white'}`}>
                     GORILLA
                   </span>
-                  <span className="font-display font-bold text-gorilla-neon tracking-widest text-sm uppercase">
+                  <span className="font-['Nunito',sans-serif] font-bold text-gorilla-neon tracking-normal text-sm uppercase">
                     GRADING
                   </span>
                 </div>
-                <div className="text-[9px] tracking-[0.2em] uppercase font-mono text-slate-400">
+                <div className="text-[10px] tracking-normal uppercase font-['Nunito',sans-serif] text-slate-400">
                   {t('nav.registrySubtitle')}
                 </div>
               </div>
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
 
             {/* Concept Mode Pill */}
             <div className="hidden 2xl:flex items-center pl-3 border-l border-white/10">
-              <span className="px-2.5 py-1 rounded-none text-[10px] font-mono tracking-wider bg-white/5 text-slate-300 border border-white/10">
+              <span className="px-2.5 py-1 rounded-none text-[10px] font-['Nunito',sans-serif] tracking-normal bg-white/5 text-slate-300 border border-white/10">
                 {metadata.name.split('—')[1]?.trim() || metadata.name}
               </span>
             </div>
@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/', onNavigate })
                 <button
                   key={link.path}
                   onClick={() => handleNav(link.path)}
-                  className={`px-3.5 py-2 rounded-none text-xs xl:text-[13px] font-medium transition-all duration-150 flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 rounded-none text-xs xl:text-[13px] font-['Nunito',sans-serif] font-bold tracking-normal transition-all duration-150 flex items-center gap-1.5 ${
                     isActive
                       ? isGallery
                         ? 'bg-[#E2DDD3] text-[#141210] font-bold shadow-sm'

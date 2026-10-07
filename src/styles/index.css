@@ -42,12 +42,15 @@
   html {
     scroll-behavior: smooth;
     background-color: #14170F;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: normal;
   }
 
   body {
     background-color: #14170F;
     color: #FFFFFF;
-
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: normal;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -80,7 +83,8 @@
 }
 
 .font-nunito {
-  font-family: 'Nunito Sans', 'Nunito', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: normal;
 }
 
 @keyframes crossfadeUp {
