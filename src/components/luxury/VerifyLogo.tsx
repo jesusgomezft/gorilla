@@ -14,10 +14,8 @@ export const VerifyLogo: React.FC<VerifyLogoProps> = ({
   return (
     <div className={`inline-flex flex-col items-center select-none ${className}`}>
       <div className={`relative ${size} shrink-0`}>
-        {/* Soft Ambient Dynamic Pulse Halo */}
         <div 
-          className="absolute inset-0 rounded-full bg-[#22C55E]/25 blur-2xl pointer-events-none animate-pulse"
-          style={{ animationDuration: '3.5s' }}
+          className="absolute inset-0 rounded-full bg-[#22C55E]/20 blur-2xl pointer-events-none"
         />
 
         <svg 

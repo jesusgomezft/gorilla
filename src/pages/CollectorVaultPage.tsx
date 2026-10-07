@@ -51,11 +51,12 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             
             <div className="flex flex-col min-w-0">
               {/* Technical Protocol Header */}
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.2em] text-[#15803D] dark:text-[#48C765] leading-none">
+              <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] leading-none">
+                <span className="font-extrabold text-[#15803D] dark:text-[#48C765]">
                   {language === 'es' ? 'FASE 03 · ACTIVO' : 'STAGE 03 · ACTIVE'}
                 </span>
-                <span className="font-mono text-[8px] px-1 py-0.2 border border-[#15803D]/30 text-[#15803D] dark:text-[#48C765] font-bold uppercase leading-none">
+                <span className="text-neutral-400 font-light">/</span>
+                <span className="text-[#15803D] dark:text-[#48C765] font-medium">
                   1200 DPI
                 </span>
               </div>
@@ -89,16 +90,15 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             
             <div className="flex flex-col min-w-0">
               {/* Technical Protocol Header */}
-              <div className="flex items-center gap-2">
-                <span className={`font-mono text-[9px] font-extrabold uppercase tracking-[0.2em] leading-none ${
+              <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] leading-none">
+                <span className={`font-extrabold ${
                   isLight ? 'text-[#3E443A]' : 'text-neutral-300'
                 }`}>
                   {language === 'es' ? 'REGISTRO COMPLETADO' : 'PROTOCOL COMPLETED'}
                 </span>
-                <span className={`font-mono text-[8px] px-1 py-0.2 border font-bold uppercase leading-none ${
-                  isLight 
-                    ? 'border-[#3E443A]/40 text-[#252A22] bg-black/5' 
-                    : 'border-neutral-500 text-neutral-200 bg-white/5'
+                <span className="text-neutral-400 font-light">/</span>
+                <span className={`font-medium ${
+                  isLight ? 'text-[#3E443A]' : 'text-neutral-300'
                 }`}>
                   {language === 'es' ? 'CUSTODIADO' : 'VAULTED'}
                 </span>
@@ -310,7 +310,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 </span>
                 <span className="font-bold text-current flex items-center gap-1.5">
                   <span>#GOR-8821</span>
-                  <span className="text-[8px] px-1 py-0.2 border border-current/20 font-normal text-neutral-400">[CRC-88]</span>
+                  <span className="text-[10px] font-normal text-neutral-400 tracking-wider">CRC-88</span>
                 </span>
               </div>
 
@@ -479,21 +479,18 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 <div className="bg-white/[0.02] border border-white/[0.05] p-6 md:p-8 relative">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
                     <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className={`inline-flex items-center gap-2 px-2.5 py-1 text-xs border ${
-                          isLight 
-                            ? 'bg-emerald-50 border-emerald-300 text-emerald-900 shadow-xs' 
-                            : 'bg-[#121A14] border-[#166534] text-[#4ADE80] shadow-sm'
+                      <div className="flex items-center gap-2.5 mb-2 font-mono text-xs">
+                        <span className={`font-bold uppercase tracking-[0.2em] ${
+                          isLight ? 'text-[#15803D]' : 'text-[#48C765]'
                         }`}>
-                          <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16A34A] dark:bg-[#48C765] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#16A34A] dark:bg-[#48C765]"></span>
-                          </span>
-                          <span className="font-mono text-[9px] font-bold tracking-[0.16em] uppercase">
-                            {language === 'es' ? 'EN PROCESO · FASE 03' : 'IN PROGRESS · STAGE 03'}
-                          </span>
-                        </div>
-                        <span className="font-mono text-xs text-[#A4ACA1]">ID: {activeOrder.id}</span>
+                          {language === 'es' ? 'EN PROCESO · FASE 03' : 'IN PROGRESS · STAGE 03'}
+                        </span>
+                        <span className={isLight ? 'text-black/30' : 'text-white/30'}>/</span>
+                        <span className={`tracking-wider ${
+                          isLight ? 'text-neutral-600' : 'text-[#A4ACA1]'
+                        }`}>
+                          ID: {activeOrder.id}
+                        </span>
                       </div>
                       <h3 className="font-['Oswald'] text-2xl text-white uppercase tracking-wide">
                         {activeOrder.items.length} {language === 'es' ? 'Cartas' : 'Cards'} - Optical Grading
@@ -1266,7 +1263,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             >
               {/* 1. Holographic Top Security Strip */}
               <div className="h-1.5 w-full bg-gradient-to-r from-[#16A34A] via-[#38BDF8] via-[#A855F7] via-[#F59E0B] to-[#16A34A] opacity-90 relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                <div className="absolute inset-0 bg-white/20" />
               </div>
 
               {/* Archival Security Watermark Background Motif */}

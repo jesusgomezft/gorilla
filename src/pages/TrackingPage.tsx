@@ -278,15 +278,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
                         <div className={`absolute left-0 top-0.5 -translate-x-1/2 flex items-center justify-center p-0.5 z-10 ${
                           isLight ? 'bg-[#ECE5D8]' : 'bg-[#383838]'
                         }`}>
-                          {/* Halo titilante en etapa intermedia activa (verde esmeralda) */}
-                          {step.current && !isFinalCompleted && (
-                            <div className="absolute -inset-1 border border-emerald-500/70 rounded-sm animate-ping pointer-events-none opacity-35" />
-                          )}
 
-                          {/* Halo titilante en el último paso indicativo de que el proceso FINALIZÓ (amarillo / oro) */}
-                          {isFinalCompleted && (
-                            <div className="absolute -inset-1 border-2 border-amber-400 rounded-sm animate-ping pointer-events-none opacity-60" />
-                          )}
 
                           <SlabTimelineIcon
                             status={step.current ? 'current' : step.completed ? 'completed' : 'pending'}
