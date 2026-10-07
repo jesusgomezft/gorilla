@@ -98,7 +98,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({
                 onClick={handleExplore}
                 className="inline-flex items-center gap-2.5 group cursor-pointer"
               >
-                <span className={`font-mono text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.16em] border-b-2 transition-colors pb-0.5 ${
+                <span className={`font-['Nunito',sans-serif] text-xs sm:text-[13px] font-bold uppercase tracking-normal border-b-2 transition-colors pb-0.5 ${
                   isLight 
                     ? 'text-[#15803D] border-[#15803D] group-hover:text-[#166534] group-hover:border-[#166534]' 
                     : 'text-[#48C765] border-[#48C765] group-hover:text-white group-hover:border-white'

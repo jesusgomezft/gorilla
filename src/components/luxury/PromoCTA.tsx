@@ -26,14 +26,14 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
         <div className="flex items-center gap-3 mb-5 opacity-90">
           <div className="text-[#48C765]/60 font-mono text-[10px] leading-none">{'['}</div>
           <div className="flex items-center">
-            <span className="font-mono text-[9px] sm:text-[10px] font-bold tracking-[0.3em] text-[#48C765] uppercase leading-none mt-0.5">
+            <span className="font-mono text-[9px] sm:text-[10px] font-bold tracking-normal text-[#48C765] uppercase leading-none mt-0.5">
               {language === 'es' ? 'ENTREGA EN MANO' : 'PHYSICAL DROP-OFF'}
             </span>
           </div>
           <div className="text-[#48C765]/60 font-mono text-[10px] leading-none">{']'}</div>
         </div>
         
-        <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl md:text-5xl text-white uppercase tracking-wide leading-tight mb-5 title-3d">
+        <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl md:text-5xl text-white uppercase tracking-normal leading-tight mb-5 title-3d">
           {language === 'es' 
             ? 'No necesitas pagar envío' 
             : "You don't need to pay for shipping"}
@@ -48,7 +48,7 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => onNavigate && onNavigate('/faq/dropoff')}
-            className="btn-gorilla-pill px-8 py-3.5 text-xs font-extrabold tracking-[0.1em] gap-2 group shadow-lg"
+            className="btn-gorilla-pill px-8 py-3.5 text-xs font-bold tracking-normal gap-2 group shadow-lg"
           >
             <span>{language === 'es' ? 'Encuentra tu Evento' : 'Find Nearest Event'}</span>
             <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
           
           <button
             onClick={() => onNavigate && onNavigate('/how-it-works')}
-            className="btn-gorilla-pill-secondary px-8 py-3.5 text-xs font-bold tracking-[0.08em]"
+            className="btn-gorilla-pill-secondary px-8 py-3.5 text-xs font-bold tracking-normal"
           >
             {language === 'es' ? 'Cómo Funciona la Entrega' : 'Drop-Off Info'}
           </button>

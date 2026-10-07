@@ -141,7 +141,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                   
                   <button 
                     type="submit" 
-                    className="btn-gorilla-square w-full py-3.5 text-xs font-extrabold tracking-[0.16em] shadow-lg"
+                    className="btn-gorilla-square w-full py-3.5 text-xs font-extrabold tracking-normal shadow-lg"
                   >
                     {language === 'es' ? 'Recibir Código' : 'Get Code'}
                   </button>
@@ -167,7 +167,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => onNavigate('/submit')}
-                  className="btn-gorilla-square-secondary w-full py-3 px-4 text-xs font-bold tracking-[0.14em] flex items-center justify-center gap-2 group"
+                  className="btn-gorilla-square-secondary w-full py-3 px-4 text-xs font-bold tracking-normal flex items-center justify-center gap-2 group"
                 >
                   <span>{language === 'es' ? 'Enviar Cartas a Graduar' : 'Submit Cards for Grading'}</span>
                   <span className="transition-transform duration-200 group-hover:translate-x-1 font-bold">→</span>
@@ -248,7 +248,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                   
                   <button 
                     type="submit" 
-                    className="btn-gorilla-square w-full py-3.5 text-xs font-extrabold tracking-[0.16em] shadow-lg"
+                    className="btn-gorilla-square w-full py-3.5 text-xs font-extrabold tracking-normal shadow-lg"
                   >
                     {language === 'es' ? 'Acceder al Perfil' : 'Access Vault'}
                   </button>

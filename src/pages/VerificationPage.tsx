@@ -104,7 +104,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
             
             <button 
               onClick={() => onNavigate('/certificates/demo')}
-              className="btn-gorilla-square mx-auto mt-2 px-6 py-2.5 text-xs font-extrabold tracking-widest gap-2 shadow-md"
+              className="btn-gorilla-square mx-auto mt-2 px-6 py-2.5 text-xs font-extrabold tracking-normal gap-2 shadow-md"
             >
               <span>{language === 'es' ? 'Ver Certificado Completo' : 'View Full Certificate'}</span>
               <span>→</span>

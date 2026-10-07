@@ -314,7 +314,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           <div className="shrink-0 flex items-center gap-4">
             <button
               onClick={() => onNavigate('/submit')}
-              className="btn-gorilla-square px-8 py-4 text-xs font-extrabold tracking-[0.16em] shadow-lg cursor-pointer"
+              className="btn-gorilla-square px-8 py-4 text-xs font-extrabold tracking-normal shadow-lg cursor-pointer"
             >
               {language === 'es' ? 'INICIAR SOLICITUD AHORA' : 'START SUBMISSION NOW'}
             </button>

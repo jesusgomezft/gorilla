@@ -207,10 +207,10 @@ export const VerifyLogo: React.FC<VerifyLogoProps> = ({
 
       {showText && (
         <div className="mt-3 text-center">
-          <div className="font-['Montserrat'] font-extrabold text-sm sm:text-base tracking-[0.2em] uppercase text-current">
+          <div className="font-['Nunito',sans-serif] font-extrabold text-sm sm:text-base tracking-normal uppercase text-current">
             GORILLA <span className="text-[#22C55E]">VERIFY</span>
           </div>
-          <div className="font-mono text-[9px] tracking-[0.3em] uppercase opacity-50">
+          <div className="font-['Nunito',sans-serif] text-[10px] tracking-normal uppercase opacity-70 font-bold">
             OFFICIAL REGISTRY
           </div>
         </div>

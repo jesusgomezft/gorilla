@@ -828,7 +828,7 @@
   color: #A4ACA1;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: normal;
   cursor: pointer;
   transition: all 0.3s ease;
   user-select: none;
@@ -1118,9 +1118,9 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 0px !important;
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif !important;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif !important;
   font-weight: 800 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   text-decoration: none;
   cursor: pointer;
@@ -1173,9 +1173,9 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 0px !important;
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif !important;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif !important;
   font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   text-decoration: none;
   cursor: pointer;
@@ -1259,10 +1259,10 @@ body {
   gap: 0.35rem;
   padding: 0.28rem 0.75rem;
   border-radius: 0px !important;
-  font-family: 'Montserrat', system-ui, sans-serif !important;
+  font-family: 'Nunito', system-ui, sans-serif !important;
   font-weight: 800 !important;
   font-size: 0.6875rem !important; /* 11px */
-  letter-spacing: 0.14em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   user-select: none;
   
@@ -1294,10 +1294,10 @@ body {
   gap: 0.35rem;
   padding: 0.3rem 0.65rem;
   border-radius: 0px !important;
-  font-family: 'Nunito Sans', monospace, sans-serif !important;
+  font-family: 'Nunito', monospace, sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.6875rem !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   cursor: pointer;
   transition: all 0.2s ease;

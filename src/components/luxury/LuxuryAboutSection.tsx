@@ -86,7 +86,7 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
           <div className="flex flex-col sm:flex-row gap-4">
              <button
                 onClick={() => onNavigate && onNavigate('/submit')}
-                className="btn-gorilla-square px-8 py-3.5 text-xs font-extrabold tracking-[0.14em] gap-2 shadow-lg"
+                className="btn-gorilla-square px-8 py-3.5 text-xs font-bold tracking-normal gap-2 shadow-lg"
               >
                 <span>{language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}</span>
                 <span>→</span>
@@ -95,9 +95,6 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
 
           {/* Interactive Image Display */}
           <div className="mt-12 relative w-full aspect-[4/3] bg-[#14170F] border border-white/[0.04] overflow-hidden group">
-            {/* Tech UI Overlays */}
-            <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#48C765] z-20" />
-            <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#48C765] z-20" />
             <div className="absolute bottom-4 left-4 font-mono text-[10px] font-bold text-[#48C765] tracking-widest z-20 uppercase">
               {hoveredStep ? steps.find(s => s.num === hoveredStep)?.tag : steps[0].tag}
             </div>

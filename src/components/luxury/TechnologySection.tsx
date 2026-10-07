@@ -117,7 +117,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
             
             <button
               onClick={() => onNavigate ? onNavigate('/technology') : window.location.href = '/technology'}
-              className="btn-gorilla-pill px-8 py-3.5 text-xs font-extrabold tracking-widest gap-2 shadow-lg group w-fit mx-auto lg:mx-0"
+              className="btn-gorilla-pill px-8 py-3.5 text-xs font-bold tracking-normal gap-2 shadow-lg group w-fit mx-auto lg:mx-0"
             >
               <span>{language === 'es' ? 'Conoce la tecnología' : 'Explore Technology'}</span>
               <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

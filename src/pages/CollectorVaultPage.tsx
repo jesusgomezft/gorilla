@@ -340,7 +340,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             <button
               type="button"
               onClick={() => onNavigate('/submit')}
-              className="btn-gorilla-square w-full py-3 px-4 text-[11px] font-extrabold tracking-[0.2em] uppercase flex items-center justify-center gap-3 cursor-pointer shadow-md group relative z-10"
+              className="btn-gorilla-square w-full py-3 px-4 text-[11px] font-extrabold tracking-normal uppercase flex items-center justify-center gap-3 cursor-pointer shadow-md group relative z-10"
             >
               <span>{language === 'es' ? 'NUEVO ENVÍO' : 'NEW SUBMISSION'}</span>
               <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1368,7 +1368,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                       </span>
                       <span className="font-mono text-[8.5px] text-neutral-400">ID: GG-4091</span>
                     </div>
-                    <p className={`font-['Montserrat'] text-sm font-bold tracking-tight ${
+                    <p className={`font-['Nunito',sans-serif] text-sm font-bold tracking-tight ${
                       isLight ? 'text-[#14170F]' : 'text-white'
                     }`}>
                       {currentInvoice.clientName}
@@ -1553,14 +1553,14 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   <button 
                     type="button"
                     onClick={() => setShowInvoiceModal(null)}
-                    className="btn-gorilla-square-secondary py-2.5 px-6 text-xs font-bold tracking-[0.14em]"
+                    className="btn-gorilla-square-secondary py-2.5 px-6 text-xs font-bold tracking-normal"
                   >
                     {language === 'es' ? 'Cerrar' : 'Close'}
                   </button>
                   <button 
                     type="button"
                     onClick={() => window.print()}
-                    className="btn-gorilla-square py-2.5 px-7 text-xs font-extrabold tracking-[0.16em] flex items-center justify-center gap-2 shadow-lg"
+                    className="btn-gorilla-square py-2.5 px-7 text-xs font-extrabold tracking-normal flex items-center justify-center gap-2 shadow-lg"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

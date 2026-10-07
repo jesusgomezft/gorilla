@@ -353,7 +353,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
 
           <button
             onClick={() => onNavigate('/contact')}
-            className="btn-gorilla-square px-8 py-3.5 text-xs font-extrabold tracking-widest shrink-0 flex items-center gap-2 shadow-lg"
+            className="btn-gorilla-square px-8 py-3.5 text-xs font-extrabold tracking-normal shrink-0 flex items-center gap-2 shadow-lg"
           >
             <span>{language === 'es' ? 'Ir al Formulario de Contacto' : 'Go to Contact Form'}</span>
             <span>→</span>

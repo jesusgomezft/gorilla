@@ -190,13 +190,13 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => onNavigate('/account')}
-            className="btn-gorilla-square w-full sm:w-auto px-8 py-3.5 text-xs font-extrabold tracking-widest shadow-lg"
+            className="btn-gorilla-square w-full sm:w-auto px-8 py-3.5 text-xs font-extrabold tracking-normal shadow-lg"
           >
             {language === 'es' ? 'VER MIS PEDIDOS' : 'VIEW MY ORDERS'}
           </button>
           <button
             onClick={() => onNavigate('/')}
-            className="btn-gorilla-square-secondary w-full sm:w-auto px-8 py-3.5 text-xs font-bold tracking-widest"
+            className="btn-gorilla-square-secondary w-full sm:w-auto px-8 py-3.5 text-xs font-bold tracking-normal"
           >
             {language === 'es' ? 'VOLVER AL INICIO' : 'BACK TO HOME'}
           </button>
@@ -470,8 +470,8 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                                 }}
                                 className={
                                   isSelected
-                                    ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-wider'
-                                    : 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-wider'
+                                    ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-normal'
+                                    : 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-normal'
                                 }
                               >
                                 {language === 'es'
@@ -544,8 +544,8 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                           }}
                           className={
                             isSelected
-                              ? 'btn-gorilla-square w-full py-2.5 text-xs font-extrabold tracking-wider'
-                              : 'btn-gorilla-square-secondary w-full py-2.5 text-xs font-bold tracking-wider'
+                              ? 'btn-gorilla-square w-full py-2.5 text-xs font-extrabold tracking-normal'
+                              : 'btn-gorilla-square-secondary w-full py-2.5 text-xs font-bold tracking-normal'
                           }
                         >
                           {language === 'es'
@@ -578,7 +578,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                     setCurrentStep(2);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="btn-gorilla-square w-full sm:w-auto px-8 py-3 text-xs font-extrabold tracking-widest uppercase flex items-center justify-center gap-2 shadow-lg"
+                  className="btn-gorilla-square w-full sm:w-auto px-8 py-3 text-xs font-extrabold tracking-normal uppercase flex items-center justify-center gap-2 shadow-lg"
                 >
                   <span>{language === 'es' ? 'CONTINUAR AL PASO 02 (CARTAS)' : 'CONTINUE TO STEP 02 (CARDS)'}</span>
                   <span className="text-sm">→</span>
@@ -783,7 +783,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
               <div className={`flex justify-end pt-3 border-t mt-2 ${isLight ? 'border-[#E5DEC9]' : 'border-white/5'}`}>
                 <button 
                   type="submit" 
-                  className="btn-gorilla-square px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider flex items-center gap-2 shadow-md"
+                  className="btn-gorilla-square px-6 py-2.5 text-xs font-extrabold uppercase tracking-normal flex items-center gap-2 shadow-md"
                 >
                   <Plus className="w-4 h-4 text-white" />
                   <span>{language === 'es' ? 'Añadir a la orden' : 'Add to Order'}</span>
@@ -1010,7 +1010,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 else if (currentStep === 3) setCurrentStep(4);
                 else if (currentStep === 4) handleFinalSubmit();
               }}
-              className="btn-gorilla-square w-full sm:w-auto px-6 sm:px-10 py-3.5 text-[11px] sm:text-xs font-extrabold tracking-widest uppercase flex items-center justify-center gap-2 sm:gap-4 shadow-lg"
+              className="btn-gorilla-square w-full sm:w-auto px-6 sm:px-10 py-3.5 text-[11px] sm:text-xs font-extrabold tracking-normal uppercase flex items-center justify-center gap-2 sm:gap-4 shadow-lg"
             >
               <span>{language === 'es' ? (currentStep === 4 ? 'ENVIAR PEDIDO' : 'CONTINUAR') : (currentStep === 4 ? 'SUBMIT ORDER' : 'CONTINUE')}</span>
               
@@ -1139,7 +1139,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                   </button>
                   <button
                     type="submit"
-                    className="btn-gorilla-square px-6 py-2 text-xs font-extrabold uppercase tracking-wider shadow-md"
+                    className="btn-gorilla-square px-6 py-2 text-xs font-extrabold uppercase tracking-normal shadow-md"
                   >
                     {language === 'es' ? 'Guardar Cambios' : 'Save Changes'}
                   </button>

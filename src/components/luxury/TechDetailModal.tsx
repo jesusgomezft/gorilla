@@ -920,7 +920,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
               onClose();
               if (onNavigate) onNavigate('/submit');
             }}
-            className="btn-gorilla-square py-3.5 px-8 text-xs font-extrabold tracking-widest uppercase flex items-center justify-center gap-3 shadow-xl cursor-pointer"
+            className="btn-gorilla-square py-3.5 px-8 text-xs font-bold tracking-normal uppercase flex items-center justify-center gap-3 shadow-xl cursor-pointer"
           >
             <span>{isEs ? 'ENVIAR CARTAS A PERITAJE' : 'SUBMIT CARDS FOR GRADING'}</span>
             <span className="text-sm">→</span>

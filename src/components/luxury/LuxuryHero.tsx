@@ -147,7 +147,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex items-center justify-center lg:justify-start mb-4 sm:mb-6"
           >
-            <span className={`font-mono text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase select-none ${
+            <span className={`font-['Nunito',sans-serif] text-xs font-bold tracking-normal uppercase select-none ${
               isLight ? 'text-[#15803D]' : 'text-[#22C55E]'
             }`}>
               {t('ref.hero.eyebrow')}
@@ -223,7 +223,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
               onClick={() => onNavigate && onNavigate('/submit')}
               className="btn-gorilla-pill w-full sm:w-auto px-8 py-4 gap-2.5 group"
             >
-              <span className="font-['Montserrat'] font-extrabold text-xs tracking-[0.12em] uppercase">
+              <span className="font-['Nunito',sans-serif] font-bold text-xs tracking-normal uppercase">
                 {t('ref.hero.ctaPrimary')}
               </span>
               <span className="ml-1 text-sm font-bold transition-transform duration-300 group-hover:translate-x-1.5">→</span>
@@ -243,7 +243,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
               }}
               className="btn-gorilla-pill-secondary w-full sm:w-auto px-7 py-3.5 gap-2.5 group cursor-pointer"
             >
-              <span className="font-['Montserrat'] text-xs font-bold tracking-[0.08em] uppercase">
+              <span className="font-['Nunito',sans-serif] text-xs font-bold tracking-normal uppercase">
                 {t('ref.hero.ctaSecondary')}
               </span>
               <div className="flex items-center justify-center pl-[2px] transition-transform duration-300 group-hover:translate-y-0.5">
@@ -348,7 +348,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           <div className="w-full max-w-[460px] flex items-center justify-between mb-3 px-2 font-mono text-[10px] text-gray-400">
             <div className="flex items-center gap-2">
               <Crosshair className={`w-3.5 h-3.5 animate-spin ${isLight ? 'text-[#15803D]' : 'text-emerald-400'}`} style={{ animationDuration: '8s' }} />
-              <span className={`uppercase tracking-widest font-bold ${isLight ? 'text-[#15803D]' : 'text-emerald-400/90'}`}>SLAB INSPECTOR 3D</span>
+              <span className={`uppercase tracking-normal font-bold ${isLight ? 'text-[#15803D]' : 'text-emerald-400/90'}`}>SLAB INSPECTOR 3D</span>
             </div>
 
             <button
@@ -451,7 +451,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                     }`}
                   >
                     <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-current/10">
-                      <span className={`text-[9px] uppercase tracking-widest font-bold ${
+                      <span className={`text-[9px] uppercase tracking-normal font-bold ${
                         isLight ? 'text-[#16A34A]' : 'text-[#48C765]'
                       }`}>
                         {activeHotspot.category}

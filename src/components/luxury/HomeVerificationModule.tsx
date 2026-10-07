@@ -185,7 +185,7 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
             <button
               type="submit"
               disabled={isSearching}
-              className="btn-gorilla-pill mt-2 sm:mt-0 px-6 sm:px-8 py-3.5 sm:py-3 text-xs font-extrabold tracking-[0.14em] uppercase flex items-center justify-center gap-2 shrink-0 shadow-lg"
+              className="btn-gorilla-pill mt-2 sm:mt-0 px-6 sm:px-8 py-3.5 sm:py-3 text-xs font-bold tracking-normal uppercase flex items-center justify-center gap-2 shrink-0 shadow-lg"
             >
               {isSearching ? (
                 <>
@@ -524,7 +524,7 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
                     <button
                       type="button"
                       onClick={() => onNavigate(`/certificates/${selectedCard.certNumber}`)}
-                      className="btn-gorilla-square w-full sm:w-auto px-6 py-3.5 text-xs font-extrabold tracking-[0.14em] uppercase inline-flex items-center justify-center gap-2.5 shadow-lg group cursor-pointer"
+                      className="btn-gorilla-square w-full sm:w-auto px-6 py-3.5 text-xs font-bold tracking-normal uppercase inline-flex items-center justify-center gap-2.5 shadow-lg group cursor-pointer"
                     >
                       <span>{language === 'es' ? 'ESCANEO ALTA RESOLUCIÓN EN REGISTRO' : 'HIGH-RES SCAN IN REGISTRY'}</span>
                       <ExternalLink className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

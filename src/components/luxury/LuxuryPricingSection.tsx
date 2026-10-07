@@ -763,7 +763,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               <button
                 type="button"
                 onClick={() => onNavigate && onNavigate(`/submit?tier=${selectedTierId}&qty=${cardCount}`)}
-                className="btn-gorilla-pill w-full py-3.5 sm:py-4 px-6 sm:px-8 text-xs font-extrabold tracking-widest gap-2 shadow-lg"
+                className="btn-gorilla-pill w-full py-3.5 sm:py-4 px-6 sm:px-8 text-xs font-bold tracking-normal gap-2 shadow-lg"
               >
                 <span>{language === 'es' ? `Configurar envío (${cardCount} ${cardCount === 1 ? 'carta' : 'cartas'}) →` : `Configure shipment (${cardCount} ${cardCount === 1 ? 'card' : 'cards'}) →`}</span>
               </button>

@@ -290,13 +290,13 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
           <div className="shrink-0 flex items-center gap-4">
             <button
               onClick={() => onNavigate('/services')}
-              className="btn-gorilla-square-secondary px-6 py-4 text-xs font-bold tracking-[0.14em]"
+              className="btn-gorilla-square-secondary px-6 py-4 text-xs font-bold tracking-normal"
             >
               {language === 'es' ? 'VER TARIFAS' : 'VIEW PRICING'}
             </button>
             <button
               onClick={() => onNavigate('/submit')}
-              className="btn-gorilla-square px-8 py-4 text-xs font-extrabold tracking-[0.14em] shadow-lg"
+              className="btn-gorilla-square px-8 py-4 text-xs font-extrabold tracking-normal shadow-lg"
             >
               {language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}
             </button>

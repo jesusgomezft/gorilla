@@ -68,13 +68,13 @@ export const NewsletterSection: React.FC = () => {
               />
               <button 
                 type="submit"
-                className="btn-gorilla-pill px-8 py-3.5 text-xs font-extrabold tracking-widest shrink-0 shadow-md"
+                className="btn-gorilla-pill px-8 py-3.5 text-xs font-bold tracking-normal shrink-0 shadow-md"
               >
                 {language === 'es' ? 'Suscribir' : 'Subscribe'}
               </button>
             </form>
           )}
-          <span className={`font-mono text-[9px] mt-4 uppercase tracking-widest ${
+          <span className={`font-mono text-[9px] mt-4 uppercase tracking-normal ${
             isLight ? 'text-[#6B7268]' : 'text-[#7A8377]'
           }`}>
             {language === 'es' ? 'NO ENVIAMOS SPAM. CANCELA CUANDO QUIERAS.' : 'NO SPAM. UNSUBSCRIBE ANYTIME.'}
