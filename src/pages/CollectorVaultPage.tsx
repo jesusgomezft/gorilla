@@ -16,7 +16,6 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
   const [activeTab, setActiveTab] = useState<'overview' | 'submissions' | 'vault' | 'invoices'>('overview');
   const [filterGame, setFilterGame] = useState('ALL');
   const [showInvoiceModal, setShowInvoiceModal] = useState<string | null>(null);
-  const [showTierModal, setShowTierModal] = useState<boolean>(false);
   const [expandedInvoices, setExpandedInvoices] = useState<Record<string, boolean>>({});
 
   const toggleInvoice = (id: string) => {
@@ -290,7 +289,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     <div className="w-[2px] h-full bg-current"></div>
                   </div>
                   <span className="font-mono text-[8.5px] font-bold text-[#16A34A] dark:text-[#48C765] uppercase tracking-[0.26em] leading-none truncate">
-                    VIP COLLECTOR // ARCHIVAL
+                    {language === 'es' ? 'CUSTODIA ACTIVA // BÓVEDA VERIFICADA' : 'ACTIVE CUSTODY // VERIFIED VAULT'}
                   </span>
                 </div>
                 
@@ -476,51 +475,17 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   </div>
                 </div>
 
-                {/* Stat 3: Collector Rank & Tier Dossier */}
-                <div className={`p-6 flex flex-col justify-between relative overflow-hidden group/stat border transition-colors ${
-                  isLight 
-                    ? 'bg-white/80 border-[#D8D2C5] hover:border-[#14170F]/30' 
-                    : 'bg-white/[0.02] border-white/[0.05] hover:border-white/15'
-                }`}>
-                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-400/0 group-hover/stat:border-amber-400/40 transition-colors duration-500 pointer-events-none" />
-                  
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`font-mono text-[9px] uppercase tracking-[0.2em] ${
-                      isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
-                    }`}>
-                      {language === 'es' ? 'Rango Coleccionista' : 'Collector Rank'}
+                {/* Stat 3: Vault Declared Value / Insured Custody */}
+                <div className="bg-white/[0.02] border border-white/[0.05] p-6 flex flex-col justify-between relative overflow-hidden group/stat">
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#48C765]/0 group-hover/stat:border-[#48C765]/50 transition-colors duration-500" />
+                  <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4">
+                    {language === 'es' ? 'Valor Declarado en Bóveda' : 'Vault Declared Value'}
+                  </span>
+                  <div className="flex items-end gap-2">
+                    <span className="font-['Oswald'] text-4xl text-white leading-none">
+                      €{totalVaultValue.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                     </span>
-                    <button
-                      type="button"
-                      onClick={() => setShowTierModal(true)}
-                      className="font-mono text-[8.5px] text-[#16A34A] dark:text-[#48C765] hover:underline uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-                      title={language === 'es' ? 'Ver criterios y beneficios del rango' : 'View tier criteria and benefits'}
-                    >
-                      <span>{language === 'es' ? 'Requisitos' : 'Criteria'}</span>
-                      <span>→</span>
-                    </button>
-                  </div>
-
-                  <div className="flex flex-col gap-2 relative z-10">
-                    <div className="flex items-center gap-2.5">
-                      <span className="badge-rarity-gold text-[10px] px-2.5 py-0.5 tracking-wider shadow-sm">
-                        VIP ELITE
-                      </span>
-                      <span className="font-mono text-[9px] font-bold tracking-widest px-1.5 py-0.5 border border-amber-400/30 text-amber-300/90 bg-amber-400/5 uppercase">
-                        TIER IV
-                      </span>
-                    </div>
-                    <div className={`flex items-center justify-between text-[10px] font-mono mt-0.5 ${
-                      isLight ? 'text-[#6B7268]' : 'text-[#A4ACA1]'
-                    }`}>
-                      <span className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] dark:bg-[#48C765] animate-pulse" />
-                        {language === 'es' ? '50+ Slabs · Master Grader' : '50+ Slabs · Master Grader'}
-                      </span>
-                      <span className="text-[#16A34A] dark:text-[#48C765] font-bold">
-                        ★ TOP TIER
-                      </span>
-                    </div>
+                    <span className="font-mono text-[10px] text-[#48C765] mb-1 font-bold">EUR</span>
                   </div>
                 </div>
               </div>
@@ -1628,170 +1593,6 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
           </div>
         );
       })()}
-
-      {/* Collector Tiers & Qualification Ladder Modal */}
-      {showTierModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-          <div className={`w-full max-w-2xl border shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh] ${
-            isLight ? 'bg-[#FAF8F5] border-[#D8D2C5] text-[#14170F]' : 'bg-[#0E120F] border-white/10 text-white'
-          }`}>
-            
-            {/* Header */}
-            <div className={`px-6 py-5 border-b flex items-center justify-between ${
-              isLight ? 'bg-white border-[#E5E0D5]' : 'bg-white/[0.02] border-white/10'
-            }`}>
-              <div className="flex items-center gap-3">
-                <span className="badge-rarity-gold text-[10px] px-2 py-0.5 tracking-wider">
-                  TIER ARCHIVAL
-                </span>
-                <div>
-                  <h3 className="font-['Oswald'] text-xl uppercase tracking-wide font-bold">
-                    {language === 'es' ? 'Programa de Rangos Gorilla Vault' : 'Gorilla Vault Collector Tiers'}
-                  </h3>
-                  <span className="font-mono text-[9px] text-[#16A34A] dark:text-[#48C765] tracking-widest uppercase">
-                    // CRITERIOS DE CLASIFICACIÓN Y BENEFICIOS EXCLUSIVOS
-                  </span>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setShowTierModal(false)}
-                className={`p-2 font-mono text-sm hover:text-white transition-colors cursor-pointer ${
-                  isLight ? 'text-neutral-500 hover:text-black' : 'text-neutral-400'
-                }`}
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Body: 4 Tiers Breakdown */}
-            <div className="p-6 overflow-y-auto space-y-4">
-              
-              {/* Tier 1 */}
-              <div className={`p-4 border ${
-                isLight ? 'bg-white border-[#E5E0D5]' : 'bg-white/[0.02] border-white/10'
-              }`}>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="font-['Oswald'] text-lg font-bold">TIER I · MEMBER</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 border border-current/20 text-[#A4ACA1]">1 - 9 CARTAS</span>
-                  </div>
-                  <span className="font-mono text-[9px] text-[#A4ACA1]">REGISTRO INICIAL</span>
-                </div>
-                <p className={`text-xs font-sans leading-relaxed ${isLight ? 'text-[#4B5563]' : 'text-neutral-400'}`}>
-                  {language === 'es'
-                    ? 'Activado al certificar tu primera carta. Acceso a bóveda digital, visor 3D de alta resolución y hash criptográfico verificable.'
-                    : 'Activated on certifying your first slab. Access to digital vault, high-res 3D viewer, and verifiable cryptographic hash.'}
-                </p>
-              </div>
-
-              {/* Tier 2 */}
-              <div className={`p-4 border ${
-                isLight ? 'bg-white border-[#E5E0D5]' : 'bg-white/[0.02] border-white/10'
-              }`}>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="font-['Oswald'] text-lg font-bold">TIER II · PRO VAULT</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 border border-[#16A34A] text-[#16A34A] dark:text-[#48C765]">10 - 24 CARTAS</span>
-                  </div>
-                  <span className="font-mono text-[9px] text-[#16A34A] dark:text-[#48C765]">5% DESCUENTO</span>
-                </div>
-                <p className={`text-xs font-sans leading-relaxed ${isLight ? 'text-[#4B5563]' : 'text-neutral-400'}`}>
-                  {language === 'es'
-                    ? 'Desbloqueado a partir de 10 cartas graduadas. Incluye 5% de descuento en tarifas estándar y reportes microscópicos de subnotas detallados.'
-                    : 'Unlocked upon grading 10 slabs. Includes 5% discount on standard rates and detailed microscopic subgrade reports.'}
-                </p>
-              </div>
-
-              {/* Tier 3 */}
-              <div className={`p-4 border ${
-                isLight ? 'bg-white border-[#E5E0D5]' : 'bg-white/[0.02] border-white/10'
-              }`}>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="font-['Oswald'] text-lg font-bold">TIER III · MASTER COLLECTOR</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 border border-sky-400 text-sky-400">25 - 49 CARTAS</span>
-                  </div>
-                  <span className="font-mono text-[9px] text-sky-400">10% DTO + KITS GRATIS</span>
-                </div>
-                <p className={`text-xs font-sans leading-relaxed ${isLight ? 'text-[#4B5563]' : 'text-neutral-400'}`}>
-                  {language === 'es'
-                    ? 'Para coleccionistas serios y tiendas asociadas. 10% de descuento continuo, kits de envío asegurados gratuitos y turnaround preferente en laboratorio.'
-                    : 'For advanced collectors and verified hobby shops. 10% ongoing discount, free insured submission kits, and expedited laboratory turnaround.'}
-                </p>
-              </div>
-
-              {/* Tier 4: VIP Elite (Highlight) */}
-              <div className={`p-5 border-2 relative overflow-hidden ${
-                isLight 
-                  ? 'bg-amber-500/[0.06] border-amber-500/40' 
-                  : 'bg-gradient-to-br from-amber-500/10 via-black to-[#0E120F] border-amber-400/40'
-              }`}>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2.5">
-                    <span className="badge-rarity-gold text-xs px-2.5 py-1 tracking-wider shadow-sm">
-                      TIER IV · VIP ELITE
-                    </span>
-                    <span className="text-[9px] font-mono font-bold text-amber-400 uppercase tracking-wider">
-                      50+ CARTAS O SERVICIO WHITE GLOVE
-                    </span>
-                  </div>
-                  <span className="font-mono text-[9px] text-[#16A34A] dark:text-[#48C765] font-bold">RANGO ACTUAL</span>
-                </div>
-
-                <div className={`text-xs font-sans space-y-2 leading-relaxed ${isLight ? 'text-[#1F2937]' : 'text-neutral-200'}`}>
-                  <p className="font-bold text-amber-400 font-mono text-[11px] uppercase tracking-wide">
-                    {language === 'es' ? '¿CÓMO SE OBTIENE ESTE RANGO?' : 'HOW IS THIS RANK ATTAINED?'}
-                  </p>
-                  <ul className="space-y-1.5 list-disc list-inside text-xs pl-1">
-                    <li>
-                      {language === 'es'
-                        ? 'Acumular 50 o más cartas certificadas en tu bóveda digital, o'
-                        : 'Accumulate 50 or more certified slabs in your vault, or'}
-                    </li>
-                    <li>
-                      {language === 'es'
-                        ? 'Realizar envíos con valor declarado superior a 10.000 €, o'
-                        : 'Submit orders with total declared value exceeding €10,000, or'}
-                    </li>
-                    <li>
-                      {language === 'es'
-                        ? 'Contratar el servicio de Guante Blanco / Archival Vault.'
-                        : 'Commission White Glove / Archival Vault curation services.'}
-                    </li>
-                  </ul>
-
-                  <p className="font-bold text-emerald-400 font-mono text-[11px] uppercase tracking-wide pt-2">
-                    {language === 'es' ? 'BENEFICIOS EXCLUSIVOS:' : 'EXCLUSIVE PRIVILEGES:'}
-                  </p>
-                  <ul className="space-y-1.5 list-disc list-inside text-xs pl-1">
-                    <li>{language === 'es' ? 'Auditoría presencial directa por Master Grader sin cola de espera.' : 'Direct in-person Master Grader audit with zero lab queue.'}</li>
-                    <li>{language === 'es' ? 'Retorno en maletín de seguridad hermético acorazado con precinto forense.' : 'Return dispatch in hermetic armored security case with forensic seals.'}</li>
-                    <li>{language === 'es' ? 'Seguro de tránsito VIP bonificado hasta 25.000 €.' : 'Complimentary VIP transit insurance up to €25,000.'}</li>
-                    <li>{language === 'es' ? 'Concierge personal dedicado y atención prioritaria directa.' : 'Dedicated personal concierge and direct priority attention.'}</li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Footer */}
-            <div className={`px-6 py-4 border-t flex justify-end ${
-              isLight ? 'bg-[#F4EFE6] border-[#E2DCce]' : 'bg-[#0B0F0B] border-white/10'
-            }`}>
-              <button
-                type="button"
-                onClick={() => setShowTierModal(false)}
-                className="btn-gorilla-square-secondary py-2 px-6 text-xs font-bold tracking-widest uppercase"
-              >
-                {language === 'es' ? 'Entendido' : 'Understood'}
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
 
     </div>
   );
