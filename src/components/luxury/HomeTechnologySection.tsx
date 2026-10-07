@@ -66,7 +66,7 @@ export const HomeTechnologySection: React.FC<HomeTechnologySectionProps> = ({
           
           {/* Left Column: Heading, Subtitle & Action Link */}
           <div className="lg:col-span-4 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
-            <h2 className={`font-['Oswald'] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-bold uppercase tracking-[-0.01em] leading-[1.05] text-center lg:text-left title-3d ${
+            <h2 className={`font-['Nunito',sans-serif] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-[900] uppercase tracking-normal leading-[1.05] text-center lg:text-left ${
               isLight ? 'text-[#14170F]' : 'text-white'
             }`}>
               {language === 'es' ? (

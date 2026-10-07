@@ -36,7 +36,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <span className="font-mono text-[10px] tracking-[0.25em] text-[#48C765] uppercase font-bold mb-3">
               {language === 'es' ? 'FILOSOFÍA & VALORES' : 'PHILOSOPHY & VALUES'}
             </span>
-            <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-5xl text-white uppercase tracking-wide leading-tight mb-6 title-3d">
+            <h2 className="font-['Nunito',sans-serif] font-[900] text-3xl sm:text-5xl text-white uppercase tracking-normal leading-tight mb-6">
               {language === 'es' ? 'Nuestros Compromisos Fundamentales' : 'Our Fundamental Commitments'}
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-2xl text-justify leading-relaxed">

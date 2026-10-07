@@ -49,7 +49,7 @@ export const MissionBanner: React.FC<MissionBannerProps> = ({ onNavigate }) => {
           <p className="font-mono text-[10px] tracking-[0.2em] text-[#48C765] uppercase mb-4 text-center lg:text-left">
             {language === 'es' ? 'NUESTRA PROMESA' : 'OUR PROMISE'}
           </p>
-          <h2 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] text-white uppercase leading-[1.05] mb-5 tracking-[0.01em] text-center lg:text-left title-3d">
+          <h2 className="font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl lg:text-[46px] text-white uppercase leading-[1.05] mb-5 tracking-normal text-center lg:text-left">
             {language === 'es' ? 'DISEÑADO PARA TU COLECCIÓN' : 'BUILT AROUND YOUR COLLECTION'}
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#C2C9C3] max-w-[480px] font-normal leading-relaxed mb-8 mx-auto lg:mx-0 text-center lg:text-left">

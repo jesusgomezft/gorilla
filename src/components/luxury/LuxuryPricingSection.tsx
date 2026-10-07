@@ -194,7 +194,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
           <div className="relative z-10 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-10">
             {/* Left Column: Heading & Tagline */}
             <div className="max-w-2xl">
-              <h2 className={`font-['Oswald'] text-2xl sm:text-4xl lg:text-[44px] font-bold tracking-[0.01em] uppercase leading-[1.08] title-3d ${
+              <h2 className={`font-['Nunito',sans-serif] text-2xl sm:text-4xl lg:text-[44px] font-[900] tracking-normal uppercase leading-[1.08] ${
                 isLight ? 'text-[#111827]' : 'text-white'
               }`}>
                 {language === 'es' 

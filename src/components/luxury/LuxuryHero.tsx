@@ -154,46 +154,26 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             </span>
           </motion.div>
 
-          {/* Monumental 3D Sculpted Display Headline */}
+          {/* Monumental Display Headline — Limpio, nítido y de alto impacto (sin efecto 3D) */}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="font-['Montserrat'] font-[900] text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] leading-[0.98] tracking-[-0.03em] mb-6 sm:mb-8 uppercase select-none"
+            className={`font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] leading-[0.98] tracking-normal mb-6 sm:mb-8 uppercase select-none ${
+              isLight ? 'text-[#0F172A]' : 'text-white'
+            }`}
           >
             {/* First Line: PRECISIÓN / PRECISION */}
-            <span 
-              className="block"
-              style={{
-                color: isLight ? '#111827' : '#FFFFFF',
-                textShadow: isLight
-                  ? '0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1'
-                  : '0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569'
-              }}
-            >
+            <span className="block">
               {t('ref.hero.title1')}
             </span>
 
             {/* Second Line: QUE DA / GIVES + VALOR / VALUE */}
             <span className="block mt-1 sm:mt-1.5">
-              <span 
-                style={{
-                  color: isLight ? '#111827' : '#FFFFFF',
-                  textShadow: isLight
-                    ? '0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1'
-                    : '0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569'
-                }}
-              >
+              <span>
                 {t('ref.hero.title2')}
               </span>
-              <span 
-                style={{
-                  color: isLight ? '#16A34A' : '#48C765',
-                  textShadow: isLight
-                    ? '0 1px 0 #86EFAC, 0 2px 0 #15803D'
-                    : '0 1px 0 #86EFAC, 0 2px 0 #22C55E, 0 3px 0 #15803D'
-                }}
-              >
+              <span className={isLight ? 'text-[#16A34A]' : 'text-[#22C55E]'}>
                 {t('ref.hero.titleGreen')}
               </span>
             </span>

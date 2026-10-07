@@ -71,10 +71,10 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
             </span>
           </div>
           
-          <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl text-white uppercase tracking-[0.01em] leading-[0.9] mb-8 title-3d">
+          <h2 className="font-['Nunito',sans-serif] font-[900] text-3xl sm:text-4xl text-white uppercase tracking-normal leading-[0.95] mb-8">
             {language === 'es' ? 'EL VIAJE A LA ' : 'THE JOURNEY TO '}
             <br/>
-            <span className="text-[#48C765] title-3d-green">{language === 'es' ? 'PERFECCIÓN' : 'PERFECTION'}</span>
+            <span className="text-[#48C765]">{language === 'es' ? 'PERFECCIÓN' : 'PERFECTION'}</span>
           </h2>
           
           <p className="font-sans text-sm text-[#A4ACA1] leading-relaxed mb-12 max-w-sm">

@@ -23,10 +23,10 @@ export const CompanyStorySection: React.FC = () => {
             <span className="w-8 h-[1px] bg-[#48C765]"></span>
           </div>
           
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-6xl uppercase tracking-wide leading-tight mb-8 title-3d">
+          <h1 className="font-['Nunito',sans-serif] font-[900] text-4xl sm:text-6xl uppercase tracking-normal leading-tight mb-8 text-white">
             {language === 'es' ? 'REDEFINIENDO EL ESTÁNDAR ' : 'REDEFINING THE STANDARD '}
             <br/>
-            <span className="text-[#48C765] title-3d-green">{language === 'es' ? 'A NIVEL MUNDIAL' : 'GLOBALLY'}</span>
+            <span className="text-[#48C765]">{language === 'es' ? 'A NIVEL MUNDIAL' : 'GLOBALLY'}</span>
           </h1>
           
           <p className="font-sans text-sm sm:text-base text-[#A4ACA1] max-w-2xl leading-relaxed text-justify">

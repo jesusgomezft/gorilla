@@ -50,7 +50,7 @@ export const VerifiedAuditsSection: React.FC = () => {
             </span>
           </div>
 
-          <h2 className={`font-['Montserrat'] text-3xl sm:text-4xl font-[800] tracking-[-0.02em] uppercase leading-tight mb-4 title-3d ${
+          <h2 className={`font-['Nunito',sans-serif] text-3xl sm:text-4xl font-[900] tracking-normal uppercase leading-tight mb-4 ${
             isLight ? 'text-gray-950' : 'text-white'
           }`}>
             {language === 'es' ? 'VERIFICADO POR EXPERTOS' : 'VERIFIED BY EXPERTS'}
@@ -158,7 +158,7 @@ export const LiveLabActivitySection: React.FC = () => {
               </span>
             </div>
 
-            <h2 className={`font-['Montserrat'] text-3xl sm:text-4xl md:text-5xl font-[800] tracking-[-0.02em] uppercase leading-tight title-3d ${
+            <h2 className={`font-['Nunito',sans-serif] text-3xl sm:text-4xl md:text-5xl font-[900] tracking-normal uppercase leading-tight ${
               isLight ? 'text-gray-950' : 'text-white'
             }`}>
               {language === 'es' ? 'COMUNIDAD EN ACCIÓN' : 'COMMUNITY IN ACTION'}

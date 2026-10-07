@@ -95,7 +95,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({ onNavigate
             }`}>
               {language === 'es' ? 'EL PROCESO' : 'SUBMISSION PROCESS'}
             </p>
-            <h2 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-[0.01em] uppercase leading-[1.05] mb-5 whitespace-pre-line text-center lg:text-left title-3d ${
+            <h2 className={`font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl lg:text-[46px] xl:text-[52px] tracking-normal uppercase leading-[1.05] mb-5 whitespace-pre-line text-center lg:text-left ${
               isLight ? 'text-[#1C201D]' : 'text-white'
             }`}>
               {language === 'es' ? 'CÓMO FUNCIONA' : 'HOW IT WORKS'}
