@@ -274,158 +274,133 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
   }
 
   // =========================================================================
-  // PASO FINAL COMPLETADO (FINAL COMPLETED): Proceso Finalizado (Oro / Amarillo)
+  // PASO FINAL COMPLETADO (FINAL COMPLETED): Golden Banana Gorilla Grading
+  // Solo este icono final es una banana titilando en color oro/ámbar
   // =========================================================================
   if (status === 'completed' && isFinal) {
+    const bananaWidth = size === 'sm' ? 18 : size === 'lg' ? 26 : 22;
+    const bananaHeight = size === 'sm' ? 22 : size === 'lg' ? 32 : 27;
+
     return (
       <svg
-        width={dimensions.width}
-        height={dimensions.height}
-        viewBox="0 0 20 28"
+        width={bananaWidth}
+        height={bananaHeight}
+        viewBox="0 0 24 28"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={`shrink-0 transition-all duration-300 ${className}`}
         style={{ overflow: 'visible' }}
-        aria-label="Final completed and delivered slab with golden status pulse"
+        aria-label="Gorilla Grading golden delivered banana icon"
       >
         <defs>
           <style>{`
-            @keyframes finalGoldPulse {
+            @keyframes finalBananaPulse {
               0%, 100% {
-                filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.45));
+                filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.6)) drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
                 opacity: 1;
               }
               50% {
-                filter: drop-shadow(0 0 9px rgba(251, 191, 36, 0.95)) drop-shadow(0 0 15px rgba(245, 158, 11, 0.6));
-                opacity: 0.8;
+                filter: drop-shadow(0 0 9px rgba(251, 191, 36, 1)) drop-shadow(0 0 16px rgba(245, 158, 11, 0.9));
+                opacity: 0.85;
               }
             }
-            @keyframes finalGoldRadar {
+            @keyframes finalBananaHalo {
               0% {
-                transform: scale(0.98);
-                transform-origin: 10px 14px;
+                transform: scale(0.65);
                 opacity: 0.9;
                 stroke-width: 1.6;
               }
               100% {
-                transform: scale(1.38);
-                transform-origin: 10px 14px;
+                transform: scale(1.42);
                 opacity: 0;
                 stroke-width: 0.3;
               }
             }
-            .final-slab-radar {
-              animation: finalGoldRadar 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+            .final-banana-pulse {
+              animation: finalBananaPulse 1.5s ease-in-out infinite;
+              transform-origin: 12px 14px;
             }
-            .final-slab-shell {
-              animation: finalGoldPulse 1.4s ease-in-out infinite;
+            .final-banana-halo {
+              animation: finalBananaHalo 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+              transform-origin: 12px 14px;
             }
           `}</style>
-          <linearGradient id="cardArtGradFinal" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#F59E0B" />
-            <stop offset="50%" stopColor="#EAB308" />
-            <stop offset="100%" stopColor="#CA8A04" />
+
+          {/* Degradados dorados de la Banana Gorilla Grading */}
+          <linearGradient id="bananaOuterPeel" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#FDE047" />
+            <stop offset="35%" stopColor="#FACC15" />
+            <stop offset="80%" stopColor="#F59E0B" />
+            <stop offset="100%" stopColor="#D97706" />
           </linearGradient>
-          <linearGradient id="acrylicReflectionFinal" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.5" />
-            <stop offset="35%" stopColor="#FFFFFF" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+
+          <linearGradient id="bananaInnerHighlight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#FEF9C3" />
+            <stop offset="45%" stopColor="#FEF08A" />
+            <stop offset="100%" stopColor="#FACC15" />
           </linearGradient>
         </defs>
 
-        {/* 0. Onda radar expansiva de proceso finalizado en oro/amarillo */}
-        <rect
-          x="0.75"
-          y="0.75"
-          width="18.5"
-          height="26.5"
-          rx="2"
+        {/* 0. Onda expansiva de luz dorada / ámbar titilante */}
+        <circle
+          cx="12"
+          cy="14"
+          r="9.5"
           fill="none"
           stroke="#F59E0B"
-          className="final-slab-radar"
+          className="final-banana-halo"
           pointerEvents="none"
         />
 
-        <g className="final-slab-shell">
-          {/* 1. Cápsula exterior en oro/amarillo completado */}
-          <rect
-            x="0.75"
-            y="0.75"
-            width="18.5"
-            height="26.5"
-            rx="1.8"
-            className={isLight ? 'fill-white stroke-[#F59E0B]' : 'fill-[#241E14] stroke-[#FBBF24]'}
-            strokeWidth="1.5"
-          />
-
-          {/* 2. Etiqueta superior dorada finalizada */}
-          <rect
-            x="2.4"
-            y="2.4"
-            width="15.2"
-            height="5.4"
-            rx="0.6"
-            fill="#F59E0B"
-          />
-          {/* Checkmark blanco de proceso entregado/completado */}
+        {/* 1. Silueta de la banana dorada con resplandor y brillo pulsante */}
+        <g className="final-banana-pulse">
+          {/* Cuerpo principal curvado de la banana */}
           <path
-            d="M13.8 4.8L14.8 5.8L16.6 3.6"
-            stroke="#FFFFFF"
-            strokeWidth="1.1"
-            strokeLinecap="round"
+            d="M 16.2 6.0 C 11.2 7.8, 4.8 13.2, 5.2 19.8 C 5.5 23.4, 8.4 25.4, 10.6 24.8 C 8.6 22.0, 8.8 18.0, 11.4 13.8 C 13.4 10.5, 15.2 8.0, 16.2 6.0 Z"
+            fill="url(#bananaOuterPeel)"
+            stroke="#B45309"
+            strokeWidth="0.6"
             strokeLinejoin="round"
           />
-          <line x1="3.4" y1="4.2" x2="11.5" y2="4.2" stroke="#FFFFFF" strokeWidth="0.8" strokeLinecap="round" />
-          <line x1="3.4" y1="5.6" x2="9.0" y2="5.6" stroke="#FEF3C7" strokeWidth="0.6" strokeLinecap="round" />
 
-          {/* Separador acrílico */}
-          <line x1="1.8" y1="8.6" x2="18.2" y2="8.6" stroke="#F59E0B" strokeOpacity="0.4" strokeWidth="0.6" />
-
-          {/* 3. Carta TCG interior con borde dorado */}
-          <rect
-            x="2.4"
-            y="9.4"
-            width="15.2"
-            height="16.2"
-            rx="0.8"
-            fill="#FACC15"
-            stroke="#CA8A04"
-            strokeWidth="0.5"
+          {/* Cara interna / plano de luz de la cáscara */}
+          <path
+            d="M 15.6 6.8 C 11.8 8.6, 6.8 13.8, 7.2 19.2 C 7.4 21.6, 9.0 23.4, 10.2 24.0 C 8.8 21.4, 9.2 17.8, 11.6 13.8 C 13.2 11.0, 14.8 8.8, 15.6 6.8 Z"
+            fill="url(#bananaInnerHighlight)"
+            opacity="0.9"
           />
-          <rect
-            x="3.2"
-            y="10.2"
-            width="13.6"
-            height="14.6"
-            rx="0.5"
-            fill="#FEF9C3"
-          />
-          {/* Cabecera y gema dorada */}
-          <line x1="4.0" y1="11.2" x2="12.0" y2="11.2" stroke="#713F12" strokeWidth="0.7" strokeLinecap="round" />
-          <circle cx="15.0" cy="11.2" r="0.8" fill="#F59E0B" />
 
-          {/* Ilustración de la carta final */}
-          <rect
-            x="3.9"
-            y="12.3"
-            width="12.2"
-            height="7.5"
-            rx="0.4"
-            fill="url(#cardArtGradFinal)"
-            stroke="#B45309"
+          {/* Línea de brillo especular acrílico */}
+          <path
+            d="M 14.8 7.8 C 11.5 9.8, 8.0 14.2, 8.4 18.2"
+            stroke="#FFFFFF"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            opacity="0.85"
+          />
+
+          {/* Tallo superior de la banana */}
+          <path
+            d="M 16.0 6.2 L 18.2 3.4 C 18.6 2.9, 19.3 3.3, 19.1 3.9 L 17.0 6.8 Z"
+            fill="#78350F"
+            stroke="#451A03"
             strokeWidth="0.4"
           />
-          <circle cx="10.0" cy="16.0" r="1.8" fill="#FEF08A" opacity="0.85" />
+          {/* Anillo de unión verde-ámbar del tallo */}
+          <ellipse cx="16.3" cy="6.3" rx="1.0" ry="0.6" fill="#65A30D" />
 
-          {/* Stats de ataque */}
-          <line x1="4.2" y1="21.0" x2="14.8" y2="21.0" stroke="#854D0E" strokeWidth="0.6" strokeLinecap="round" />
-          <line x1="4.2" y1="22.4" x2="11.0" y2="22.4" stroke="#A16207" strokeWidth="0.5" strokeLinecap="round" />
-
-          {/* Reflejo de cristal */}
+          {/* Punta inferior de la banana */}
           <path
-            d="M1.5 1.5L16.5 1.5L2.5 22.5L1.5 22.5Z"
-            fill="url(#acrylicReflectionFinal)"
-            pointerEvents="none"
+            d="M 9.8 24.4 C 10.3 24.8, 10.8 24.7, 10.6 24.2 C 10.2 23.8, 9.7 23.9, 9.8 24.4 Z"
+            fill="#451A03"
+          />
+
+          {/* Destello de calidad finalizada */}
+          <path
+            d="M 18.5 13.5 L 19.1 15.2 L 20.8 15.8 L 19.1 16.4 L 18.5 18.1 L 17.9 16.4 L 16.2 15.8 L 17.9 15.2 Z"
+            fill="#FEF08A"
+            stroke="#CA8A04"
+            strokeWidth="0.3"
           />
         </g>
       </svg>
