@@ -40,7 +40,7 @@ export const CollectorGalleryHome: React.FC<CollectorGalleryHomeProps> = ({ onNa
               <span>{t('gallery.tag')}</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#141210] tracking-tight leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#141210] tracking-tight leading-[1.12] title-3d">
               {t('gallery.heroTitle')} <br />
               <span className="italic font-normal text-stone-700">
                 {t('gallery.heroSubtitle')}

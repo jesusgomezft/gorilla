@@ -170,7 +170,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             <span>{language === 'es' ? 'TABLA DE TARIFAS OFICIALES · LABORATORIO 2026' : 'OFFICIAL TARIFF SCHEDULE · LABORATORY 2026'}</span>
           </div>
 
-          <h2 className="font-['Oswald'] text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.01em] uppercase leading-tight">
+          <h2 className="font-['Oswald'] text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.01em] uppercase leading-tight title-3d">
             {language === 'es' ? 'TARIFAS Y CONDICIONES DE SERVICIO' : 'LABORATORY RATES & SERVICE SPECIFICATIONS'}
           </h2>
 

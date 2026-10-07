@@ -115,7 +115,7 @@ export const CertificateDetailPage: React.FC<CertificateDetailPageProps> = ({
             </div>
 
             {/* Specimen Main Name */}
-            <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-display font-black tracking-tight leading-tight ${
+            <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-display font-black tracking-tight leading-tight title-3d ${
               isLight ? 'text-gray-950' : 'text-white'
             }`}>
               {card.name}

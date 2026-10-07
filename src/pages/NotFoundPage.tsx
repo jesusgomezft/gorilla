@@ -16,7 +16,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onNavigate }) => {
         <span className="font-mono text-xs text-rose-400 font-bold uppercase tracking-wider">
           404 — REGISTRY RECORD NOT FOUND
         </span>
-        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white">
+        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white title-3d">
           Unregistered Coordinate
         </h1>
         <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">

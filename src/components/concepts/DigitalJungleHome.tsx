@@ -58,7 +58,7 @@ export const DigitalJungleHome: React.FC<DigitalJungleHomeProps> = ({ onNavigate
                 <span>{t('jungle.tag')}</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-lg font-display font-extrabold text-white tracking-tight leading-[1.08]">
+              <h1 className="text-4xl sm:text-5xl lg:text-lg font-display font-extrabold text-white tracking-tight leading-[1.08] title-3d">
                 {t('jungle.heroTitle')} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00DF81] via-teal-300 to-emerald-200">
                   {t('jungle.heroSubtitle')}

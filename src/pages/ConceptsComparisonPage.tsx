@@ -46,7 +46,7 @@ export const ConceptsComparisonPage: React.FC<ConceptsComparisonPageProps> = ({ 
           <Sparkles className="w-3.5 h-3.5" />
           <span>EXECUTIVE STAKEHOLDER MATRIX</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white">
+        <h1 className="text-4xl sm:text-5xl font-display font-extrabold text-white title-3d">
           Gorilla Grading Concept Models
         </h1>
         <p className="text-base text-slate-300 leading-relaxed">

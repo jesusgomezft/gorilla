@@ -44,7 +44,7 @@ export const BelongPage: React.FC<PageProps> = ({ onNavigate }) => {
           </div>
         </div>
         
-        <h1 className="font-['Oswald'] font-[700] text-5xl sm:text-6xl text-white uppercase tracking-[0.01em] leading-[0.94]">
+        <h1 className="font-['Oswald'] font-[700] text-5xl sm:text-6xl text-white uppercase tracking-[0.01em] leading-[0.94] title-3d">
           {language === 'es' ? 'ECOSISTEMA INTERNACIONAL' : 'INTERNATIONAL ECOSYSTEM'}
         </h1>
         

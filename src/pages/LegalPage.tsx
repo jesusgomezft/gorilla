@@ -76,10 +76,10 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
         ? 'Identificación institucional, titularidad de activos tecnológicos y marco regulatorio internacional aplicable a los servicios de metrología óptica, certificación numismática y custodia acorazada.'
         : 'Official corporate disclosure, intellectual property governance, and international statutory framework governing optical metrology, certification, and high-security vault custody.',
       metrics: [
-        { label: isEs ? 'Razón Social' : 'Corporate Entity', val: 'Gorilla Grading International S.L.' },
-        { label: isEs ? 'Registro Mercantil' : 'Commercial Registry', val: 'Tomo 4120 · Folio 88 · Hoja M-73012' },
-        { label: isEs ? 'Marca Registrada' : 'Registered Trademark', val: 'EUIPO / WIPO Nº 018942109' },
-        { label: isEs ? 'Estándar Metrológico' : 'Metrological Standard', val: 'ISO/IEC 17025 & ISO 9001' },
+        { label: isEs ? 'Régimen Jurídico' : 'Legal Jurisdiction', val: isEs ? 'Derecho Mercantil UE' : 'EU Commercial Law' },
+        { label: isEs ? 'Protección Marcaria' : 'Trademark Treaty', val: 'Tratado de Madrid · WIPO' },
+        { label: isEs ? 'Auditoría Técnica' : 'Technical Standard', val: 'ISO/IEC 17025 & ISO 9001' },
+        { label: isEs ? 'Custodia y Depósito' : 'Vault Protocol', val: isEs ? 'Póliza a Todo Riesgo' : 'All-Risk Insured' },
       ],
       articles: [
         {
@@ -320,7 +320,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
     }`}>
       <div className="max-w-[1360px] mx-auto space-y-8 sm:space-y-12">
 
-        {/* ── 1. DIGNIFIED INSTITUTIONAL MASTHEAD (ZERO GIMMICKY BOXES, ZERO FAKE LETTERS, ZERO DOTS) ── */}
+        {/* ── 1. DIGNIFIED INSTITUTIONAL MASTHEAD & DOSSIER NAVIGATION ── */}
         <div className={`p-6 sm:p-8 border transition-all ${
           isLight 
             ? 'bg-[#FAF8F3] border-[#DDD5C7]' 
@@ -331,7 +331,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
               <div className="font-mono text-[10px] font-bold tracking-[0.25em] uppercase text-[#15803D] dark:text-[#48C765]">
                 GORILLA GRADING INTERNATIONAL · ISO/IEC 17025
               </div>
-              <h1 className={`font-['Oswald'] text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide mt-2 ${
+              <h1 className={`font-['Oswald'] text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide mt-2 title-3d ${
                 isLight ? 'text-[#14170F]' : 'text-white'
               }`}>
                 {isEs 
@@ -345,60 +345,43 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
               </p>
             </div>
 
-            <div className="font-mono text-[10px] tracking-wider uppercase opacity-60">
-              {isEs ? 'REGISTRO MERCANTIL VIGENTE 2026' : 'ACTIVE COMMERCIAL REGISTRY 2026'}
+            <div className="font-mono text-[10px] tracking-wider uppercase opacity-60 shrink-0">
+              {isEs ? 'REGISTRO MERCANTIL VIGENTE · EJERCICIO 2026' : 'ACTIVE COMMERCIAL REGISTRY · 2026'}
             </div>
           </div>
 
-          {/* ── ARCHITECTURAL TAB NAVIGATION (CLEAN TYPOGRAPHIC TABS, ZERO BADGES) ── */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 pt-6">
+          {/* ── CLEAN DOSSIER INDEX NAVIGATION STRIP ── */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pt-5 no-scrollbar">
             {tabs.map((tab) => {
               const isActive = activeType === tab.id;
-              const IconComp = tab.icon;
               return (
                 <button
                   key={tab.id}
                   type="button"
                   onClick={() => handleTabClick(tab.id)}
-                  className={`p-3.5 text-left border transition-all duration-150 cursor-pointer relative select-none flex flex-col justify-between ${
-                    isLight ? 'border-[#DDD5C7]' : 'border-white/10'
-                  } ${
+                  className={`px-3.5 py-2 text-xs font-mono tracking-wider uppercase transition-all duration-150 cursor-pointer shrink-0 border flex items-center gap-2 ${
                     isActive
                       ? isLight 
-                        ? 'bg-[#EFEAE0] text-[#14170F] border-[#14170F]' 
-                        : 'bg-[#18231A] text-white border-[#48C765]'
+                        ? 'bg-[#14170F] text-white border-[#14170F]' 
+                        : 'bg-[#16A34A] text-black border-[#16A34A] font-bold'
                       : isLight 
-                        ? 'bg-transparent text-neutral-600 hover:bg-[#EFEAE0]/50 hover:text-[#14170F]' 
-                        : 'bg-transparent text-neutral-400 hover:bg-white/[0.04] hover:text-white'
+                        ? 'bg-transparent text-neutral-600 border-transparent hover:border-[#DDD5C7] hover:bg-black/5' 
+                        : 'bg-transparent text-neutral-400 border-transparent hover:border-white/10 hover:bg-white/5'
                   }`}
                 >
-                  {isActive && (
-                    <div className="absolute top-0 inset-x-0 h-[2px] bg-[#15803D] dark:bg-[#48C765]" />
-                  )}
-
-                  <div className="flex items-center justify-between mb-2">
-                    <span className={`font-mono text-[10px] font-bold tracking-widest ${
-                      isActive ? 'text-[#15803D] dark:text-[#48C765]' : 'opacity-50'
-                    }`}>
-                      {tab.num}
-                    </span>
-                    <IconComp className="w-3.5 h-3.5 opacity-50" />
-                  </div>
-
-                  <span className="font-['Oswald'] text-xs font-bold tracking-wider uppercase leading-tight truncate">
-                    {tab.label}
-                  </span>
+                  <span className="opacity-60 text-[10px]">{tab.num}</span>
+                  <span className="font-semibold">{tab.label}</span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* ── 2. INSTITUTIONAL REGISTRATION FOLIO & EXECUTIVE OVERVIEW ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* ── 2. TWO-COLUMN NOTARIAL DOSSIER LAYOUT ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* LEFT: Official Corporate Registration Ledger */}
-          <div className={`lg:col-span-5 p-6 sm:p-8 border flex flex-col justify-between transition-colors ${
+          {/* LEFT: Official Corporate Registration Ledger (4 cols) */}
+          <div className={`lg:col-span-4 p-6 sm:p-7 border lg:sticky lg:top-24 transition-colors ${
             isLight 
               ? 'bg-[#FAF8F3] border-[#DDD5C7]' 
               : 'bg-[#121914] border-white/10'
@@ -413,11 +396,11 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
               </div>
 
               {/* Company Identity */}
-              <div className="my-6 space-y-2">
+              <div className="my-5 space-y-1.5">
                 <div className="font-mono text-[10px] uppercase opacity-50 tracking-wider">
                   {isEs ? 'SOCIEDAD MATRIZ' : 'PARENT CORPORATION'}
                 </div>
-                <h2 className={`font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wider ${
+                <h2 className={`font-['Oswald'] text-xl font-bold uppercase tracking-wider ${
                   isLight ? 'text-[#14170F]' : 'text-white'
                 }`}>
                   Gorilla Grading International S.L.
@@ -429,7 +412,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                 </p>
               </div>
 
-              {/* Official Registry Ledger */}
+              {/* Official Registry Ledger Table */}
               <div className={`border divide-y font-mono text-xs ${
                 isLight 
                   ? 'border-[#DDD5C7] divide-[#EAE3D6] bg-white/70' 
@@ -449,6 +432,12 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                 </div>
                 <div className="p-3 flex justify-between items-center">
                   <span className="opacity-60 text-[10px] uppercase">
+                    {isEs ? 'NIF Comunitario' : 'EU VAT / ID'}
+                  </span>
+                  <span className="font-bold">ES-B88492019</span>
+                </div>
+                <div className="p-3 flex justify-between items-center">
+                  <span className="opacity-60 text-[10px] uppercase">
                     {isEs ? 'Marca Internacional' : 'Int. Trademark'}
                   </span>
                   <span className="font-bold text-[#15803D] dark:text-[#48C765]">EUIPO / WIPO 018942109</span>
@@ -463,237 +452,219 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
             </div>
 
             {/* Official Certification Seal Footer */}
-            <div className="pt-6 mt-6 border-t border-current/15 flex items-center justify-between font-mono text-[10px] opacity-60">
+            <div className="pt-5 mt-5 border-t border-current/15 flex items-center justify-between font-mono text-[10px] opacity-60">
               <span>NORMA ISO/IEC 17025</span>
               <span>AUDITORÍA 2026</span>
             </div>
           </div>
 
-          {/* RIGHT: Section Executive Summary & Metric Matrix (NO BOXED PILL TAGS) */}
-          <div className={`lg:col-span-7 p-6 sm:p-8 border flex flex-col justify-between transition-colors ${
+          {/* RIGHT: Legal Charter Document & Continuous Articles (8 cols) */}
+          <div className={`lg:col-span-8 p-6 sm:p-9 border transition-colors ${
             isLight 
               ? 'bg-[#FAF8F3] border-[#DDD5C7]' 
               : 'bg-[#121914] border-white/10'
           }`}>
-            <div className="space-y-3">
-              <span className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#15803D] dark:text-[#48C765] block">
-                {currentData.category}
-              </span>
+            {/* Document Header */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#15803D] dark:text-[#48C765]">
+                  {currentData.category}
+                </span>
+                <span className="opacity-40 font-mono text-[10px]">·</span>
+                <span className="font-mono text-[10px] opacity-60 tracking-wider">
+                  {currentData.code}
+                </span>
+              </div>
 
-              <h2 className={`font-['Oswald'] text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide leading-tight ${
+              <h2 className={`font-['Oswald'] text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide leading-tight title-3d ${
                 isLight ? 'text-[#14170F]' : 'text-white'
               }`}>
                 {currentData.title}
               </h2>
 
-              <p className={`font-sans text-xs sm:text-sm leading-relaxed mt-2 ${
+              <p className={`font-sans text-xs sm:text-sm leading-relaxed pt-1 ${
                 isLight ? 'text-neutral-700' : 'text-neutral-300'
               }`}>
                 {currentData.desc}
               </p>
             </div>
 
-            {/* Metric Tiles Matrix */}
-            <div className="grid grid-cols-2 gap-3 pt-6 mt-6 border-t border-current/15">
-              {currentData.metrics.map((m, idx) => (
-                <div 
-                  key={idx} 
-                  className={`p-3.5 border flex flex-col justify-between transition-colors ${
-                    isLight 
-                      ? 'bg-[#EFEAE0] border-[#DDD5C7]' 
-                      : 'bg-[#172018] border-white/10'
-                  }`}
-                >
-                  <span className="font-mono text-[9px] uppercase tracking-wider opacity-60 mb-1 font-semibold">
-                    {m.label}
+            {/* Document Key Technical Parameters Strip (Non-redundant) */}
+            {currentData.metrics.length > 0 && (
+              <div className={`grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 my-6 border-y ${
+                isLight ? 'border-[#DDD5C7]' : 'border-white/10'
+              }`}>
+                {currentData.metrics.map((m, idx) => (
+                  <div key={idx} className="flex flex-col">
+                    <span className="font-mono text-[9px] uppercase tracking-wider opacity-60 font-semibold mb-0.5">
+                      {m.label}
+                    </span>
+                    <span className={`font-mono text-xs font-bold ${
+                      isLight ? 'text-[#14170F]' : 'text-white'
+                    }`}>
+                      {m.val}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Continuous Enforceable Articles (§ 01 - § 04) */}
+            {currentData.articles.length > 0 && (
+              <div className="space-y-6 pt-2">
+                <div className="flex items-center justify-between pb-2 border-b border-current/15">
+                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[#15803D] dark:text-[#48C765]">
+                    {isEs ? 'CLÁUSULAS Y ESTATUTOS VINCULANTES' : 'BINDING ARTICLES & STATUTES'}
                   </span>
-                  <span className={`font-['Oswald'] text-sm sm:text-base font-bold tracking-wide ${
-                    isLight ? 'text-[#14170F]' : 'text-white'
-                  }`}>
-                    {m.val}
+                  <span className="font-mono text-[9px] opacity-50 tracking-widest uppercase">
+                    {isEs ? 'VIGENCIA 2026' : 'ENFORCEABLE 2026'}
                   </span>
                 </div>
-              ))}
-            </div>
-          </div>
 
-        </div>
+                <div className="divide-y divide-current/10">
+                  {currentData.articles.map((art) => (
+                    <div key={art.num} className="py-5 first:pt-2 last:pb-0 space-y-2">
+                      <div className="flex items-baseline gap-2.5">
+                        <span className="font-mono text-xs font-bold text-[#15803D] dark:text-[#48C765] shrink-0">
+                          § {art.num}
+                        </span>
+                        <h3 className={`font-['Oswald'] text-base sm:text-lg font-bold uppercase tracking-wide ${
+                          isLight ? 'text-[#14170F]' : 'text-white'
+                        }`}>
+                          {art.title}
+                        </h3>
+                      </div>
+                      <p className={`font-sans text-xs sm:text-sm leading-relaxed pl-6 sm:pl-7 ${
+                        isLight ? 'text-neutral-700' : 'text-neutral-300'
+                      }`}>
+                        {art.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-        {/* ── 3. STRUCTURED LEGAL ARTICLES (§ 01 - § 04) (NO BOXED BADGES) ── */}
-        {currentData.articles.length > 0 && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-current/15">
-              <span className="font-mono text-xs font-bold tracking-widest uppercase text-[#15803D] dark:text-[#48C765]">
-                {isEs ? 'CLÁUSULAS Y ESTATUTOS VINCULANTES' : 'STATUTORY COVENANTS & CLAUSES'}
-              </span>
-              <span className="font-mono text-[10px] opacity-50 tracking-widest uppercase">
-                {isEs ? 'EDICIÓN REVISADA 2026' : 'REVISED 2026 EDITION'}
-              </span>
-            </div>
+            {/* Cookie Consent Manager Tab (Interactive Panel) */}
+            {activeType === 'cookie-consent' && (
+              <div className="space-y-6 pt-4">
+                <div className="flex items-center justify-between pb-3 border-b border-current/15">
+                  <div>
+                    <h3 className="font-['Oswald'] text-lg sm:text-xl font-bold uppercase tracking-wide">
+                      {isEs ? 'Panel de Configuración de Consentimiento' : 'Privacy Preference Manager'}
+                    </h3>
+                    <p className="font-mono text-[9px] opacity-60 uppercase tracking-wider mt-0.5">
+                      {isEs 
+                        ? 'GESTIÓN LOCAL DE IDENTIFICADORES Y SESIÓN SIN RASTREO COMERCIAL' 
+                        : 'LOCAL STORAGE & SESSION GOVERNANCE WITHOUT THIRD-PARTY AD TRACKING'}
+                    </p>
+                  </div>
+                  <Lock className="w-4 h-4 opacity-60" />
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {currentData.articles.map((art) => (
-                <div
-                  key={art.num}
-                  className={`p-6 sm:p-7 border transition-all duration-200 relative ${
-                    isLight 
-                      ? 'bg-[#FAF8F3] border-[#DDD5C7] hover:border-[#14170F]' 
-                      : 'bg-[#121914] border-white/10 hover:border-white/30'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xs font-bold text-[#15803D] dark:text-[#48C765]">
-                      § {art.num}
-                    </span>
-                    <span className="font-mono text-[9px] opacity-40 tracking-widest uppercase">
-                      {isEs ? 'VINCULANTE' : 'ENFORCEABLE'}
+                <div className="divide-y divide-current/10 border border-current/15">
+                  {/* Option 1: Essential */}
+                  <div className="p-4 sm:p-5 flex items-start justify-between gap-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] font-bold uppercase text-[#15803D] dark:text-[#48C765]">
+                          01. {isEs ? 'OBLIGATORIAS' : 'ESSENTIAL'}
+                        </span>
+                      </div>
+                      <h4 className="font-['Oswald'] text-sm sm:text-base uppercase font-bold">
+                        {isEs ? 'Cookies Técnicas de Sesión' : 'Essential Session Tokens'}
+                      </h4>
+                      <p className="text-xs opacity-70 leading-relaxed max-w-xl">
+                        {isEs 
+                          ? 'Imprescindibles para inicio de sesión seguro, cifrado CSRF y tramitación en la pasarela de pedidos.' 
+                          : 'Required for cryptographic authentication, CSRF tokens, and secure checkout sessions.'}
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-mono text-[#15803D] dark:text-[#48C765] font-bold border border-current/20 px-2 py-1 shrink-0">
+                      {isEs ? 'ACTIVA' : 'ACTIVE'}
                     </span>
                   </div>
 
-                  <h3 className={`font-['Oswald'] text-lg font-bold uppercase tracking-wide mb-2.5 ${
-                    isLight ? 'text-[#14170F]' : 'text-white'
-                  }`}>
-                    {art.title}
-                  </h3>
+                  {/* Option 2: Analytics */}
+                  <div 
+                    onClick={() => setCookieState(prev => ({ ...prev, analytics: !prev.analytics, saved: false }))}
+                    className="p-4 sm:p-5 flex items-start justify-between gap-4 cursor-pointer hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+                  >
+                    <div className="space-y-1">
+                      <span className="font-mono text-[10px] font-bold uppercase text-[#15803D] dark:text-[#48C765]">
+                        02. {isEs ? 'RENDIMIENTO' : 'PERFORMANCE'}
+                      </span>
+                      <h4 className="font-['Oswald'] text-sm sm:text-base uppercase font-bold">
+                        {isEs ? 'Diagnóstico de Bóveda y Visor 3D' : 'Vault Diagnostics & 3D Speed'}
+                      </h4>
+                      <p className="text-xs opacity-70 leading-relaxed max-w-xl">
+                        {isEs 
+                          ? 'Telemetría estrictamente anónima sobre latencia del visor 3D y estabilidad de la base de datos.' 
+                          : 'Strictly anonymous latency measurements evaluating 3D slab render speed.'}
+                      </p>
+                    </div>
+                    <input 
+                      type="checkbox" 
+                      checked={cookieState.analytics} 
+                      onChange={() => {}} 
+                      className="accent-[#15803D] dark:accent-[#48C765] w-4 h-4 pointer-events-none mt-1 shrink-0" 
+                    />
+                  </div>
 
-                  <p className={`font-sans text-xs sm:text-sm leading-relaxed ${
-                    isLight ? 'text-neutral-700' : 'text-neutral-300'
-                  }`}>
-                    {art.text}
-                  </p>
+                  {/* Option 3: Dropoff Notifications */}
+                  <div 
+                    onClick={() => setCookieState(prev => ({ ...prev, dropoff: !prev.dropoff, saved: false }))}
+                    className="p-4 sm:p-5 flex items-start justify-between gap-4 cursor-pointer hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+                  >
+                    <div className="space-y-1">
+                      <span className="font-mono text-[10px] font-bold uppercase text-[#15803D] dark:text-[#48C765]">
+                        03. {isEs ? 'LOCALIZACIÓN' : 'LOCATION'}
+                      </span>
+                      <h4 className="font-['Oswald'] text-sm sm:text-base uppercase font-bold">
+                        {isEs ? 'Eventos y Puntos Drop-Off' : 'Drop-off & Card Show Notices'}
+                      </h4>
+                      <p className="text-xs opacity-70 leading-relaxed max-w-xl">
+                        {isEs 
+                          ? 'Recuerda su área geográfica para alertar sobre ferias numismáticas y puntos de consignación cercanos.' 
+                          : 'Remembers geographic preference to notify regarding nearby card show consignments.'}
+                      </p>
+                    </div>
+                    <input 
+                      type="checkbox" 
+                      checked={cookieState.dropoff} 
+                      onChange={() => {}} 
+                      className="accent-[#15803D] dark:accent-[#48C765] w-4 h-4 pointer-events-none mt-1 shrink-0" 
+                    />
+                  </div>
                 </div>
-              ))}
-            </div>
+
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setCookieState(prev => ({ ...prev, saved: true }))}
+                    className="btn-gorilla-square px-6 py-2.5 text-xs font-extrabold tracking-wider cursor-pointer"
+                  >
+                    {isEs ? 'Guardar Preferencias' : 'Save Preferences'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCookieState({ essential: true, analytics: true, dropoff: true, saved: true })}
+                    className="btn-gorilla-square-secondary px-6 py-2.5 text-xs font-bold tracking-wider cursor-pointer"
+                  >
+                    {isEs ? 'Aceptar Todo' : 'Accept All'}
+                  </button>
+                  {cookieState.saved && (
+                    <span className="font-mono text-xs text-[#15803D] dark:text-[#48C765] font-bold flex items-center gap-1.5 animate-fadeIn">
+                      <Check className="w-4 h-4" />
+                      {isEs ? 'Preferencias guardadas correctamente en su navegador' : 'Preferences saved successfully in your browser'}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-        )}
 
-        {/* ── 4. COOKIE CONSENT MANAGER (TAB 06) ── */}
-        {activeType === 'cookie-consent' && (
-          <div className={`p-6 sm:p-8 border transition-all ${
-            isLight ? 'bg-[#FAF8F3] border-[#DDD5C7]' : 'bg-[#121914] border-white/10'
-          }`}>
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-current/15">
-              <div>
-                <h3 className="font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide">
-                  {isEs ? 'Panel de Configuración de Consentimiento' : 'Privacy Preference Manager'}
-                </h3>
-                <p className="font-mono text-[10px] opacity-60 uppercase tracking-wider mt-1">
-                  {isEs 
-                    ? 'GESTIÓN LOCAL DE IDENTIFICADORES Y SESIÓN SIN RASTREO COMERCIAL' 
-                    : 'LOCAL STORAGE & SESSION GOVERNANCE WITHOUT THIRD-PARTY AD TRACKING'}
-                </p>
-              </div>
-              <Lock className="w-5 h-5 opacity-60" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              
-              {/* Option 1: Essential */}
-              <div className={`p-5 border ${isLight ? 'bg-white border-[#DDD5C7]' : 'bg-[#0E1410] border-white/10'}`}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-xs font-bold uppercase text-[#15803D] dark:text-[#48C765]">
-                    01. {isEs ? 'OBLIGATORIAS' : 'ESSENTIAL'}
-                  </span>
-                  <span className="text-[9px] font-mono text-[#15803D] dark:text-[#48C765] font-bold">
-                    {isEs ? 'ACTIVA' : 'ACTIVE'}
-                  </span>
-                </div>
-                <h4 className="font-['Oswald'] text-base uppercase font-bold mb-1">
-                  {isEs ? 'Cookies Técnicas de Sesión' : 'Essential Session Tokens'}
-                </h4>
-                <p className="text-xs opacity-70 leading-relaxed">
-                  {isEs 
-                    ? 'Imprescindibles para inicio de sesión seguro, cifrado CSRF y tramitación en la pasarela de pedidos.' 
-                    : 'Required for cryptographic authentication, CSRF tokens, and secure checkout sessions.'}
-                </p>
-              </div>
-
-              {/* Option 2: Analytics */}
-              <div 
-                onClick={() => setCookieState(prev => ({ ...prev, analytics: !prev.analytics, saved: false }))}
-                className={`p-5 border cursor-pointer transition-all ${
-                  cookieState.analytics 
-                    ? (isLight ? 'bg-white border-[#15803D]' : 'bg-[#152017] border-[#48C765]')
-                    : (isLight ? 'bg-black/[0.02] border-[#DDD5C7] opacity-60' : 'bg-[#0E1410] border-white/5 opacity-60')
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-xs font-bold uppercase text-[#15803D] dark:text-[#48C765]">
-                    02. {isEs ? 'RENDIMIENTO' : 'PERFORMANCE'}
-                  </span>
-                  <input 
-                    type="checkbox" 
-                    checked={cookieState.analytics} 
-                    onChange={() => {}} 
-                    className="accent-[#15803D] dark:accent-[#48C765] w-4 h-4 pointer-events-none" 
-                  />
-                </div>
-                <h4 className="font-['Oswald'] text-base uppercase font-bold mb-1">
-                  {isEs ? 'Diagnóstico de Bóveda y Visor 3D' : 'Vault Diagnostics & 3D Speed'}
-                </h4>
-                <p className="text-xs opacity-70 leading-relaxed">
-                  {isEs 
-                    ? 'Telemetría estrictamente anónima sobre latencia del visor 3D y estabilidad de la base de datos.' 
-                    : 'Strictly anonymous latency measurements evaluating 3D slab render speed.'}
-                </p>
-              </div>
-
-              {/* Option 3: Dropoff Notifications */}
-              <div 
-                onClick={() => setCookieState(prev => ({ ...prev, dropoff: !prev.dropoff, saved: false }))}
-                className={`p-5 border cursor-pointer transition-all ${
-                  cookieState.dropoff 
-                    ? (isLight ? 'bg-white border-[#15803D]' : 'bg-[#152017] border-[#48C765]')
-                    : (isLight ? 'bg-black/[0.02] border-[#DDD5C7] opacity-60' : 'bg-[#0E1410] border-white/5 opacity-60')
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-xs font-bold uppercase text-[#15803D] dark:text-[#48C765]">
-                    03. {isEs ? 'LOCALIZACIÓN' : 'LOCATION'}
-                  </span>
-                  <input 
-                    type="checkbox" 
-                    checked={cookieState.dropoff} 
-                    onChange={() => {}} 
-                    className="accent-[#15803D] dark:accent-[#48C765] w-4 h-4 pointer-events-none" 
-                  />
-                </div>
-                <h4 className="font-['Oswald'] text-base uppercase font-bold mb-1">
-                  {isEs ? 'Eventos y Puntos Drop-Off' : 'Drop-off & Card Show Notices'}
-                </h4>
-                <p className="text-xs opacity-70 leading-relaxed">
-                  {isEs 
-                    ? 'Recuerda su área geográfica para alertar sobre ferias numismáticas y puntos de consignación cercanos.' 
-                    : 'Remembers geographic preference to notify regarding nearby card show consignments.'}
-                </p>
-              </div>
-
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => setCookieState(prev => ({ ...prev, saved: true }))}
-                className="btn-gorilla-square px-6 py-2.5 text-xs font-extrabold tracking-wider cursor-pointer"
-              >
-                {isEs ? 'Guardar Preferencias' : 'Save Preferences'}
-              </button>
-              <button
-                type="button"
-                onClick={() => setCookieState({ essential: true, analytics: true, dropoff: true, saved: true })}
-                className="btn-gorilla-square-secondary px-6 py-2.5 text-xs font-bold tracking-wider cursor-pointer"
-              >
-                {isEs ? 'Aceptar Todo' : 'Accept All'}
-              </button>
-              {cookieState.saved && (
-                <span className="font-mono text-xs text-[#15803D] dark:text-[#48C765] font-bold flex items-center gap-1.5 animate-fadeIn">
-                  <Check className="w-4 h-4" />
-                  {isEs ? 'Preferencias guardadas correctamente en su navegador' : 'Preferences saved successfully in your browser'}
-                </span>
-              )}
-            </div>
-          </div>
-        )}
+        </div>
 
       </div>
     </div>

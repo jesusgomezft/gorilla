@@ -33,7 +33,7 @@ export const PromoCTA: React.FC<PromoCTAProps> = ({ onNavigate }) => {
           <div className="text-[#48C765]/60 font-mono text-[10px] leading-none">{']'}</div>
         </div>
         
-        <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl md:text-5xl text-white uppercase tracking-wide leading-tight mb-5">
+        <h2 className="font-['Oswald'] font-[700] text-3xl sm:text-4xl md:text-5xl text-white uppercase tracking-wide leading-tight mb-5 title-3d">
           {language === 'es' 
             ? 'No necesitas pagar envío' 
             : "You don't need to pay for shipping"}

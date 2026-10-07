@@ -93,7 +93,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 transition={{ duration: 0.2 }}
                 className="flex flex-col relative z-10"
               >
-                <h1 className="font-['Oswald'] text-2xl sm:text-3xl uppercase text-center mb-1 font-bold tracking-wide">
+                <h1 className="font-['Oswald'] text-2xl sm:text-3xl uppercase text-center mb-1 font-bold tracking-wide title-3d">
                   {language === 'es' ? 'Acceso Seguro' : 'Secure Access'}
                 </h1>
                 <p 
@@ -218,7 +218,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 transition={{ duration: 0.2 }}
                 className="flex flex-col relative z-10"
               >
-                <h1 className="font-['Oswald'] text-2xl sm:text-3xl uppercase text-center mb-1 font-bold tracking-wide">
+                <h1 className="font-['Oswald'] text-2xl sm:text-3xl uppercase text-center mb-1 font-bold tracking-wide title-3d">
                   {language === 'es' ? 'Verificación' : 'Verification'}
                 </h1>
                 <p className={`text-center font-sans text-xs mb-6 px-4 ${isLight ? 'text-neutral-600' : 'text-[#A4ACA1]'}`}>

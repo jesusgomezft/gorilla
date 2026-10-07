@@ -123,11 +123,11 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             }`} />
           </div>
 
-          <h1 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-[0.01em] leading-[0.94] mb-5 ${
+          <h1 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-[0.01em] leading-[0.94] mb-5 title-3d ${
             isLight ? 'text-[#1A1D1A]' : 'text-white'
           }`}>
             {language === 'es' ? 'EL VIAJE DESDE CARTA CRUDA HASTA ' : 'THE JOURNEY FROM RAW CARD TO '}
-            <span className={isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'}>{language === 'es' ? 'SLAB CERTIFICADO' : 'CERTIFIED SLAB'}</span>
+            <span className={`${isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'} title-3d-green`}>{language === 'es' ? 'SLAB CERTIFICADO' : 'CERTIFIED SLAB'}</span>
           </h1>
 
           <p className={`font-sans text-base max-w-2xl mx-auto leading-relaxed font-normal ${
@@ -208,7 +208,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             }`}>
               {language === 'es' ? 'ESPECIFICACIONES DEL LABORATORIO' : 'LABORATORY SPECIFICATIONS'}
             </span>
-            <h2 className={`font-['Oswald'] font-[700] text-3xl sm:text-4xl uppercase tracking-tight ${
+            <h2 className={`font-['Oswald'] font-[700] text-3xl sm:text-4xl uppercase tracking-tight title-3d ${
               isLight ? 'text-[#1A1D1A]' : 'text-white'
             }`}>
               {language === 'es' ? 'Ingeniería y Parámetros Numismáticos' : 'Engineering & Numismatic Parameters'}

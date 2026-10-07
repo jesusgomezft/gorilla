@@ -436,7 +436,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                         {language === 'es' ? 'SISTEMA ONLINE' : 'SYSTEM ONLINE'}
                       </span>
                     </div>
-                    <h2 className="font-['Oswald'] text-3xl sm:text-4xl text-white uppercase tracking-wide leading-none mb-2">
+                    <h2 className="font-['Oswald'] text-3xl sm:text-4xl text-white uppercase tracking-wide leading-none mb-2 title-3d">
                       {language === 'es' ? 'Bienvenido,' : 'Welcome,'} <span className="text-[#A4ACA1]">Carlos</span>
                     </h2>
                     <p className="font-sans text-sm text-[#A4ACA1] max-w-md">

@@ -1102,10 +1102,9 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════
-   GORILLA 3D LUXURY BUTTONS — Precision Square System
-   Geometric architectural form (border-radius: 0) with
-   tactile cylindrical gradient, top specular highlight rim,
-   bottom bevel, and ambient Gorilla emerald glow.
+   GORILLA ARCHITECTURAL BUTTONS — Flat Precision System
+   Cajas lisas, sólidas, limpias — sin destellos,
+   sin relieves 3D, sin biseles ni sombras pesadas.
    ═══════════════════════════════════════════════════════ */
 
 .btn-gorilla-pill,
@@ -1122,33 +1121,20 @@ body {
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
   overflow: hidden;
   
-  /* Cylindrical / physical extruded surface gradient in Gorilla Emerald */
-  background: linear-gradient(180deg, #22C55E 0%, #16A34A 52%, #15803D 100%) !important;
-  border: 1px solid rgba(187, 247, 208, 0.6) !important;
+  /* Verde sólido y plano, sin gradiente ni destellos */
+  background: #16A34A !important;
+  border: 1px solid #16A34A !important;
+  box-shadow: none !important;
   
-  /* Physical 3D lighting for square edges:
-     1. Inset top specular razor-sharp highlight rim
-     2. Inset bottom dark grounding bevel
-     3. Left/Right subtle dimensional catches
-     4. Ambient Gorilla emerald glow & drop shadow
-  */
-  box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.75),
-    inset 0 -2.5px 0 rgba(0, 0, 0, 0.45),
-    inset 1px 0 0 rgba(255, 255, 255, 0.2),
-    inset -1px 0 0 rgba(0, 0, 0, 0.25),
-    0 4px 18px -2px rgba(22, 163, 74, 0.45),
-    0 2px 4px rgba(0, 0, 0, 0.25) !important;
-  
-  /* Pure crisp white text in both light and dark themes */
+  /* Texto blanco liso */
   color: #FFFFFF !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: none !important;
 }
 
-/* Ensure any nested span/svg/text stays crisp white in ALL modes */
+/* Asegurar texto blanco nítido y sin sombra */
 .btn-gorilla-pill *,
 .btn-gorilla-square *,
 .light-theme .btn-gorilla-pill,
@@ -1156,31 +1142,26 @@ body {
 .light-theme .btn-gorilla-square,
 .light-theme .btn-gorilla-square * {
   color: #FFFFFF !important;
+  text-shadow: none !important;
 }
 
 .btn-gorilla-pill:hover,
 .btn-gorilla-square:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(180deg, #34D399 0%, #22C55E 40%, #16A34A 100%) !important;
-  border-color: rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -2.5px 0 rgba(0, 0, 0, 0.4),
-    inset 1px 0 0 rgba(255, 255, 255, 0.3),
-    inset -1px 0 0 rgba(0, 0, 0, 0.25),
-    0 8px 26px -2px rgba(34, 197, 94, 0.65),
-    0 4px 10px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px);
+  background: #15803D !important;
+  border-color: #15803D !important;
+  box-shadow: none !important;
 }
 
 .btn-gorilla-pill:active,
 .btn-gorilla-square:active {
-  transform: translateY(1px);
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.5),
-    0 2px 6px rgba(22, 163, 74, 0.3) !important;
+  transform: translateY(0);
+  background: #14532D !important;
+  border-color: #14532D !important;
+  box-shadow: none !important;
 }
 
-/* Secondary 3D Square Button (Glass / Metallic outline companion) */
+/* Secondary Flat Square Button — Caja lisa y limpia */
 .btn-gorilla-pill-secondary,
 .btn-gorilla-square-secondary {
   position: relative;
@@ -1195,18 +1176,15 @@ body {
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
   overflow: hidden;
 
-  /* Dark mode: Frosted obsidian glass */
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.35),
-    0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  /* Modo oscuro: fondo plano y borde nítido sin reflejos */
+  background: #161B16 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: none !important;
   color: #FFFFFF !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: none !important;
 }
 
 .btn-gorilla-pill-secondary *,
@@ -1214,37 +1192,33 @@ body {
 .btn-gorilla-square-secondary *,
 .btn-gorilla-square-secondary svg {
   color: #FFFFFF !important;
+  text-shadow: none !important;
 }
 
 .btn-gorilla-pill-secondary:hover,
 .btn-gorilla-square-secondary:hover {
-  transform: translateY(-2px);
-  border-color: rgba(72, 199, 101, 0.75) !important;
-  background: linear-gradient(180deg, rgba(72, 199, 101, 0.18) 0%, rgba(72, 199, 101, 0.06) 100%) !important;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.35),
-    0 6px 20px rgba(72, 199, 101, 0.28) !important;
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  background: #232A23 !important;
+  box-shadow: none !important;
   color: #FFFFFF !important;
 }
 
 .btn-gorilla-pill-secondary:active,
 .btn-gorilla-square-secondary:active {
-  transform: translateY(1px);
-  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(0);
+  background: #111411 !important;
+  box-shadow: none !important;
 }
 
-/* Light Mode variant for Secondary Square Button */
+/* Modo claro: fondo blanco plano liso con borde sutil */
 .light-theme .btn-gorilla-pill-secondary,
 .light-theme .btn-gorilla-square-secondary {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F3EF 100%) !important;
-  border: 1px solid rgba(17, 24, 39, 0.25) !important;
+  background: #FFFFFF !important;
+  border: 1px solid #D1D5DB !important;
   color: #111827 !important;
   text-shadow: none !important;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
 }
 
 .light-theme .btn-gorilla-pill-secondary *,
@@ -1252,22 +1226,21 @@ body {
 .light-theme .btn-gorilla-square-secondary *,
 .light-theme .btn-gorilla-square-secondary svg {
   color: #111827 !important;
+  text-shadow: none !important;
 }
 
 .light-theme .btn-gorilla-pill-secondary:hover,
 .light-theme .btn-gorilla-square-secondary:hover {
-  border-color: #16A34A !important;
-  color: #15803D !important;
-  background: linear-gradient(180deg, #FFFFFF 0%, #E8F5E9 100%) !important;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.08),
-    0 4px 14px rgba(22, 163, 74, 0.2) !important;
+  transform: translateY(-1px);
+  border-color: #9CA3AF !important;
+  color: #111827 !important;
+  background: #F9FAFB !important;
+  box-shadow: none !important;
 }
 
 .light-theme .btn-gorilla-pill-secondary:hover *,
 .light-theme .btn-gorilla-square-secondary:hover * {
-  color: #15803D !important;
+  color: #111827 !important;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1363,5 +1336,44 @@ body {
   border-color: #16A34A !important;
   color: #15803D !important;
 }
+
+/* ==========================================================================
+   GORILLA 3D SCULPTED LUXURY TYPOGRAPHY
+   Monumental 3D relief effect for titles and prominent headings across the site.
+/* ==========================================================================
+   GORILLA 3D SCULPTED LUXURY TYPOGRAPHY
+   Clean, razor-sharp 3D chiseled bevel relief with zero dark blur or black smudges.
+   - Dark theme: crisp 3-level metallic ledge (#E2E8F0, #94A3B8, #475569)
+   - Light theme: pure silver bevel highlight (#E2E8F0, #CBD5E1)
+   - Green accents: vibrant emerald 3D emboss (#86EFAC, #15803D / #22C55E)
+   ========================================================================== */
+
+.title-3d,
+.text-3d {
+  text-shadow: 0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569;
+}
+
+/* Light mode: pure crisp silver bevel ledge with no black/dark shadow */
+html.light-theme .title-3d,
+.light-theme .title-3d,
+html.light-theme .text-3d,
+.light-theme .text-3d,
+.title-3d-light {
+  text-shadow: 0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1 !important;
+}
+
+/* Green / Emerald 3D Accent Typography (no black shadow) */
+.title-3d-green,
+.text-3d-green {
+  text-shadow: 0 1px 0 #86EFAC, 0 2px 0 #22C55E, 0 3px 0 #15803D;
+}
+
+html.light-theme .title-3d-green,
+.light-theme .title-3d-green,
+html.light-theme .text-3d-green,
+.light-theme .text-3d-green {
+  text-shadow: 0 1px 0 #86EFAC, 0 2px 0 #15803D !important;
+}
+
 
 

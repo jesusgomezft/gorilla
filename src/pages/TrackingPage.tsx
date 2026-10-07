@@ -355,7 +355,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
               <span>{language === 'es' ? 'Seguimiento de Custodia' : 'Chain of Custody'}</span>
             </div>
 
-            <h1 className={`font-['Oswald'] text-2xl sm:text-4xl font-bold uppercase tracking-tight mb-8 ${
+            <h1 className={`font-['Oswald'] text-2xl sm:text-4xl font-bold uppercase tracking-tight mb-8 title-3d ${
               isLight ? 'text-[#1C201D]' : 'text-white'
             }`}>
               {language === 'es' ? 'SEGUIMIENTO EN TIEMPO REAL' : 'LIVE ORDER TRACKING'}

@@ -38,7 +38,7 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
               </span>
             </div>
 
-            <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-wide leading-[1.1] mb-8">
+            <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-wide leading-[1.1] mb-8 title-3d">
               {language === 'es' ? '¿Cuánto tardan los tiempos de respuesta (turnaround)?' : 'How long are the turnaround times?'}
             </h1>
 

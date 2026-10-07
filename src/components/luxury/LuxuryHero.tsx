@@ -167,8 +167,8 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
               style={{
                 color: isLight ? '#111827' : '#FFFFFF',
                 textShadow: isLight
-                  ? '0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1, 0 4px 8px rgba(0,0,0,0.12)'
-                  : '0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569, 0 4px 2px rgba(0,0,0,0.85), 0 10px 22px rgba(0,0,0,0.9)'
+                  ? '0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1'
+                  : '0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569'
               }}
             >
               {t('ref.hero.title1')}
@@ -180,8 +180,8 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                 style={{
                   color: isLight ? '#111827' : '#FFFFFF',
                   textShadow: isLight
-                    ? '0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1, 0 4px 8px rgba(0,0,0,0.12)'
-                    : '0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569, 0 4px 2px rgba(0,0,0,0.85), 0 10px 22px rgba(0,0,0,0.9)'
+                    ? '0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1'
+                    : '0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569'
                 }}
               >
                 {t('ref.hero.title2')}
@@ -190,8 +190,8 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                 style={{
                   color: isLight ? '#16A34A' : '#48C765',
                   textShadow: isLight
-                    ? '0 1px 0 #86EFAC, 0 2px 0 #15803D, 0 4px 10px rgba(22,163,74,0.25)'
-                    : '0 1px 0 #86EFAC, 0 2px 0 #22C55E, 0 3px 0 #15803D, 0 4px 2px rgba(0,0,0,0.9), 0 0 26px rgba(72,199,101,0.45), 0 10px 22px rgba(0,0,0,0.9)'
+                    ? '0 1px 0 #86EFAC, 0 2px 0 #15803D'
+                    : '0 1px 0 #86EFAC, 0 2px 0 #22C55E, 0 3px 0 #15803D'
                 }}
               >
                 {t('ref.hero.titleGreen')}
@@ -221,7 +221,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             {/* Primary Capsule Button */}
             <button
               onClick={() => onNavigate && onNavigate('/submit')}
-              className="btn-gorilla-pill w-full sm:w-auto px-8 py-4 gap-2.5 shadow-lg group"
+              className="btn-gorilla-pill w-full sm:w-auto px-8 py-4 gap-2.5 group"
             >
               <span className="font-['Montserrat'] font-extrabold text-xs tracking-[0.12em] uppercase">
                 {t('ref.hero.ctaPrimary')}

@@ -354,7 +354,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                   <span>[ {language === 'es' ? 'PASO 01 · MATRIZ OFICIAL DE TARIFAS DE LABORATORIO' : 'STEP 01 · OFFICIAL LABORATORY TARIFF MATRIX'} ]</span>
                 </div>
 
-                <h2 className={`font-['Oswald'] text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.01em] uppercase leading-tight ${isLight ? 'text-[#111827]' : 'text-white'}`}>
+                <h2 className={`font-['Oswald'] text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.01em] uppercase leading-tight title-3d ${isLight ? 'text-[#111827]' : 'text-white'}`}>
                   {language === 'es' ? 'TARIFAS Y CONDICIONES DE SERVICIO' : 'LABORATORY RATES & SERVICE SPECIFICATIONS'}
                 </h2>
 

@@ -202,7 +202,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
             </span>
           </div>
 
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-6xl uppercase tracking-wide leading-[1.05] text-white mb-6">
+          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-6xl uppercase tracking-wide leading-[1.05] text-white mb-6 title-3d">
             {language === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
           </h1>
 

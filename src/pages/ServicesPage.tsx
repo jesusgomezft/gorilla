@@ -143,9 +143,9 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             <span>{t('pricing.kicker')}</span>
           </div>
 
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl text-white uppercase tracking-[0.01em] leading-[0.94] mb-5">
+          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl text-white uppercase tracking-[0.01em] leading-[0.94] mb-5 title-3d">
             {language === 'es' ? 'TARIFAS Y NIVELES DE ' : 'GRADING TIERS & '}
-            <span className="text-[#48C765]">{language === 'es' ? 'SERVICIO' : 'PRICING'}</span>
+            <span className="text-[#48C765] title-3d-green">{language === 'es' ? 'SERVICIO' : 'PRICING'}</span>
           </h1>
 
           <p className="font-sans text-base text-[#A4ACA1] max-w-2xl mx-auto leading-relaxed font-normal">

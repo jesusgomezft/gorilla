@@ -42,7 +42,7 @@ export const PrecisionLabHome: React.FC<PrecisionLabHomeProps> = ({ onNavigate }
                 <span>{t('lab.tag')}</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-lg font-display font-extrabold text-white tracking-tight leading-[1.08]">
+              <h1 className="text-4xl sm:text-5xl lg:text-lg font-display font-extrabold text-white tracking-tight leading-[1.08] title-3d">
                 {t('lab.heroTitle')} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00DF81] via-emerald-300 to-teal-100">
                   {t('lab.heroSubtitle')}

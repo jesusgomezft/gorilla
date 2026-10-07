@@ -58,7 +58,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onNavigate }) => {
           }`}>
             {language === 'es' ? 'SOPORTE AL CLIENTE' : 'CUSTOMER SUPPORT'}
           </p>
-          <h2 className={`font-['Oswald'] font-[700] text-4xl uppercase leading-[1.1] mb-6 text-center md:text-left ${
+          <h2 className={`font-['Oswald'] font-[700] text-4xl uppercase leading-[1.1] mb-6 text-center md:text-left title-3d ${
             isLight ? 'text-[#1C201D]' : 'text-white'
           }`}>
             {language === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
