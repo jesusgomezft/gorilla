@@ -266,14 +266,15 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
             {/* Profile Identity Lockup */}
             <div className="flex items-center gap-4 relative z-10">
               {/* Metrology Monogram Badge with Chip Indicator */}
-              <div className={`w-14 h-14 sm:w-16 sm:h-16 border-2 flex flex-col items-center justify-center font-['Oswald'] shrink-0 relative shadow-sm ${
+              <div className={`w-14 h-14 sm:w-16 sm:h-16 border flex flex-col items-center justify-center font-['Oswald'] shrink-0 relative shadow-sm transition-colors ${
                 isLight 
-                  ? 'border-[#14170F] bg-[#14170F] text-white' 
-                  : 'border-[#48C765] bg-[#48C765]/10 text-[#48C765]'
+                  ? 'border-[#D8D2C5] bg-white text-[#14170F]' 
+                  : 'border-white/15 bg-white/[0.04] text-white'
               }`}>
-                <span className="text-xl sm:text-2xl font-bold leading-none">CM</span>
+                <span className="absolute -top-[1px] -left-[1px] w-2 h-2 border-t-2 border-l-2 border-[#16A34A] dark:border-[#48C765]" />
+                <span className="text-xl sm:text-2xl font-bold leading-none tracking-wider">CM</span>
                 {/* Micro Security Chip Holographic Tag */}
-                <div className="flex items-center gap-0.5 mt-1 opacity-75">
+                <div className="flex items-center gap-0.5 mt-1.5 opacity-80">
                   <span className="w-1.5 h-1 bg-[#48C765] block" />
                   <span className="w-1 h-1 bg-amber-400 block" />
                   <span className="w-2 h-1 bg-sky-400 block" />
@@ -530,9 +531,19 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="px-2 py-1 bg-[#48C765]/20 border border-[#48C765]/30 text-[#48C765] font-mono text-[9px] uppercase tracking-widest">
-                          {language === 'es' ? 'EN PROCESO' : 'IN PROGRESS'}
-                        </span>
+                        <div className={`inline-flex items-center gap-2 px-2.5 py-1 text-xs border ${
+                          isLight 
+                            ? 'bg-emerald-50 border-emerald-300 text-emerald-900 shadow-xs' 
+                            : 'bg-[#121A14] border-[#166534] text-[#4ADE80] shadow-sm'
+                        }`}>
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16A34A] dark:bg-[#48C765] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#16A34A] dark:bg-[#48C765]"></span>
+                          </span>
+                          <span className="font-mono text-[9px] font-bold tracking-[0.16em] uppercase">
+                            {language === 'es' ? 'EN PROCESO · FASE 03' : 'IN PROGRESS · STAGE 03'}
+                          </span>
+                        </div>
                         <span className="font-mono text-xs text-[#A4ACA1]">ID: {activeOrder.id}</span>
                       </div>
                       <h3 className="font-['Oswald'] text-2xl text-white uppercase tracking-wide">
@@ -682,10 +693,12 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
                       <div className="flex items-center justify-between gap-2 pl-2">
                         <div className="flex items-center gap-2">
-                          <span className={`w-5 h-5 border flex items-center justify-center font-['Oswald'] text-[9px] font-bold ${
-                            isLight ? 'border-[#14170F] text-[#14170F]' : 'border-white text-white'
+                          <span className={`w-6 h-6 border flex items-center justify-center shrink-0 ${
+                            isLight ? 'border-[#D8D2C5] bg-[#F5F2EB] text-[#14170F]' : 'border-white/15 bg-white/5 text-[#48C765]'
                           }`}>
-                            G
+                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
                           </span>
                           <span className={`font-['Oswald'] text-base font-bold tracking-wider ${
                             isLight ? 'text-[#14170F]' : 'text-white'
@@ -785,13 +798,15 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                             {/* Order ID & Carrier */}
                             <td className="px-6 py-5">
                               <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 border flex flex-col items-center justify-center font-['Oswald'] shrink-0 ${
+                                <div className={`w-9 h-9 flex items-center justify-center shrink-0 border relative transition-all ${
                                   isLight 
-                                    ? 'border-[#14170F] bg-[#14170F] text-white shadow-sm' 
-                                    : 'border-[#48C765] bg-[#48C765]/10 text-[#48C765]'
+                                    ? 'bg-[#F5F2EB] border-[#D8D2C5] text-[#14170F]' 
+                                    : 'bg-white/[0.03] border-white/10 text-white'
                                 }`}>
-                                  <span className="text-xs font-bold leading-none">G</span>
-                                  <span className="text-[4.5px] font-mono tracking-tighter opacity-80">LAB</span>
+                                  <span className="absolute -top-[1px] -left-[1px] w-1.5 h-1.5 border-t-2 border-l-2 border-[#16A34A] dark:border-[#48C765]" />
+                                  <svg className="w-4.5 h-4.5 text-[#16A34A] dark:text-[#48C765]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                  </svg>
                                 </div>
                                 <div>
                                   <span className={`font-['Oswald'] text-base font-bold tracking-wider block ${
@@ -1077,14 +1092,16 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            {/* Architectural Monogram Plaque */}
-                            <div className={`w-10 h-10 border-2 flex flex-col items-center justify-center font-['Oswald'] shrink-0 shadow-sm ${
+                            {/* Official Fiscal Document Seal */}
+                            <div className={`w-10 h-10 flex items-center justify-center shrink-0 border relative transition-all ${
                               isLight 
-                                ? 'border-[#14170F] bg-[#14170F] text-white' 
-                                : 'border-[#48C765] bg-[#48C765]/10 text-[#48C765]'
+                                ? 'bg-[#F5F2EB] border-[#D8D2C5] text-[#14170F]' 
+                                : 'bg-white/[0.03] border-white/10 text-white'
                             }`}>
-                              <span className="text-lg font-bold leading-none">G</span>
-                              <span className="text-[5.5px] font-mono tracking-tighter opacity-80">LABS</span>
+                              <span className="absolute -top-[1px] -right-[1px] w-2 h-2 border-t-2 border-r-2 border-[#16A34A] dark:border-[#48C765]" />
+                              <svg className="w-5 h-5 text-[#16A34A] dark:text-[#48C765]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
                             </div>
 
                             <div>
@@ -1331,14 +1348,17 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
 
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3.5">
-                    {/* Architectural Seal Monogram */}
-                    <div className={`w-12 h-12 border-2 flex flex-col items-center justify-center font-['Oswald'] relative shrink-0 shadow-sm ${
+                    {/* Official Fiscal Seal Insignia */}
+                    <div className={`w-12 h-12 flex items-center justify-center shrink-0 border relative shadow-sm ${
                       isLight 
-                        ? 'border-[#14170F] bg-[#14170F] text-white' 
-                        : 'border-[#48C765] bg-[#48C765]/10 text-[#48C765] shadow-[0_0_15px_rgba(72,199,101,0.25)]'
+                        ? 'bg-[#F5F2EB] border-[#D8D2C5] text-[#14170F]' 
+                        : 'bg-white/[0.04] border-white/15 text-white'
                     }`}>
-                      <span className="text-2xl font-bold leading-none">G</span>
-                      <span className="text-[6px] font-mono tracking-widest opacity-80 uppercase">LABS</span>
+                      <span className="absolute -top-[1px] -left-[1px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#16A34A] dark:border-[#48C765]" />
+                      <span className="absolute -bottom-[1px] -right-[1px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#16A34A] dark:border-[#48C765]" />
+                      <svg className="w-6 h-6 text-[#16A34A] dark:text-[#48C765]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
                     </div>
 
                     <div>
