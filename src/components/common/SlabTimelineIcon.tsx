@@ -278,8 +278,8 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
   // Solo este icono final es una banana titilando en color oro/ámbar
   // =========================================================================
   if (status === 'completed' && isFinal) {
-    const bananaWidth = size === 'sm' ? 18 : size === 'lg' ? 26 : 22;
-    const bananaHeight = size === 'sm' ? 22 : size === 'lg' ? 32 : 27;
+    const bananaWidth = size === 'sm' ? 22 : size === 'lg' ? 36 : 28;
+    const bananaHeight = size === 'sm' ? 26 : size === 'lg' ? 42 : 33;
 
     return (
       <svg
