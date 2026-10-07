@@ -210,26 +210,18 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               </p>
             </div>
 
-            {/* Right Column: Official Tariff Schedule Card with Professional Down Arrow */}
-            <div className={`shrink-0 flex items-stretch border shadow-lg max-w-md w-full lg:w-auto transition-colors ${
-              isLight 
-                ? 'bg-white/95 border-[#D0E2D6] shadow-sm' 
-                : 'bg-[#0B150F]/90 border-white/15 backdrop-blur-md shadow-2xl'
-            }`}>
-              {/* Green Left Pillar with Professional Down Arrow */}
-              <div className={`px-4 flex items-center justify-center shrink-0 border-r ${
-                isLight 
-                  ? 'bg-[#DCFCE7] border-[#BBF7D0]' 
-                  : 'bg-[#122A1A] border-white/10'
-              }`}>
+            {/* Right Column: Official Tariff Schedule with Down Arrow (seamless, without box container) */}
+            <div className="shrink-0 flex items-start sm:items-center gap-3.5 sm:gap-4 max-w-md w-full lg:w-auto">
+              {/* Green Down Arrow */}
+              <div className="shrink-0 mt-0.5 sm:mt-0 flex items-center justify-center">
                 <svg 
-                  className={`w-5 h-5 transition-transform duration-300 hover:translate-y-0.5 ${
-                    isLight ? 'text-[#15803D]' : 'text-[#4ADE80]'
+                  className={`w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 hover:translate-y-0.5 ${
+                    isLight ? 'text-[#15803D]' : 'text-[#48C765]'
                   }`} 
                   viewBox="0 0 24 24" 
                   fill="none" 
                   stroke="currentColor" 
-                  strokeWidth="2.4" 
+                  strokeWidth="2.5" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
                 >
@@ -239,16 +231,16 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
               </div>
 
               {/* Text Information */}
-              <div className="p-4 sm:p-5 flex flex-col justify-center">
-                <div className={`font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase ${
-                  isLight ? 'text-[#111827]' : 'text-neutral-200'
+              <div className="flex flex-col justify-center">
+                <div className={`font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase ${
+                  isLight ? 'text-[#0F172A]' : 'text-white'
                 }`}>
                   {language === 'es' 
                     ? 'TABLA DE TARIFAS OFICIALES | LABORATORIO 2026' 
                     : 'OFFICIAL TARIFF SCHEDULE | LABORATORY 2026'}
                 </div>
-                <p className={`font-sans text-xs mt-1 leading-relaxed ${
-                  isLight ? 'text-[#4B5563]' : 'text-neutral-400'
+                <p className={`font-sans text-xs sm:text-[13px] mt-1 leading-relaxed ${
+                  isLight ? 'text-[#374151]' : 'text-[#D1D5DB]'
                 }`}>
                   {language === 'es'
                     ? 'Tarifas fijas por carta según el plazo de retorno requerido y la cobertura asegurada declarada.'
