@@ -168,8 +168,8 @@ export const LiveLabActivitySection: React.FC = () => {
               isLight ? 'text-gray-600' : 'text-[#A4ACA1]'
             }`}>
               {language === 'es'
-                ? 'Espacio reservado para las aperturas en directo, entregas y contenido oficial de nuestra comunidad.'
-                : 'Reserved showcase for official unboxings, live handovers, and community content across our verified channels.'}
+                ? 'Únete a la comunidad, síguenos para consejos de graduación, cultura coleccionista y eventos en vivo.'
+                : 'Join the crew, follow us for grading tips, collector culture and live events.'}
             </p>
           </div>
 

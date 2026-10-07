@@ -377,93 +377,12 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
           </div>
         </div>
 
-        {/* ── 2. TWO-COLUMN NOTARIAL DOSSIER LAYOUT ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* LEFT: Official Corporate Registration Ledger (4 cols) */}
-          <div className={`lg:col-span-4 p-6 sm:p-7 border lg:sticky lg:top-24 transition-colors ${
-            isLight 
-              ? 'bg-[#FAF8F3] border-[#DDD5C7]' 
-              : 'bg-[#121914] border-white/10'
-          }`}>
-            <div>
-              {/* Folio Classification Bar */}
-              <div className="flex items-center justify-between pb-3 border-b border-current/15 font-mono text-[10px]">
-                <span className="font-bold tracking-widest uppercase text-[#15803D] dark:text-[#48C765]">
-                  {isEs ? 'REGISTRO MERCANTIL OFICIAL' : 'OFFICIAL CORPORATE REGISTER'}
-                </span>
-                <span className="opacity-50">{currentData.code}</span>
-              </div>
-
-              {/* Company Identity */}
-              <div className="my-5 space-y-1.5">
-                <div className="font-mono text-[10px] uppercase opacity-50 tracking-wider">
-                  {isEs ? 'SOCIEDAD MATRIZ' : 'PARENT CORPORATION'}
-                </div>
-                <h2 className={`font-['Oswald'] text-xl font-bold uppercase tracking-wider ${
-                  isLight ? 'text-[#14170F]' : 'text-white'
-                }`}>
-                  Gorilla Grading International S.L.
-                </h2>
-                <p className="font-sans text-xs leading-relaxed opacity-75">
-                  {isEs
-                    ? 'Sociedad tecnológica internacional de metrología óptica submilimétrica, certificación numismática y custodia en cámaras acorazadas.'
-                    : 'International technological enterprise specialized in optical metrology, numismatic grading, and vault custody.'}
-                </p>
-              </div>
-
-              {/* Official Registry Ledger Table */}
-              <div className={`border divide-y font-mono text-xs ${
-                isLight 
-                  ? 'border-[#DDD5C7] divide-[#EAE3D6] bg-white/70' 
-                  : 'border-white/10 divide-white/10 bg-[#0E1410]'
-              }`}>
-                <div className="p-3 flex justify-between items-center">
-                  <span className="opacity-60 text-[10px] uppercase">
-                    {isEs ? 'Registro Mercantil' : 'Mercantile Registry'}
-                  </span>
-                  <span className="font-bold">Tomo 4120 · Folio 88</span>
-                </div>
-                <div className="p-3 flex justify-between items-center">
-                  <span className="opacity-60 text-[10px] uppercase">
-                    {isEs ? 'Hoja Registral' : 'Registry Entry'}
-                  </span>
-                  <span className="font-bold">Hoja M-73012</span>
-                </div>
-                <div className="p-3 flex justify-between items-center">
-                  <span className="opacity-60 text-[10px] uppercase">
-                    {isEs ? 'NIF Comunitario' : 'EU VAT / ID'}
-                  </span>
-                  <span className="font-bold">ES-B88492019</span>
-                </div>
-                <div className="p-3 flex justify-between items-center">
-                  <span className="opacity-60 text-[10px] uppercase">
-                    {isEs ? 'Marca Internacional' : 'Int. Trademark'}
-                  </span>
-                  <span className="font-bold text-[#15803D] dark:text-[#48C765]">EUIPO / WIPO 018942109</span>
-                </div>
-                <div className="p-3 flex justify-between items-center">
-                  <span className="opacity-60 text-[10px] uppercase">
-                    {isEs ? 'Centros de Operaciones' : 'Operating Hubs'}
-                  </span>
-                  <span className="font-bold">Madrid · Londres · Tokio</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Official Certification Seal Footer */}
-            <div className="pt-5 mt-5 border-t border-current/15 flex items-center justify-between font-mono text-[10px] opacity-60">
-              <span>NORMA ISO/IEC 17025</span>
-              <span>AUDITORÍA 2026</span>
-            </div>
-          </div>
-
-          {/* RIGHT: Legal Charter Document & Continuous Articles (8 cols) */}
-          <div className={`lg:col-span-8 p-6 sm:p-9 border transition-colors ${
-            isLight 
-              ? 'bg-[#FAF8F3] border-[#DDD5C7]' 
-              : 'bg-[#121914] border-white/10'
-          }`}>
+        {/* ── 2. LEGAL CHARTER DOCUMENT ── */}
+        <div className={`max-w-4xl mx-auto p-6 sm:p-10 border transition-colors ${
+          isLight 
+            ? 'bg-[#FAF8F3] border-[#DDD5C7]' 
+            : 'bg-[#121914] border-white/10'
+        }`}>
             {/* Document Header */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -665,8 +584,6 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
           </div>
 
         </div>
-
       </div>
-    </div>
   );
 };

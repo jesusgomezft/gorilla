@@ -163,24 +163,100 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
     >
       <div className="relative z-10 max-w-[1400px] mx-auto">
         
-        {/* Institutional Section Header */}
-        {/* Institutional Section Header */}
-        <div className="flex flex-col items-start max-w-4xl mb-6 sm:mb-10">
-          <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.22em] uppercase font-bold text-emerald-600 dark:text-emerald-400 mb-1.5">
-            <span>{language === 'es' ? 'TABLA DE TARIFAS OFICIALES · LABORATORIO 2026' : 'OFFICIAL TARIFF SCHEDULE · LABORATORY 2026'}</span>
+        {/* Institutional Header Banner (Theme-Responsive Light/Dark) */}
+        <div className={`relative overflow-hidden border mb-6 sm:mb-8 transition-colors duration-300 ${
+          isLight 
+            ? 'bg-gradient-to-r from-[#F4F9F5] via-[#EAF4ED] to-[#F4F9F5] border-[#D1E3D6] shadow-sm' 
+            : 'bg-[#04150A] border-white/10 shadow-2xl'
+        }`}>
+          {/* Dot-Matrix Texture */}
+          <div 
+            className="absolute inset-0 pointer-events-none transition-opacity"
+            style={{
+              backgroundImage: isLight 
+                ? 'radial-gradient(#15803D 1.1px, transparent 1.1px)' 
+                : 'radial-gradient(#4ADE80 1.2px, transparent 1.2px)',
+              backgroundSize: '16px 16px',
+              opacity: isLight ? 0.14 : 0.3
+            }}
+          />
+
+          {/* Radial Glow Accent */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: isLight
+                ? 'radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.12) 0%, rgba(244, 249, 245, 0.95) 75%)'
+                : 'radial-gradient(ellipse at 50% 50%, rgba(22, 101, 52, 0.45) 0%, rgba(4, 21, 10, 0.95) 75%)'
+            }}
+          />
+
+          <div className="relative z-10 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-10">
+            {/* Left Column: Heading & Tagline */}
+            <div className="max-w-2xl">
+              <h2 className={`font-['Oswald'] text-2xl sm:text-4xl lg:text-[44px] font-bold tracking-[0.01em] uppercase leading-[1.08] title-3d ${
+                isLight ? 'text-[#111827]' : 'text-white'
+              }`}>
+                {language === 'es' 
+                  ? 'TARIFAS Y ESPECIFICACIONES DE SERVICIO' 
+                  : 'LABORATORY RATES & SERVICE SPECIFICATIONS'}
+              </h2>
+              <p className={`mt-2.5 font-sans text-xs sm:text-sm leading-relaxed font-normal ${
+                isLight ? 'text-[#4B5563]' : 'text-neutral-300'
+              }`}>
+                {language === 'es'
+                  ? 'Sin suscripciones recurrentes, sin compromisos mensuales.'
+                  : 'No recurring subscriptions, no monthly commitments.'}
+              </p>
+            </div>
+
+            {/* Right Column: Official Tariff Schedule Card with Professional Down Arrow */}
+            <div className={`shrink-0 flex items-stretch border shadow-lg max-w-md w-full lg:w-auto transition-colors ${
+              isLight 
+                ? 'bg-white/95 border-[#D0E2D6] shadow-sm' 
+                : 'bg-[#0B150F]/90 border-white/15 backdrop-blur-md shadow-2xl'
+            }`}>
+              {/* Green Left Pillar with Professional Down Arrow */}
+              <div className={`px-4 flex items-center justify-center shrink-0 border-r ${
+                isLight 
+                  ? 'bg-[#DCFCE7] border-[#BBF7D0]' 
+                  : 'bg-[#122A1A] border-white/10'
+              }`}>
+                <svg 
+                  className={`w-5 h-5 transition-transform duration-300 hover:translate-y-0.5 ${
+                    isLight ? 'text-[#15803D]' : 'text-[#4ADE80]'
+                  }`} 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.4" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <polyline points="19 12 12 19 5 12" />
+                </svg>
+              </div>
+
+              {/* Text Information */}
+              <div className="p-4 sm:p-5 flex flex-col justify-center">
+                <div className={`font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase ${
+                  isLight ? 'text-[#111827]' : 'text-neutral-200'
+                }`}>
+                  {language === 'es' 
+                    ? 'TABLA DE TARIFAS OFICIALES | LABORATORIO 2026' 
+                    : 'OFFICIAL TARIFF SCHEDULE | LABORATORY 2026'}
+                </div>
+                <p className={`font-sans text-xs mt-1 leading-relaxed ${
+                  isLight ? 'text-[#4B5563]' : 'text-neutral-400'
+                }`}>
+                  {language === 'es'
+                    ? 'Tarifas fijas por carta según el plazo de retorno requerido y la cobertura asegurada declarada.'
+                    : 'Fixed unit fees per card determined strictly by required laboratory turnaround and declared insurance coverage.'}
+                </p>
+              </div>
+            </div>
           </div>
-
-          <h2 className="font-['Oswald'] text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.01em] uppercase leading-tight title-3d">
-            {language === 'es' ? 'TARIFAS Y CONDICIONES DE SERVICIO' : 'LABORATORY RATES & SERVICE SPECIFICATIONS'}
-          </h2>
-
-          <p className={`mt-2 sm:mt-3 font-sans text-xs sm:text-sm max-w-2xl leading-relaxed ${
-            isLight ? 'text-gray-700' : 'text-gray-200'
-          }`}>
-            {language === 'es'
-              ? 'Precios unitarios fijos por carta según el plazo de retorno requerido y el límite de valor asegurado en laboratorio. Sin suscripciones, sin cuotas mensuales ni renovaciones automáticas.'
-              : 'Fixed unit fees per card determined strictly by required laboratory turnaround and declared insurance coverage. No recurring subscriptions, no monthly commitments.'}
-          </p>
         </div>
 
         {/* 1. TECHNICAL TARIFF MATRIX (Tabla Oficial de Laboratorio - Desktop Only) */}

@@ -3,6 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { MOCK_GRADED_CARDS } from '../../data/mockCards';
 import { GradedCard } from '../../types';
+import { VerifyLogo } from './VerifyLogo';
 import { 
   ShieldCheck, 
   Search, 
@@ -108,6 +109,11 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
         
         {/* Module Header: Technical Lab Console Aesthetic */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          {/* Main Dedicated Gorilla Verify Logo (Enlarged & Animated) */}
+          <div className="mb-5 sm:mb-6">
+            <VerifyLogo size="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32" />
+          </div>
+
           <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-gray-500 mb-2">
             <span>
               {language === 'es' 
@@ -120,13 +126,31 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
             {language === 'es' ? 'VERIFICAR CERTIFICADO' : 'VERIFY CERTIFICATE'}
           </h2>
 
-          <p className={`mt-3 font-sans text-xs sm:text-sm max-w-xl leading-relaxed ${
-            isLight ? 'text-[#4B5563]' : 'text-[#A4ACA1]'
-          }`}>
-            {language === 'es'
-              ? 'Consulta instantánea para compradores y vendedores del mercado secundario. Accede al historial criptográfico, auditoría láser y escaneos a 1200 DPI.'
-              : 'Instant consultation for secondary market buyers and sellers. Access cryptographic history, laser audit data and 1200 DPI master scans.'}
-          </p>
+          {/* Exact 3 Verification Features with Green Check Icon */}
+          <div className="mt-5 sm:mt-6 inline-flex flex-col items-start gap-2.5 sm:gap-3 text-left">
+            {(language === 'es' ? [
+              'Consulta instantánea para compradores y vendedores del mercado secundario.',
+              'Acceso al historial criptográfico.',
+              'Datos de auditoría láser y escaneos master a 1200 DPI.'
+            ] : [
+              'Instant consultation for secondary market buyers and sellers.',
+              'Access cryptographic history.',
+              'Laser Audit data and 1200 DPI master scan.'
+            ]).map((text, idx) => (
+              <div key={idx} className="flex items-center gap-2.5 sm:gap-3">
+                <img 
+                  src="/images/verified-check.svg" 
+                  alt="Verified" 
+                  className="w-4 h-4 sm:w-[18px] sm:h-[18px] shrink-0 object-contain" 
+                />
+                <span className={`font-sans text-xs sm:text-sm font-medium leading-relaxed ${
+                  isLight ? 'text-gray-800' : 'text-neutral-100'
+                }`}>
+                  {text}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Forensic Search Console */}
@@ -255,7 +279,7 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
               <div className="flex items-center gap-4">
                 {/* Clean, normal, non-generic forensic authenticity indicator */}
                 <div className="flex items-center gap-1.5 text-[#16A34A] dark:text-[#4ADE80] font-mono text-xs font-bold tracking-wider select-none">
-                  <ShieldCheck className="w-4 h-4 shrink-0 text-[#16A34A] dark:text-[#4ADE80]" />
+                  <img src="/images/verified-check.svg" alt="Verified" className="w-4 h-4 shrink-0" />
                   <span>{language === 'es' ? 'AUTENTICIDAD VERIFICADA' : 'AUTHENTICITY VERIFIED'}</span>
                 </div>
 
