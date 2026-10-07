@@ -1339,39 +1339,64 @@ body {
 
 /* ==========================================================================
    GORILLA 3D SCULPTED LUXURY TYPOGRAPHY
-   Monumental 3D relief effect for titles and prominent headings across the site.
-/* ==========================================================================
-   GORILLA 3D SCULPTED LUXURY TYPOGRAPHY
-   Clean, razor-sharp 3D chiseled bevel relief with zero dark blur or black smudges.
-   - Dark theme: crisp 3-level metallic ledge (#E2E8F0, #94A3B8, #475569)
-   - Light theme: pure silver bevel highlight (#E2E8F0, #CBD5E1)
-   - Green accents: vibrant emerald 3D emboss (#86EFAC, #15803D / #22C55E)
+   Subtle, elegant relief depth for titles and prominent headings without harsh glare.
    ========================================================================== */
 
 .title-3d,
 .text-3d {
-  text-shadow: 0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569;
+  /* Dark mode: crisp, subtle depth without blinding white ledge */
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* Light mode: pure crisp silver bevel ledge with no black/dark shadow */
+/* Light mode: delicate letterpress depth for dark text on light backgrounds */
 html.light-theme .title-3d,
 .light-theme .title-3d,
 html.light-theme .text-3d,
 .light-theme .text-3d,
 .title-3d-light {
-  text-shadow: 0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1 !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Green / Emerald 3D Accent Typography (no black shadow) */
+/* Green / Emerald Accent Typography */
 .title-3d-green,
 .text-3d-green {
-  text-shadow: 0 1px 0 #86EFAC, 0 2px 0 #22C55E, 0 3px 0 #15803D;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(22, 163, 74, 0.25);
 }
 
 html.light-theme .title-3d-green,
 .light-theme .title-3d-green,
 html.light-theme .text-3d-green,
 .light-theme .text-3d-green {
+  text-shadow: 0 1px 1px rgba(21, 128, 61, 0.18) !important;
+}
+
+/* ==========================================================================
+   EXCLUSIVE ABOUT PAGE: 3D SCULPTED CHISELED RELIEF
+   Preserved exclusively for the About page per user specification.
+   - 3-level metallic ledge (#E2E8F0, #94A3B8, #475569)
+   - Emerald vibrant 3D emboss (#86EFAC, #22C55E, #15803D)
+   ========================================================================== */
+.about-page .title-3d,
+.about-page .text-3d {
+  text-shadow: 0 1px 0 #E2E8F0, 0 2px 0 #94A3B8, 0 3px 0 #475569 !important;
+}
+
+.about-page .title-3d-green,
+.about-page .text-3d-green {
+  text-shadow: 0 1px 0 #86EFAC, 0 2px 0 #22C55E, 0 3px 0 #15803D !important;
+}
+
+html.light-theme .about-page .title-3d,
+.light-theme .about-page .title-3d,
+html.light-theme .about-page .text-3d,
+.light-theme .about-page .text-3d {
+  text-shadow: 0 1px 0 #E2E8F0, 0 2px 0 #CBD5E1 !important;
+}
+
+html.light-theme .about-page .title-3d-green,
+.light-theme .about-page .title-3d-green,
+html.light-theme .about-page .text-3d-green,
+.light-theme .about-page .text-3d-green {
   text-shadow: 0 1px 0 #86EFAC, 0 2px 0 #15803D !important;
 }
 

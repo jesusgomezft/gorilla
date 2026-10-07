@@ -12,7 +12,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
 
   return (
-    <div className="w-full min-h-screen bg-[#454545] text-white flex flex-col selection:bg-[#48C765] selection:text-black">
+    <div className="about-page w-full min-h-screen bg-[#454545] text-white flex flex-col selection:bg-[#48C765] selection:text-black">
       
       {/* Top Breadcrumb bar */}
       <div className="max-w-[1200px] w-full mx-auto px-6 lg:px-12 pt-10">
