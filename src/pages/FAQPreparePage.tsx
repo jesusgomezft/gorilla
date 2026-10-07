@@ -67,13 +67,19 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
                 </p>
               </div>
 
-              <div className="p-6 border border-[#48C765]/20 bg-[#48C765]/5 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-2 h-2 border-l border-b border-[#48C765]" />
-                <h3 className="font-bold text-[#48C765] mb-2 font-['Oswald'] tracking-wide uppercase">⚠️ {language === 'es' ? 'Importante' : 'Important'}</h3>
-                <p className="text-[#C2C9C3]">
+              <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
+                <div className="flex items-center gap-2 mb-2 font-mono text-[10px] tracking-[0.2em] uppercase font-bold text-amber-400">
+                  <span>PROTOCOL NOTICE</span>
+                  <span className="text-white/20">/</span>
+                  <span>{language === 'es' ? 'AVISO CRÍTICO' : 'CRITICAL CAUTION'}</span>
+                </div>
+                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">
+                  {language === 'es' ? 'Protección de Aberturas' : 'Toploader Sealing Protocol'}
+                </h3>
+                <p className="text-[#A4ACA1] text-sm leading-relaxed">
                   {language === 'es' 
-                    ? 'NUNCA uses cinta adhesiva (celo) sobre la abertura del toploader. Al abrir el paquete, la cinta puede pegarse a la carta y arruinarla. Empaca las cartas juntas entre dos piezas de cartón.'
-                    : 'NEVER use tape on the opening of the toploader. When unpacking, tape can stick to the card and ruin it. Pack the cards sandwiched between two pieces of cardboard.'}
+                    ? 'NUNCA uses cinta adhesiva (celo) sobre la abertura del toploader. Al abrir el paquete, el adhesivo puede adherirse a la carta y arruinarla. Empaca las cartas agrupadas entre dos piezas de cartón rígido.'
+                    : 'NEVER use tape on the opening of the toploader. When unpacking, adhesive can stick to the card and ruin it. Pack the cards grouped between two pieces of rigid cardboard.'}
                 </p>
               </div>
             </div>
@@ -86,8 +92,6 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative aspect-square lg:aspect-[4/5] bg-[#14170F] overflow-hidden border border-white/[0.05] shadow-2xl"
           >
-            <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#48C765] z-20" />
-            <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#48C765] z-20" />
             
             <img 
               src="/images/preservar.png" 

@@ -58,10 +58,9 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
                 </p>
               </div>
 
-              <div className="p-6 border border-[#48C765]/20 bg-[#48C765]/5 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-2 h-2 border-l border-b border-[#48C765]" />
-                <h3 className="font-bold text-[#48C765] mb-2 font-['Oswald'] tracking-wide uppercase">{language === 'es' ? 'Días Hábiles' : 'Business Days'}</h3>
-                <p className="text-[#C2C9C3]">
+              <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
+                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">{language === 'es' ? 'Días Hábiles de Laboratorio' : 'Laboratory Business Days'}</h3>
+                <p className="text-[#A4ACA1] text-sm leading-relaxed">
                   {language === 'es' 
                     ? 'Nuestros tiempos operativos (ej. 48h, 10 días, 20 días) se refieren a días laborables (Lunes a Viernes). No se procesan cartas durante fines de semana ni festivos nacionales.'
                     : 'Our operational times (e.g., 48h, 10 days, 20 days) refer to business days (Monday to Friday). Cards are not processed during weekends or national holidays.'}
@@ -77,8 +76,6 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative aspect-square lg:aspect-[4/5] bg-[#14170F] overflow-hidden border border-white/[0.05] shadow-2xl"
           >
-            <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#48C765] z-20" />
-            <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#48C765] z-20" />
             
             <img 
               src="/images/step_2_cleanroom.jpg" 

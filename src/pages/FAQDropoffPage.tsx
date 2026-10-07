@@ -84,9 +84,6 @@ export const FAQDropoffPage: React.FC<FAQDropoffPageProps> = ({ onNavigate }) =>
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative aspect-square lg:aspect-[4/5] bg-[#14170F] overflow-hidden border border-white/[0.05] shadow-2xl"
           >
-            <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#48C765] z-20" />
-            <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#48C765] z-20" />
-            
             <img 
               src="/images/step_1_vault.jpg" 
               alt="Dropoff en persona"

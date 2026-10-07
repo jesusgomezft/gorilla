@@ -328,7 +328,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                 ? 'Custodia acorazada y protocolo de guante blanco para piezas históricas y de museo.' 
                 : 'Armored vault custody and white-glove protocol for historic museum grails.',
               turnaround: language === 'es' ? '48 horas' : '48 hours',
-              maxInsurance: language === 'es' ? 'Ilimitado (hasta 25.000 €)' : 'Unlimited (up to 25,000 €)',
+              maxInsurance: language === 'es' ? 'Hasta 25.000 €' : 'Up to 25,000 €',
               maxInsuranceNum: 25000,
               scope: language === 'es' 
                 ? 'Auditoría presencial por Master Grader · Maletín blindado · Seguro en tránsito VIP' 
