@@ -29,8 +29,6 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
   const activeOrder = MOCK_ORDERS[0];
   const pastOrders = MOCK_ORDERS.slice(1);
 
-  const totalVaultValue = userCards.reduce((acc, c) => acc + c.declaredValueEur, 0);
-
   const filteredCards = filterGame === 'ALL'
     ? userCards
     : userCards.filter(c => c.game.toUpperCase().includes(filterGame));
@@ -450,8 +448,8 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
               </div>
 
               {/* Stats Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {/* Stat 1 */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Stat 1: Certified Slabs */}
                 <div className="bg-white/[0.02] border border-white/[0.05] p-6 flex flex-col justify-between relative overflow-hidden group/stat">
                   <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#48C765]/0 group-hover/stat:border-[#48C765]/50 transition-colors duration-500" />
                   <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4">
@@ -459,33 +457,19 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                   </span>
                   <div className="flex items-end gap-2">
                     <span className="font-['Oswald'] text-4xl text-white leading-none">{userCards.length}</span>
-                    <span className="font-mono text-[10px] text-[#48C765] mb-1">TOTAL</span>
+                    <span className="font-mono text-[10px] text-[#48C765] mb-1 font-bold">TOTAL</span>
                   </div>
                 </div>
 
-                {/* Stat 2 */}
+                {/* Stat 2: Historical Orders */}
                 <div className="bg-white/[0.02] border border-white/[0.05] p-6 flex flex-col justify-between relative overflow-hidden group/stat">
                   <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/0 group-hover/stat:border-white/[0.05] transition-colors duration-500" />
                   <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4">
-                    {language === 'es' ? 'Pedidos Históricos' : 'Historical Orders'}
+                    {language === 'es' ? 'Expedientes & Pedidos' : 'Historical Orders'}
                   </span>
                   <div className="flex items-end gap-2">
                     <span className="font-['Oswald'] text-4xl text-white leading-none">{MOCK_ORDERS.length}</span>
-                    <span className="font-mono text-[10px] text-[#A4ACA1] mb-1">ORDERS</span>
-                  </div>
-                </div>
-
-                {/* Stat 3: Vault Declared Value / Insured Custody */}
-                <div className="bg-white/[0.02] border border-white/[0.05] p-6 flex flex-col justify-between relative overflow-hidden group/stat">
-                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#48C765]/0 group-hover/stat:border-[#48C765]/50 transition-colors duration-500" />
-                  <span className="font-mono text-[9px] text-[#A4ACA1] uppercase tracking-[0.2em] mb-4">
-                    {language === 'es' ? 'Valor Declarado en Bóveda' : 'Vault Declared Value'}
-                  </span>
-                  <div className="flex items-end gap-2">
-                    <span className="font-['Oswald'] text-4xl text-white leading-none">
-                      €{totalVaultValue.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-                    </span>
-                    <span className="font-mono text-[10px] text-[#48C765] mb-1 font-bold">EUR</span>
+                    <span className="font-mono text-[10px] text-[#A4ACA1] mb-1 font-bold">ORDERS</span>
                   </div>
                 </div>
               </div>
