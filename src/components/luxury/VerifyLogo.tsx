@@ -41,23 +41,15 @@ export const GorillaVerifyLogo: React.FC<VerifyLogoProps> = ({
           }
         }
 
-        /* 2. Validation Checkmark Flash & Energy Ping */
-        @keyframes gvCheckPing {
-          0%, 48% {
+        /* 2. Clean Vector Blink (Titileo limpio sin sombras ni destellos verdes) */
+        @keyframes gvCheckBlink {
+          0%, 100% {
+            opacity: 1;
             transform: scale(1);
-            filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.4));
           }
-          54% {
-            transform: scale(1.3);
-            filter: drop-shadow(0 0 16px rgba(74, 222, 128, 1)) drop-shadow(0 0 28px rgba(34, 197, 94, 0.8));
-          }
-          64% {
-            transform: scale(1.08);
-            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.7));
-          }
-          76%, 100% {
-            transform: scale(1);
-            filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.4));
+          50% {
+            opacity: 0.3;
+            transform: scale(0.92);
           }
         }
 
@@ -66,7 +58,7 @@ export const GorillaVerifyLogo: React.FC<VerifyLogoProps> = ({
         }
 
         .gv-check-pulse {
-          animation: gvCheckPing 3.6s ease-in-out infinite;
+          animation: gvCheckBlink 2.2s ease-in-out infinite;
           transform-origin: center;
         }
       `}</style>
@@ -85,22 +77,22 @@ export const GorillaVerifyLogo: React.FC<VerifyLogoProps> = ({
         </div>
       </div>
 
-      {/* Sub-Brand Typography: GORILLA + ✓ERIFY (Bold, Clean, No Micro-Text) */}
+      {/* Sub-Brand Typography: GORILLA + ✓ERIFY (Bold, Clean, No Micro-Text, Zero Blur) */}
       <div className={`mt-3.5 sm:mt-4 flex ${layout === 'stacked' ? 'flex-col items-center gap-1.5' : 'flex-row items-center gap-2.5 sm:gap-3.5'}`}>
         
         {/* GORILLA Parent Brand Mark */}
         <span className={`font-['Nunito',sans-serif] font-[900] tracking-wider uppercase text-lg sm:text-2xl lg:text-[28px] transition-colors duration-300 ${
           isLight 
             ? 'text-slate-900' 
-            : 'text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.15)]'
+            : 'text-white'
         }`}>
           GORILLA
         </span>
 
-        {/* ✓ERIFY Sub-Brand Wordmark with Animated Verification Check */}
+        {/* ✓ERIFY Sub-Brand Wordmark with Clean Blinking Verification Check */}
         <div className="inline-flex items-center">
           
-          {/* Animated Aerodynamic Verification Checkmark Chevron */}
+          {/* Animated Clean Blinking Verification Checkmark Chevron */}
           <span className="gv-check-pulse inline-flex items-center justify-center mr-1 sm:mr-1.5">
             <svg 
               viewBox="0 0 32 32" 
@@ -114,8 +106,8 @@ export const GorillaVerifyLogo: React.FC<VerifyLogoProps> = ({
             </svg>
           </span>
 
-          {/* ERIFY Bold Typography */}
-          <span className="font-['Nunito',sans-serif] font-[950] tracking-tight uppercase text-lg sm:text-2xl lg:text-[28px] text-[#22C55E] dark:text-[#4ADE80] drop-shadow-[0_2px_12px_rgba(34,197,94,0.3)]">
+          {/* ERIFY Bold Typography (Pure vector color, zero green shadow) */}
+          <span className="font-['Nunito',sans-serif] font-[950] tracking-tight uppercase text-lg sm:text-2xl lg:text-[28px] text-[#22C55E] dark:text-[#4ADE80]">
             ERIFY
           </span>
         </div>
