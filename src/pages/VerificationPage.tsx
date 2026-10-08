@@ -44,7 +44,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
             <ShieldCheck className="w-4 h-4" />
             <span>{language === 'es' ? 'Autenticación Internacional' : 'International Authentication'}</span>
           </div>
-          <h1 className="font-['Oswald'] text-lg md:text-lg font-bold uppercase tracking-tight text-white mb-8">
+          <h1 className="font-['Nunito',sans-serif] text-2xl sm:text-3xl font-[900] uppercase tracking-normal text-white mb-8">
             {t('verify.title')}
           </h1>
           
@@ -122,7 +122,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
                 <span>{activeCard.game}</span>
               </div>
               
-              <h2 className="font-['Oswald'] text-xl md:text-2xl font-bold uppercase leading-tight text-white mb-4">
+              <h2 className="font-['Nunito',sans-serif] text-xl md:text-2xl font-[900] uppercase leading-tight text-white mb-4">
                 {activeCard.name}
               </h2>
 
@@ -156,7 +156,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
                 <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">
                   {t('verify.officialGrade')}
                 </span>
-                <div className="font-['Oswald'] text-5xl md:text-6xl lg:text-7xl leading-none text-white font-bold tracking-tight">
+                <div className="font-['Nunito',sans-serif] text-5xl md:text-6xl lg:text-7xl leading-none text-white font-[900] tracking-tight">
                   {activeCard.grade.toFixed(1)}
                 </div>
               </div>
@@ -194,7 +194,7 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
                       <span className="font-mono text-[9px] tracking-widest uppercase text-[#A4ACA1] truncate text-right">
                         {sub.desc}
                       </span>
-                      <span className="font-['Oswald'] text-base text-white font-bold w-10 text-right">
+                      <span className="font-['Nunito',sans-serif] text-base text-white font-[900] w-10 text-right">
                         {sub.score.toFixed(1)}
                       </span>
                     </div>
@@ -208,15 +208,15 @@ export const VerificationPage: React.FC<VerificationPageProps> = ({ onNavigate }
               <div className="grid grid-cols-3 gap-6">
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Total Graded</span>
-                  <span className="font-['Oswald'] text-base text-white font-bold">{activeCard.population.totalGraded}</span>
+                  <span className="font-['Nunito',sans-serif] text-base text-white font-[900]">{activeCard.population.totalGraded}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Higher Grade</span>
-                  <span className="font-['Oswald'] text-base text-white font-bold">{activeCard.population.higherCount}</span>
+                  <span className="font-['Nunito',sans-serif] text-base text-white font-[900]">{activeCard.population.higherCount}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Equal Grade</span>
-                  <span className="font-['Oswald'] text-base text-white font-bold">{activeCard.population.equalCount}</span>
+                  <span className="font-['Nunito',sans-serif] text-base text-white font-[900]">{activeCard.population.equalCount}</span>
                 </div>
               </div>
             </div>

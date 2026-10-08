@@ -89,8 +89,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         ? ['4 Subgrados ópticos (Centrado, Esquinas, Bordes, Superficie)', 'Escaneo micro-fotométrico 4K UHD', 'Certificación pública en Blockchain']
         : ['4 Optical Subgrades (Centering, Corners, Edges, Surface)', '4K UHD micro-photometric scan', 'Public Blockchain certification registry'],
       price: 28,
-      accentColor: '#16A34A',
-      isPopular: true
+      accentColor: '#16A34A'
     },
     {
       code: 'RCDM.02',
@@ -169,25 +168,99 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             ? 'bg-gradient-to-r from-[#F4F9F5] via-[#EAF4ED] to-[#F4F9F5] border-[#D1E3D6] shadow-sm' 
             : 'bg-[#04150A] border-white/10 shadow-2xl'
         }`}>
-          {/* Dot-Matrix Texture */}
+          {/* Keyframe animation for banner laser sweep */}
+          <style>{`
+            @keyframes bannerLaserSweep {
+              0% {
+                transform: translateY(-80px);
+                opacity: 0;
+              }
+              6% {
+                opacity: 0.95;
+              }
+              92% {
+                opacity: 0.95;
+              }
+              100% {
+                transform: translateY(300px);
+                opacity: 0;
+              }
+            }
+          `}</style>
+
+          {/* 1. Líneas Horizontales Nítidas de Escaneo (18px, idénticas al Home) */}
           <div 
-            className="absolute inset-0 pointer-events-none transition-opacity"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: isLight 
-                ? 'radial-gradient(#15803D 1.1px, transparent 1.1px)' 
-                : 'radial-gradient(#4ADE80 1.2px, transparent 1.2px)',
-              backgroundSize: '16px 16px',
-              opacity: isLight ? 0.14 : 0.3
+              backgroundImage: isLight
+                ? 'linear-gradient(to bottom, rgba(16, 24, 16, 0.08) 1px, transparent 1px)'
+                : 'linear-gradient(to bottom, rgba(255, 255, 255, 0.085) 1px, transparent 1px)',
+              backgroundSize: '100% 18px',
             }}
           />
 
-          {/* Radial Glow Accent */}
+          {/* 2. Guías de Calibración Técnica (Cada 72px) */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: isLight
+                ? 'linear-gradient(to bottom, rgba(22, 101, 52, 0.14) 1px, transparent 1px)'
+                : 'linear-gradient(to bottom, rgba(74, 222, 128, 0.20) 1px, transparent 1px)',
+              backgroundSize: '100% 72px',
+            }}
+          />
+
+          {/* 3. Guías Verticales de Coordenadas (Columnas a 108px) */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: isLight
+                ? 'linear-gradient(to right, rgba(16, 24, 16, 0.04) 1px, transparent 1px)'
+                : 'linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px)',
+              backgroundSize: '108px 100%',
+            }}
+          />
+
+          {/* 4. Haz Láser de Escaneo Óptico Dinámico (Línea continua con estela) */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+            <div 
+              className="w-full absolute left-0 right-0 pointer-events-none will-change-transform"
+              style={{
+                height: '80px',
+                animation: 'bannerLaserSweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+              }}
+            >
+              {/* Estela luminosa suave degradada */}
+              <div 
+                className="w-full h-full"
+                style={{
+                  background: isLight
+                    ? 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.03) 40%, rgba(22, 163, 74, 0.15) 100%)'
+                    : 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.06) 40%, rgba(74, 222, 128, 0.22) 100%)',
+                }}
+              />
+              {/* Filamento Láser de Precisión */}
+              <div 
+                className="w-full h-[1.5px]"
+                style={{
+                  background: isLight
+                    ? 'linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.25) 15%, #16A34A 50%, rgba(22, 163, 74, 0.25) 85%, transparent 100%)'
+                    : 'linear-gradient(90deg, transparent 0%, rgba(74, 222, 128, 0.35) 15%, #4ADE80 50%, rgba(74, 222, 128, 0.35) 85%, transparent 100%)',
+                  boxShadow: isLight
+                    ? '0 0 10px rgba(22, 163, 74, 0.45), 0 0 20px rgba(22, 163, 74, 0.2)'
+                    : '0 0 14px rgba(74, 222, 128, 0.7), 0 0 28px rgba(74, 222, 128, 0.35)',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Radial Glow Accent de Fondo */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
               background: isLight
-                ? 'radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.12) 0%, rgba(244, 249, 245, 0.95) 75%)'
-                : 'radial-gradient(ellipse at 50% 50%, rgba(22, 101, 52, 0.45) 0%, rgba(4, 21, 10, 0.95) 75%)'
+                ? 'radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.10) 0%, rgba(244, 249, 245, 0.90) 75%)'
+                : 'radial-gradient(ellipse at 50% 50%, rgba(22, 101, 52, 0.35) 0%, rgba(4, 21, 10, 0.90) 80%)'
             }}
           />
 
@@ -253,17 +326,19 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
         {/* 1. TECHNICAL TARIFF MATRIX (Tabla Oficial de Laboratorio - Desktop Only) */}
         <div className={`hidden lg:block w-full border overflow-hidden shadow-sm mb-8 sm:mb-14 ${
-          isLight ? 'bg-white border-[#E5E7EB]' : 'bg-[#181B18] border-white/10'
+          isLight ? 'bg-white border-[#E5E7EB]' : 'bg-[#141815] border-white/10'
         }`}>
           
-          {/* Matrix Top Header Bar */}
+          {/* Matrix Top Header Bar - Limpio, Sobrio y Profesional */}
           <div className={`px-4 sm:px-6 py-2.5 sm:py-3.5 border-b flex flex-wrap items-center justify-between gap-2 sm:gap-4 font-mono text-[11px] sm:text-xs ${
-            isLight ? 'bg-gray-100 border-[#E5E7EB] text-gray-800' : 'bg-white/[0.05] border-white/10 text-gray-100'
+            isLight 
+              ? 'bg-gray-100 border-[#E5E7EB] text-gray-800' 
+              : 'bg-white/[0.04] border-white/10 text-gray-200'
           }`}>
             <span className="font-bold tracking-wider uppercase">
               {language === 'es' ? 'CUADRO REGULATORIO DE GRADUACIÓN ÓPTICA' : 'OPTICAL GRADING REGULATORY MATRIX'}
             </span>
-            <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-semibold text-gray-600 dark:text-gray-300">
+            <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-semibold text-gray-600 dark:text-gray-400">
               <span>ISO-9001 CLEANROOM AUDITED</span>
               <span>/</span>
               <span>{language === 'es' ? 'CALIBRE LÁSER 0.01mm' : '0.01mm LASER CALIPER'}</span>
@@ -275,9 +350,8 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className={`border-b font-mono text-[11px] uppercase tracking-wider font-bold ${
-                  isLight ? 'bg-gray-100 text-gray-900 border-gray-300' : 'bg-black/40 text-gray-100 border-white/15'
+                  isLight ? 'bg-gray-100 text-gray-900 border-gray-300' : 'bg-black/70 text-gray-300 border-white/10'
                 }`}>
-                  <th className="py-3.5 px-6 font-bold">{language === 'es' ? 'CÓDIGO' : 'CODE'}</th>
                   <th className="py-3.5 px-6 font-bold">{language === 'es' ? 'NIVEL DE SERVICIO' : 'SERVICE TIER'}</th>
                   <th className="py-3.5 px-6 font-bold">{language === 'es' ? 'PLAZO DE RETORNO' : 'ESTIMATED TURNAROUND'}</th>
                   <th className="py-3.5 px-6 font-bold">{language === 'es' ? 'COBERTURA ASEGURADA' : 'INSURANCE COVERAGE'}</th>
@@ -286,38 +360,67 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   <th className="py-3.5 px-6 font-bold text-center">{language === 'es' ? 'ACCIÓN' : 'ACTION'}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200/70 dark:divide-white/5 font-mono text-xs">
+              <tbody className="divide-y divide-gray-200/70 dark:divide-white/10 font-mono text-xs">
                 {serviceLevels.map((lvl, index) => {
                   const isSelected = selectedTierId === lvl.id;
                   const isEven = index % 2 === 0;
 
-                  // Alternating background shades: one darker than the other
-                  const rowBg = isSelected 
-                    ? (isLight ? 'bg-[#E7F6EA]' : 'bg-[#182B1B]') 
-                    : (isEven 
-                        ? (isLight ? 'bg-white' : 'bg-[#121612]') 
-                        : (isLight ? 'bg-[#F2EFE8]' : 'bg-[#1B201B]'));
+                  // Distinctive neon tier colors for Dark Mode
+                  const darkTierColor = 
+                    lvl.id === 'regular' ? '#60A5FA' : 
+                    lvl.id === 'standard' ? '#4ADE80' : 
+                    lvl.id === 'express' ? '#FB923C' : '#FBBF24';
 
-                  const hoverBg = isLight ? 'hover:bg-[#EBE5DA]' : 'hover:bg-[#232A23]';
+                  // Alternating background shades: 
+                  // In Light Mode: exactly as original
+                  // In Dark Mode: subtle luxury gradient matching tier's identity
+                  const rowBg = isSelected 
+                    ? (isLight 
+                        ? 'bg-[#E7F6EA]' 
+                        : 'bg-gradient-to-r from-emerald-950/60 via-[#102917] to-[#0D1F13] shadow-[inset_0_0_24px_rgba(74,222,128,0.15)]') 
+                    : (isLight 
+                        ? (isEven ? 'bg-white' : 'bg-[#F2EFE8]')
+                        : (lvl.id === 'regular' 
+                            ? 'bg-gradient-to-r from-blue-950/30 via-[#0F1722]/90 to-[#0C121B]' 
+                            : lvl.id === 'standard' 
+                            ? 'bg-gradient-to-r from-emerald-950/30 via-[#0E1C12]/90 to-[#0A160E]' 
+                            : lvl.id === 'express' 
+                            ? 'bg-gradient-to-r from-orange-950/30 via-[#1F150E]/90 to-[#170F0A]' 
+                            : 'bg-gradient-to-r from-amber-950/35 via-[#211B0D]/90 to-[#191409]'));
+
+                  const hoverBg = isLight 
+                    ? 'hover:bg-[#EBE5DA]' 
+                    : (lvl.id === 'regular' 
+                        ? 'hover:from-blue-900/40 hover:via-[#142030]' 
+                        : lvl.id === 'standard' 
+                        ? 'hover:from-emerald-900/45 hover:via-[#132719]' 
+                        : lvl.id === 'express' 
+                        ? 'hover:from-orange-900/45 hover:via-[#261A12]' 
+                        : 'hover:from-amber-900/45 hover:via-[#2B2311]');
 
                   return (
                     <tr 
                       key={lvl.id}
                       onClick={() => setSelectedTierId(lvl.id)}
-                      className={`cursor-pointer transition-colors ${rowBg} ${hoverBg}`}
+                      className={`cursor-pointer transition-all border-l-4 ${rowBg} ${hoverBg}`}
+                      style={{
+                        borderLeftColor: !isLight 
+                          ? (isSelected ? '#4ADE80' : darkTierColor) 
+                          : 'transparent'
+                      }}
                     >
-                      {/* Code */}
-                      <td className="py-4 px-6 font-extrabold text-[13px]" style={{ color: lvl.accentColor }}>
-                        {lvl.code}
-                      </td>
-
                       {/* Name & Purpose */}
                       <td className="py-4 px-6">
-                        <div className="font-['Oswald'] text-sm sm:text-base uppercase font-bold tracking-wide text-current">
+                        <div 
+                          className="font-['Nunito',sans-serif] text-base sm:text-lg uppercase font-[900] tracking-normal"
+                          style={{
+                            color: !isLight ? darkTierColor : undefined
+                          }}
+                        >
                           {lvl.name}
                         </div>
                         <div className={`font-sans text-xs leading-relaxed max-w-xs mt-1 ${
-                          isLight ? 'text-gray-800' : 'text-gray-100'
+                          isLight ? 'text-gray-800' : 'text-gray-300'
                         }`}>
                           {lvl.purpose}
                         </div>
@@ -326,7 +429,12 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                       {/* Turnaround */}
                       <td className={`py-4 px-6 font-extrabold ${isLight ? 'text-gray-900' : 'text-white'}`}>
                         <div className="flex items-center gap-2">
-                          <Clock className={`w-3.5 h-3.5 ${isLight ? 'text-gray-700' : 'text-gray-300'}`} />
+                          <Clock 
+                            className="w-3.5 h-3.5 shrink-0" 
+                            style={{
+                              color: !isLight ? darkTierColor : undefined
+                            }}
+                          />
                           <span>{lvl.turnaround}</span>
                         </div>
                       </td>
@@ -338,16 +446,18 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
 
                       {/* Scope */}
                       <td className={`py-4 px-6 font-sans text-xs sm:text-[12.5px] leading-relaxed max-w-sm ${
-                        isLight ? 'text-gray-800' : 'text-gray-100'
+                        isLight ? 'text-gray-800' : 'text-gray-300'
                       }`}>
                         {lvl.scope}
                       </td>
 
                       {/* Price */}
-                      <td className="py-4 px-6 text-right font-['Oswald'] text-2xl font-bold">
-                        {lvl.price} €
+                      <td className="py-4 px-6 text-right font-['Nunito',sans-serif] text-2xl font-[900]">
+                        <span style={{ color: !isLight && isSelected ? '#4ADE80' : undefined }}>
+                          {lvl.price} €
+                        </span>
                         <span className={`block font-mono text-[9.5px] font-semibold mt-0.5 ${
-                          isLight ? 'text-gray-600' : 'text-gray-300'
+                          isLight ? 'text-gray-600' : 'text-gray-400'
                         }`}>
                           {language === 'es' ? 'IVA INCLUIDO' : 'VAT INCLUDED'}
                         </span>
@@ -368,8 +478,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                           }}
                           className={
                             isSelected
-                              ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-wider'
-                              : 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-wider'
+                              ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-wider shadow-[0_0_15px_rgba(22,163,74,0.4)]'
+                              : isLight
+                                ? 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-wider'
+                                : 'px-4 py-2 text-[10px] font-bold tracking-wider rounded border border-white/20 bg-white/5 hover:bg-white/15 text-white transition-all hover:border-emerald-400'
                           }
                         >
                           {language === 'es'
@@ -406,10 +518,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                         : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  {lvl.isPopular && !isActive && (
-                    <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#16A34A] ring-2 ring-white dark:ring-black" />
-                  )}
-                  <span className="font-['Oswald'] text-sm sm:text-base leading-tight">
+                  <span className="font-['Nunito',sans-serif] text-sm sm:text-base font-[900] leading-tight">
                     {lvl.price} €
                   </span>
                   <span className={`font-mono text-[10px] tracking-tight truncate max-w-full ${
@@ -435,32 +544,16 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             />
 
             <div className="p-4 sm:p-5">
-              {/* Card Header: Code + Name + Unit Price */}
+              {/* Card Header: Name + Unit Price */}
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span 
-                      className="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded"
-                      style={{ 
-                        color: currentLevel.accentColor, 
-                        backgroundColor: `${currentLevel.accentColor}18` 
-                      }}
-                    >
-                      {currentLevel.code}
-                    </span>
-                    {currentLevel.isPopular && (
-                      <span className="font-mono text-[9.5px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
-                        {language === 'es' ? '★ RECOMENDADO' : '★ RECOMMENDED'}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="font-['Oswald'] text-base sm:text-lg font-bold uppercase tracking-wide mt-1.5 text-current">
+                  <h3 className="font-['Nunito',sans-serif] text-base sm:text-lg font-[900] uppercase tracking-normal text-current">
                     {currentLevel.name}
                   </h3>
                 </div>
 
                 <div className="text-right shrink-0">
-                  <div className="font-['Oswald'] text-2xl font-bold leading-tight">
+                  <div className="font-['Nunito',sans-serif] text-2xl font-[900] leading-tight">
                     {currentLevel.price} €
                   </div>
                   <span className="font-mono text-[9px] font-semibold text-gray-700 dark:text-gray-300 block">
@@ -592,7 +685,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   </div>
 
                   <div className="text-right">
-                    <span className="font-['Oswald'] text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
+                    <span className="font-['Nunito',sans-serif] text-2xl font-[900] tracking-tight text-emerald-600 dark:text-emerald-400">
                       {totalAmount} €
                     </span>
                     <span className="block font-mono text-[9px] text-gray-700 dark:text-gray-300">
@@ -624,7 +717,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
         }`}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-gray-100 dark:border-white/5">
             <div>
-              <h3 className="font-['Oswald'] text-lg sm:text-2xl font-bold uppercase tracking-wide">
+              <h3 className="font-['Nunito',sans-serif] text-lg sm:text-2xl font-[900] uppercase tracking-normal">
                 {language === 'es' ? 'CALCULAR TARIFA POR CANTIDAD DE CARTAS' : 'VOLUME ESTIMATION'}
               </h3>
               <p className={`mt-1 font-sans text-xs max-w-xl leading-relaxed ${
@@ -653,7 +746,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                         : (isLight ? 'text-gray-600 hover:text-black' : 'text-gray-300 hover:text-white')
                     }`}
                   >
-                    {lvl.code}
+                    {lvl.shortName}
                   </button>
                 );
               })}
@@ -749,7 +842,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 </div>
 
                 <div className="text-right">
-                  <span className="font-['Oswald'] text-3xl sm:text-5xl font-bold tracking-tight">
+                  <span className="font-['Nunito',sans-serif] text-3xl sm:text-5xl font-[900] tracking-tight">
                     {totalAmount} €
                   </span>
                   <span className={`block font-mono text-[10px] font-medium mt-0.5 ${

@@ -47,7 +47,7 @@ export const GradedCardsCounter: React.FC<GradedCardsCounterProps> = ({
       </div>
 
       <div className="flex items-baseline gap-2.5">
-        <span className={`font-['Oswald'] text-3xl font-bold tracking-tight leading-none ${
+        <span className={`font-['Nunito',sans-serif] text-3xl font-[900] tracking-tight leading-none ${
           isLight ? 'text-[#111827]' : 'text-white'
         }`}>
           {formattedCount}

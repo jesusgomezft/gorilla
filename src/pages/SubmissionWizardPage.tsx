@@ -179,7 +179,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         <div className="flex items-center justify-center mx-auto mb-6">
           <CheckCircle2 className={`w-14 h-14 ${isLight ? 'text-[#16A34A]' : 'text-[#4ADE80]'}`} />
         </div>
-        <h1 className="text-2xl font-['Oswald'] uppercase tracking-wide mb-4">
+        <h1 className="text-2xl sm:text-3xl font-['Nunito',sans-serif] font-[900] uppercase tracking-normal mb-4">
           {language === 'es' ? 'Pedido Confirmado' : 'Order Confirmed'}
         </h1>
         <p className={`mb-8 font-sans ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
@@ -218,7 +218,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
           <span className={isLight ? 'text-[#1C201D] font-bold' : 'text-white'}>{language === 'es' ? 'ENVIAR CARTAS' : 'SUBMIT CARDS'}</span>
         </div>
 
-        <h1 className={`font-['Oswald'] text-2xl uppercase tracking-wide mb-3 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
+        <h1 className={`font-['Nunito',sans-serif] text-3xl sm:text-4xl font-[900] uppercase tracking-normal mb-3 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
           {language === 'es' ? 'Centro de envíos' : 'Submission Center'}
         </h1>
         <p className={`font-sans text-sm max-w-xl mb-12 ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
@@ -354,7 +354,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                   <span>[ {language === 'es' ? 'PASO 01 · MATRIZ OFICIAL DE TARIFAS DE LABORATORIO' : 'STEP 01 · OFFICIAL LABORATORY TARIFF MATRIX'} ]</span>
                 </div>
 
-                <h2 className={`font-['Oswald'] text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.01em] uppercase leading-tight title-3d ${isLight ? 'text-[#111827]' : 'text-white'}`}>
+                <h2 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl md:text-4xl font-[900] tracking-normal uppercase leading-tight ${isLight ? 'text-[#111827]' : 'text-white'}`}>
                   {language === 'es' ? 'TARIFAS Y CONDICIONES DE SERVICIO' : 'LABORATORY RATES & SERVICE SPECIFICATIONS'}
                 </h2>
 
@@ -367,17 +367,19 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
 
               {/* TECHNICAL TARIFF MATRIX (MISMO DISEÑO EXACTO QUE PRICING & TIERS) */}
               <div className={`w-full border overflow-hidden shadow-sm mb-8 ${
-                isLight ? 'bg-white border-[#E5E7EB]' : 'bg-[#181B18] border-white/10'
+                isLight ? 'bg-white border-[#E5E7EB]' : 'bg-[#141815] border-white/10'
               }`}>
                 
-                {/* Matrix Top Header Bar */}
+                {/* Matrix Top Header Bar - Limpio, Sobrio y Profesional */}
                 <div className={`px-6 py-3.5 border-b flex flex-wrap items-center justify-between gap-4 font-mono text-xs ${
-                  isLight ? 'bg-gray-50 border-[#E5E7EB] text-gray-600' : 'bg-white/[0.02] border-white/10 text-white/60'
+                  isLight 
+                    ? 'bg-gray-50 border-[#E5E7EB] text-gray-600' 
+                    : 'bg-white/[0.04] border-white/10 text-gray-200'
                 }`}>
                   <span className="font-bold tracking-wider uppercase">
                     {language === 'es' ? 'CUADRO REGULATORIO DE GRADUACIÓN ÓPTICA' : 'OPTICAL GRADING REGULATORY MATRIX'}
                   </span>
-                  <div className="flex items-center gap-4 text-[11px]">
+                  <div className="flex items-center gap-4 text-[11px] font-semibold text-gray-500 dark:text-gray-400">
                     <span>ISO-9001 CLEANROOM AUDITED</span>
                     <span>•</span>
                     <span>{language === 'es' ? 'CALIBRE LÁSER 0.01mm' : '0.01mm LASER CALIPER'}</span>
@@ -389,9 +391,8 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className={`border-b font-mono text-[10.5px] uppercase tracking-wider ${
-                        isLight ? 'bg-gray-50/50 text-gray-500 border-gray-200' : 'bg-black/20 text-gray-400 border-white/10'
+                        isLight ? 'bg-gray-50/50 text-gray-500 border-gray-200' : 'bg-black/70 text-gray-300 border-white/10'
                       }`}>
-                        <th className="py-3 px-6 font-semibold">{language === 'es' ? 'CÓDIGO' : 'CODE'}</th>
                         <th className="py-3 px-6 font-semibold">{language === 'es' ? 'NIVEL DE SERVICIO' : 'SERVICE TIER'}</th>
                         <th className="py-3 px-6 font-semibold">{language === 'es' ? 'PLAZO DE RETORNO' : 'ESTIMATED TURNAROUND'}</th>
                         <th className="py-3 px-6 font-semibold">{language === 'es' ? 'COBERTURA ASEGURADA' : 'INSURANCE COVERAGE'}</th>
@@ -400,36 +401,63 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                         <th className="py-3 px-6 font-semibold text-center">{language === 'es' ? 'ACCIÓN' : 'ACTION'}</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200/70 dark:divide-white/5 font-mono text-xs">
+                    <tbody className="divide-y divide-gray-200/70 dark:divide-white/10 font-mono text-xs">
                       {serviceLevels.map((lvl, index) => {
                         const isSelected = selectedTier?.id === lvl.id;
                         const isEven = index % 2 === 0;
 
-                        const rowBg = isSelected 
-                          ? (isLight ? 'bg-[#E7F6EA]' : 'bg-[#182B1B]') 
-                          : (isEven 
-                              ? (isLight ? 'bg-white' : 'bg-[#121612]') 
-                              : (isLight ? 'bg-[#F2EFE8]' : 'bg-[#1B201B]'));
+                        // Distinctive neon tier colors for Dark Mode
+                        const darkTierColor = 
+                          lvl.id === 'regular' ? '#60A5FA' : 
+                          lvl.id === 'standard' ? '#4ADE80' : 
+                          lvl.id === 'express' ? '#FB923C' : '#FBBF24';
 
-                        const hoverBg = isLight ? 'hover:bg-[#EBE5DA]' : 'hover:bg-[#232A23]';
+                        const rowBg = isSelected 
+                          ? (isLight 
+                              ? 'bg-[#E7F6EA]' 
+                              : 'bg-gradient-to-r from-emerald-950/60 via-[#102917] to-[#0D1F13] shadow-[inset_0_0_24px_rgba(74,222,128,0.15)]') 
+                          : (isLight 
+                              ? (isEven ? 'bg-white' : 'bg-[#F2EFE8]')
+                              : (lvl.id === 'regular' 
+                                  ? 'bg-gradient-to-r from-blue-950/30 via-[#0F1722]/90 to-[#0C121B]' 
+                                  : lvl.id === 'standard' 
+                                  ? 'bg-gradient-to-r from-emerald-950/30 via-[#0E1C12]/90 to-[#0A160E]' 
+                                  : lvl.id === 'express' 
+                                  ? 'bg-gradient-to-r from-orange-950/30 via-[#1F150E]/90 to-[#170F0A]' 
+                                  : 'bg-gradient-to-r from-amber-950/35 via-[#211B0D]/90 to-[#191409]'));
+
+                        const hoverBg = isLight 
+                          ? 'hover:bg-[#EBE5DA]' 
+                          : (lvl.id === 'regular' 
+                              ? 'hover:from-blue-900/40 hover:via-[#142030]' 
+                              : lvl.id === 'standard' 
+                              ? 'hover:from-emerald-900/45 hover:via-[#132719]' 
+                              : lvl.id === 'express' 
+                              ? 'hover:from-orange-900/45 hover:via-[#261A12]' 
+                              : 'hover:from-amber-900/45 hover:via-[#2B2311]');
 
                         return (
                           <tr 
                             key={lvl.id}
                             onClick={() => handleSelectTier(lvl.id)}
-                            className={`cursor-pointer transition-colors ${rowBg} ${hoverBg}`}
+                            className={`cursor-pointer transition-all border-l-4 ${rowBg} ${hoverBg}`}
+                            style={{
+                              borderLeftColor: !isLight 
+                                ? (isSelected ? '#4ADE80' : darkTierColor) 
+                                : 'transparent'
+                            }}
                           >
-                            {/* Code */}
-                            <td className="py-4 px-6 font-bold" style={{ color: lvl.accentColor }}>
-                              {lvl.code}
-                            </td>
-
                             {/* Name & Purpose */}
                             <td className="py-4 px-6">
-                              <div className="font-['Oswald'] text-sm uppercase font-bold tracking-wide text-current">
+                              <div 
+                                className="font-['Nunito',sans-serif] text-sm uppercase font-[900] tracking-normal"
+                                style={{
+                                  color: !isLight ? darkTierColor : undefined
+                                }}
+                              >
                                 {lvl.name}
                               </div>
-                              <div className="font-sans text-[11px] text-gray-500 dark:text-gray-400 max-w-xs mt-0.5">
+                              <div className="font-sans text-[11px] text-gray-500 dark:text-gray-300 max-w-xs mt-0.5">
                                 {lvl.purpose}
                               </div>
                             </td>
@@ -437,24 +465,31 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                             {/* Turnaround */}
                             <td className="py-4 px-6 font-bold">
                               <div className="flex items-center gap-1.5">
-                                <Clock className="w-3.5 h-3.5 text-gray-400" />
+                                <Clock 
+                                  className="w-3.5 h-3.5 shrink-0" 
+                                  style={{
+                                    color: !isLight ? darkTierColor : undefined
+                                  }}
+                                />
                                 <span>{lvl.turnaround}</span>
                               </div>
                             </td>
 
                             {/* Max Insurance */}
-                            <td className="py-4 px-6 font-medium text-gray-700 dark:text-gray-300">
+                            <td className="py-4 px-6 font-medium text-gray-700 dark:text-gray-200">
                               {lvl.maxInsurance}
                             </td>
 
                             {/* Scope */}
-                            <td className="py-4 px-6 font-sans text-xs text-gray-500 dark:text-gray-400 max-w-sm">
+                            <td className="py-4 px-6 font-sans text-xs text-gray-500 dark:text-gray-300 max-w-sm">
                               {lvl.scope}
                             </td>
 
                             {/* Price */}
-                            <td className="py-4 px-6 text-right font-['Oswald'] text-xl font-bold">
-                              {lvl.price} €
+                            <td className="py-4 px-6 text-right font-['Nunito',sans-serif] text-xl font-[900]">
+                              <span style={{ color: !isLight && isSelected ? '#4ADE80' : undefined }}>
+                                {lvl.price} €
+                              </span>
                               <span className="block font-mono text-[9px] text-gray-400 font-normal">
                                 {language === 'es' ? 'IVA INCLUIDO' : 'VAT INCLUDED'}
                               </span>
@@ -470,8 +505,10 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                                 }}
                                 className={
                                   isSelected
-                                    ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-normal'
-                                    : 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-normal'
+                                    ? 'btn-gorilla-square px-4 py-2 text-[10px] font-extrabold tracking-normal shadow-[0_0_15px_rgba(22,163,74,0.4)]'
+                                    : isLight
+                                      ? 'btn-gorilla-square-secondary px-4 py-2 text-[10px] font-bold tracking-normal'
+                                      : 'px-4 py-2 text-[10px] font-bold tracking-normal rounded border border-white/20 bg-white/5 hover:bg-white/15 text-white transition-all hover:border-emerald-400'
                                 }
                               >
                                 {language === 'es'
@@ -503,16 +540,13 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                         onClick={() => handleSelectTier(lvl.id)}
                         className={`p-5 transition-colors cursor-pointer ${mobileBg}`}
                       >
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-mono text-xs font-bold" style={{ color: lvl.accentColor }}>
-                            {lvl.code}
-                          </span>
-                          <span className="font-['Oswald'] text-xl font-bold">
+                        <div className="flex items-center justify-end mb-2">
+                          <span className="font-['Nunito',sans-serif] text-xl font-[900]">
                             {lvl.price} € <span className="font-mono text-[10px] text-gray-400 font-normal">{language === 'es' ? '/ carta' : '/ card'}</span>
                           </span>
                         </div>
 
-                        <h3 className="font-['Oswald'] text-lg uppercase font-bold tracking-wide mb-1">
+                        <h3 className="font-['Nunito',sans-serif] text-lg uppercase font-[900] tracking-normal mb-1">
                           {lvl.name}
                         </h3>
 
@@ -567,7 +601,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
                   <span className="font-mono text-xs text-gray-400 uppercase tracking-wider">
                     {language === 'es' ? 'SERVICIO SELECCIONADO:' : 'SELECTED SERVICE:'}
                   </span>
-                  <span className="font-['Oswald'] text-base uppercase font-bold text-[#16A34A] dark:text-[#4ADE80] tracking-wide">
+                  <span className="font-['Nunito',sans-serif] text-base uppercase font-[900] text-[#16A34A] dark:text-[#4ADE80] tracking-normal">
                     {selectedTier?.name || 'PRECISION STANDARD'} — {selectedTier?.priceEur || 28} €
                   </span>
                 </div>
@@ -612,7 +646,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-6">
               <div>
-                <h2 className={`font-['Oswald'] text-xl uppercase tracking-wide mb-1 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
+                <h2 className={`font-['Nunito',sans-serif] text-xl sm:text-2xl uppercase font-[900] tracking-normal mb-1 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
                   {language === 'es' ? 'Suma tus cartas' : 'Add your cards'}
                 </h2>
                 <p className={`text-xs font-sans ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
@@ -885,7 +919,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         ============================================================== */}
         {currentStep === 3 && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className={`font-['Oswald'] text-xl uppercase tracking-wide mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
+            <h2 className={`font-['Nunito',sans-serif] text-xl sm:text-2xl uppercase font-[900] tracking-normal mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
               {language === 'es' ? 'Tus Datos de Envío' : 'Your Shipping Details'}
             </h2>
             <p className={`text-xs font-sans mb-8 ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
@@ -949,7 +983,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
         ============================================================== */}
         {currentStep === 4 && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className={`font-['Oswald'] text-xl uppercase tracking-wide mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
+            <h2 className={`font-['Nunito',sans-serif] text-xl sm:text-2xl uppercase font-[900] tracking-normal mb-2 ${isLight ? 'text-[#1C201D]' : 'text-white'}`}>
               {language === 'es' ? 'Resumen Final' : 'Final Review'}
             </h2>
             <p className={`text-xs font-sans mb-8 ${isLight ? 'text-[#656E63]' : 'text-[#A4ACA1]'}`}>
@@ -1032,7 +1066,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
             }`}>
               <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-white/10 mb-5">
                 <div>
-                  <h3 className="font-['Oswald'] text-lg uppercase tracking-wider font-bold">
+                  <h3 className="font-['Nunito',sans-serif] text-lg uppercase tracking-normal font-[900]">
                     {language === 'es' ? 'Editar Especificaciones de la Carta' : 'Edit Card Specifications'}
                   </h3>
                   <p className="text-[11px] font-mono text-gray-500">

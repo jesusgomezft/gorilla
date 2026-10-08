@@ -96,7 +96,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
                   <ScanLine className="w-3.5 h-3.5" />
                   <span>{language === 'es' ? 'Seguimiento de Custodia' : 'Chain of Custody Tracker'}</span>
                 </div>
-                <h1 className={`font-['Oswald'] text-base md:text-lg font-bold uppercase tracking-tight mb-2 ${
+                <h1 className={`font-['Nunito',sans-serif] text-base md:text-lg font-[900] uppercase tracking-normal mb-2 ${
                   isLight ? 'text-[#1C201D]' : 'text-white'
                 }`}>
                   {language === 'es' ? 'ESTADO EN TIEMPO REAL' : 'LIVE ORDER STATUS'}
@@ -186,7 +186,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
                   }`}>
                     STATUS // {activeOrder.status.replace('_', ' ')}
                   </span>
-                  <h2 className={`font-['Oswald'] text-lg md:text-xl font-bold uppercase leading-[1.1] mb-3 ${
+                  <h2 className={`font-['Nunito',sans-serif] text-lg md:text-xl font-[900] uppercase leading-[1.1] mb-3 ${
                     isLight ? 'text-[#1C201D]' : 'text-white'
                   }`}>
                     ORDER #{activeOrder.id}
@@ -289,7 +289,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
                         </div>
 
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
-                          <h4 className={`font-['Oswald'] text-base uppercase tracking-wide leading-tight font-bold transition-colors ${
+                          <h4 className={`font-['Nunito',sans-serif] text-base uppercase tracking-normal leading-tight font-[800] transition-colors ${
                             isFinalCompleted
                               ? (isLight ? 'text-amber-600' : 'text-amber-400')
                               : step.current 
@@ -347,7 +347,7 @@ export const TrackingPage: React.FC<TrackingPageProps> = ({ onNavigate: _onNavig
               <span>{language === 'es' ? 'Seguimiento de Custodia' : 'Chain of Custody'}</span>
             </div>
 
-            <h1 className={`font-['Oswald'] text-2xl sm:text-4xl font-bold uppercase tracking-tight mb-8 title-3d ${
+            <h1 className={`font-['Nunito',sans-serif] text-3xl sm:text-4xl md:text-5xl font-[900] uppercase tracking-normal mb-8 ${
               isLight ? 'text-[#1C201D]' : 'text-white'
             }`}>
               {language === 'es' ? 'SEGUIMIENTO EN TIEMPO REAL' : 'LIVE ORDER TRACKING'}

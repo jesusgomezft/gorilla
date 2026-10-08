@@ -23,18 +23,15 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
 
   return (
     <footer 
-      className={`relative z-20 w-full pt-12 sm:pt-16 pb-8 px-6 lg:px-12 border-t select-none transition-colors duration-300 ${
+      className={`relative z-20 w-full pt-12 sm:pt-16 pb-8 border-t select-none transition-colors duration-300 ${
         isLight 
           ? 'bg-[#F6F4EE] border-[#E2DDD3] text-[#1B1E1A]' 
           : 'bg-[#111411] border-white/[0.08] text-[#EAEAEA]'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto">
-        
-        {/* Top Footer Section */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b ${
-          isLight ? 'border-[#E2DDD3]' : 'border-white/[0.08]'
-        }`}>
+      {/* Top Footer Section Content */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pb-10 sm:pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           
           {/* Brand Info */}
           <div className="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -250,9 +247,16 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
           </div>
 
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className={`pt-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left ${
+      {/* Full-width Divider Line — De extremo a extremo de la pantalla (100% width) */}
+      <div className={`w-full border-b ${
+        isLight ? 'border-[#E2DDD3]' : 'border-white/[0.08]'
+      }`} />
+
+      {/* Bottom Bar Content */}
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-6">
+        <div className={`flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left ${
           isLight ? 'text-[#4A5248]' : 'text-[#7A8377]'
         }`}>
           <div className="font-mono order-3 md:order-1 text-[11px]">
@@ -321,7 +325,6 @@ export const LuxuryFooter: React.FC<LuxuryFooterProps> = ({ onNavigate }) => {
             </div>
           </div>
         </div>
-
       </div>
     </footer>
   );

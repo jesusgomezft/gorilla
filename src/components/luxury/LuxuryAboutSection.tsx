@@ -148,7 +148,7 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
                 >
                   {/* Big Number */}
                   <div className="w-20 md:w-28 shrink-0">
-                    <span className={`font-['Oswald'] font-[700] text-lg md:text-lg transition-colors duration-300 ${
+                    <span className={`font-['Nunito',sans-serif] font-[900] text-xl md:text-2xl transition-colors duration-300 ${
                       isHovered ? 'text-[#48C765]' : 'text-white/10'
                     }`}>
                       {st.num}
@@ -157,7 +157,7 @@ export const LuxuryAboutSection: React.FC<LuxuryAboutSectionProps> = ({ onNaviga
 
                   {/* Title & Sub */}
                   <div className="flex-1">
-                    <h3 className={`font-['Oswald'] text-lg md:text-lg uppercase tracking-wide mb-1 transition-colors duration-300 ${
+                    <h3 className={`font-['Nunito',sans-serif] font-[900] text-lg md:text-xl uppercase tracking-normal mb-1 transition-colors duration-300 ${
                       isHovered ? 'text-white' : 'text-[#A4ACA1]'
                     }`}>
                       {st.title}

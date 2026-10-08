@@ -108,31 +108,29 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
       <div className="relative z-10 max-w-[1400px] mx-auto">
         
         {/* Module Header: Technical Lab Console Aesthetic */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          {/* Main Dedicated Gorilla Verify Logo (Enlarged & Animated) */}
-          <div className="mb-5 sm:mb-6">
-            <VerifyLogo size="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32" />
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          {/* Main Dedicated Gorilla Verify Sub-Brand Logo (Dynamic Forensic Animation) */}
+          <div className="mb-4 sm:mb-5">
+            <VerifyLogo shieldSize="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40" />
           </div>
 
-          <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-gray-500 mb-2">
+          <h2 className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-gray-500 mb-4 sm:mb-5">
             <span>
               {language === 'es' 
                 ? '[ EXPEDIENTE PÚBLICO DE VERIFICACIÓN · SERIE AUDITORÍA 2026 ]' 
                 : '[ PUBLIC VERIFICATION REGISTRY · 2026 AUDIT SERIES ]'}
             </span>
-          </div>
-
-          <h2 className="font-['Nunito',sans-serif] text-3xl sm:text-4xl md:text-5xl font-[900] tracking-normal uppercase leading-tight">
-            {language === 'es' ? 'VERIFICAR CERTIFICADO' : 'VERIFY CERTIFICATE'}
           </h2>
 
-          {/* Exact 3 Verification Features with Green Check Icon */}
-          <div className="mt-5 sm:mt-6 inline-flex flex-col items-start gap-2.5 sm:gap-3 text-left">
+          {/* Verification Features with Green Check Icon (Including Verify Certificate item) */}
+          <div className="inline-flex flex-col items-start gap-2.5 sm:gap-3 text-left">
             {(language === 'es' ? [
+              'Verificar Certificado.',
               'Consulta instantánea para compradores y vendedores del mercado secundario.',
               'Acceso al historial criptográfico.',
               'Datos de auditoría láser y escaneos master a 1200 DPI.'
             ] : [
+              'Verify Certificate.',
               'Instant consultation for secondary market buyers and sellers.',
               'Access cryptographic history.',
               'Laser Audit data and 1200 DPI master scan.'
@@ -329,7 +327,7 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
                     {/* Slab Top Label Preview */}
                     <div className="w-full bg-white text-black p-2 rounded-t flex items-center justify-between shadow-md">
                       <div>
-                        <div className="font-['Oswald'] font-black text-xs tracking-wider uppercase text-black leading-tight">
+                        <div className="font-['Nunito',sans-serif] font-[900] text-xs tracking-wider uppercase text-black leading-tight">
                           GORILLA GRADING
                         </div>
                         <div className="font-mono text-[9px] text-gray-600 font-bold truncate max-w-[130px]">
@@ -341,7 +339,7 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
                       </div>
 
                       <div className="text-right">
-                        <div className="font-['Oswald'] font-black text-xl text-black leading-none">
+                        <div className="font-['Nunito',sans-serif] font-[900] text-xl text-black leading-none">
                           {selectedCard.grade}
                         </div>
                         <div className="font-mono text-[8px] uppercase tracking-wider font-extrabold text-[#16A34A]">
@@ -396,7 +394,7 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
                     </span>
                   </div>
 
-                  <h3 className="font-['Oswald'] text-2xl sm:text-3xl font-bold uppercase tracking-wide leading-tight">
+                  <h3 className="font-['Nunito',sans-serif] text-2xl sm:text-3xl font-[900] uppercase tracking-normal leading-tight">
                     {selectedCard.name}
                   </h3>
                   
@@ -418,14 +416,14 @@ export const HomeVerificationModule: React.FC<HomeVerificationModuleProps> = ({ 
                   isLight ? 'bg-gray-50 border-gray-200' : 'bg-white/[0.02] border-white/10'
                 }`}>
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-none bg-[#48C765] text-[#0A0D0B] font-['Oswald'] font-black text-3xl sm:text-4xl flex items-center justify-center shrink-0 shadow-lg">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-none bg-[#48C765] text-[#0A0D0B] font-['Nunito',sans-serif] font-[900] text-3xl sm:text-4xl flex items-center justify-center shrink-0 shadow-lg">
                       {selectedCard.grade}
                     </div>
                     <div>
                       <div className="font-mono text-[10px] uppercase tracking-widest text-[#48C765] font-bold">
                         {language === 'es' ? 'GRADO OFICIAL GORILLA' : 'OFFICIAL GORILLA GRADE'}
                       </div>
-                      <div className="font-['Oswald'] text-xl sm:text-2xl font-bold uppercase tracking-wide">
+                      <div className="font-['Nunito',sans-serif] text-xl sm:text-2xl font-[900] uppercase tracking-normal">
                         {selectedCard.gradeLabel}
                       </div>
                       <div className="font-sans text-xs text-gray-500 dark:text-gray-400">

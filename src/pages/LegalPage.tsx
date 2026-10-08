@@ -331,7 +331,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
               <div className="font-mono text-[10px] font-bold tracking-[0.25em] uppercase text-[#15803D] dark:text-[#48C765]">
                 GORILLA GRADING INTERNATIONAL · ISO/IEC 17025
               </div>
-              <h1 className={`font-['Oswald'] text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide mt-2 title-3d ${
+              <h1 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl lg:text-4xl font-[900] uppercase tracking-normal mt-2 ${
                 isLight ? 'text-[#14170F]' : 'text-white'
               }`}>
                 {isEs 
@@ -395,7 +395,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                 </span>
               </div>
 
-              <h2 className={`font-['Oswald'] text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wide leading-tight title-3d ${
+              <h2 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl lg:text-4xl font-[900] uppercase tracking-normal leading-tight ${
                 isLight ? 'text-[#14170F]' : 'text-white'
               }`}>
                 {currentData.title}
@@ -447,7 +447,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                         <span className="font-mono text-xs font-bold text-[#15803D] dark:text-[#48C765] shrink-0">
                           § {art.num}
                         </span>
-                        <h3 className={`font-['Oswald'] text-base sm:text-lg font-bold uppercase tracking-wide ${
+                        <h3 className={`font-['Nunito',sans-serif] text-base sm:text-lg font-[900] uppercase tracking-normal ${
                           isLight ? 'text-[#14170F]' : 'text-white'
                         }`}>
                           {art.title}
@@ -469,7 +469,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
               <div className="space-y-6 pt-4">
                 <div className="flex items-center justify-between pb-3 border-b border-current/15">
                   <div>
-                    <h3 className="font-['Oswald'] text-lg sm:text-xl font-bold uppercase tracking-wide">
+                    <h3 className="font-['Nunito',sans-serif] text-lg sm:text-xl font-[900] uppercase tracking-normal">
                       {isEs ? 'Panel de Configuración de Consentimiento' : 'Privacy Preference Manager'}
                     </h3>
                     <p className="font-mono text-[9px] opacity-60 uppercase tracking-wider mt-0.5">
@@ -490,7 +490,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                           01. {isEs ? 'OBLIGATORIAS' : 'ESSENTIAL'}
                         </span>
                       </div>
-                      <h4 className="font-['Oswald'] text-sm sm:text-base uppercase font-bold">
+                      <h4 className="font-['Nunito',sans-serif] text-sm sm:text-base uppercase font-[900] tracking-normal">
                         {isEs ? 'Cookies Técnicas de Sesión' : 'Essential Session Tokens'}
                       </h4>
                       <p className="text-xs opacity-70 leading-relaxed max-w-xl">
@@ -513,7 +513,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                       <span className="font-mono text-[10px] font-bold uppercase text-[#15803D] dark:text-[#48C765]">
                         02. {isEs ? 'RENDIMIENTO' : 'PERFORMANCE'}
                       </span>
-                      <h4 className="font-['Oswald'] text-sm sm:text-base uppercase font-bold">
+                      <h4 className="font-['Nunito',sans-serif] text-sm sm:text-base uppercase font-[900] tracking-normal">
                         {isEs ? 'Diagnóstico de Bóveda y Visor 3D' : 'Vault Diagnostics & 3D Speed'}
                       </h4>
                       <p className="text-xs opacity-70 leading-relaxed max-w-xl">
@@ -539,7 +539,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type: initialType, onNavig
                       <span className="font-mono text-[10px] font-bold uppercase text-[#15803D] dark:text-[#48C765]">
                         03. {isEs ? 'LOCALIZACIÓN' : 'LOCATION'}
                       </span>
-                      <h4 className="font-['Oswald'] text-sm sm:text-base uppercase font-bold">
+                      <h4 className="font-['Nunito',sans-serif] text-sm sm:text-base uppercase font-[900] tracking-normal">
                         {isEs ? 'Eventos y Puntos Drop-Off' : 'Drop-off & Card Show Notices'}
                       </h4>
                       <p className="text-xs opacity-70 leading-relaxed max-w-xl">

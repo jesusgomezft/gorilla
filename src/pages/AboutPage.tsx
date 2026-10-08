@@ -52,7 +52,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <Microscope size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
-                <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
+                <h3 className="font-['Nunito',sans-serif] text-xl uppercase font-[900] tracking-normal text-white">
                   {language === 'es' ? 'Precisión Nanométrica Imparcial' : 'Impartial Nanometric Precision'}
                 </h3>
               </div>
@@ -67,7 +67,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <ShieldCheck size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
-                <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
+                <h3 className="font-['Nunito',sans-serif] text-xl uppercase font-[900] tracking-normal text-white">
                   {language === 'es' ? 'Cadena de Custodia Inviolable' : 'Tamper-Evident Chain of Custody'}
                 </h3>
               </div>
@@ -82,7 +82,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <Award size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
-                <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
+                <h3 className="font-['Nunito',sans-serif] text-xl uppercase font-[900] tracking-normal text-white">
                   {language === 'es' ? 'Transparencia de Datos en Blockchain' : 'Verifiable Public Cert Registry'}
                 </h3>
               </div>
@@ -97,7 +97,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <div className="bg-[#161B16] border border-white/[0.05] p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <Users size={24} className="text-[#16A34A] dark:text-[#48C765] shrink-0" strokeWidth={1.75} />
-                <h3 className="font-['Oswald'] text-xl uppercase tracking-wide text-white">
+                <h3 className="font-['Nunito',sans-serif] text-xl uppercase font-[900] tracking-normal text-white">
                   {language === 'es' ? 'Construido por Coleccionistas Reales' : 'Built by Passionate Collectors'}
                 </h3>
               </div>

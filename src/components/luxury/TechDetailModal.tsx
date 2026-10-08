@@ -118,7 +118,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
             <div className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#15803D] dark:text-[#48C765]">
               {isEs ? 'DOSSIER OFICIAL DE LABORATORIO · REF. GG-LAB-2026-MET' : 'OFFICIAL LABORATORY DOSSIER · REF. GG-LAB-2026-MET'}
             </div>
-            <h2 className={`font-['Oswald'] text-base sm:text-lg font-bold tracking-wider uppercase truncate mt-0.5 ${
+            <h2 className={`font-['Nunito',sans-serif] text-base sm:text-lg font-[900] tracking-normal uppercase truncate mt-0.5 ${
               isLight ? 'text-[#14170F]' : 'text-white'
             }`}>
               {isEs 
@@ -191,7 +191,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                     </span>
                   </div>
 
-                  <h3 className="font-['Oswald'] text-xs sm:text-sm font-bold tracking-wide uppercase truncate leading-tight">
+                  <h3 className="font-['Nunito',sans-serif] text-xs sm:text-sm font-[900] tracking-normal uppercase truncate leading-tight">
                     {tab.title}
                   </h3>
                   <div className="font-mono text-[10px] opacity-60 mt-0.5 truncate">
@@ -316,7 +316,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                       <span className="font-mono text-[9px] opacity-50">DOCUMENTACIÓN SIN CONTACTO</span>
                     </div>
 
-                    <h3 className={`font-['Oswald'] text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-2 ${
+                    <h3 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl font-[900] uppercase tracking-normal mt-2 ${
                       isLight ? 'text-[#14170F]' : 'text-white'
                     }`}>
                       {isEs 
@@ -478,7 +478,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                       <span className="font-mono text-[9px] opacity-50">ESPECTROMETRÍA FORENSE</span>
                     </div>
 
-                    <h3 className={`font-['Oswald'] text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-2 ${
+                    <h3 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl font-[900] uppercase tracking-normal mt-2 ${
                       isLight ? 'text-[#14170F]' : 'text-white'
                     }`}>
                       {isEs 
@@ -653,7 +653,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                       <span className="font-mono text-[9px] opacity-50">CALIBRE SUBPÍXEL</span>
                     </div>
 
-                    <h3 className={`font-['Oswald'] text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-2 ${
+                    <h3 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl font-[900] uppercase tracking-normal mt-2 ${
                       isLight ? 'text-[#14170F]' : 'text-white'
                     }`}>
                       {isEs 
@@ -791,7 +791,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                       <span className="font-mono text-[9px] opacity-50">SOLDADURA PIEZOELÉCTRICA</span>
                     </div>
 
-                    <h3 className={`font-['Oswald'] text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-2 ${
+                    <h3 className={`font-['Nunito',sans-serif] text-2xl sm:text-3xl font-[900] uppercase tracking-normal mt-2 ${
                       isLight ? 'text-[#14170F]' : 'text-white'
                     }`}>
                       {isEs 

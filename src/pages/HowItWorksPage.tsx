@@ -123,11 +123,11 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             }`} />
           </div>
 
-          <h1 className={`font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-[0.01em] leading-[0.94] mb-5 title-3d ${
+          <h1 className={`font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl uppercase tracking-normal leading-[1.05] mb-5 ${
             isLight ? 'text-[#1A1D1A]' : 'text-white'
           }`}>
             {language === 'es' ? 'EL VIAJE DESDE CARTA CRUDA HASTA ' : 'THE JOURNEY FROM RAW CARD TO '}
-            <span className={`${isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'} title-3d-green`}>{language === 'es' ? 'SLAB CERTIFICADO' : 'CERTIFIED SLAB'}</span>
+            <span className={isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'}>{language === 'es' ? 'SLAB CERTIFICADO' : 'CERTIFIED SLAB'}</span>
           </h1>
 
           <p className={`font-sans text-base max-w-2xl mx-auto leading-relaxed font-normal ${
@@ -150,7 +150,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             >
               {/* Numeric Indicator */}
               <div className="flex items-center gap-4 shrink-0">
-                <span className={`font-['Oswald'] font-[700] text-lg tracking-tight group-hover:scale-105 transition-transform ${
+                <span className={`font-['Nunito',sans-serif] font-[900] text-xl tracking-tight group-hover:scale-105 transition-transform ${
                   isLight ? 'text-[#2D9A46]' : 'text-[#48C765]'
                 }`}>
                   {step.num}
@@ -166,7 +166,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
 
               {/* Text Info */}
               <div className="flex-1 space-y-1.5">
-                <h3 className={`font-['Oswald'] font-[700] text-lg uppercase tracking-[0.01em] transition-colors ${
+                <h3 className={`font-['Nunito',sans-serif] font-[900] text-lg sm:text-xl uppercase tracking-normal transition-colors ${
                   isLight
                     ? 'text-[#1A1D1A] group-hover:text-[#2D9A46]'
                     : 'text-white group-hover:text-[#48C765]'
@@ -208,7 +208,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             }`}>
               {language === 'es' ? 'ESPECIFICACIONES DEL LABORATORIO' : 'LABORATORY SPECIFICATIONS'}
             </span>
-            <h2 className={`font-['Oswald'] font-[700] text-3xl sm:text-4xl uppercase tracking-tight title-3d ${
+            <h2 className={`font-['Nunito',sans-serif] font-[900] text-3xl sm:text-4xl uppercase tracking-normal ${
               isLight ? 'text-[#1A1D1A]' : 'text-white'
             }`}>
               {language === 'es' ? 'Ingeniería y Parámetros Numismáticos' : 'Engineering & Numismatic Parameters'}
@@ -241,7 +241,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
                       {spec.spec}
                     </span>
                   </div>
-                  <h4 className={`font-['Oswald'] font-[700] text-xl uppercase tracking-wide mb-3 transition-colors duration-300 ${
+                  <h4 className={`font-['Nunito',sans-serif] font-[900] text-xl uppercase tracking-normal mb-3 transition-colors duration-300 ${
                     isLight
                       ? 'text-[#1A1D1A] group-hover:text-[#2D9A46]'
                       : 'text-white group-hover:text-[#48C765]'
@@ -271,7 +271,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate }) =>
             }`}>
               {language === 'es' ? 'MISIÓN INSTITUCIONAL' : 'INSTITUTIONAL ETHOS'}
             </span>
-            <h3 className={`font-['Oswald'] font-[700] text-lg uppercase tracking-tight mb-3 ${
+            <h3 className={`font-['Nunito',sans-serif] font-[900] text-lg sm:text-xl uppercase tracking-normal mb-3 ${
               isLight ? 'text-[#1A1D1A]' : 'text-white'
             }`}>
               {language === 'es' 

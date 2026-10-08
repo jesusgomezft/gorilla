@@ -143,9 +143,9 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             <span>{t('pricing.kicker')}</span>
           </div>
 
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl text-white uppercase tracking-[0.01em] leading-[0.94] mb-5 title-3d">
+          <h1 className="font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl text-white uppercase tracking-normal leading-[1.05] mb-5">
             {language === 'es' ? 'TARIFAS Y NIVELES DE ' : 'GRADING TIERS & '}
-            <span className="text-[#48C765] title-3d-green">{language === 'es' ? 'SERVICIO' : 'PRICING'}</span>
+            <span className="text-[#48C765]">{language === 'es' ? 'SERVICIO' : 'PRICING'}</span>
           </h1>
 
           <p className="font-sans text-base text-[#A4ACA1] max-w-2xl mx-auto leading-relaxed font-normal">
@@ -168,7 +168,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             >
               {/* Massive Typography Watermark */}
               <div 
-                className="absolute -right-4 -bottom-6 text-[80px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Oswald']" 
+                className="absolute -right-4 -bottom-6 text-[80px] font-black opacity-[0.03] pointer-events-none select-none tracking-tighter leading-none whitespace-nowrap transition-all duration-700 font-['Nunito',sans-serif]" 
                 style={{ color: tier.color }}
               >
                 {tier.shortName}
@@ -200,7 +200,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
 
               {/* Title & Tagline */}
               <div>
-                <h3 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-[0.02em] mb-2">
+                <h3 className="font-['Nunito',sans-serif] font-[900] text-lg sm:text-xl text-white uppercase tracking-normal mb-2">
                   {tier.name}
                 </h3>
                 <p className="text-xs text-[#A4ACA1] font-sans leading-relaxed mb-6 min-h-[48px]">
@@ -210,7 +210,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                 {/* Price Display */}
                 <div className="flex items-baseline gap-1.5 pb-6 mb-6 border-b border-white/[0.08]">
                   <span className="font-mono text-xs text-[#A4ACA1] font-semibold">€</span>
-                  <span className="font-['Oswald'] font-[700] text-lg text-white tracking-tight">{tier.price}</span>
+                  <span className="font-['Nunito',sans-serif] font-[900] text-xl text-white tracking-tight">{tier.price}</span>
                   <span className="font-mono text-xs text-[#A4ACA1] ml-1">{t('pricing.cardUnit')}</span>
                 </div>
 
@@ -262,7 +262,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#48C765] uppercase block mb-2">
               {language === 'es' ? 'AUDITORÍA COMPARATIVA' : 'FEATURE COMPARISON MATRIX'}
             </span>
-            <h2 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-tight">
+            <h2 className="font-['Nunito',sans-serif] font-[900] text-lg sm:text-xl text-white uppercase tracking-normal">
               {language === 'es' ? 'Desglose Técnico por Nivel de Graduación' : 'Technical Breakdown by Service Tier'}
             </h2>
           </div>
@@ -299,7 +299,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             <span className="font-mono text-xs font-bold tracking-[0.25em] text-[#48C765] uppercase mb-2 block">
               {language === 'es' ? 'GARANTÍA DE TRANSPORTE Y PROPIEDAD' : 'CHAIN OF CUSTODY GUARANTEE'}
             </span>
-            <h3 className="font-['Oswald'] font-[700] text-lg text-white uppercase tracking-tight mb-3">
+            <h3 className="font-['Nunito',sans-serif] font-[900] text-lg sm:text-xl text-white uppercase tracking-normal mb-3">
               {language === 'es' 
                 ? 'Protección Integral y Cobertura Internacional Asegurada' 
                 : 'Comprehensive Protection Across International Transit'}

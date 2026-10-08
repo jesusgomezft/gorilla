@@ -1,220 +1,130 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 interface VerifyLogoProps {
   className?: string;
-  size?: string; // e.g., 'w-24 h-24 sm:w-28 sm:h-28'
-  showText?: boolean;
+  size?: string;
+  shieldSize?: string;
+  layout?: 'single-line' | 'stacked';
 }
 
-export const VerifyLogo: React.FC<VerifyLogoProps> = ({
+export const GorillaVerifyLogo: React.FC<VerifyLogoProps> = ({
   className = '',
-  size = 'w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32',
-  showText = false
+  size,
+  shieldSize = 'w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40',
+  layout = 'single-line'
 }) => {
+  const actualShieldSize = size || shieldSize;
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Official 3D Shield Assets
+  const shieldSrc = isLight 
+    ? '/brand/gorilla-verify-light.png' 
+    : '/brand/gorilla-verify-dark.png';
+
   return (
-    <div className={`inline-flex flex-col items-center select-none ${className}`}>
-      <div className={`relative ${size} shrink-0`}>
-        <div 
-          className="absolute inset-0 rounded-full bg-[#22C55E]/20 blur-2xl pointer-events-none"
-        />
+    <div 
+      className={`inline-flex flex-col items-center select-none ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <style>{`
+        /* 1. Gentle Levitation of the Shield */
+        @keyframes gvShieldFloat {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-6px);
+          }
+        }
 
-        <svg 
-          viewBox="0 0 140 140" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full object-contain relative z-10 drop-shadow-xl overflow-visible"
-        >
-          <defs>
-            <linearGradient id="vlShieldGrad" x1="20" y1="20" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#4ADE80" />
-              <stop offset="50%" stopColor="#22C55E" />
-              <stop offset="100%" stopColor="#15803D" />
-            </linearGradient>
+        /* 2. Validation Checkmark Flash & Energy Ping */
+        @keyframes gvCheckPing {
+          0%, 48% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.4));
+          }
+          54% {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 16px rgba(74, 222, 128, 1)) drop-shadow(0 0 28px rgba(34, 197, 94, 0.8));
+          }
+          64% {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.7));
+          }
+          76%, 100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.4));
+          }
+        }
 
-            <linearGradient id="vlInnerBevel" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#000000" stopOpacity="0.25" />
-            </linearGradient>
+        .gv-shield-float {
+          animation: gvShieldFloat 4.8s ease-in-out infinite;
+        }
 
-            <radialGradient id="vlRingGlow" cx="70" cy="70" r="65" gradientUnits="userSpaceOnUse">
-              <stop offset="60%" stopColor="#22C55E" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#22C55E" stopOpacity="0" />
-            </radialGradient>
+        .gv-check-pulse {
+          animation: gvCheckPing 3.6s ease-in-out infinite;
+          transform-origin: center;
+        }
+      `}</style>
 
-            {/* Laser Shimmer Scan Gradient */}
-            <linearGradient id="vlScanBeam" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0" />
-              <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-            </linearGradient>
-
-            <clipPath id="vlShieldClip">
-              <path d="M42 35C42 30.5817 45.5817 27 50 27H90C94.4183 27 98 30.5817 98 35V69C98 85.5 82 98.5 70 105C58 98.5 42 85.5 42 69V35Z" />
-            </clipPath>
-
-            <style>
-              {`
-                @keyframes vlRotateDial {
-                  from { transform: rotate(0deg); }
-                  to { transform: rotate(360deg); }
-                }
-                @keyframes vlFloatShield {
-                  0%, 100% { transform: translateY(0px); }
-                  50% { transform: translateY(-3.5px); }
-                }
-                @keyframes vlBadgePulse {
-                  0%, 100% { transform: scale(1); }
-                  50% { transform: scale(1.08); }
-                }
-                @keyframes vlPingWave {
-                  0% { transform: scale(0.9); opacity: 0.8; }
-                  70%, 100% { transform: scale(1.6); opacity: 0; }
-                }
-                @keyframes vlLaserScan {
-                  0% { transform: translateY(-30px); }
-                  50%, 100% { transform: translateY(90px); }
-                }
-
-                .vl-dial-group {
-                  transform-origin: 70px 70px;
-                  animation: vlRotateDial 22s linear infinite;
-                }
-                .vl-shield-group {
-                  transform-origin: 70px 65px;
-                  animation: vlFloatShield 4s ease-in-out infinite;
-                }
-                .vl-badge-group {
-                  transform-origin: 96px 94px;
-                  animation: vlBadgePulse 2.8s ease-in-out infinite;
-                }
-                .vl-ping-circle {
-                  transform-origin: 16px 16px;
-                  animation: vlPingWave 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
-                }
-                .vl-scan-line {
-                  animation: vlLaserScan 3.5s ease-in-out infinite;
-                }
-              `}
-            </style>
-          </defs>
-
-          {/* Ambient Glow */}
-          <circle cx="70" cy="70" r="62" fill="url(#vlRingGlow)" />
-
-          {/* 1. ANIMATED ROTATING RADAR / METROLOGY DIAL */}
-          <g className="vl-dial-group">
-            {/* Outer Metrological Security Ring with Dial Ticks */}
-            <circle cx="70" cy="70" r="59" stroke="#22C55E" strokeOpacity="0.38" strokeWidth="1.5" strokeDasharray="5 3.5" />
-            <circle cx="70" cy="70" r="53" stroke="#22C55E" strokeOpacity="0.22" strokeWidth="1" />
-
-            {/* Dial Cardinal Precision Points */}
-            <circle cx="70" cy="11" r="2.5" fill="#4ADE80" />
-            <circle cx="129" cy="70" r="2.5" fill="#4ADE80" />
-            <circle cx="70" cy="129" r="2.5" fill="#4ADE80" />
-            <circle cx="11" cy="70" r="2.5" fill="#4ADE80" />
-
-            {/* Intermediate Micro Ticks */}
-            <circle cx="28" cy="28" r="1.5" fill="#22C55E" fillOpacity="0.7" />
-            <circle cx="112" cy="28" r="1.5" fill="#22C55E" fillOpacity="0.7" />
-            <circle cx="112" cy="112" r="1.5" fill="#22C55E" fillOpacity="0.7" />
-            <circle cx="28" cy="112" r="1.5" fill="#22C55E" fillOpacity="0.7" />
-          </g>
-
-          {/* 2. ANIMATED FLOATING SHIELD GROUP */}
-          <g className="vl-shield-group">
-            {/* Gorilla Shield Shadow */}
-            <path 
-              d="M42 37C42 31.5817 45.5817 28 50 28H90C94.4183 28 98 31.5817 98 36V70C98 86.5 82 99.5 70 106C58 99.5 42 86.5 42 70V37Z" 
-              fill="#080F0A" 
-              fillOpacity="0.75" 
-            />
-
-            {/* Main Gorilla Shield (Emerald Gradient) */}
-            <path 
-              d="M42 35C42 30.5817 45.5817 27 50 27H90C94.4183 27 98 30.5817 98 35V69C98 85.5 82 98.5 70 105C58 98.5 42 85.5 42 69V35Z" 
-              fill="url(#vlShieldGrad)" 
-            />
-
-            {/* Inner Bevel Metallic Relief */}
-            <path 
-              d="M42 35C42 30.5817 45.5817 27 50 27H90C94.4183 27 98 30.5817 98 35V69C98 85.5 82 98.5 70 105C58 98.5 42 85.5 42 69V35Z" 
-              fill="url(#vlInnerBevel)" 
-            />
-
-            {/* Laser Shimmer Scan Beam (Clipped to Shield) */}
-            <g clipPath="url(#vlShieldClip)">
-              <rect 
-                x="35" 
-                y="20" 
-                width="70" 
-                height="18" 
-                fill="url(#vlScanBeam)" 
-                className="vl-scan-line" 
-              />
-            </g>
-
-            {/* Shield Border Line */}
-            <path 
-              d="M42 35C42 30.5817 45.5817 27 50 27H90C94.4183 27 98 30.5817 98 35V69C98 85.5 82 98.5 70 105C58 98.5 42 85.5 42 69V35Z" 
-              stroke="#FFFFFF" 
-              strokeOpacity="0.4" 
-              strokeWidth="1.5" 
-            />
-
-            {/* Gorilla Hallmark 'G' inside Shield */}
-            <g transform="translate(68, 59)">
-              <path 
-                d="M11 -7.5 A13.5 13.5 0 1 0 13 2.5 H2" 
-                fill="none" 
-                stroke="#0F1711" 
-                strokeWidth="6.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-              />
-            </g>
-          </g>
-
-          {/* 3. ANIMATED PULSING VERIFIED CHECK BADGE */}
-          <g className="vl-badge-group" transform="translate(80, 78)">
-            {/* Radar Expanding Wave Ping Ring */}
-            <circle 
-              cx="16" 
-              cy="16" 
-              r="15" 
-              fill="none" 
-              stroke="#4ADE80" 
-              strokeWidth="2" 
-              className="vl-ping-circle" 
-            />
-
-            {/* Solid Dark Outer Rim */}
-            <circle cx="16" cy="16" r="16.5" fill="#0A120D" />
-            
-            {/* Vivid Green Circle */}
-            <circle cx="16" cy="16" r="15" fill="#22C55E" />
-            
-            {/* Crisp White Checkmark */}
-            <path 
-              d="M9.2 16.2L14 21L23 11.8" 
-              stroke="#FFFFFF" 
-              strokeWidth="3.4" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-            />
-          </g>
-        </svg>
+      {/* Hero 3D Shield Stage — Clean, Pure Transparency without Any Background Square */}
+      <div className="relative flex items-center justify-center cursor-pointer group">
+        {/* Floating 3D Shield Sculpture (Zero Square Background, Pure Floating Shield) */}
+        <div className={`relative ${actualShieldSize} gv-shield-float transition-transform duration-500 ease-out group-hover:scale-105`}>
+          {/* Main 3D Shield Image — Pure Transparency */}
+          <img 
+            src={shieldSrc}
+            alt="Gorilla Verify Shield"
+            className="w-full h-full object-contain pointer-events-none select-none transition-transform duration-500"
+            draggable={false}
+          />
+        </div>
       </div>
 
-      {showText && (
-        <div className="mt-3 text-center">
-          <div className="font-['Nunito',sans-serif] font-extrabold text-sm sm:text-base tracking-normal uppercase text-current">
-            GORILLA <span className="text-[#22C55E]">VERIFY</span>
-          </div>
-          <div className="font-['Nunito',sans-serif] text-[10px] tracking-normal uppercase opacity-70 font-bold">
-            OFFICIAL REGISTRY
-          </div>
+      {/* Sub-Brand Typography: GORILLA + ✓ERIFY (Bold, Clean, No Micro-Text) */}
+      <div className={`mt-3.5 sm:mt-4 flex ${layout === 'stacked' ? 'flex-col items-center gap-1.5' : 'flex-row items-center gap-2.5 sm:gap-3.5'}`}>
+        
+        {/* GORILLA Parent Brand Mark */}
+        <span className={`font-['Nunito',sans-serif] font-[900] tracking-wider uppercase text-lg sm:text-2xl lg:text-[28px] transition-colors duration-300 ${
+          isLight 
+            ? 'text-slate-900' 
+            : 'text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.15)]'
+        }`}>
+          GORILLA
+        </span>
+
+        {/* ✓ERIFY Sub-Brand Wordmark with Animated Verification Check */}
+        <div className="inline-flex items-center">
+          
+          {/* Animated Aerodynamic Verification Checkmark Chevron */}
+          <span className="gv-check-pulse inline-flex items-center justify-center mr-1 sm:mr-1.5">
+            <svg 
+              viewBox="0 0 32 32" 
+              className="w-5 h-5 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[#22C55E] dark:text-[#4ADE80] overflow-visible"
+              fill="currentColor"
+            >
+              {/* Custom Aerodynamic Checkmark Chevron Vector */}
+              <path 
+                d="M4 17.5 L12 26.5 L28 4.5 L21.5 4.5 L11.2 19.5 L7 16 Z" 
+              />
+            </svg>
+          </span>
+
+          {/* ERIFY Bold Typography */}
+          <span className="font-['Nunito',sans-serif] font-[950] tracking-tight uppercase text-lg sm:text-2xl lg:text-[28px] text-[#22C55E] dark:text-[#4ADE80] drop-shadow-[0_2px_12px_rgba(34,197,94,0.3)]">
+            ERIFY
+          </span>
         </div>
-      )}
+
+      </div>
+
     </div>
   );
 };
+
+export const VerifyLogo = GorillaVerifyLogo;
+export default GorillaVerifyLogo;

@@ -137,34 +137,101 @@ export const PrecisionScrollDatum: React.FC = () => {
 
 
       {/* ═════════════════════════════════════════════════════════════════════
-          4. FORENSIC HALFTONE DOT MATRIX (Reactive Litho Rosette Grid)
+          4. DYNAMIC FORENSIC OPTICAL SCANNING LINES (Líneas Dinámicas de Laboratorio)
           ═════════════════════════════════════════════════════════════════════ */}
-      {/* Layer 4A: Primary High-Density Litho Micro-Dots */}
+      <style>{`
+        @keyframes laserOpticalSweep {
+          0% {
+            transform: translateY(-120px);
+            opacity: 0;
+          }
+          6% {
+            opacity: 0.95;
+          }
+          92% {
+            opacity: 0.95;
+          }
+          100% {
+            transform: translateY(102vh);
+            opacity: 0;
+          }
+        }
+        @keyframes gridBreathingPulse {
+          0%, 100% {
+            opacity: 0.72;
+          }
+          50% {
+            opacity: 0.96;
+          }
+        }
+      `}</style>
+
+      {/* Layer 4A: Líneas Horizontales Nítidas de Escaneo (Espaciado limpio y definido a 18px) */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           backgroundImage: isLight
-            ? 'radial-gradient(circle, rgba(0, 0, 0, 0.18) 1.35px, transparent 1.45px)'
-            : 'radial-gradient(circle, rgba(255, 255, 255, 0.30) 1.35px, transparent 1.45px)',
-          backgroundSize: '8.5px 8.5px',
-          mixBlendMode: isLight ? 'multiply' : 'screen',
-          opacity: isLight ? 0.80 : 0.85
+            ? 'linear-gradient(to bottom, rgba(16, 24, 16, 0.08) 1px, transparent 1px)'
+            : 'linear-gradient(to bottom, rgba(255, 255, 255, 0.085) 1px, transparent 1px)',
+          backgroundSize: '100% 18px',
+          animation: 'gridBreathingPulse 6s ease-in-out infinite',
         }}
       />
 
-      {/* Layer 4B: Rosette Staggered Offset Grid */}
+      {/* Layer 4B: Guías de Calibración Técnica de Precisión (Cada 72px) */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           backgroundImage: isLight
-            ? 'radial-gradient(circle, rgba(0, 0, 0, 0.08) 0.9px, transparent 1.0px)'
-            : 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0.9px, transparent 1.0px)',
-          backgroundSize: '8.5px 8.5px',
-          backgroundPosition: '4.25px 4.25px',
-          mixBlendMode: isLight ? 'multiply' : 'screen',
-          opacity: 0.55
+            ? 'linear-gradient(to bottom, rgba(22, 101, 52, 0.15) 1px, transparent 1px)'
+            : 'linear-gradient(to bottom, rgba(74, 222, 128, 0.20) 1px, transparent 1px)',
+          backgroundSize: '100% 72px',
         }}
       />
+
+      {/* Layer 4C: Guías Verticales de Coordenadas (Columnas a 108px) */}
+      <div 
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          backgroundImage: isLight
+            ? 'linear-gradient(to right, rgba(16, 24, 16, 0.04) 1px, transparent 1px)'
+            : 'linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px)',
+          backgroundSize: '108px 100%',
+        }}
+      />
+
+      {/* Layer 4D: Haz Láser Óptico Dinámico (Línea de escaneo láser continuo con filamento brillante) */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+        <div 
+          className="w-full absolute left-0 right-0 pointer-events-none will-change-transform"
+          style={{
+            height: '90px',
+            animation: 'laserOpticalSweep 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+          }}
+        >
+          {/* Estela luminosa suave degradada */}
+          <div 
+            className="w-full h-full"
+            style={{
+              background: isLight
+                ? 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.03) 40%, rgba(22, 163, 74, 0.14) 100%)'
+                : 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.06) 40%, rgba(74, 222, 128, 0.22) 100%)',
+            }}
+          />
+          {/* Filamento Láser de Precisión con brillo óptico */}
+          <div 
+            className="w-full h-[1.5px]"
+            style={{
+              background: isLight
+                ? 'linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.25) 15%, #16A34A 50%, rgba(22, 163, 74, 0.25) 85%, transparent 100%)'
+                : 'linear-gradient(90deg, transparent 0%, rgba(74, 222, 128, 0.35) 15%, #4ADE80 50%, rgba(74, 222, 128, 0.35) 85%, transparent 100%)',
+              boxShadow: isLight
+                ? '0 0 10px rgba(22, 163, 74, 0.45), 0 0 20px rgba(22, 163, 74, 0.2)'
+                : '0 0 14px rgba(74, 222, 128, 0.7), 0 0 28px rgba(74, 222, 128, 0.35)',
+            }}
+          />
+        </div>
+      </div>
 
       {/* 5. Precision Metrology Grid Rails */}
       <div 

@@ -122,17 +122,12 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   return (
     <section 
       id="hero"
-      className="relative w-full flex items-center overflow-hidden bg-transparent text-white pt-10 sm:pt-14 pb-12 sm:pb-16 select-none"
+      className="relative w-full flex items-center overflow-hidden bg-transparent text-white pt-10 sm:pt-14 pb-4 sm:pb-6 select-none"
     >
       
       {/* Background Architectural Lights - Gentle luxury depth without muddy green wash */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="hidden lg:block absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#48C765]/15 blur-[150px] rounded-full" />
-        <div className={`absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t ${
-          isLight 
-            ? 'from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent' 
-            : 'from-[#060806] via-[#060806]/80 to-transparent'
-        } z-10`} />
       </div>
 
       <div className="relative z-10 max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -444,7 +439,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                       </button>
                     </div>
 
-                    <div className={`font-['Oswald'] text-sm uppercase font-bold mb-0.5 ${
+                    <div className={`font-['Nunito',sans-serif] text-sm uppercase font-[900] tracking-normal mb-0.5 ${
                       isLight ? 'text-gray-950' : 'text-white'
                     }`}>
                       {activeHotspot.title}

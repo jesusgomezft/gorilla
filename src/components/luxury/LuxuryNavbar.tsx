@@ -23,7 +23,7 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
   React.useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      setIsScrolled(currentScroll > 15);
+      setIsScrolled(currentScroll > 8);
       setCurrentPath(window.location.pathname);
     };
 
@@ -110,25 +110,27 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
     isLight ? 'text-[#4B5563] hover:text-[#111827]' : 'text-[#B8BFB5] hover:text-white'
   }`;
 
-  // Header background class
+  // Header background class — Solid white at top, smoothly transparent on scroll
   const headerBgClass = isMobileMenuOpen
     ? (isLight 
-        ? 'bg-[#FAF9F6] border-b border-[#E5E7EB] text-[#111827] shadow-sm' 
-        : 'bg-[#0B0E0B] border-b border-white/10 text-white shadow-sm')
+        ? 'bg-white text-[#111827] border-b border-black/[0.06] shadow-sm' 
+        : 'bg-[#0B0E0B] text-white border-b border-white/10 shadow-sm')
     : !isScrolled
     ? (isLight 
-        ? 'bg-[#EBF1EA]/90 backdrop-blur-md border-b border-[#D2DDD1] shadow-[0_4px_15px_rgba(0,0,0,0.03)]' 
-        : 'bg-[#0A0D0A]/60 backdrop-blur-md border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]')
+        ? 'bg-white text-[#111827] border-b border-black/[0.05] shadow-xs' 
+        : 'bg-[#0B0E0B] text-white border-b border-white/[0.05] shadow-xs')
     : (isLight 
-        ? 'bg-white border-b border-[#E5E7EB] text-[#111827] shadow-md backdrop-blur-xl' 
-        : 'bg-[#080A08]/95 border-b border-white/10 text-white backdrop-blur-xl shadow-md');
+        ? 'bg-transparent text-[#111827] backdrop-blur-md border-b border-transparent' 
+        : 'bg-transparent text-white backdrop-blur-md border-b border-transparent');
 
   return (
     <header 
       className={`sticky top-0 w-full transition-all duration-300 ${isMobileMenuOpen ? 'z-[10000]' : 'z-50'} ${headerBgClass}`}
-      style={isMobileMenuOpen ? { backgroundColor: isLight ? '#FAF9F6' : '#0B0E0B' } : undefined}
+      style={isMobileMenuOpen ? { backgroundColor: isLight ? '#FFFFFF' : '#0B0E0B' } : undefined}
     >
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between gap-4">
+      <div className={`max-w-[1440px] mx-auto px-6 lg:px-10 flex items-center justify-between gap-4 transition-all duration-300 ${
+        isScrolled ? 'h-16' : 'h-20'
+      }`}>
         
         {/* Brand Logo & Name */}
         <div 
@@ -325,6 +327,8 @@ export const LuxuryNavbar: React.FC<LuxuryNavbarProps> = ({ onNavigate }) => {
         </div>
 
       </div>
+
+      {/* Línea divisoria eliminada para transparencia limpia */}
 
       {/* Mobile Menu Overlay - Executive Luxury Takeover (Portaled directly to document.body to break free from header constraints) */}
       {isMobileMenuOpen && typeof document !== 'undefined' && createPortal(

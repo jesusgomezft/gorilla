@@ -38,7 +38,7 @@ export const FAQDropoffPage: React.FC<FAQDropoffPageProps> = ({ onNavigate }) =>
               </span>
             </div>
 
-            <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-wide leading-[1.1] mb-8 title-3d">
+            <h1 className="font-['Nunito',sans-serif] font-[900] text-3xl sm:text-5xl uppercase tracking-normal leading-[1.05] mb-8 text-white">
               {language === 'es' ? '¿Puedo entregar mis cartas en persona?' : 'Can I drop off my cards in person?'}
             </h1>
 
@@ -50,7 +50,7 @@ export const FAQDropoffPage: React.FC<FAQDropoffPageProps> = ({ onNavigate }) =>
               </p>
               
               <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">{language === 'es' ? 'Pickup Events Oficiales' : 'Official Pickup Events'}</h3>
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">{language === 'es' ? 'Pickup Events Oficiales' : 'Official Pickup Events'}</h3>
                 <p>
                   {language === 'es' 
                     ? 'Organizamos eventos regulares en diferentes ciudades donde nuestro equipo recoge tus envíos directamente. Esto elimina el riesgo del transporte postal.'
@@ -59,7 +59,7 @@ export const FAQDropoffPage: React.FC<FAQDropoffPageProps> = ({ onNavigate }) =>
               </div>
 
               <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">{language === 'es' ? 'Partners y Tiendas' : 'Partners & Stores'}</h3>
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">{language === 'es' ? 'Partners y Tiendas' : 'Partners & Stores'}</h3>
                 <p>
                   {language === 'es' 
                     ? 'Contamos con una red selecta de tiendas especializadas (Partners) donde puedes dejar tus paquetes para que sean gestionados de forma segura.'

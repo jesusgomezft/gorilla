@@ -38,7 +38,7 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
               </span>
             </div>
 
-            <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-wide leading-[1.1] mb-8 title-3d">
+            <h1 className="font-['Nunito',sans-serif] font-[900] text-3xl sm:text-5xl uppercase tracking-normal leading-[1.05] mb-8 text-white">
               {language === 'es' ? '¿Cuánto tardan los tiempos de respuesta (turnaround)?' : 'How long are the turnaround times?'}
             </h1>
 
@@ -50,7 +50,7 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
               </p>
               
               <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">{language === 'es' ? '¿Cuándo empieza a contar el tiempo?' : 'When does the clock start?'}</h3>
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">{language === 'es' ? '¿Cuándo empieza a contar el tiempo?' : 'When does the clock start?'}</h3>
                 <p>
                   {language === 'es' 
                     ? 'El día 1 es el siguiente día hábil después de que tu pedido entra en estado "Recibido". Los envíos en tránsito no cuentan hacia los días de procesamiento.'
@@ -59,7 +59,7 @@ export const FAQTurnaroundPage: React.FC<FAQTurnaroundPageProps> = ({ onNavigate
               </div>
 
               <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">{language === 'es' ? 'Días Hábiles de Laboratorio' : 'Laboratory Business Days'}</h3>
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">{language === 'es' ? 'Días Hábiles de Laboratorio' : 'Laboratory Business Days'}</h3>
                 <p className="text-[#A4ACA1] text-sm leading-relaxed">
                   {language === 'es' 
                     ? 'Nuestros tiempos operativos (ej. 48h, 10 días, 20 días) se refieren a días laborables (Lunes a Viernes). No se procesan cartas durante fines de semana ni festivos nacionales.'

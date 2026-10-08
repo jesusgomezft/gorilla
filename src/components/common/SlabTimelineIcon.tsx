@@ -27,7 +27,9 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
       : { width: 19, height: 27 };
 
   // =========================================================================
+  // =========================================================================
   // PASO ACTIVO (CURRENT): Escaneo Láser Óptico Dinámico en Tiempo Real
+  // (Sin destellos verdes externos, solo el escaneo láser dentro de la carta)
   // =========================================================================
   if (status === 'current') {
     return (
@@ -39,7 +41,7 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className={`shrink-0 transition-all duration-300 ${className}`}
         style={{ overflow: 'visible' }}
-        aria-label="Active optical grading slab with live laser scan and blinking status"
+        aria-label="Active optical grading slab with card laser scan"
       >
         <defs>
           <style>{`
@@ -48,46 +50,15 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
               50% { transform: translateY(13px); opacity: 1; }
               100% { transform: translateY(0px); opacity: 0.95; }
             }
-            @keyframes slabPulseBlink {
-              0%, 100% {
-                filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.4));
-                opacity: 1;
-              }
-              50% {
-                filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.95)) drop-shadow(0 0 14px rgba(34, 197, 94, 0.6));
-                opacity: 0.75;
-              }
-            }
-            @keyframes slabRadarWave {
-              0% {
-                transform: scale(0.98);
-                transform-origin: 10px 14px;
-                opacity: 0.85;
-                stroke-width: 1.5;
-              }
-              100% {
-                transform: scale(1.36);
-                transform-origin: 10px 14px;
-                opacity: 0;
-                stroke-width: 0.3;
-              }
-            }
             @keyframes liveLedBlink {
-              0%, 100% { opacity: 1; transform: scale(1); }
-              50% { opacity: 0.2; transform: scale(0.65); }
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.35; }
             }
             .active-laser-line {
               animation: laserScanSweep 2.2s ease-in-out infinite;
             }
-            .active-slab-radar {
-              animation: slabRadarWave 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
-            }
-            .active-slab-shell {
-              animation: slabPulseBlink 1.4s ease-in-out infinite;
-            }
             .active-live-led {
-              animation: liveLedBlink 1s ease-in-out infinite;
-              transform-origin: 3.5px 3.5px;
+              animation: liveLedBlink 1.2s ease-in-out infinite;
             }
           `}</style>
           {/* Degradado para el arte de la carta (Criatura de fuego/fantasía) */}
@@ -107,21 +78,8 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
           </clipPath>
         </defs>
 
-        {/* 0. ONDA RADAR EXPANSIVA EN FORMA DE SLAB (Titileo de Proceso Activo) */}
-        <rect
-          x="0.75"
-          y="0.75"
-          width="18.5"
-          height="26.5"
-          rx="2"
-          fill="none"
-          stroke={isLight ? '#16A34A' : '#4ADE80'}
-          className="active-slab-radar"
-          pointerEvents="none"
-        />
-
-        <g className="active-slab-shell">
-          {/* 1. CÁPSULA ACRÍLICA EXTERIOR (Slab de Polímero Hermético) */}
+        <g>
+          {/* 1. CÁPSULA ACRÍLICA EXTERIOR (Slab de Polímero Hermético - Limpio y nítido) */}
           <rect
             x="0.75"
             y="0.75"
@@ -154,7 +112,7 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
             className={isLight ? 'fill-[#16A34A]' : 'fill-[#14532D]'}
           />
 
-          {/* Micro LED titilante de telemetría activa en tiempo real */}
+          {/* Micro LED de telemetría activa */}
           <circle cx="3.8" cy="4.0" r="0.85" fill="#4ADE80" className="active-live-led" />
 
           {/* Micro bloque de nota / Grado "10" en oro/blanco */}
@@ -234,7 +192,7 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
           {/* Micro estrella de rareza en la esquina inferior derecha */}
           <circle cx="15.2" cy="23.4" r="0.4" fill="#EAB308" />
 
-          {/* 4. HAZ LÁSER DINÁMICO EN MOVIMIENTO (Active Laser Subgrading Scanner) */}
+          {/* 4. HAZ LÁSER DINÁMICO EN MOVIMIENTO (Active Laser Subgrading Scanner - Única animación activa) */}
           <g clipPath="url(#innerCardClipCurrent)">
             <g className="active-laser-line">
               {/* Resplandor óptico difuso del láser */}
@@ -274,133 +232,70 @@ export const SlabTimelineIcon: React.FC<SlabTimelineIconProps> = ({
   }
 
   // =========================================================================
-  // PASO FINAL COMPLETADO (FINAL COMPLETED): Golden Banana Gorilla Grading
-  // Solo este icono final es una banana titilando en color oro/ámbar
+  // PASO FINAL COMPLETADO (FINAL COMPLETED): Pixel Art Banana Gorilla Grading
+  // Estilo exacto 8-bit / Pixel Art de la imagen de referencia, de mayor tamaño
   // =========================================================================
   if (status === 'completed' && isFinal) {
-    const bananaWidth = size === 'sm' ? 22 : size === 'lg' ? 36 : 28;
-    const bananaHeight = size === 'sm' ? 26 : size === 'lg' ? 42 : 33;
+    const bananaWidth = size === 'sm' ? 26 : size === 'lg' ? 44 : 36;
+    const bananaHeight = size === 'sm' ? 23 : size === 'lg' ? 39 : 32;
 
     return (
       <svg
         width={bananaWidth}
         height={bananaHeight}
-        viewBox="0 0 24 28"
+        viewBox="0 0 17 15"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={`shrink-0 transition-all duration-300 ${className}`}
-        style={{ overflow: 'visible' }}
-        aria-label="Gorilla Grading golden delivered banana icon"
+        style={{ overflow: 'visible', shapeRendering: 'crispEdges' }}
+        aria-label="Gorilla Grading 8-bit pixel art banana icon"
       >
         <defs>
           <style>{`
-            @keyframes finalBananaPulse {
+            @keyframes pixelBananaFloat {
               0%, 100% {
-                filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.6)) drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
-                opacity: 1;
+                transform: translateY(0px);
               }
               50% {
-                filter: drop-shadow(0 0 9px rgba(251, 191, 36, 1)) drop-shadow(0 0 16px rgba(245, 158, 11, 0.9));
-                opacity: 0.85;
+                transform: translateY(-2.5px);
               }
             }
-            @keyframes finalBananaHalo {
-              0% {
-                transform: scale(0.65);
-                opacity: 0.9;
-                stroke-width: 1.6;
-              }
-              100% {
-                transform: scale(1.42);
-                opacity: 0;
-                stroke-width: 0.3;
-              }
-            }
-            .final-banana-pulse {
-              animation: finalBananaPulse 1.5s ease-in-out infinite;
-              transform-origin: 12px 14px;
-            }
-            .final-banana-halo {
-              animation: finalBananaHalo 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-              transform-origin: 12px 14px;
+            .pixel-banana-group {
+              animation: pixelBananaFloat 2.4s ease-in-out infinite;
+              transform-origin: center;
             }
           `}</style>
-
-          {/* Degradados dorados de la Banana Gorilla Grading */}
-          <linearGradient id="bananaOuterPeel" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#FDE047" />
-            <stop offset="35%" stopColor="#FACC15" />
-            <stop offset="80%" stopColor="#F59E0B" />
-            <stop offset="100%" stopColor="#D97706" />
-          </linearGradient>
-
-          <linearGradient id="bananaInnerHighlight" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#FEF9C3" />
-            <stop offset="45%" stopColor="#FEF08A" />
-            <stop offset="100%" stopColor="#FACC15" />
-          </linearGradient>
         </defs>
 
-        {/* 0. Onda expansiva de luz dorada / ámbar titilante */}
-        <circle
-          cx="12"
-          cy="14"
-          r="9.5"
-          fill="none"
-          stroke="#F59E0B"
-          className="final-banana-halo"
-          pointerEvents="none"
-        />
-
-        {/* 1. Silueta de la banana dorada con resplandor y brillo pulsante */}
-        <g className="final-banana-pulse">
-          {/* Cuerpo principal curvado de la banana */}
-          <path
-            d="M 16.2 6.0 C 11.2 7.8, 4.8 13.2, 5.2 19.8 C 5.5 23.4, 8.4 25.4, 10.6 24.8 C 8.6 22.0, 8.8 18.0, 11.4 13.8 C 13.4 10.5, 15.2 8.0, 16.2 6.0 Z"
-            fill="url(#bananaOuterPeel)"
-            stroke="#B45309"
-            strokeWidth="0.6"
-            strokeLinejoin="round"
+        <g className="pixel-banana-group filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.22)]">
+          {/* 1. Contorno negro pixel art (Exacto a la imagen de referencia) */}
+          <path 
+            d="M2 0h1v1h-1z M3 0h1v1h-1z M4 0h1v1h-1z M2 1h1v1h-1z M4 1h1v1h-1z M2 2h1v1h-1z M3 2h1v1h-1z M4 2h1v1h-1z M2 3h1v1h-1z M5 3h1v1h-1z M1 4h1v1h-1z M5 4h1v1h-1z M1 5h1v1h-1z M6 5h1v1h-1z M0 6h1v1h-1z M6 6h1v1h-1z M0 7h1v1h-1z M7 7h1v1h-1z M1 8h1v1h-1z M8 8h1v1h-1z M9 8h1v1h-1z M1 9h1v1h-1z M10 9h1v1h-1z M11 9h1v1h-1z M12 9h1v1h-1z M13 9h1v1h-1z M2 10h1v1h-1z M14 10h1v1h-1z M15 10h1v1h-1z M2 11h1v1h-1z M16 11h1v1h-1z M3 12h1v1h-1z M14 12h1v1h-1z M15 12h1v1h-1z M4 13h1v1h-1z M5 13h1v1h-1z M12 13h1v1h-1z M13 13h1v1h-1z M6 14h1v1h-1z M7 14h1v1h-1z M8 14h1v1h-1z M9 14h1v1h-1z M10 14h1v1h-1z M11 14h1v1h-1z" 
+            fill="#000000" 
           />
-
-          {/* Cara interna / plano de luz de la cáscara */}
-          <path
-            d="M 15.6 6.8 C 11.8 8.6, 6.8 13.8, 7.2 19.2 C 7.4 21.6, 9.0 23.4, 10.2 24.0 C 8.8 21.4, 9.2 17.8, 11.6 13.8 C 13.2 11.0, 14.8 8.8, 15.6 6.8 Z"
-            fill="url(#bananaInnerHighlight)"
-            opacity="0.9"
+          
+          {/* 2. Píxel marrón del tallo */}
+          <path 
+            d="M3 1h1v1h-1z" 
+            fill="#78350F" 
           />
-
-          {/* Línea de brillo especular acrílico */}
-          <path
-            d="M 14.8 7.8 C 11.5 9.8, 8.0 14.2, 8.4 18.2"
-            stroke="#FFFFFF"
-            strokeWidth="0.8"
-            strokeLinecap="round"
-            opacity="0.85"
+          
+          {/* 3. Píxeles de sombra ámbar / amarillo oscuro */}
+          <path 
+            d="M2 4h1v1h-1z M2 5h1v1h-1z M1 6h1v1h-1z M2 6h1v1h-1z M1 7h1v1h-1z M2 7h1v1h-1z M2 8h1v1h-1z M2 9h1v1h-1z M3 9h1v1h-1z M3 10h1v1h-1z M4 10h1v1h-1z M3 11h1v1h-1z M4 11h1v1h-1z M5 11h1v1h-1z M4 12h1v1h-1z M5 12h1v1h-1z M6 12h1v1h-1z M6 13h1v1h-1z M7 13h1v1h-1z M8 13h1v1h-1z M9 13h1v1h-1z M10 13h1v1h-1z M11 13h1v1h-1z" 
+            fill="#F59E0B" 
           />
-
-          {/* Tallo superior de la banana */}
-          <path
-            d="M 16.0 6.2 L 18.2 3.4 C 18.6 2.9, 19.3 3.3, 19.1 3.9 L 17.0 6.8 Z"
-            fill="#78350F"
-            stroke="#451A03"
-            strokeWidth="0.4"
+          
+          {/* 4. Píxeles del cuerpo amarillo plátano vivo */}
+          <path 
+            d="M3 3h1v1h-1z M3 4h1v1h-1z M3 5h1v1h-1z M3 6h1v1h-1z M4 6h1v1h-1z M3 7h1v1h-1z M4 7h1v1h-1z M3 8h1v1h-1z M4 8h1v1h-1z M5 8h1v1h-1z M4 9h1v1h-1z M5 9h1v1h-1z M6 9h1v1h-1z M5 10h1v1h-1z M6 10h1v1h-1z M7 10h1v1h-1z M6 11h1v1h-1z M7 11h1v1h-1z M8 11h1v1h-1z M7 12h1v1h-1z M8 12h1v1h-1z M9 12h1v1h-1z M10 12h1v1h-1z M11 12h1v1h-1z M12 12h1v1h-1z M13 12h1v1h-1z" 
+            fill="#FACC15" 
           />
-          {/* Anillo de unión verde-ámbar del tallo */}
-          <ellipse cx="16.3" cy="6.3" rx="1.0" ry="0.6" fill="#65A30D" />
-
-          {/* Punta inferior de la banana */}
-          <path
-            d="M 9.8 24.4 C 10.3 24.8, 10.8 24.7, 10.6 24.2 C 10.2 23.8, 9.7 23.9, 9.8 24.4 Z"
-            fill="#451A03"
-          />
-
-          {/* Destello de calidad finalizada */}
-          <path
-            d="M 18.5 13.5 L 19.1 15.2 L 20.8 15.8 L 19.1 16.4 L 18.5 18.1 L 17.9 16.4 L 16.2 15.8 L 17.9 15.2 Z"
-            fill="#FEF08A"
-            stroke="#CA8A04"
-            strokeWidth="0.3"
+          
+          {/* 5. Píxeles de iluminación crema / amarillo claro interior */}
+          <path 
+            d="M4 3h1v1h-1z M4 4h1v1h-1z M4 5h1v1h-1z M5 5h1v1h-1z M5 6h1v1h-1z M5 7h1v1h-1z M6 7h1v1h-1z M6 8h1v1h-1z M7 8h1v1h-1z M7 9h1v1h-1z M8 9h1v1h-1z M9 9h1v1h-1z M8 10h1v1h-1z M9 10h1v1h-1z M10 10h1v1h-1z M11 10h1v1h-1z M12 10h1v1h-1z M13 10h1v1h-1z M9 11h1v1h-1z M10 11h1v1h-1z M11 11h1v1h-1z M12 11h1v1h-1z M13 11h1v1h-1z M14 11h1v1h-1z M15 11h1v1h-1z" 
+            fill="#FEF08A" 
           />
         </g>
       </svg>

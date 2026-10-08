@@ -65,7 +65,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             </span>
           </div>
 
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-6xl uppercase tracking-wide leading-[1.05] text-white mb-6 title-3d">
+          <h1 className="font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl lg:text-6xl uppercase tracking-normal leading-[1.05] text-white mb-6">
             {language === 'es' ? 'Formulario de Contacto' : 'Contact & Inquiries'}
           </h1>
 
@@ -97,7 +97,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   {language === 'es' ? 'TICKET REGISTRADO' : 'TICKET REGISTERED'}
                 </span>
 
-                <h3 className="font-['Oswald'] text-2xl sm:text-3xl text-white uppercase font-bold mb-4">
+                <h3 className="font-['Nunito',sans-serif] text-2xl sm:text-3xl text-white uppercase font-[900] tracking-normal mb-4">
                   {language === 'es' ? '¡Mensaje Enviado con Éxito!' : 'Message Sent Successfully!'}
                 </h3>
 
@@ -327,7 +327,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             <div className="bg-[#2B302B] border border-[#48C765]/20 p-8 flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <HelpCircle size={20} className="text-[#48C765]" />
-                <h3 className="font-['Oswald'] text-lg uppercase text-white font-bold tracking-wide">
+                <h3 className="font-['Nunito',sans-serif] text-lg uppercase text-white font-[900] tracking-normal">
                   {language === 'es' ? '¿Buscas Respuestas Inmediatas?' : 'Looking for Instant Answers?'}
                 </h3>
               </div>

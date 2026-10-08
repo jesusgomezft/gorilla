@@ -202,7 +202,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
             </span>
           </div>
 
-          <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl lg:text-6xl uppercase tracking-wide leading-[1.05] text-white mb-6 title-3d">
+          <h1 className="font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl lg:text-6xl uppercase tracking-normal leading-[1.05] text-white mb-6">
             {language === 'es' ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
           </h1>
 
@@ -285,7 +285,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
                     onClick={() => toggleFAQ(faq.id)}
                     className="w-full p-6 sm:p-7 text-left flex items-start justify-between gap-6 cursor-pointer select-none group"
                   >
-                    <span className={`font-['Oswald'] text-lg sm:text-xl uppercase tracking-wide transition-colors ${
+                    <span className={`font-['Nunito',sans-serif] text-lg sm:text-xl font-[900] uppercase tracking-normal transition-colors ${
                       isOpen ? 'text-[#48C765]' : 'text-white group-hover:text-[#48C765]'
                     }`}>
                       {language === 'es' ? faq.qEs : faq.qEn}
@@ -341,7 +341,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
                 {language === 'es' ? '¿PREGUNTA NO RESUELTA?' : 'UNRESOLVED QUESTION?'}
               </span>
             </div>
-            <h3 className="font-['Oswald'] text-2xl uppercase text-white font-bold tracking-wide">
+            <h3 className="font-['Nunito',sans-serif] text-xl sm:text-2xl uppercase text-white font-[900] tracking-normal">
               {language === 'es' ? 'Contacta con Nuestros Especialistas de Laboratorio' : 'Contact Our Dedicated Laboratory Team'}
             </h3>
             <p className="font-sans text-xs text-[#A4ACA1] leading-relaxed text-justify">

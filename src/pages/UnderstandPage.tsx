@@ -44,7 +44,7 @@ export const UnderstandPage: React.FC<PageProps> = ({ onNavigate }) => {
           </div>
         </div>
         
-        <h1 className="font-['Oswald'] font-[700] text-5xl sm:text-6xl text-white uppercase tracking-[0.01em] leading-[0.94] title-3d">
+        <h1 className="font-['Nunito',sans-serif] font-[900] text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-normal leading-[1.05]">
           {language === 'es' ? 'TELEMETRÍA Y TRAZABILIDAD' : 'TELEMETRY AND TRACEABILITY'}
         </h1>
         
@@ -53,7 +53,7 @@ export const UnderstandPage: React.FC<PageProps> = ({ onNavigate }) => {
         </p>
 
         <div className="mt-12 bg-[#14170F] border border-white/[0.05] p-8 rounded-none text-left">
-          <h3 className="text-[#48C765] font-['Oswald'] font-bold text-2xl uppercase mb-4">
+          <h3 className="text-[#48C765] font-['Nunito',sans-serif] font-[900] text-2xl uppercase tracking-normal mb-4">
             {language === 'es' ? 'Métricas de Análisis' : 'Analysis Metrics'}
           </h3>
           <ul className="space-y-4 text-[#A4ACA1] font-mono text-sm">

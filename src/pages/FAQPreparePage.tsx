@@ -38,7 +38,7 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
               </span>
             </div>
 
-            <h1 className="font-['Oswald'] font-[700] text-4xl sm:text-5xl uppercase tracking-wide leading-[1.1] mb-8 title-3d">
+            <h1 className="font-['Nunito',sans-serif] font-[900] text-3xl sm:text-5xl uppercase tracking-normal leading-[1.05] mb-8 text-white">
               {language === 'es' ? '¿Cómo preparo mis cartas para enviarlas?' : 'How should I prepare my cards for shipping?'}
             </h1>
 
@@ -50,7 +50,7 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
               </p>
               
               <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">1. Penny Sleeve + Card Saver</h3>
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">1. Penny Sleeve + Card Saver</h3>
                 <p>
                   {language === 'es' 
                     ? 'Inserta cada carta en una funda protectora blanda (penny sleeve) y luego introdúcela en un toploader semirrígido tipo Card Saver. Esto evita que la carta se mueva y protege los bordes durante el tránsito.'
@@ -59,7 +59,7 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
               </div>
 
               <div className="p-6 border border-white/[0.05] bg-white/[0.01]">
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">2. {language === 'es' ? 'Orden de las cartas' : 'Order of cards'}</h3>
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">2. {language === 'es' ? 'Orden de las cartas' : 'Order of cards'}</h3>
                 <p>
                   {language === 'es' 
                     ? 'Asegúrate de que las cartas estén en el mismo orden que tu hoja de envío (submission form).'
@@ -73,7 +73,7 @@ export const FAQPreparePage: React.FC<FAQPreparePageProps> = ({ onNavigate }) =>
                   <span className="text-white/20">/</span>
                   <span>{language === 'es' ? 'AVISO CRÍTICO' : 'CRITICAL CAUTION'}</span>
                 </div>
-                <h3 className="font-bold text-white mb-2 font-['Oswald'] tracking-wide uppercase">
+                <h3 className="font-[900] text-white mb-2 font-['Nunito',sans-serif] tracking-normal uppercase text-base sm:text-lg">
                   {language === 'es' ? 'Protección de Aberturas' : 'Toploader Sealing Protocol'}
                 </h3>
                 <p className="text-[#A4ACA1] text-sm leading-relaxed">
