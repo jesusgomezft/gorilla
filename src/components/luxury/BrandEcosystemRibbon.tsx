@@ -1,13 +1,46 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { useTheme } from '../../context/ThemeContext';
 
 export const BrandEcosystemRibbon: React.FC = () => {
   const { t } = useLanguage();
-  const { theme } = useTheme();
-  const isLight = theme === 'light';
 
   const brands = [
+    { 
+      id: 'gundam', 
+      name: 'Gundam', 
+      component: (
+        <img 
+          src="/images/logos/Gundam.png" 
+          alt="Gundam" 
+          className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-70" 
+        />
+      )
+    },
+    { 
+      id: 'cyberpunk', 
+      name: 'Cyberpunk TCG', 
+      component: <img src="/images/logos/cyberpunk.png" alt="Cyberpunk" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
+    },
+    { 
+      id: 'finalfantasy', 
+      name: 'Final Fantasy', 
+      component: <img src="/images/logos/finalFantasy.png" alt="Final Fantasy" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-80" /> 
+    },
+    { 
+      id: 'force', 
+      name: 'Force of Will', 
+      component: <img src="/images/logos/force.png" alt="Force of Will" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
+    },
+    { 
+      id: 'vanguard', 
+      name: 'Cardfight!! Vanguard', 
+      component: <img src="/images/logos/vanguar.png" alt="Cardfight!! Vanguard" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
+    },
+    { 
+      id: 'riftbound', 
+      name: 'Riftbound League of Legends', 
+      component: <img src="/images/logos/fbf7fc57-3966-4943-afbe-16d3b649b314.png" alt="Riftbound" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain" /> 
+    },
     { 
       id: 'pokemon', 
       name: 'Pokémon', 
@@ -20,21 +53,19 @@ export const BrandEcosystemRibbon: React.FC = () => {
         <img 
           src="/images/logos/magic-logo.webp" 
           alt="Magic: The Gathering" 
-          className={`h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain transition-opacity ${
-            isLight ? 'brightness-0 opacity-75' : 'opacity-90'
-          }`} 
+          className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-80" 
         />
       )
     },
     { 
       id: 'onepiece', 
       name: 'One Piece', 
-      component: <img src="/images/logos/onepiece.png" alt="One Piece" className={`h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain ${!isLight ? 'invert opacity-85' : ''}`} /> 
+      component: <img src="/images/logos/onepiece.png" alt="One Piece" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-85" /> 
     },
     { 
       id: 'lorcana', 
       name: 'Lorcana', 
-      component: <img src="/images/logos/lorcana.png" alt="Lorcana" className={`h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain ${isLight ? 'brightness-0 opacity-70' : ''}`} /> 
+      component: <img src="/images/logos/lorcana.png" alt="Lorcana" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-75" /> 
     },
     { 
       id: 'yugioh', 
@@ -57,7 +88,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
     { 
       id: 'dragonball', 
       name: 'Dragon Ball', 
-      component: <img src="/images/logos/DragonBall.png" alt="Dragon Ball" className={`h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain ${!isLight ? 'brightness-0 invert opacity-90' : ''}`} /> 
+      component: <img src="/images/logos/DragonBall.png" alt="Dragon Ball" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-85" /> 
     },
     { 
       id: 'digimon', 
@@ -69,44 +100,6 @@ export const BrandEcosystemRibbon: React.FC = () => {
       name: 'Flesh and Blood', 
       component: <img src="/images/logos/FleshBlood.png" alt="Flesh and Blood" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain" /> 
     },
-    { 
-      id: 'gundam', 
-      name: 'Gundam', 
-      component: (
-        <img 
-          src="/images/logos/Gundam.png" 
-          alt="Gundam" 
-          className={`h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain ${
-            isLight ? 'brightness-0 opacity-60' : 'opacity-80'
-          }`} 
-        />
-      )
-    },
-    { 
-      id: 'cyberpunk', 
-      name: 'Cyberpunk', 
-      component: <img src="/images/logos/cyberpunk.png" alt="Cyberpunk" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
-    },
-    { 
-      id: 'finalfantasy', 
-      name: 'Final Fantasy', 
-      component: <img src="/images/logos/finalFantasy.png" alt="Final Fantasy" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
-    },
-    { 
-      id: 'force', 
-      name: 'Force of Will', 
-      component: <img src="/images/logos/force.png" alt="Force of Will" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
-    },
-    { 
-      id: 'vanguard', 
-      name: 'Cardfight!! Vanguard', 
-      component: <img src="/images/logos/vanguar.png" alt="Cardfight!! Vanguard" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain" /> 
-    },
-    { 
-      id: 'riftbound', 
-      name: 'Riftbound', 
-      component: <img src="/images/logos/fbf7fc57-3966-4943-afbe-16d3b649b314.png" alt="Riftbound" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain" /> 
-    },
   ];
 
   // Duplicate the array multiple times to create a seamless infinite scroll effect
@@ -115,34 +108,37 @@ export const BrandEcosystemRibbon: React.FC = () => {
   return (
     <section 
       id="brands" 
-      className="w-full select-none bg-transparent py-4 sm:py-5 overflow-hidden relative border-y border-black/[0.05] dark:border-white/[0.06]"
+      className="w-full select-none py-5 sm:py-6 overflow-hidden relative border-y border-[#E2E8F0]/90 shadow-[inset_0_1px_4px_rgba(0,0,0,0.02)]"
+      style={{
+        backgroundColor: '#F5F8F5',
+        backgroundImage: 'radial-gradient(circle, rgba(16, 28, 16, 0.16) 1.15px, transparent 1.15px)',
+        backgroundSize: '18px 18px',
+      }}
     >
       <div className="flex flex-col gap-4">
         
-        {/* Top Kicker Label - Centered & Refined Typography */}
+        {/* Top Kicker Label - Centered & Bold Clean Typography */}
         <div className="px-6 max-w-[1400px] mx-auto w-full flex items-center justify-center">
           <span 
-            className={`font-['Nunito',sans-serif] text-xs sm:text-sm font-[800] tracking-wider uppercase text-center select-none ${
-              isLight ? 'text-gray-900' : 'text-white'
-            }`}
+            className="font-['Nunito',sans-serif] text-xs sm:text-sm font-[900] tracking-[0.2em] uppercase text-center select-none text-[#0F172A]"
           >
             {t('ref.ribbon.title')}
           </span>
         </div>
 
-        {/* Infinite Scrolling Marquee with Edge Fade */}
+        {/* Infinite Scrolling Marquee with Smooth Edge Fade */}
         <div 
-          className="relative flex overflow-x-hidden pt-3 sm:pt-4 group"
+          className="relative flex overflow-x-hidden pt-2 sm:pt-3 group"
           style={{
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
-            maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)'
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+            maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)'
           }}
         >
-          <div className="animate-marquee transform-gpu will-change-transform whitespace-nowrap flex w-max items-center gap-14 sm:gap-20 px-8 shrink-0" style={{ animationDuration: '240s' }}>
+          <div className="animate-marquee transform-gpu will-change-transform whitespace-nowrap flex w-max items-center gap-14 sm:gap-20 px-8 shrink-0" style={{ animationDuration: '220s' }}>
             {marqueeBrands.map((brand, idx) => (
               <div 
                 key={`${brand.id}-${idx}`}
-                className="h-8 sm:h-9 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer drop-shadow-xs shrink-0"
+                className="h-8 sm:h-9 flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity duration-200 cursor-pointer drop-shadow-xs shrink-0"
                 title={brand.name}
               >
                 {brand.component}
@@ -155,3 +151,5 @@ export const BrandEcosystemRibbon: React.FC = () => {
     </section>
   );
 };
+
+export default BrandEcosystemRibbon;
