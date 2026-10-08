@@ -1,8 +1,11 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export const BrandEcosystemRibbon: React.FC = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   const brands = [
     { 
@@ -12,7 +15,9 @@ export const BrandEcosystemRibbon: React.FC = () => {
         <img 
           src="/images/logos/Gundam.png" 
           alt="Gundam" 
-          className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-70" 
+          className={`h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain ${
+            isLight ? 'brightness-0 opacity-70' : 'opacity-85'
+          }`} 
         />
       )
     },
@@ -24,7 +29,15 @@ export const BrandEcosystemRibbon: React.FC = () => {
     { 
       id: 'finalfantasy', 
       name: 'Final Fantasy', 
-      component: <img src="/images/logos/finalFantasy.png" alt="Final Fantasy" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-80" /> 
+      component: (
+        <img 
+          src="/images/logos/finalFantasy.png" 
+          alt="Final Fantasy" 
+          className={`h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain ${
+            isLight ? 'brightness-0 opacity-80' : 'opacity-90'
+          }`} 
+        />
+      ) 
     },
     { 
       id: 'force', 
@@ -53,19 +66,37 @@ export const BrandEcosystemRibbon: React.FC = () => {
         <img 
           src="/images/logos/magic-logo.webp" 
           alt="Magic: The Gathering" 
-          className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-80" 
+          className={`h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain ${
+            isLight ? 'brightness-0 opacity-80' : 'opacity-90'
+          }`} 
         />
       )
     },
     { 
       id: 'onepiece', 
       name: 'One Piece', 
-      component: <img src="/images/logos/onepiece.png" alt="One Piece" className="h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-85" /> 
+      component: (
+        <img 
+          src="/images/logos/onepiece.png" 
+          alt="One Piece" 
+          className={`h-6 sm:h-7 max-w-[120px] sm:max-w-[130px] object-contain ${
+            isLight ? 'brightness-0 opacity-85' : 'invert opacity-85'
+          }`} 
+        />
+      ) 
     },
     { 
       id: 'lorcana', 
       name: 'Lorcana', 
-      component: <img src="/images/logos/lorcana.png" alt="Lorcana" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-75" /> 
+      component: (
+        <img 
+          src="/images/logos/lorcana.png" 
+          alt="Lorcana" 
+          className={`h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain ${
+            isLight ? 'brightness-0 opacity-75' : 'brightness-0 invert opacity-90'
+          }`} 
+        />
+      ) 
     },
     { 
       id: 'yugioh', 
@@ -88,7 +119,15 @@ export const BrandEcosystemRibbon: React.FC = () => {
     { 
       id: 'dragonball', 
       name: 'Dragon Ball', 
-      component: <img src="/images/logos/DragonBall.png" alt="Dragon Ball" className="h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain brightness-0 opacity-85" /> 
+      component: (
+        <img 
+          src="/images/logos/DragonBall.png" 
+          alt="Dragon Ball" 
+          className={`h-7 sm:h-8 max-w-[120px] sm:max-w-[130px] object-contain ${
+            isLight ? 'brightness-0 opacity-85' : 'brightness-0 invert opacity-90'
+          }`} 
+        />
+      ) 
     },
     { 
       id: 'digimon', 
@@ -108,14 +147,20 @@ export const BrandEcosystemRibbon: React.FC = () => {
   return (
     <section 
       id="brands" 
-      className="w-full select-none py-5 sm:py-6 overflow-hidden relative border-y border-[#E2E8F0] bg-[#F5F8F5]"
+      className={`w-full select-none py-5 sm:py-6 overflow-hidden relative border-y transition-colors duration-300 ${
+        isLight 
+          ? 'bg-[#F5F8F5] border-[#E2E8F0]' 
+          : 'bg-[#111712] border-white/[0.08]'
+      }`}
     >
       <div className="flex flex-col gap-4">
         
         {/* Top Kicker Label - Centered & Bold Clean Typography */}
         <div className="px-6 max-w-[1400px] mx-auto w-full flex items-center justify-center">
           <span 
-            className="font-['Nunito',sans-serif] text-xs sm:text-sm font-[900] tracking-[0.2em] uppercase text-center select-none text-[#0F172A]"
+            className={`font-['Nunito',sans-serif] text-xs sm:text-sm font-[900] tracking-[0.2em] uppercase text-center select-none ${
+              isLight ? 'text-[#0F172A]' : 'text-white'
+            }`}
           >
             {t('ref.ribbon.title')}
           </span>
