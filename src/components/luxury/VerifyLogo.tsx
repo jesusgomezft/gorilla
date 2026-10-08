@@ -356,11 +356,8 @@ export const GorillaVerifyLogo: React.FC<VerifyLogoProps> = ({
                     : 'bg-black/80 border-[#22C55E]/40 shadow-[0_0_14px_rgba(34,197,94,0.2)] text-white'
               }`}
             >
-              {/* Primary Header with Status Tag */}
+              {/* Primary Header with Status Tag (No pulsing circles) */}
               <div className="flex items-center gap-1.5 mb-0.5">
-                <span className={`w-1.5 h-1.5 rounded-full animate-ping ${
-                  scanStep === 1 ? 'bg-amber-400' : 'bg-[#22C55E]'
-                }`} />
                 <span className={`font-mono text-[8px] sm:text-[9px] font-bold tracking-widest uppercase ${
                   scanStep === 1 
                     ? 'text-amber-400 font-extrabold' 

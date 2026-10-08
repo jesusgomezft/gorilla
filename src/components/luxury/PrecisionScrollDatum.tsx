@@ -299,9 +299,8 @@ export const PrecisionScrollDatum: React.FC = () => {
 
           {/* Filamento Láser Ultrafino (1px) */}
           <div className="relative w-full flex items-center">
-            {/* Indicador izquierdo sutil sin caja */}
-            <div className="absolute left-4 sm:left-10 flex items-center gap-1.5 opacity-45">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
+            {/* Indicador izquierdo sutil sin círculos ni cajas */}
+            <div className="absolute left-4 sm:left-10 flex items-center opacity-45">
               <span className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] text-[#22C55E] uppercase">
                 [ ⌖ 1200 DPI ]
               </span>
@@ -320,19 +319,18 @@ export const PrecisionScrollDatum: React.FC = () => {
               }}
             />
 
-            {/* Indicador derecho sutil sin caja */}
-            <div className="absolute right-4 sm:right-10 flex items-center gap-1.5 opacity-45">
+            {/* Indicador derecho sutil sin círculos ni cajas */}
+            <div className="absolute right-4 sm:right-10 flex items-center opacity-45">
               <span className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] text-emerald-400 uppercase">
                 [ λ: 532nm ]
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
             </div>
           </div>
         </div>
 
         {/* =================================================================== */}
         {/* RESULTADO DEL ESCÁNER: APARECE EN LA MITAD DEL HERO                 */}
-        {/* Letras muy sutiles, muy de fondo, sin cuadros atrás, sin fondo      */}
+        {/* Letras cortas, pequeñas y discretas (SIN CÍRCULOS NI FONDOS)        */}
         {/* =================================================================== */}
         <div 
           className="absolute top-[48vh] left-0 right-0 flex flex-col items-center justify-center pointer-events-none select-none z-10 px-4"
@@ -340,37 +338,21 @@ export const PrecisionScrollDatum: React.FC = () => {
             animation: 'heroMidScanResultReveal 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
           }}
         >
-          {/* Línea 1: Estado y Detección de Error en la Carta */}
-          <div className="flex items-center justify-center flex-wrap gap-2 font-mono text-[8px] sm:text-[9px] tracking-[0.22em] uppercase text-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/90 animate-ping shrink-0" />
-            
-            <span className={isLight ? 'text-emerald-800/80 font-bold' : 'text-[#4ADE80]/85 font-semibold'}>
-              {language === 'es' ? '[ RESULTADO DE ESCÁNER ÓPTICO ]' : '[ OPTICAL SCAN RESULT ]'}
-            </span>
-
-            <span className="opacity-30 text-gray-400">·</span>
-
-            <span className={isLight ? 'text-amber-800/85 font-bold' : 'text-amber-300/90 font-bold'}>
+          {/* Línea 1: Detección corta y compacta (CERO CÍRCULOS) */}
+          <div className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] uppercase text-center">
+            <span className={isLight ? 'text-amber-800/90 font-bold' : 'text-amber-300/90 font-bold'}>
               {language === 'es' 
-                ? '⚠ ERROR EN CARTA DETECTADO: MICRO-DEFECTO DE IMPRESIÓN [0.03mm]' 
-                : '⚠ CARD FLAW DETECTED: PRINT DEFECT [0.03mm]'}
+                ? '[ ⌖ ESCÁNER: ERROR EN CARTA DETECTADO ]' 
+                : '[ ⌖ SCAN: CARD FLAW DETECTED ]'}
             </span>
           </div>
 
-          {/* Línea 2: Sub-métricas discretas de graduación y expediente forense */}
-          <div className="mt-1 flex items-center justify-center flex-wrap gap-2.5 font-mono text-[7px] sm:text-[8px] tracking-[0.18em] uppercase text-center opacity-65">
+          {/* Línea 2: Sub-métrica compacta */}
+          <div className="mt-0.5 font-mono text-[6.5px] sm:text-[7px] tracking-[0.16em] uppercase text-center opacity-65">
             <span className={isLight ? 'text-slate-600' : 'text-neutral-300'}>
               {language === 'es' 
-                ? 'DESVIACIÓN DE CENTRADO 58/42 · BORDES: 9.5 · SUB-GRADE: 8.5' 
-                : 'CENTERING BIAS 58/42 · EDGES: 9.5 · SUB-GRADE: 8.5'}
-            </span>
-
-            <span className="opacity-30 text-gray-400">|</span>
-
-            <span className={isLight ? 'text-emerald-700/80 font-medium' : 'text-[#22C55E]/80 font-medium'}>
-              {language === 'es' 
-                ? 'VERIFICACIÓN FORENSE GORILLA #GG-8849' 
-                : 'GORILLA FORENSIC VERIFIED #GG-8849'}
+                ? 'DEFECTO SUPERFICIE 0.03mm · SUB-GRADE 8.5' 
+                : 'SURFACE DEFECT 0.03mm · SUB-GRADE 8.5'}
             </span>
           </div>
         </div>
@@ -378,14 +360,15 @@ export const PrecisionScrollDatum: React.FC = () => {
       </div>
 
       {/* ═════════════════════════════════════════════════════════════════════
-          6. COORDENADAS DISCRETAS EN ESQUINA (Puro Texto Sin Caja)
+          6. COORDENADAS DISCRETAS EN ESQUINA (Puro Texto Sin Caja Ni Círculos)
           ═════════════════════════════════════════════════════════════════════ */}
-      <div className="hidden sm:flex absolute bottom-3 right-6 pointer-events-none items-center gap-2.5 font-mono text-[7.5px] tracking-widest text-emerald-500/40 uppercase">
-        <span className="w-1 h-1 rounded-full bg-[#22C55E]/60 animate-pulse" />
+      <div className="hidden sm:flex absolute bottom-3 right-6 pointer-events-none items-center gap-2 font-mono text-[7px] tracking-widest text-emerald-500/40 uppercase">
         <span>GORILLA FORENSIC SCANNER</span>
-        <span className="opacity-30">·</span>
         {mousePos.x !== -1000 && (
-          <span>X:{Math.round(mousePos.x)} Y:{Math.round(mousePos.y)}</span>
+          <>
+            <span className="opacity-30">·</span>
+            <span>X:{Math.round(mousePos.x)} Y:{Math.round(mousePos.y)}</span>
+          </>
         )}
       </div>
 
