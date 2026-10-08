@@ -108,12 +108,7 @@ export const BrandEcosystemRibbon: React.FC = () => {
   return (
     <section 
       id="brands" 
-      className="w-full select-none py-5 sm:py-6 overflow-hidden relative border-y border-[#E2E8F0]/90 shadow-[inset_0_1px_4px_rgba(0,0,0,0.02)]"
-      style={{
-        backgroundColor: '#F5F8F5',
-        backgroundImage: 'radial-gradient(circle, rgba(16, 28, 16, 0.16) 1.15px, transparent 1.15px)',
-        backgroundSize: '18px 18px',
-      }}
+      className="w-full select-none py-5 sm:py-6 overflow-hidden relative border-y border-[#E2E8F0] bg-[#F5F8F5]"
     >
       <div className="flex flex-col gap-4">
         
