@@ -125,128 +125,150 @@ export const PrecisionScrollDatum: React.FC = () => {
       />
 
       {/* ═════════════════════════════════════════════════════════════════════
-          2. DESKTOP EMERALD SPOTLIGHTS (Subtle Ambient Glow)
+          2. SOMBRA VERDE POSTERIOR QUE BAJA CON EL SCROLL POR TODO EL PROYECTO
+             - Modo Claro: Se nota un poco más (más visible y viva)
+             - Modo Oscuro: Menos visual / disminuye un poco lo verde, pero elegante
           ═════════════════════════════════════════════════════════════════════ */}
       
-      {/* Desktop Spotlight 1: Full-Power Gorilla Emerald behind Hero, descends smoothly with scroll */}
+      {/* Desktop Spotlight 1: Sombra verde ambiental que desciende con el scroll */}
       <div 
         className="hidden lg:block absolute rounded-full pointer-events-none will-change-transform"
         style={{
-          width: '950px',
-          height: '950px',
-          left: '69%',
-          top: `${34 + scrollFraction * 42}%`,
+          width: '920px',
+          height: '920px',
+          left: '68%',
+          top: `${30 + scrollFraction * 48}%`,
           background: isLight
-            ? 'radial-gradient(circle at center, rgba(34, 197, 94, 0.20) 0%, rgba(22, 163, 74, 0.10) 35%, transparent 75%)'
-            : 'radial-gradient(circle at center, rgba(34, 197, 94, 0.65) 0%, rgba(22, 163, 74, 0.38) 32%, rgba(16, 185, 129, 0.14) 58%, transparent 80%)',
-          transform: `translate(-50%, calc(-50% + ${(scrollY % 600) * 0.15}px))`,
+            ? 'radial-gradient(circle at center, rgba(34, 197, 94, 0.28) 0%, rgba(22, 163, 74, 0.15) 35%, rgba(16, 185, 129, 0.05) 60%, transparent 78%)'
+            : 'radial-gradient(circle at center, rgba(34, 197, 94, 0.38) 0%, rgba(22, 163, 74, 0.20) 32%, rgba(16, 185, 129, 0.06) 58%, transparent 80%)',
+          transform: `translate(-50%, calc(-50% + ${(scrollY % 600) * 0.12}px))`,
           filter: 'blur(95px)',
-          opacity: isLight ? 0.60 : 0.82
+          opacity: isLight ? 0.76 : 0.58
         }}
       />
 
-      {/* Desktop Spotlight 2: Mid-to-Lower Atmosphere */}
+      {/* Desktop Spotlight 2: Continuidad de sombra verde en profundidad del proyecto */}
       <div 
         className="hidden lg:block absolute rounded-full pointer-events-none will-change-transform"
         style={{
           width: '850px',
           height: '850px',
-          left: '45%',
-          top: `${58 + scrollFraction * 30}%`,
+          left: '46%',
+          top: `${55 + scrollFraction * 35}%`,
           background: isLight
-            ? 'radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, rgba(22, 163, 74, 0.06) 45%, transparent 75%)'
-            : 'radial-gradient(circle at center, rgba(34, 197, 94, 0.45) 0%, rgba(22, 163, 74, 0.25) 38%, rgba(16, 185, 129, 0.09) 65%, transparent 80%)',
+            ? 'radial-gradient(circle at center, rgba(34, 197, 94, 0.22) 0%, rgba(22, 163, 74, 0.10) 42%, transparent 75%)'
+            : 'radial-gradient(circle at center, rgba(34, 197, 94, 0.28) 0%, rgba(22, 163, 74, 0.15) 38%, transparent 80%)',
           transform: 'translate(-50%, -50%)',
           filter: 'blur(100px)',
-          opacity: isLight ? 0.50 : 0.75
+          opacity: isLight ? 0.68 : 0.52
         }}
       />
 
       {/* ═════════════════════════════════════════════════════════════════════
-          3. MOBILE DYNAMIC EMERALD SPOTLIGHTS
+          3. SOMBRA VERDE MÓVIL
           ═════════════════════════════════════════════════════════════════════ */}
       <div 
         className="lg:hidden absolute rounded-full pointer-events-none will-change-transform"
         style={{
-          width: '620px',
-          height: '620px',
+          width: '600px',
+          height: '600px',
           left: '50%',
-          top: `${26 + scrollFraction * 48}%`,
+          top: `${24 + scrollFraction * 52}%`,
           background: isLight
-            ? 'radial-gradient(circle at center, rgba(34, 197, 94, 0.20) 0%, rgba(22, 163, 74, 0.10) 40%, transparent 75%)'
-            : 'radial-gradient(circle at center, rgba(34, 197, 94, 0.55) 0%, rgba(22, 163, 74, 0.32) 36%, rgba(16, 185, 129, 0.10) 62%, transparent 80%)',
-          transform: `translate(-50%, calc(-50% + ${(scrollY % 500) * 0.16}px))`,
+            ? 'radial-gradient(circle at center, rgba(34, 197, 94, 0.26) 0%, rgba(22, 163, 74, 0.12) 40%, transparent 75%)'
+            : 'radial-gradient(circle at center, rgba(34, 197, 94, 0.35) 0%, rgba(22, 163, 74, 0.18) 36%, transparent 80%)',
+          transform: `translate(-50%, calc(-50% + ${(scrollY % 500) * 0.12}px))`,
           filter: 'blur(75px)',
-          opacity: isLight ? 0.58 : 0.78
+          opacity: isLight ? 0.72 : 0.55
         }}
       />
 
       {/* ═════════════════════════════════════════════════════════════════════
-          4. FORENSIC HALFTONE DOT MATRIX BACKGROUND (PUNTOS SUTILES DE ANTES)
+          4. FONDO DE PUNTOS LITOGRÁFICOS SUTILES
           ═════════════════════════════════════════════════════════════════════ */}
       
-      {/* Layer 4A: Primary High-Density Litho Micro-Dots (Sutil y refinado) */}
+      {/* Layer 4A: Puntos Litográficos Principales */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           backgroundImage: isLight
-            ? 'radial-gradient(circle, rgba(0, 0, 0, 0.11) 1.15px, transparent 1.25px)'
-            : 'radial-gradient(circle, rgba(255, 255, 255, 0.16) 1.15px, transparent 1.25px)',
+            ? 'radial-gradient(circle, rgba(0, 0, 0, 0.10) 1.15px, transparent 1.25px)'
+            : 'radial-gradient(circle, rgba(255, 255, 255, 0.14) 1.15px, transparent 1.25px)',
           backgroundSize: '9px 9px',
           mixBlendMode: isLight ? 'multiply' : 'screen',
-          opacity: isLight ? 0.65 : 0.70
+          opacity: isLight ? 0.62 : 0.65
         }}
       />
 
-      {/* Layer 4B: Rosette Staggered Offset Grid (Fondo de laboratorio sutil) */}
+      {/* Layer 4B: Puntos Rosette Escalonados (Efecto laboratorio auténtico) */}
       <div 
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           backgroundImage: isLight
-            ? 'radial-gradient(circle, rgba(22, 101, 52, 0.06) 0.85px, transparent 0.95px)'
-            : 'radial-gradient(circle, rgba(74, 222, 128, 0.12) 0.85px, transparent 0.95px)',
+            ? 'radial-gradient(circle, rgba(22, 101, 52, 0.05) 0.85px, transparent 0.95px)'
+            : 'radial-gradient(circle, rgba(74, 222, 128, 0.10) 0.85px, transparent 0.95px)',
           backgroundSize: '9px 9px',
           backgroundPosition: '4.5px 4.5px',
           mixBlendMode: isLight ? 'multiply' : 'screen',
-          opacity: 0.55
+          opacity: 0.50
         }}
       />
 
-      {/* Layer 4C: Interactive Cursor Spotlight (Iluminación sutil interactiva) */}
+      {/* Layer 4C: Iluminación interactiva suave con el cursor */}
       {mousePos.x !== -1000 && (
         <div 
           className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-500"
           style={{
-            background: `radial-gradient(480px circle at ${mousePos.x}px ${mousePos.y}px, ${
-              isLight ? 'rgba(34, 197, 94, 0.08)' : 'rgba(74, 222, 128, 0.10)'
+            background: `radial-gradient(460px circle at ${mousePos.x}px ${mousePos.y}px, ${
+              isLight ? 'rgba(34, 197, 94, 0.07)' : 'rgba(74, 222, 128, 0.08)'
             } 0%, transparent 80%)`,
           }}
         />
       )}
 
       {/* ═════════════════════════════════════════════════════════════════════
-          5. SUTIL ESCÁNER LÁSER FORENSE CON LETRAS DISCRETAS SIN FONDO
+          5. ESCÁNER LÁSER QUE BAJA LENTO Y LANZA RESULTADO EN LA MITAD DEL HERO
           ═════════════════════════════════════════════════════════════════════ */}
       <style>{`
-        /* Movimiento de escáner pausado y suave (18 segundos para no pasar rápido) */
-        @keyframes laserOpticalSweep {
+        /* 1. Haz Láser pausado (18s) que barre el Hero verticalmente */
+        @keyframes heroLaserSweep {
           0% {
-            top: -40px;
+            top: 4vh;
             opacity: 0;
           }
-          3% {
+          4% {
             opacity: 0.85;
           }
-          95% {
+          92% {
             opacity: 0.85;
           }
-          98% {
-            top: 102vh;
+          96% {
+            top: 92vh;
             opacity: 0;
           }
           100% {
-            top: -40px;
+            top: 4vh;
             opacity: 0;
+          }
+        }
+
+        /* 2. Revelación de resultados al pasar por la mitad del Hero (35% a 62% del ciclo) */
+        @keyframes heroMidScanResultReveal {
+          0%, 32% {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          40% {
+            opacity: 0.72;
+            transform: translateY(0px);
+          }
+          58% {
+            opacity: 0.72;
+            transform: translateY(0px);
+          }
+          66%, 100% {
+            opacity: 0;
+            transform: translateY(-8px);
           }
         }
       `}</style>
@@ -254,97 +276,105 @@ export const PrecisionScrollDatum: React.FC = () => {
       {/* Scanner Assembly Container */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
         
-        {/* Sweeping Laser Bar with Center Card Error Text — Sin cuadros, puro texto sutil */}
+        {/* =================================================================== */}
+        {/* LÍNEA LÁSER DINÁMICA: BAJA LENTO POR EL HERO (18 SEGUNDOS)          */}
+        {/* =================================================================== */}
         <div 
           className="w-full absolute left-0 right-0 pointer-events-none will-change-transform z-20"
           style={{
-            animation: 'laserOpticalSweep 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+            animation: 'heroLaserSweep 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
           }}
         >
-          {/* 1. Estela lumínica muy sutil degradada */}
+          {/* Estela luminosa sutil degradada */}
           <div 
-            className="w-full -mt-16 h-16 pointer-events-none"
+            className="w-full -mt-14 h-14 pointer-events-none"
             style={{
               background: isLight
-                ? 'linear-gradient(to top, rgba(34, 197, 94, 0.05) 0%, transparent 100%)'
-                : 'linear-gradient(to top, rgba(74, 222, 128, 0.08) 0%, transparent 100%)',
+                ? 'linear-gradient(to top, rgba(34, 197, 94, 0.04) 0%, transparent 100%)'
+                : 'linear-gradient(to top, rgba(74, 222, 128, 0.06) 0%, transparent 100%)',
               maskImage: 'linear-gradient(to top, black, transparent)',
               WebkitMaskImage: 'linear-gradient(to top, black, transparent)'
             }}
           />
 
-          {/* 2. Filamento Láser de Precisión Sutil y Delicado */}
+          {/* Filamento Láser Ultrafino (1px) */}
           <div className="relative w-full flex items-center">
-            {/* Indicador izquierdo sutil de calibración (sin caja) */}
-            <div className="absolute left-4 sm:left-10 flex items-center gap-1.5 opacity-60">
+            {/* Indicador izquierdo sutil sin caja */}
+            <div className="absolute left-4 sm:left-10 flex items-center gap-1.5 opacity-45">
               <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
-              <span className="font-mono text-[7px] sm:text-[8px] tracking-[0.2em] text-[#22C55E]/75 uppercase">
+              <span className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] text-[#22C55E] uppercase">
                 [ ⌖ 1200 DPI ]
               </span>
             </div>
 
-            {/* Línea láser fina y suave */}
+            {/* Línea láser central de precisión */}
             <div 
-              className="w-full h-[1px] opacity-75"
+              className="w-full h-[1px] opacity-70"
               style={{
                 background: isLight
-                  ? 'linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.15) 12%, #16A34A 50%, rgba(22, 163, 74, 0.15) 88%, transparent 100%)'
-                  : 'linear-gradient(90deg, transparent 0%, rgba(74, 222, 128, 0.20) 12%, #4ADE80 50%, rgba(74, 222, 128, 0.20) 88%, transparent 100%)',
+                  ? 'linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.12) 12%, #16A34A 50%, rgba(22, 163, 74, 0.12) 88%, transparent 100%)'
+                  : 'linear-gradient(90deg, transparent 0%, rgba(74, 222, 128, 0.15) 12%, #4ADE80 50%, rgba(74, 222, 128, 0.15) 88%, transparent 100%)',
                 boxShadow: isLight
-                  ? '0 0 6px rgba(22, 163, 74, 0.35)'
-                  : '0 0 8px rgba(74, 222, 128, 0.45)',
+                  ? '0 0 6px rgba(22, 163, 74, 0.3)'
+                  : '0 0 8px rgba(74, 222, 128, 0.35)',
               }}
             />
 
-            {/* Indicador derecho sutil de longitud de onda (sin caja) */}
-            <div className="absolute right-4 sm:right-10 flex items-center gap-1.5 opacity-60">
-              <span className="font-mono text-[7px] sm:text-[8px] tracking-[0.2em] text-emerald-400/75 uppercase">
+            {/* Indicador derecho sutil sin caja */}
+            <div className="absolute right-4 sm:right-10 flex items-center gap-1.5 opacity-45">
+              <span className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] text-emerald-400 uppercase">
                 [ λ: 532nm ]
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
             </div>
           </div>
+        </div>
 
-          {/* 3. Letras Discretas Forenses SIN CUADRO / SIN FONDO (100% Pura Transparencia) */}
-          <div className="w-full flex flex-col items-center justify-center mt-2 pointer-events-none select-none">
+        {/* =================================================================== */}
+        {/* RESULTADO DEL ESCÁNER: APARECE EN LA MITAD DEL HERO                 */}
+        {/* Letras muy sutiles, muy de fondo, sin cuadros atrás, sin fondo      */}
+        {/* =================================================================== */}
+        <div 
+          className="absolute top-[48vh] left-0 right-0 flex flex-col items-center justify-center pointer-events-none select-none z-10 px-4"
+          style={{
+            animation: 'heroMidScanResultReveal 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+          }}
+        >
+          {/* Línea 1: Estado y Detección de Error en la Carta */}
+          <div className="flex items-center justify-center flex-wrap gap-2 font-mono text-[8px] sm:text-[9px] tracking-[0.22em] uppercase text-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/90 animate-ping shrink-0" />
             
-            {/* Línea principal: Detección y estado forense */}
-            <div className="flex items-center gap-2 font-mono text-[8px] sm:text-[9px] tracking-[0.22em] uppercase transition-opacity duration-700">
-              <span className={`w-1 h-1 rounded-full ${
-                scanTelemetryIndex === 1 ? 'bg-amber-400/90 animate-ping' : 'bg-[#22C55E]/80 animate-pulse'
-              }`} />
-              
-              <span className={
-                scanTelemetryIndex === 1 
-                  ? 'text-amber-400/90 font-bold drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]' 
-                  : isLight ? 'text-emerald-800/80 font-bold' : 'text-[#4ADE80]/85 font-semibold drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]'
-              }>
-                {currentTelemetry.tag}
-              </span>
+            <span className={isLight ? 'text-emerald-800/80 font-bold' : 'text-[#4ADE80]/85 font-semibold'}>
+              {language === 'es' ? '[ RESULTADO DE ESCÁNER ÓPTICO ]' : '[ OPTICAL SCAN RESULT ]'}
+            </span>
 
-              <span className="opacity-30 text-gray-500">·</span>
+            <span className="opacity-30 text-gray-400">·</span>
 
-              <span className={
-                isLight ? 'text-slate-700/80 font-medium' : 'text-neutral-300/75 font-normal'
-              }>
-                {currentTelemetry.title}
-              </span>
-            </div>
-
-            {/* Sub-línea discreta: Métricas y código de error */}
-            <div className="mt-0.5 flex items-center gap-2 font-mono text-[7px] sm:text-[8px] tracking-[0.18em] uppercase opacity-65">
-              <span className={scanTelemetryIndex === 1 ? 'text-amber-300/85' : isLight ? 'text-slate-500' : 'text-neutral-400'}>
-                {currentTelemetry.flaw}
-              </span>
-              <span className="opacity-30 text-gray-500">|</span>
-              <span className={isLight ? 'text-emerald-700/80 font-medium' : 'text-[#22C55E]/80 font-medium'}>
-                {currentTelemetry.code}
-              </span>
-            </div>
-
+            <span className={isLight ? 'text-amber-800/85 font-bold' : 'text-amber-300/90 font-bold'}>
+              {language === 'es' 
+                ? '⚠ ERROR EN CARTA DETECTADO: MICRO-DEFECTO DE IMPRESIÓN [0.03mm]' 
+                : '⚠ CARD FLAW DETECTED: PRINT DEFECT [0.03mm]'}
+            </span>
           </div>
 
+          {/* Línea 2: Sub-métricas discretas de graduación y expediente forense */}
+          <div className="mt-1 flex items-center justify-center flex-wrap gap-2.5 font-mono text-[7px] sm:text-[8px] tracking-[0.18em] uppercase text-center opacity-65">
+            <span className={isLight ? 'text-slate-600' : 'text-neutral-300'}>
+              {language === 'es' 
+                ? 'DESVIACIÓN DE CENTRADO 58/42 · BORDES: 9.5 · SUB-GRADE: 8.5' 
+                : 'CENTERING BIAS 58/42 · EDGES: 9.5 · SUB-GRADE: 8.5'}
+            </span>
+
+            <span className="opacity-30 text-gray-400">|</span>
+
+            <span className={isLight ? 'text-emerald-700/80 font-medium' : 'text-[#22C55E]/80 font-medium'}>
+              {language === 'es' 
+                ? 'VERIFICACIÓN FORENSE GORILLA #GG-8849' 
+                : 'GORILLA FORENSIC VERIFIED #GG-8849'}
+            </span>
+          </div>
         </div>
+
       </div>
 
       {/* ═════════════════════════════════════════════════════════════════════
@@ -373,5 +403,6 @@ export const PrecisionScrollDatum: React.FC = () => {
 };
 
 export default PrecisionScrollDatum;
+
 
 
