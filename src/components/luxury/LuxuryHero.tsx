@@ -36,10 +36,9 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
   const heroImageSrc = '/images/alakazam_hero.png?v=3';
 
-  // 10s Cinematic Intro Forensic Sequence (Zero video box, 100% transparent native canvas)
+  // 10s Pure Cinematic Intro Animation (100% transparent, zero text, zero blinking circles)
   const [isIntroPlaying, setIsIntroPlaying] = useState(true);
   const [introProgress, setIntroProgress] = useState(0); // 0 to 100%
-  const [introStep, setIntroStep] = useState<0 | 1 | 2 | 3>(0);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50 });
@@ -47,12 +46,12 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   const [showHotspots, setShowHotspots] = useState(true);
   const slabRef = useRef<HTMLDivElement>(null);
 
-  // 10-second automatic cinematic scan sequence on initial visit
+  // 10-second automatic pure cinematic sequence on initial visit
   useEffect(() => {
     if (!isIntroPlaying) return;
 
     const startTime = Date.now();
-    const duration = 10000; // 10.0 seconds
+    const duration = 10000; // Exactly 10.0 seconds
 
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -60,27 +59,18 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
       setIntroProgress(progress);
 
       const t = progress / 100;
-      if (t < 0.33) {
-        setIntroStep(0); // Centering & Holographic Foil
-        setRotateY(-3.8 * Math.sin((t / 0.33) * Math.PI));
-        setRotateX(-2.2 * Math.sin((t / 0.33) * Math.PI));
-      } else if (t < 0.68) {
-        setIntroStep(1); // Ultrasonic Fusion Edge
-        setRotateY(3.2 * Math.sin(((t - 0.33) / 0.35) * Math.PI));
-        setRotateX(1.8 * Math.sin(((t - 0.33) / 0.35) * Math.PI));
-      } else if (t < 0.94) {
-        setIntroStep(2); // Cryptographic QR & NFC
-        setRotateY(-2.4 * Math.sin(((t - 0.68) / 0.26) * Math.PI));
-        setRotateX(-1.2 * Math.sin(((t - 0.68) / 0.26) * Math.PI));
-      } else {
-        setIntroStep(3); // Certification Complete & Ease to Rest
-        setRotateY(0);
-        setRotateX(0);
-      }
 
+      // Ultra-smooth continuous floating motion across the 3 slabs
+      const angleY = Math.sin(t * Math.PI * 2) * -4.2 * (1 - t * 0.4);
+      const angleX = Math.sin(t * Math.PI * 2.5) * 2.2 * (1 - t * 0.4);
+
+      setRotateY(angleY);
+      setRotateX(angleX);
+
+      // Silky specular studio light gliding continuously across the acrylic faces
       setGlarePosition({
-        x: Math.round(18 + t * 64),
-        y: Math.round(35 + Math.sin(t * Math.PI * 3) * 15)
+        x: Math.round(15 + t * 70),
+        y: Math.round(32 + Math.sin(t * Math.PI * 2) * 16)
       });
 
       if (elapsed >= duration) {
@@ -90,7 +80,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         setRotateY(0);
         setGlarePosition({ x: 50, y: 50 });
       }
-    }, 35);
+    }, 30);
 
     return () => clearInterval(timer);
   }, [isIntroPlaying]);
@@ -401,42 +391,19 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           {/* Inspector Controls Ribbon */}
           <div className="w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[700px] xl:max-w-[760px] flex items-center justify-between mb-3 px-2 font-mono text-[10px] text-gray-400">
             <div className="flex items-center gap-2">
-              {isIntroPlaying ? (
-                <>
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                  </span>
-                  <span className={`uppercase tracking-normal font-bold ${isLight ? 'text-[#15803D]' : 'text-emerald-400/90'}`}>
-                    {language === 'es' ? 'ESCÁNER CINEMÁTICO (10s)' : 'CINEMATIC SCAN (10s)'}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <Crosshair className={`w-3.5 h-3.5 animate-spin ${isLight ? 'text-[#15803D]' : 'text-emerald-400'}`} style={{ animationDuration: '8s' }} />
-                  <span className={`uppercase tracking-normal font-bold ${isLight ? 'text-[#15803D]' : 'text-emerald-400/90'}`}>
-                    SLAB INSPECTOR 3D
-                  </span>
-                </>
-              )}
+              <Crosshair className={`w-3.5 h-3.5 animate-spin ${isLight ? 'text-[#15803D]' : 'text-emerald-400'}`} style={{ animationDuration: '8s' }} />
+              <span className={`uppercase tracking-normal font-bold ${isLight ? 'text-[#15803D]' : 'text-emerald-400/90'}`}>
+                SLAB INSPECTOR 3D
+              </span>
             </div>
 
             <div className="flex items-center gap-3">
-              {isIntroPlaying ? (
-                <button
-                  type="button"
-                  onClick={() => setIsIntroPlaying(false)}
-                  className="text-amber-400 hover:text-amber-300 underline uppercase tracking-wider cursor-pointer font-bold transition-colors"
-                >
-                  {language === 'es' ? 'Saltar a 3D →' : 'Skip to 3D →'}
-                </button>
-              ) : (
+              {!isIntroPlaying && (
                 <>
                   <button
                     type="button"
                     onClick={() => {
                       setIntroProgress(0);
-                      setIntroStep(0);
                       setActiveHotspot(null);
                       setIsIntroPlaying(true);
                     }}
@@ -445,15 +412,15 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                     {language === 'es' ? '▶ Repetir Intro' : '▶ Replay Intro'}
                   </button>
                   <span className="text-gray-600">|</span>
-                  <button
-                    type="button"
-                    onClick={() => setShowHotspots(!showHotspots)}
-                    className="hover:text-white underline uppercase tracking-wider cursor-pointer transition-colors"
-                  >
-                    {showHotspots ? (language === 'es' ? 'Ocultar Puntos' : 'Hide Hotspots') : (language === 'es' ? 'Mostrar Puntos' : 'Show Hotspots')}
-                  </button>
                 </>
               )}
+              <button
+                type="button"
+                onClick={() => setShowHotspots(!showHotspots)}
+                className="hover:text-white underline uppercase tracking-wider cursor-pointer transition-colors"
+              >
+                {showHotspots ? (language === 'es' ? 'Ocultar Puntos' : 'Hide Hotspots') : (language === 'es' ? 'Mostrar Puntos' : 'Show Hotspots')}
+              </button>
             </div>
           </div>
 
@@ -476,8 +443,8 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             {/* 3D Tilting Slab Wrapper - Pure transparent floating stage */}
             <div
               style={{
-                transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isIntroPlaying ? 1.02 : 1})`,
-                transition: isIntroPlaying ? 'transform 0.25s ease-out' : 'transform 0.12s ease-out',
+                transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isIntroPlaying ? 1.025 : 1})`,
+                transition: isIntroPlaying ? 'transform 0.2s ease-out' : 'transform 0.12s ease-out',
                 transformStyle: 'preserve-3d'
               }}
               className="relative w-full h-full flex items-center justify-center bg-transparent pointer-events-auto"
@@ -493,19 +460,36 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                 }`}
               />
 
-              {/* Dynamic Laser Metrology Scanning Line (during intro) */}
+              {/* Dynamic Laser Metrology Scanning Line (during 10s intro) */}
               {isIntroPlaying && (
                 <div
-                  className="absolute top-[8%] bottom-[8%] w-[2px] pointer-events-none transition-all duration-75 z-20"
+                  className="absolute top-[6%] bottom-[6%] w-[1.5px] pointer-events-none z-20"
                   style={{
-                    left: `${15 + (introProgress / 100) * 70}%`,
-                    background: 'linear-gradient(to bottom, transparent, #48C765 25%, #86EFAC 50%, #48C765 75%, transparent)',
-                    boxShadow: '0 0 14px rgba(72,199,101,0.95), 0 0 28px rgba(72,199,101,0.45)'
+                    left: `${14 + (introProgress / 100) * 72}%`,
+                    background: 'linear-gradient(to bottom, transparent, rgba(72,199,101,0.85) 20%, #A7F3D0 50%, rgba(72,199,101,0.85) 80%, transparent)',
+                    boxShadow: '0 0 12px rgba(72,199,101,0.9), 0 0 24px rgba(72,199,101,0.45)',
+                    opacity: Math.sin((introProgress / 100) * Math.PI)
+                  }}
+                />
+              )}
+
+              {/* Prismatic Holographic Caustic Sheen Sweep (during 10s intro) */}
+              {isIntroPlaying && (
+                <div
+                  className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-14"
+                  style={{
+                    opacity: Math.sin((introProgress / 100) * Math.PI) * 0.75,
+                    mixBlendMode: 'screen'
                   }}
                 >
-                  {/* Top & Bottom Metrology Markers */}
-                  <div className="absolute top-0 -left-1 w-2.5 h-1 bg-emerald-400 shadow-[0_0_8px_#48C765]" />
-                  <div className="absolute bottom-0 -left-1 w-2.5 h-1 bg-emerald-400 shadow-[0_0_8px_#48C765]" />
+                  <div
+                    className="w-[180%] h-full"
+                    style={{
+                      background: 'linear-gradient(112deg, transparent 36%, rgba(255,255,255,0.18) 48%, rgba(134,239,172,0.24) 52%, rgba(251,191,36,0.16) 56%, transparent 68%)',
+                      transform: `translateX(${-65 + (introProgress / 100) * 105}%)`,
+                      transition: 'transform 0.05s linear'
+                    }}
+                  />
                 </div>
               )}
 
@@ -513,38 +497,11 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
               <div 
                 className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-15"
                 style={{
-                  background: `radial-gradient(ellipse 350px 350px at ${glarePosition.x}% ${glarePosition.y}%, rgba(255,255,255,0.14) 0%, rgba(72,199,101,0.06) 40%, transparent 70%)`,
+                  background: `radial-gradient(ellipse 380px 380px at ${glarePosition.x}% ${glarePosition.y}%, rgba(255,255,255,0.15) 0%, rgba(72,199,101,0.07) 35%, transparent 70%)`,
                   mixBlendMode: 'screen',
-                  transition: isIntroPlaying ? 'background 0.08s ease-out' : 'none'
+                  transition: isIntroPlaying ? 'background 0.06s ease-out' : 'none'
                 }}
               />
-
-              {/* Telemetry HUD Badge During 10s Intro Scan */}
-              <AnimatePresence>
-                {isIntroPlaying && (
-                  <motion.div
-                    key="intro-hud-badge"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute -top-3 sm:top-2 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-emerald-500/40 text-[9.5px] sm:text-[10px] font-mono text-emerald-300 shadow-[0_0_25px_rgba(22,163,74,0.35)] whitespace-nowrap pointer-events-none"
-                  >
-                    <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500" />
-                    </span>
-                    <span className="font-bold">
-                      {introStep === 0 && (language === 'es' ? 'CENTRADO SUB-PÍXEL · GEM MINT' : 'SUB-PIXEL CENTERING · GEM MINT')}
-                      {introStep === 1 && (language === 'es' ? 'METROLOGÍA: FUSIÓN SÓNICA ESTANCA' : 'METROLOGY: ULTRASONIC SEAL')}
-                      {introStep === 2 && (language === 'es' ? 'BLOCKCHAIN QR & CRIPTOGRAFÍA NFC' : 'BLOCKCHAIN QR & NFC SECURITY')}
-                      {introStep === 3 && (language === 'es' ? 'CERTIFICACIÓN GORILLA 10 MINT' : 'GORILLA 10 MINT CERTIFIED')}
-                    </span>
-                    <span className="text-white/40">|</span>
-                    <span className="text-amber-400 font-bold">{Math.max(1, Math.ceil((100 - introProgress) / 10))}s</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
 
               {/* Interactive Inspection Hotspots */}
               {showHotspots && !isIntroPlaying && hotspots.map((spot) => {
