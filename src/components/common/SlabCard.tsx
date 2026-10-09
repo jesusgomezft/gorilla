@@ -157,7 +157,7 @@ export const SlabCard: React.FC<SlabCardProps> = ({
 
           {/* Interactive Hover Bar */}
           {interactive && (
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity bg-[#07090C]/90 backdrop-blur-md rounded-none p-2 border border-white/20 shadow-2xl">
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-[#07090C]/90 backdrop-blur-md rounded-none p-2 border border-white/20 shadow-2xl z-20">
               <button
                 onClick={(e) => {
                   e.stopPropagation();

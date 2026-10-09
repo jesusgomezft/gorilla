@@ -161,7 +161,7 @@ export const DefectInspector: React.FC<DefectInspectorProps> = ({ card }) => {
               </div>
             </div>
           ) : (
-            <div className={`h-full flex items-center justify-center min-h-[280px] p-6 border border-dashed ${
+            <div className={`h-full flex items-center justify-center min-h-[160px] sm:min-h-[280px] p-4 sm:p-6 border border-dashed ${
               isLight ? 'border-gray-200 bg-gray-50/50' : 'border-white/10 bg-white/[0.01]'
             }`}>
               <p className={`font-mono text-[11px] uppercase tracking-[0.16em] max-w-[240px] text-center leading-relaxed font-medium ${
