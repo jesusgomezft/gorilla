@@ -251,66 +251,6 @@ export const PrecisionScrollDatum: React.FC = () => {
             opacity: 0;
           }
         }
-
-        /* 2. Fase Superior: Aparece cuando el láser está arriba (dura 4 segundos: 4% a 26% del ciclo) */
-        @keyframes scanSnippetPhaseTop {
-          0%, 3% {
-            opacity: 0;
-            transform: translateY(6px);
-          }
-          6% {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-          22% {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-          26%, 100% {
-            opacity: 0;
-            transform: translateY(-6px);
-          }
-        }
-
-        /* 3. Fase Media: Aparece cuando el láser cruza la mitad (dura 4 segundos: 32% a 54% del ciclo) */
-        @keyframes scanSnippetPhaseMid {
-          0%, 31% {
-            opacity: 0;
-            transform: translateY(6px);
-          }
-          34% {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-          50% {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-          54%, 100% {
-            opacity: 0;
-            transform: translateY(-6px);
-          }
-        }
-
-        /* 4. Fase Inferior: Aparece cuando el láser llega abajo (dura 4 segundos: 60% a 82% del ciclo) */
-        @keyframes scanSnippetPhaseBottom {
-          0%, 59% {
-            opacity: 0;
-            transform: translateY(6px);
-          }
-          62% {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-          78% {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-          82%, 100% {
-            opacity: 0;
-            transform: translateY(-6px);
-          }
-        }
       `}</style>
 
       {/* Scanner Assembly Container */}
@@ -337,16 +277,16 @@ export const PrecisionScrollDatum: React.FC = () => {
             }}
           />
 
-          {/* Filamento Láser Ultrafino (1px) con indicadores en los extremos exteriores */}
+          {/* Filamento Láser Ultrafino (1px) con indicadores sutiles en los extremos exteriores */}
           <div className="relative w-full flex items-center">
             {/* Indicador extremo izquierdo - Pegado al margen exterior */}
-            <div className="absolute left-3 sm:left-8 flex items-center opacity-60 select-none">
-              <span className="font-mono text-[7px] sm:text-[8px] tracking-[0.20em] text-[#16A34A] dark:text-[#4ADE80] font-bold uppercase">
-                [ ⌖ SCAN: 1200 DPI ]
+            <div className="absolute left-3 sm:left-8 flex items-center opacity-40 select-none">
+              <span className="font-mono text-[6.5px] sm:text-[7px] tracking-[0.20em] text-[#16A34A] dark:text-[#4ADE80] font-bold uppercase">
+                [ ⌖ 1200 DPI ]
               </span>
             </div>
 
-            {/* Línea láser central de precisión (Cero texto en el centro, nunca choca con la losa) */}
+            {/* Línea láser central de precisión */}
             <div 
               className="w-full h-[1px] opacity-70"
               style={{
@@ -360,99 +300,11 @@ export const PrecisionScrollDatum: React.FC = () => {
             />
 
             {/* Indicador extremo derecho - Pegado al margen exterior */}
-            <div className="absolute right-3 sm:right-8 flex items-center opacity-60 select-none">
-              <span className="font-mono text-[7px] sm:text-[8px] tracking-[0.20em] text-[#16A34A] dark:text-emerald-400 font-bold uppercase">
-                [ RES: 0.03mm · λ: 532nm ]
+            <div className="absolute right-3 sm:right-8 flex items-center opacity-40 select-none">
+              <span className="font-mono text-[6.5px] sm:text-[7px] tracking-[0.20em] text-[#16A34A] dark:text-emerald-400 font-bold uppercase">
+                [ λ: 532nm ]
               </span>
             </div>
-          </div>
-        </div>
-
-        {/* =================================================================== */}
-        {/* TELEMETRÍA DINÁMICA DEL ESCÁNER: APARECE EN DISTINTAS PARTES (4s)   */}
-        {/* Se activan según el láser va bajando, duran 4 segundos y se van     */}
-        {/* =================================================================== */}
-
-        {/* FASE 1 (SUPERIOR - 4 SEGUNDOS): Aparece cuando el láser inicia arriba */}
-        <div 
-          className="absolute top-[18vh] left-3 sm:left-8 lg:left-12 pointer-events-none select-none z-10"
-          style={{ animation: 'scanSnippetPhaseTop 18s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-        >
-          <div className={`font-mono text-[8.5px] sm:text-[9.5px] tracking-[0.16em] uppercase font-bold ${
-            isLight ? 'text-[#065F46] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]' : 'text-[#34D399] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
-          }`}>
-            {language === 'es' ? '[ ⌖ CALIBRANDO MATRIZ ÓPTICA 1200 DPI ]' : '[ ⌖ CALIBRATING 1200 DPI OPTICAL MATRIX ]'}
-          </div>
-          <div className={`mt-0.5 font-mono text-[7.5px] sm:text-[8.5px] tracking-[0.12em] uppercase font-medium ${
-            isLight ? 'text-[#1E293B]' : 'text-[#CBD5E1]'
-          }`}>
-            {language === 'es' ? 'ESPECTRO LITOGRÁFICO · TOLERANCIA ACTIVA' : 'LITHOGRAPHIC ROSETTE · ACTIVE TOLERANCE'}
-          </div>
-        </div>
-
-        {/* FASE 2 (MEDIA - 4 SEGUNDOS): Aparece cuando el láser cruza la mitad */}
-        <div 
-          className="absolute top-[48vh] left-3 sm:left-6 lg:left-10 pointer-events-none select-none z-10"
-          style={{ animation: 'scanSnippetPhaseMid 18s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-        >
-          <div className={`font-mono text-[8.5px] sm:text-[9.5px] tracking-[0.16em] uppercase font-bold ${
-            isLight ? 'text-[#065F46] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]' : 'text-[#34D399] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
-          }`}>
-            {language === 'es' ? '[ ⌖ ANÁLISIS DE CENTRADO SUB-PÍXEL ]' : '[ ⌖ SUB-PIXEL CENTERING ANALYSIS ]'}
-          </div>
-          <div className={`mt-0.5 font-mono text-[7.5px] sm:text-[8.5px] tracking-[0.12em] uppercase font-medium ${
-            isLight ? 'text-[#1E293B]' : 'text-[#CBD5E1]'
-          }`}>
-            {language === 'es' ? 'CENTRADO 50/50 · SIMETRÍA ±0.01mm' : '50/50 CENTERING · ±0.01mm SYMMETRY'}
-          </div>
-        </div>
-
-        <div 
-          className="absolute top-[52vh] right-3 sm:right-6 lg:right-10 pointer-events-none select-none z-10 text-right"
-          style={{ animation: 'scanSnippetPhaseMid 18s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-        >
-          <div className={`font-mono text-[8.5px] sm:text-[9.5px] tracking-[0.16em] uppercase font-bold ${
-            isLight ? 'text-[#065F46] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]' : 'text-[#34D399] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
-          }`}>
-            {language === 'es' ? '[ ⌖ ESCANEO DE SUPERFICIE 0.03mm ]' : '[ ⌖ SURFACE DEFECT SCAN 0.03mm ]'}
-          </div>
-          <div className={`mt-0.5 font-mono text-[7.5px] sm:text-[8.5px] tracking-[0.12em] uppercase font-medium ${
-            isLight ? 'text-[#1E293B]' : 'text-[#CBD5E1]'
-          }`}>
-            {language === 'es' ? 'DETECCIÓN MICRO-DEFECTOS · GEM MINT' : 'MICRO-DEFECT DETECTION · GEM MINT'}
-          </div>
-        </div>
-
-        {/* FASE 3 (INFERIOR - 4 SEGUNDOS): Aparece cuando el láser llega abajo */}
-        <div 
-          className="absolute top-[78vh] left-3 sm:left-8 lg:left-12 pointer-events-none select-none z-10"
-          style={{ animation: 'scanSnippetPhaseBottom 18s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-        >
-          <div className={`font-mono text-[8.5px] sm:text-[9.5px] tracking-[0.16em] uppercase font-bold ${
-            isLight ? 'text-[#065F46] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]' : 'text-[#34D399] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
-          }`}>
-            {language === 'es' ? '[ ⌖ FUSIÓN MOLECULAR DE CANTO ]' : '[ ⌖ MOLECULAR EDGE FUSION ]'}
-          </div>
-          <div className={`mt-0.5 font-mono text-[7.5px] sm:text-[8.5px] tracking-[0.12em] uppercase font-medium ${
-            isLight ? 'text-[#1E293B]' : 'text-[#CBD5E1]'
-          }`}>
-            {language === 'es' ? 'SELLADO ULTRASÓNICO 100% HERMÉTICO' : 'ULTRASONIC WELD: 100% AIRTIGHT'}
-          </div>
-        </div>
-
-        <div 
-          className="absolute top-[80vh] right-3 sm:right-8 lg:right-12 pointer-events-none select-none z-10 text-right"
-          style={{ animation: 'scanSnippetPhaseBottom 18s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-        >
-          <div className={`font-mono text-[8.5px] sm:text-[9.5px] tracking-[0.16em] uppercase font-bold ${
-            isLight ? 'text-[#065F46] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]' : 'text-[#34D399] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
-          }`}>
-            {language === 'es' ? '[ ⌖ AUDITORÍA CRIPTOGRÁFICA LEDGER ]' : '[ ⌖ CRYPTOGRAPHIC LEDGER AUDIT ]'}
-          </div>
-          <div className={`mt-0.5 font-mono text-[7.5px] sm:text-[8.5px] tracking-[0.12em] uppercase font-medium ${
-            isLight ? 'text-[#1E293B]' : 'text-[#CBD5E1]'
-          }`}>
-            {language === 'es' ? 'REGISTRO BLOCKCHAIN #GG-10 VERIFICADO' : 'BLOCKCHAIN CERTIFICATE #GG-10 OK'}
           </div>
         </div>
 
