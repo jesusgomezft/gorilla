@@ -34,7 +34,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  const heroImageSrc = '/images/alakazam_hero.png?v=2';
+  const heroImageSrc = '/images/alakazam_hero.png?v=3';
 
   // 3D Tilt & Specular Physics
   const [rotateX, setRotateX] = useState(0);
@@ -47,47 +47,47 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   const hotspots: Hotspot[] = [
     {
       id: 'centering',
-      x: 34,
-      y: 48,
-      category: language === 'es' ? 'CENTRADO' : 'CENTERING',
-      title: language === 'es' ? 'Centrado Óptico' : 'Optical Centering',
-      metric: language === 'es' ? 'Simetría Perimetral' : 'Perimeter Symmetry',
+      x: 21,
+      y: 52,
+      category: language === 'es' ? 'CENTRADO Y SUPERFICIE' : 'OPTICAL CENTERING & FOIL',
+      title: language === 'es' ? 'Centrado Óptico Sub-Píxel' : 'Sub-Pixel Optical Centering',
+      metric: language === 'es' ? 'Simetría 50/50 · Gem Mint' : '50/50 Symmetry · Gem Mint',
       desc: language === 'es' 
-        ? 'Medición dimensional que evalúa la simetría entre el corte exterior y el marco artístico.' 
-        : 'Dimensional measurement evaluating symmetry between outer boundary and inner artwork.'
+        ? 'Peritaje digital que verifica la simetría perimetral del marco y la ausencia de defectos en el foil.' 
+        : 'Digital analysis confirming border perimeter symmetry and absence of foil anomalies.'
     },
     {
       id: 'corner',
-      x: 37,
-      y: 20,
-      category: language === 'es' ? 'ESQUINAS' : 'CORNERS',
-      title: language === 'es' ? 'Inspección de Esquinas' : 'Corner Inspection',
-      metric: language === 'es' ? 'Magnificación Óptica' : 'Optical Magnification',
+      x: 21,
+      y: 18,
+      category: language === 'es' ? 'ETIQUETA OFICIAL GGI' : 'OFFICIAL GGI LABEL',
+      title: language === 'es' ? 'Calificación 10 Gem Mint' : 'Grade 10 Gem Mint',
+      metric: language === 'es' ? 'Holografía y Código Interno' : 'Holographic & Internal Code',
       desc: language === 'es' 
-        ? 'Inspección de vértices para verificar ausencia de desgaste, rebabas o blanqueamiento.' 
-        : 'Inspection of vertices to verify absence of wear, burrs, or fiber whitening.'
+        ? 'Etiqueta de seguridad de alta resolución con metadatos oficiales y código único de certificación.' 
+        : 'High-resolution security label with official metadata and unique certification registry code.'
     },
     {
       id: 'sonic',
-      x: 78,
-      y: 75,
-      category: language === 'es' ? 'ENCAPSULADO' : 'SLAB SEAL',
-      title: language === 'es' ? 'Sellado Ultrasónico' : 'Ultrasonic Seal',
-      metric: language === 'es' ? 'Sellado Hermético' : 'Hermetic Seal',
+      x: 48,
+      y: 45,
+      category: language === 'es' ? 'CIERRE HERMÉTICO SÓNICO' : 'ULTRASONIC FUSION',
+      title: language === 'es' ? 'Sellado Ultrasónico de Cantos' : 'Ultrasonic Edge Fusion',
+      metric: language === 'es' ? 'Cápsula 100% Estanca' : '100% Hermetic Acrylic Weld',
       desc: language === 'es' 
-        ? 'Encapsulado estanco sin adhesivos químicos, aislando la pieza contra el polvo y la humedad.' 
-        : 'Hermetic encapsulation without chemical glues, isolating the card from dust and humidity.'
+        ? 'Fusión molecular de acrílico sin adhesivos químicos, aislando la pieza contra el polvo y la humedad.' 
+        : 'Molecular acoustic acrylic weld without glues, fully sealing the specimen against humidity.'
     },
     {
       id: 'uv',
-      x: 62,
-      y: 35,
-      category: language === 'es' ? 'PROTECCIÓN UV' : 'UV PROTECTION',
-      title: language === 'es' ? 'Barrera Ultravioleta' : 'Ultraviolet Barrier',
-      metric: language === 'es' ? 'Polímero Óptico' : 'Optical Polymer',
+      x: 77,
+      y: 18,
+      category: language === 'es' ? 'REVERSO Y REGISTRO QR' : 'BACK REVERSE & QR LEDGER',
+      title: language === 'es' ? 'Verificación Criptográfica' : 'Cryptographic Verification',
+      metric: language === 'es' ? 'NFC & Ledger Blockchain' : 'NFC & Blockchain Ledger',
       desc: language === 'es' 
-        ? 'Acrílico de alta transparencia que previene la degradación de colores y brillo por luz.' 
-        : 'High-transparency acrylic preventing color and foil degradation from ambient light.'
+        ? 'Dorso oficial con código QR vinculado al libro mayor público de autenticidad Gorilla Verify.' 
+        : 'Official back label featuring QR code linked to the Gorilla Verify ledger of authenticity.'
     }
   ];
 
@@ -341,10 +341,10 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         </div>
 
         {/* Right Column: 3D SLAB INSPECTOR HERO */}
-        <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center relative lg:-translate-x-6 xl:-translate-x-10">
+        <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center relative">
           
           {/* Inspector Controls Ribbon */}
-          <div className="w-full max-w-[460px] flex items-center justify-between mb-3 px-2 font-mono text-[10px] text-gray-400">
+          <div className="w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[700px] xl:max-w-[760px] flex items-center justify-between mb-3 px-2 font-mono text-[10px] text-gray-400">
             <div className="flex items-center gap-2">
               <Crosshair className={`w-3.5 h-3.5 animate-spin ${isLight ? 'text-[#15803D]' : 'text-emerald-400'}`} style={{ animationDuration: '8s' }} />
               <span className={`uppercase tracking-normal font-bold ${isLight ? 'text-[#15803D]' : 'text-emerald-400/90'}`}>SLAB INSPECTOR 3D</span>
@@ -365,7 +365,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ perspective: 1200 }}
-            className="relative w-full max-w-[420px] sm:max-w-[480px] aspect-[1/1.3] flex items-center justify-center cursor-crosshair bg-transparent select-none"
+            className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[700px] xl:max-w-[760px] aspect-[1.48/1] flex items-center justify-center cursor-crosshair bg-transparent select-none"
           >
             {/* Ambient Back Atmosphere - Zero square footprint */}
             <div className={`absolute inset-8 rounded-full pointer-events-none transition-opacity duration-700 ${
@@ -439,11 +439,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     style={{
-                      left: activeHotspot.x > 50 ? 'auto' : '10px',
-                      right: activeHotspot.x > 50 ? '10px' : 'auto',
-                      top: activeHotspot.y > 55 ? 'auto' : `${Math.min(activeHotspot.y + 6, 52)}%`,
-                      bottom: activeHotspot.y > 55 ? `${Math.max(100 - activeHotspot.y + 6, 10)}%` : 'auto',
-                      transform: 'translateZ(50px)'
+                      left: activeHotspot.x > 65 ? 'auto' : activeHotspot.x < 35 ? '10px' : '50%',
+                      right: activeHotspot.x > 65 ? '10px' : 'auto',
+                      top: activeHotspot.y > 50 ? 'auto' : `${Math.min(activeHotspot.y + 6, 50)}%`,
+                      bottom: activeHotspot.y > 50 ? `${Math.max(100 - activeHotspot.y + 6, 8)}%` : 'auto',
+                      transform: activeHotspot.x >= 35 && activeHotspot.x <= 65 
+                        ? 'translate(-50%, 0) translateZ(50px)' 
+                        : 'translateZ(50px)'
                     }}
                     className={`absolute z-40 w-[240px] sm:w-64 max-w-[calc(100%-20px)] p-3 sm:p-3.5 border backdrop-blur-xl text-left font-mono pointer-events-auto shadow-2xl ${
                       isLight 
