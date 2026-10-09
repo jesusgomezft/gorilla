@@ -34,7 +34,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  const heroImageSrc = '/images/alakazam_hero.png?v=5';
+  const heroImageSrc = '/images/alakazam_hero.png?v=6';
 
   // 10s Pure Cinematic Intro Animation (100% transparent, zero text, zero blinking circles)
   const [isIntroPlaying, setIsIntroPlaying] = useState(true);
@@ -435,12 +435,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             style={{ perspective: 1200 }}
             className="relative w-full max-w-[540px] sm:max-w-[620px] lg:max-w-[700px] xl:max-w-[760px] aspect-[1.48/1] flex items-center justify-center cursor-crosshair bg-transparent select-none"
           >
-            {/* Ambient Back Atmosphere - Optical studio backlight */}
-            <div className={`absolute inset-4 rounded-full pointer-events-none transition-opacity duration-700 ${
-              isLight ? 'bg-white/70 blur-3xl opacity-75' : 'bg-[#16A34A]/12 blur-3xl opacity-45'
-            }`} />
-
-            {/* 3D Tilting Slab Wrapper - Pure transparent floating stage */}
+            {/* 3D Tilting Slab Wrapper - Pure floating stage, zero boxes or overlays */}
             <div
               style={{
                 transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isIntroPlaying ? 1.025 : 1})`,
@@ -449,13 +444,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
               }}
               className="relative w-full h-full flex items-center justify-center bg-transparent pointer-events-auto"
             >
-              {/* Slab Artwork Image - Floating with crystal clarity, lifted shadows & studio lighting */}
+              {/* Slab Artwork Image - Pure transparent PNG, zero square box */}
               <img 
                 src={heroImageSrc}
                 alt="Gorilla Grading Certified Slab"
-                className={`w-full h-full object-contain pointer-events-none transition-all duration-300 filter contrast-[1.06] brightness-[1.10] sm:brightness-[1.05] ${
+                className={`w-full h-full object-contain pointer-events-none transition-all duration-300 filter contrast-[1.06] brightness-[1.08] sm:brightness-[1.04] ${
                   isLight 
-                    ? 'drop-shadow-[0_16px_30px_rgba(0,0,0,0.12)]' 
+                    ? 'drop-shadow-[0_16px_28px_rgba(0,0,0,0.10)]' 
                     : 'drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)]'
                 }`}
               />
@@ -472,36 +467,6 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                   }}
                 />
               )}
-
-              {/* Prismatic Holographic Caustic Sheen Sweep (during 10s intro) */}
-              {isIntroPlaying && (
-                <div
-                  className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-14"
-                  style={{
-                    opacity: Math.sin((introProgress / 100) * Math.PI) * 0.75,
-                    mixBlendMode: 'screen'
-                  }}
-                >
-                  <div
-                    className="w-[180%] h-full"
-                    style={{
-                      background: 'linear-gradient(112deg, transparent 36%, rgba(255,255,255,0.18) 48%, rgba(134,239,172,0.24) 52%, rgba(251,191,36,0.16) 56%, transparent 68%)',
-                      transform: `translateX(${-65 + (introProgress / 100) * 105}%)`,
-                      transition: 'transform 0.05s linear'
-                    }}
-                  />
-                </div>
-              )}
-
-              {/* Specular Light Flare Reflection Gliding Across Slabs */}
-              <div 
-                className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-15"
-                style={{
-                  background: `radial-gradient(ellipse 380px 380px at ${glarePosition.x}% ${glarePosition.y}%, rgba(255,255,255,0.15) 0%, rgba(72,199,101,0.07) 35%, transparent 70%)`,
-                  mixBlendMode: 'screen',
-                  transition: isIntroPlaying ? 'background 0.06s ease-out' : 'none'
-                }}
-              />
 
               {/* Interactive Inspection Hotspots */}
               {showHotspots && !isIntroPlaying && hotspots.map((spot) => {
