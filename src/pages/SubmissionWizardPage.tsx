@@ -32,7 +32,7 @@ export const SubmissionWizardPage: React.FC<SubmissionWizardPageProps> = ({ onNa
       const found = MOCK_SERVICES.find(s => s.id === tierId);
       if (found) return found;
     }
-    return MOCK_SERVICES.find(s => s.id === 'standard') || MOCK_SERVICES[1];
+    return null;
   }); 
   
   const [items, setItems] = useState<OrderItem[]>(() => {

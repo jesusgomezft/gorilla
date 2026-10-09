@@ -45,8 +45,8 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  // Selected tier for the shipment manifest generator
-  const [selectedTierId, setSelectedTierId] = useState<string>('standard');
+  // Selected tier for the shipment manifest generator (none selected by default)
+  const [selectedTierId, setSelectedTierId] = useState<string | null>(null);
   const [cardCount, setCardCount] = useState<number>(10);
 
   // Industrial Service Levels (Tariff Matrix Data)
@@ -399,7 +399,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                   return (
                     <tr 
                       key={lvl.id}
-                      onClick={() => setSelectedTierId(lvl.id)}
+                      onClick={() => setSelectedTierId(prev => prev === lvl.id ? null : lvl.id)}
                       className={`cursor-pointer transition-all border-l-4 ${rowBg} ${hoverBg}`}
                       style={{
                         borderLeftColor: !isLight 
