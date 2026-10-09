@@ -249,19 +249,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
           >
             {/* Header Badge: Verified Status */}
             <div className={`flex items-center justify-between pb-1 border-b ${isLight ? 'border-black/10' : 'border-[#4E4E4E]'}`}>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#61B663]" />
-                <span className={`text-[10px] font-['Nunito',sans-serif] font-bold uppercase tracking-wider ${
-                  isLight ? 'text-neutral-500' : 'text-[#8C9185]'
-                }`}>
-                  {language === 'es' ? 'Cuenta Verificada' : 'Verified Account'}
-                </span>
-              </div>
-              <span className={`px-2 py-0.5 rounded text-[9.5px] font-bold uppercase tracking-wider ${
-                isLight 
-                  ? 'bg-[#16A34A]/10 text-[#15803D] border border-[#16A34A]/20' 
-                  : 'bg-[#61B663]/15 text-[#61B663] border border-[#61B663]/30'
-              }`}>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
                 {language === 'es' ? 'Socio Premier' : 'Premier Member'}
               </span>
             </div>
@@ -479,11 +467,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     }`}>
                       {userCards.length}
                     </span>
-                    <span className={`text-xs font-semibold px-2.5 py-0.5 rounded border ${
-                      isLight 
-                        ? 'bg-[#16A34A]/10 text-[#15803D] border-[#16A34A]/20' 
-                        : 'bg-[#61B663]/15 text-[#61B663] border-[#61B663]/30'
-                    }`}>
+                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase text-emerald-600 dark:text-emerald-400">
                       {language === 'es' ? 'EN CUSTODIA' : 'IN VAULT'}
                     </span>
                   </div>
@@ -506,10 +490,8 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     }`}>
                       {MOCK_ORDERS.length}
                     </span>
-                    <span className={`text-xs font-semibold px-2.5 py-0.5 rounded border ${
-                      isLight 
-                        ? 'bg-neutral-100 text-neutral-600 border-neutral-200' 
-                        : 'bg-[#2A2A2A] text-[#E2E8F0] border-[#4E4E4E]'
+                    <span className={`font-mono text-[10px] font-semibold tracking-wider uppercase ${
+                      isLight ? 'text-neutral-500' : 'text-neutral-400'
                     }`}>
                       {language === 'es' ? 'EXPEDIENTES' : 'ORDERS'}
                     </span>
@@ -1221,11 +1203,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                             </div>
 
                             {/* Status Typographic Endorsement */}
-                            <span className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider border ${
-                              isLight 
-                                ? 'bg-[#16A34A]/10 text-[#15803D] border-[#16A34A]/20' 
-                                : 'bg-[#22C55E]/15 text-[#4ADE80] border-[#22C55E]/25'
-                            }`}>
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
                               {language === 'es' ? 'LIQUIDADO · STRIPE' : 'SETTLED · STRIPE'}
                             </span>
 
