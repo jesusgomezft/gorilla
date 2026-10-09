@@ -390,22 +390,6 @@ export const PrecisionScrollDatum: React.FC = () => {
           </div>
         </div>
 
-        <div 
-          className="absolute top-[20vh] right-3 sm:right-8 lg:right-12 pointer-events-none select-none z-10 text-right"
-          style={{ animation: 'scanSnippetPhaseTop 18s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
-        >
-          <div className={`font-mono text-[8.5px] sm:text-[9.5px] tracking-[0.16em] uppercase font-bold ${
-            isLight ? 'text-[#065F46] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]' : 'text-[#34D399] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
-          }`}>
-            {language === 'es' ? '[ ⌖ ESPECTROMETRÍA LÁSER λ: 532nm ]' : '[ ⌖ LASER SPECTROMETRY λ: 532nm ]'}
-          </div>
-          <div className={`mt-0.5 font-mono text-[7.5px] sm:text-[8.5px] tracking-[0.12em] uppercase font-medium ${
-            isLight ? 'text-[#1E293B]' : 'text-[#CBD5E1]'
-          }`}>
-            {language === 'es' ? 'FONDO ULTRAVIOLETA · VERIFICACIÓN ACTIVA' : 'UV METROLOGY · CALIBRATION ACTIVE'}
-          </div>
-        </div>
-
         {/* FASE 2 (MEDIA - 4 SEGUNDOS): Aparece cuando el láser cruza la mitad */}
         <div 
           className="absolute top-[48vh] left-3 sm:left-6 lg:left-10 pointer-events-none select-none z-10"
