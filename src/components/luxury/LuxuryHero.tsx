@@ -34,9 +34,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
-  const heroImageSrc = theme === 'dark' 
-    ? '/images/Dark/alakazam_hero.jpg.png' 
-    : '/images/alakazam_hero.png';
+  const heroImageSrc = '/images/alakazam_hero.png?v=2';
 
   // 3D Tilt & Specular Physics
   const [rotateX, setRotateX] = useState(0);
