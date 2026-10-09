@@ -356,7 +356,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     isActive
                       ? (isLight 
                           ? 'bg-[#14170F] text-white border-[#14170F] shadow-sm' 
-                          : 'bg-[#383838] text-white border-[#61B663]/60 shadow-sm')
+                          : 'bg-[#383838] text-white border-white/20 shadow-sm')
                       : (isLight 
                           ? 'bg-[#FAF8F5] hover:bg-[#F2EFE8] border-[#D8D2C5] text-[#14170F]' 
                           : 'bg-[#2A2A2A] hover:bg-[#383838] border-[#4E4E4E] text-[#A4ACA1] hover:text-white')
@@ -364,13 +364,13 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                 >
                   {/* Left Active Indicator Notch */}
                   {isActive && (
-                    <div className="absolute left-0 top-2 bottom-2 w-1 rounded-r bg-[#16A34A] dark:bg-[#61B663]" />
+                    <div className="absolute left-0 top-2 bottom-2 w-1 rounded-r bg-[#16A34A] dark:bg-[#48C765]" />
                   )}
 
                   <div className="flex items-center gap-3 pl-1.5">
                     <span className={`text-[11px] font-bold font-mono tracking-wider ${
                       isActive 
-                        ? (isLight ? 'text-[#4ADE80]' : 'text-[#61B663]') 
+                        ? (isLight ? 'text-white' : 'text-neutral-200') 
                         : (isLight ? 'text-neutral-400' : 'text-[#8C9185]')
                     }`}>
                       {tab.index}
@@ -384,7 +384,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     {tab.count && (
                       <span className={`text-[10px] font-mono px-2 py-0.5 rounded border font-semibold ${
                         isActive 
-                          ? (isLight ? 'bg-white/10 text-white border-white/20' : 'bg-[#61B663]/20 text-[#61B663] border-[#61B663]/40')
+                          ? (isLight ? 'bg-white/10 text-white border-white/20' : 'bg-white/10 text-white border-white/15')
                           : (isLight ? 'bg-neutral-200/60 text-neutral-600 border-neutral-300' : 'bg-white/[0.05] text-[#8C9185] border-[#343931]')
                       }`}>
                         {tab.count}
@@ -393,7 +393,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                     <svg 
                       className={`w-3.5 h-3.5 transition-transform ${
                         isActive 
-                          ? 'translate-x-0 opacity-100 text-[#61B663]' 
+                          ? 'translate-x-0 opacity-100 text-white' 
                           : 'opacity-30 group-hover:opacity-70 group-hover:translate-x-0.5'
                       }`} 
                       fill="none" 
@@ -532,7 +532,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                       className={`font-['Nunito',sans-serif] font-[800] text-xs uppercase tracking-wider flex items-center gap-2 py-2 px-3.5 rounded-lg border transition-all cursor-pointer ${
                         isLight
                           ? 'bg-[#F4EFE6] text-[#14170F] border-[#D8D2C5] hover:bg-[#EAE4D7]'
-                          : 'bg-[#2A2A2A] text-[#61B663] border-[#4E4E4E] hover:bg-[#61B663] hover:text-[#111311]'
+                          : 'bg-[#2A2A2A] text-white border-[#4E4E4E] hover:bg-white/10 hover:border-white/30'
                       }`}
                     >
                       <span>{language === 'es' ? 'Ver Rastreo Completo' : 'Live Tracking'}</span>
@@ -802,7 +802,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                           className={`font-['Nunito',sans-serif] text-xs font-[800] uppercase tracking-wider py-1.5 px-3 rounded border transition-all flex items-center gap-1.5 cursor-pointer ${
                             isLight 
                               ? 'bg-[#14170F] text-white border-[#14170F] hover:bg-[#2A3125]' 
-                              : 'bg-[#2A2A2A] text-[#61B663] border-[#4E4E4E] hover:bg-[#61B663] hover:text-[#111311]'
+                              : 'bg-[#2A2A2A] text-white border-[#4E4E4E] hover:bg-white/10 hover:border-white/30'
                           }`}
                         >
                           <span>{language === 'es' ? 'Ver Seguimiento' : 'Track Order'}</span>
@@ -929,7 +929,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                                 className={`font-['Nunito',sans-serif] text-xs uppercase tracking-wider font-[800] py-2 px-3.5 rounded-lg border transition-all inline-flex items-center gap-2 cursor-pointer shadow-sm ${
                                   isLight 
                                     ? 'bg-[#14170F] text-white border-[#14170F] hover:bg-[#2A3125] hover:shadow' 
-                                    : 'bg-white/[0.06] text-white border-white/20 hover:bg-[#22C55E]/15 hover:text-[#4ADE80] hover:border-[#22C55E]/40'
+                                    : 'bg-white/[0.06] text-white border-white/20 hover:bg-white/10 hover:border-white/30'
                                 }`}
                               >
                                 <span>{language === 'es' ? 'Ver Seguimiento' : 'Track Order'}</span>
@@ -1216,7 +1216,7 @@ export const CollectorVaultPage: React.FC<CollectorVaultPageProps> = ({ onNaviga
                               }}
                               className={`px-3 py-1.5 rounded-lg font-['Nunito',sans-serif] text-xs font-[800] uppercase tracking-wider border transition-all duration-200 flex items-center gap-2 cursor-pointer select-none shadow-sm ${
                                 isExpanded
-                                  ? (isLight ? 'bg-[#14170F] text-white border-[#14170F]' : 'bg-[#61B663]/20 text-[#61B663] border-[#61B663]/40')
+                                  ? (isLight ? 'bg-[#14170F] text-white border-[#14170F]' : 'bg-white/10 text-white border-white/20')
                                   : (isLight ? 'bg-white hover:bg-neutral-100 text-[#14170F] border-[#D4CDC0]' : 'bg-[#2A2A2A] hover:bg-[#333333] text-white border-[#4E4E4E]')
                               }`}
                             >

@@ -606,7 +606,7 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                     {language === 'es' ? 'Cantidad de cartas:' : 'Number of cards:'}
                   </span>
                   {discountRate > 0 && (
-                    <span className="font-mono text-[9.5px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
                       {language === 'es' ? `-${Math.round(discountRate * 100)}% dto. lote` : `-${Math.round(discountRate * 100)}% bulk disc.`}
                     </span>
                   )}
