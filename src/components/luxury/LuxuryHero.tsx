@@ -370,32 +370,6 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
             </a>
           </motion.div>
 
-          {/* Versión móvil: Letras del escáner del fondo justo debajo del botón 'SEE OUR TECHNOLOGY' */}
-          <div 
-            className="lg:hidden w-full flex flex-col items-center justify-center pointer-events-none select-none -mt-4 mb-5"
-            style={{
-              animation: 'heroMidScanResultReveal 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
-            }}
-          >
-            {/* Línea 1: Detección corta y compacta (CERO CÍRCULOS) */}
-            <div className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] uppercase text-center">
-              <span className={isLight ? 'text-amber-800/90 font-bold' : 'text-amber-300/90 font-bold'}>
-                {language === 'es' 
-                  ? '[ ⌖ ESCÁNER: ERROR EN CARTA DETECTADO ]' 
-                  : '[ ⌖ SCAN: CARD FLAW DETECTED ]'}
-              </span>
-            </div>
-
-            {/* Línea 2: Sub-métrica compacta */}
-            <div className="mt-0.5 font-mono text-[6.5px] sm:text-[7px] tracking-[0.16em] uppercase text-center opacity-65">
-              <span className={isLight ? 'text-slate-600' : 'text-neutral-300'}>
-                {language === 'es' 
-                  ? 'DEFECTO SUPERFICIE 0.03mm · SUB-GRADE 8.5' 
-                  : 'SURFACE DEFECT 0.03mm · SUB-GRADE 8.5'}
-              </span>
-            </div>
-          </div>
-
           {/* 3 Scientific Rigor Badges */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

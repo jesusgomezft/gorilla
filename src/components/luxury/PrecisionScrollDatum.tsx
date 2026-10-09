@@ -251,26 +251,6 @@ export const PrecisionScrollDatum: React.FC = () => {
             opacity: 0;
           }
         }
-
-        /* 2. Revelación de resultados al pasar por la mitad del Hero (35% a 62% del ciclo) */
-        @keyframes heroMidScanResultReveal {
-          0%, 32% {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          40% {
-            opacity: 0.72;
-            transform: translateY(0px);
-          }
-          58% {
-            opacity: 0.72;
-            transform: translateY(0px);
-          }
-          66%, 100% {
-            opacity: 0;
-            transform: translateY(-8px);
-          }
-        }
       `}</style>
 
       {/* Scanner Assembly Container */}
@@ -297,18 +277,18 @@ export const PrecisionScrollDatum: React.FC = () => {
             }}
           />
 
-          {/* Filamento Láser Ultrafino (1px) */}
+          {/* Filamento Láser Ultrafino (1px) con indicadores en los extremos exteriores */}
           <div className="relative w-full flex items-center">
-            {/* Indicador izquierdo sutil sin círculos ni cajas */}
-            <div className="absolute left-4 sm:left-10 flex items-center opacity-45">
-              <span className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] text-[#22C55E] uppercase">
-                [ ⌖ 1200 DPI ]
+            {/* Indicador extremo izquierdo - Pegado al margen exterior */}
+            <div className="absolute left-3 sm:left-8 flex items-center opacity-40 select-none">
+              <span className="font-mono text-[6px] sm:text-[6.5px] tracking-[0.22em] text-[#16A34A] dark:text-[#4ADE80] uppercase">
+                [ ⌖ SCAN: 1200 DPI ]
               </span>
             </div>
 
-            {/* Línea láser central de precisión */}
+            {/* Línea láser central de precisión (Cero texto en el centro, nunca choca con la losa) */}
             <div 
-              className="w-full h-[1px] opacity-70"
+              className="w-full h-[1px] opacity-65"
               style={{
                 background: isLight
                   ? 'linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.12) 12%, #16A34A 50%, rgba(22, 163, 74, 0.12) 88%, transparent 100%)'
@@ -319,42 +299,73 @@ export const PrecisionScrollDatum: React.FC = () => {
               }}
             />
 
-            {/* Indicador derecho sutil sin círculos ni cajas */}
-            <div className="absolute right-4 sm:right-10 flex items-center opacity-45">
-              <span className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] text-emerald-400 uppercase">
-                [ λ: 532nm ]
+            {/* Indicador extremo derecho - Pegado al margen exterior */}
+            <div className="absolute right-3 sm:right-8 flex items-center opacity-40 select-none">
+              <span className="font-mono text-[6px] sm:text-[6.5px] tracking-[0.22em] text-[#16A34A] dark:text-emerald-400 uppercase">
+                [ RES: 0.03mm · λ: 532nm ]
               </span>
             </div>
           </div>
         </div>
 
         {/* =================================================================== */}
-        {/* RESULTADO DEL ESCÁNER: APARECE EN LA MITAD DEL HERO                 */}
-        {/* En desktop (lg:flex) permanece en Hero; en móvil (lg:hidden) se     */}
-        {/* muestra justo debajo del botón 'SEE OUR TECHNOLOGY' en LuxuryHero   */}
+        {/* MARCAS TÉCNICAS DISTRIBUIDAS EN EL FONDO (WATERMARKS PERIFÉRICAS)   */}
+        {/* Letras micro-técnicas integradas como fondo atmosférico             */}
         {/* =================================================================== */}
-        <div 
-          className="hidden lg:flex absolute top-[48vh] left-0 right-0 flex-col items-center justify-center pointer-events-none select-none z-10 px-4"
-          style={{
-            animation: 'heroMidScanResultReveal 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
-          }}
-        >
-          {/* Línea 1: Detección corta y compacta (CERO CÍRCULOS) */}
-          <div className="font-mono text-[7px] sm:text-[7.5px] tracking-[0.2em] uppercase text-center">
-            <span className={isLight ? 'text-amber-800/90 font-bold' : 'text-amber-300/90 font-bold'}>
-              {language === 'es' 
-                ? '[ ⌖ ESCÁNER: ERROR EN CARTA DETECTADO ]' 
-                : '[ ⌖ SCAN: CARD FLAW DETECTED ]'}
-            </span>
-          </div>
 
-          {/* Línea 2: Sub-métrica compacta */}
-          <div className="mt-0.5 font-mono text-[6.5px] sm:text-[7px] tracking-[0.16em] uppercase text-center opacity-65">
-            <span className={isLight ? 'text-slate-600' : 'text-neutral-300'}>
-              {language === 'es' 
-                ? 'DEFECTO SUPERFICIE 0.03mm · SUB-GRADE 8.5' 
-                : 'SURFACE DEFECT 0.03mm · SUB-GRADE 8.5'}
-            </span>
+        {/* 1. Fondo Superior Izquierdo (Debajo del navbar, margen exterior) */}
+        <div className="absolute top-20 sm:top-24 left-3 sm:left-8 pointer-events-none select-none z-0 opacity-30">
+          <div className={`font-mono text-[5.5px] sm:text-[6.5px] tracking-[0.22em] uppercase ${
+            isLight ? 'text-emerald-900/70 font-semibold' : 'text-emerald-400/70 font-semibold'
+          }`}>
+            [ ⌖ METROLOGÍA: MATRIZ ÓPTICA 1200 DPI ]
+          </div>
+          <div className={`mt-0.5 font-mono text-[5px] sm:text-[5.5px] tracking-[0.16em] uppercase ${
+            isLight ? 'text-gray-500/70' : 'text-gray-400/60'
+          }`}>
+            CALIB. SUPERFICIE · RESOLUCIÓN 0.03mm
+          </div>
+        </div>
+
+        {/* 2. Fondo Superior Derecho (Margen exterior derecho) */}
+        <div className="absolute top-20 sm:top-24 right-3 sm:right-8 pointer-events-none select-none z-0 opacity-30 text-right">
+          <div className={`font-mono text-[5.5px] sm:text-[6.5px] tracking-[0.22em] uppercase ${
+            isLight ? 'text-emerald-900/70 font-semibold' : 'text-emerald-400/70 font-semibold'
+          }`}>
+            [ ⌖ ESPECTROMETRÍA: LÁSER λ: 532nm ]
+          </div>
+          <div className={`mt-0.5 font-mono text-[5px] sm:text-[5.5px] tracking-[0.16em] uppercase ${
+            isLight ? 'text-gray-500/70' : 'text-gray-400/60'
+          }`}>
+            SELLADO ULTRASÓNICO · 100% HERMÉTICO
+          </div>
+        </div>
+
+        {/* 3. Lateral Izquierdo Periférico (En pantalla grande, fuera de las columnas centrales) */}
+        <div className="hidden xl:block absolute top-[44vh] left-6 pointer-events-none select-none z-0 opacity-25">
+          <div className={`font-mono text-[6px] tracking-[0.24em] uppercase ${
+            isLight ? 'text-emerald-900/60 font-semibold' : 'text-emerald-400/60 font-semibold'
+          }`}>
+            [ ⌖ CENTRADO SUB-PÍXEL 50/50 ]
+          </div>
+          <div className={`mt-0.5 font-mono text-[5px] tracking-[0.16em] uppercase ${
+            isLight ? 'text-gray-500/60' : 'text-gray-400/50'
+          }`}>
+            TOLERANCIA PERIMETRAL: ±0.01mm
+          </div>
+        </div>
+
+        {/* 4. Lateral Derecho Periférico (En pantalla grande, fuera de las losas) */}
+        <div className="hidden xl:block absolute top-[52vh] right-6 pointer-events-none select-none z-0 opacity-25 text-right">
+          <div className={`font-mono text-[6px] tracking-[0.24em] uppercase ${
+            isLight ? 'text-emerald-900/60 font-semibold' : 'text-emerald-400/60 font-semibold'
+          }`}>
+            [ ⌖ LIBRO MAYOR: BLOCKCHAIN ]
+          </div>
+          <div className={`mt-0.5 font-mono text-[5px] tracking-[0.16em] uppercase ${
+            isLight ? 'text-gray-500/60' : 'text-gray-400/50'
+          }`}>
+            REGISTRO CRIPTOGRÁFICO #GG-10 VERIFICADO
           </div>
         </div>
 
