@@ -441,11 +441,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     style={{
-                      left: `${Math.min(Math.max(activeHotspot.x, 20), 75)}%`,
-                      top: `${activeHotspot.y > 60 ? activeHotspot.y - 25 : activeHotspot.y + 12}%`,
-                      transform: 'translate(-50%, 0) translateZ(60px)'
+                      left: activeHotspot.x > 50 ? 'auto' : '10px',
+                      right: activeHotspot.x > 50 ? '10px' : 'auto',
+                      top: activeHotspot.y > 55 ? 'auto' : `${Math.min(activeHotspot.y + 6, 52)}%`,
+                      bottom: activeHotspot.y > 55 ? `${Math.max(100 - activeHotspot.y + 6, 10)}%` : 'auto',
+                      transform: 'translateZ(50px)'
                     }}
-                    className={`absolute z-40 w-64 p-3.5 border backdrop-blur-xl text-left font-mono pointer-events-auto shadow-2xl ${
+                    className={`absolute z-40 w-[240px] sm:w-64 max-w-[calc(100%-20px)] p-3 sm:p-3.5 border backdrop-blur-xl text-left font-mono pointer-events-auto shadow-2xl ${
                       isLight 
                         ? 'border-gray-300 bg-white/95 text-gray-900 shadow-xl' 
                         : 'border-[#48C765]/60 bg-[#121613]/95 text-white shadow-[0_15px_35px_rgba(0,0,0,0.9)]'
@@ -492,7 +494,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
           <div className={`mt-3 font-mono text-[10px] text-center ${
             isLight ? 'text-gray-500' : 'text-gray-400'
           }`}>
-            {language === 'es' ? 'Mueve el cursor sobre el slab para inspeccionar reflejos y puntos forenses' : 'Move cursor over the slab to inspect dynamic glare & forensic hotspots'}
+            {language === 'es' ? 'Toca o mueve el cursor sobre el slab para inspeccionar reflejos y puntos forenses' : 'Tap or move cursor over the slab to inspect dynamic glare & forensic hotspots'}
           </div>
 
         </div>
