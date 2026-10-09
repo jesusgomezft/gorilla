@@ -163,10 +163,10 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
       <div className="relative z-10 max-w-[1400px] mx-auto">
         
         {/* Institutional Header Banner (Theme-Responsive Light/Dark) */}
-        <div className={`relative overflow-hidden border mb-6 sm:mb-8 transition-colors duration-300 ${
+        <div className={`relative overflow-hidden border mb-6 sm:mb-8 transition-colors duration-500 ${
           isLight 
-            ? 'bg-gradient-to-r from-[#F4F9F5] via-[#EAF4ED] to-[#F4F9F5] border-[#D1E3D6] shadow-sm' 
-            : 'bg-[#04150A] border-white/10 shadow-2xl'
+            ? 'bg-[#FAF9F6] border-[#E5E7EB] shadow-sm' 
+            : 'bg-[#060806] border-white/10 shadow-2xl'
         }`}>
           {/* Keyframe animation for banner laser sweep */}
           <style>{`
@@ -188,46 +188,50 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
             }
           `}</style>
 
-          {/* 1. Líneas Horizontales Nítidas de Escaneo (18px, idénticas al Home) */}
+          {/* 1. Base Degradado Sutil Idéntico al Proyecto */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: isLight
-                ? 'linear-gradient(to bottom, rgba(16, 24, 16, 0.08) 1px, transparent 1px)'
-                : 'linear-gradient(to bottom, rgba(255, 255, 255, 0.085) 1px, transparent 1px)',
-              backgroundSize: '100% 18px',
+              background: isLight
+                ? 'radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #FAF8F5 50%, #F3EFE9 100%)'
+                : 'radial-gradient(ellipse at 50% 35%, #0B0E0B 0%, #060806 60%, #030403 100%)'
             }}
           />
 
-          {/* 2. Guías de Calibración Técnica (Cada 72px) */}
+          {/* 2. Trama Litográfica de Puntos Principales (Idéntica al fondo del proyecto) */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: isLight
-                ? 'linear-gradient(to bottom, rgba(22, 101, 52, 0.14) 1px, transparent 1px)'
-                : 'linear-gradient(to bottom, rgba(74, 222, 128, 0.20) 1px, transparent 1px)',
-              backgroundSize: '100% 72px',
+              backgroundImage: isLight 
+                ? 'radial-gradient(circle, rgba(0, 0, 0, 0.10) 1.15px, transparent 1.25px)' 
+                : 'radial-gradient(circle, rgba(255, 255, 255, 0.14) 1.15px, transparent 1.25px)',
+              backgroundSize: '9px 9px',
+              mixBlendMode: isLight ? 'multiply' : 'screen',
+              opacity: isLight ? 0.62 : 0.65
             }}
           />
 
-          {/* 3. Guías Verticales de Coordenadas (Columnas a 108px) */}
+          {/* 3. Puntos Rosette Escalonados (Efecto laboratorio auténtico idéntico al fondo del proyecto) */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: isLight
-                ? 'linear-gradient(to right, rgba(16, 24, 16, 0.04) 1px, transparent 1px)'
-                : 'linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px)',
-              backgroundSize: '108px 100%',
+              backgroundImage: isLight 
+                ? 'radial-gradient(circle, rgba(22, 101, 52, 0.05) 0.85px, transparent 0.95px)' 
+                : 'radial-gradient(circle, rgba(74, 222, 128, 0.10) 0.85px, transparent 0.95px)',
+              backgroundSize: '9px 9px',
+              backgroundPosition: '4.5px 4.5px',
+              mixBlendMode: isLight ? 'multiply' : 'screen',
+              opacity: 0.50
             }}
           />
 
-          {/* 4. Haz Láser de Escaneo Óptico Dinámico (Línea continua con estela) */}
+          {/* 4. Haz Láser de Escaneo Óptico Dinámico */}
           <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
             <div 
               className="w-full absolute left-0 right-0 pointer-events-none will-change-transform"
               style={{
                 height: '80px',
-                animation: 'bannerLaserSweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite',
+                animation: 'bannerLaserSweep 8s cubic-bezier(0.4, 0, 0.2, 1) infinite',
               }}
             >
               {/* Estela luminosa suave degradada */}
@@ -235,34 +239,24 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                 className="w-full h-full"
                 style={{
                   background: isLight
-                    ? 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.03) 40%, rgba(22, 163, 74, 0.15) 100%)'
-                    : 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.06) 40%, rgba(74, 222, 128, 0.22) 100%)',
+                    ? 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.015) 50%, rgba(22, 163, 74, 0.08) 100%)'
+                    : 'linear-gradient(to bottom, transparent 0%, rgba(34, 197, 94, 0.04) 50%, rgba(74, 222, 128, 0.18) 100%)',
                 }}
               />
               {/* Filamento Láser de Precisión */}
               <div 
-                className="w-full h-[2px]"
+                className="w-full h-[1.5px]"
                 style={{
                   background: isLight
                     ? 'linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.25) 15%, #16A34A 50%, rgba(22, 163, 74, 0.25) 85%, transparent 100%)'
                     : 'linear-gradient(90deg, transparent 0%, rgba(74, 222, 128, 0.35) 15%, #4ADE80 50%, rgba(74, 222, 128, 0.35) 85%, transparent 100%)',
                   boxShadow: isLight
-                    ? '0 0 10px rgba(22, 163, 74, 0.45), 0 0 20px rgba(22, 163, 74, 0.2)'
-                    : '0 0 14px rgba(74, 222, 128, 0.7), 0 0 28px rgba(74, 222, 128, 0.35)',
+                    ? '0 0 10px rgba(22, 163, 74, 0.35), 0 0 18px rgba(22, 163, 74, 0.15)'
+                    : '0 0 12px rgba(74, 222, 128, 0.6), 0 0 24px rgba(74, 222, 128, 0.25)',
                 }}
               />
             </div>
           </div>
-
-          {/* Radial Glow Accent de Fondo */}
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: isLight
-                ? 'radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.10) 0%, rgba(244, 249, 245, 0.90) 75%)'
-                : 'radial-gradient(ellipse at 50% 50%, rgba(22, 101, 52, 0.35) 0%, rgba(4, 21, 10, 0.90) 80%)'
-            }}
-          />
 
           <div className="relative z-10 px-6 sm:px-10 lg:px-12 py-8 sm:py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-10">
             {/* Left Column: Heading & Tagline */}
