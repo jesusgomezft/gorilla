@@ -29,6 +29,48 @@ interface Hotspot {
   category: string;
 }
 
+// After Effects Diamond Star Lens Flare Component (Zero background box, pure light physics)
+const StarGlint: React.FC<{ x: number; y: number; intensity: number; color?: string }> = ({ x, y, intensity, color = '#48C765' }) => {
+  if (intensity <= 0.02) return null;
+  return (
+    <div 
+      className="absolute pointer-events-none -translate-x-1/2 -translate-y-1/2 z-30 transition-opacity duration-75 select-none"
+      style={{ left: `${x}%`, top: `${y}%`, opacity: intensity }}
+    >
+      {/* Horizontal Anamorphic Flare Beam */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 sm:w-40 h-[1.5px] pointer-events-none"
+        style={{
+          background: `linear-gradient(90deg, transparent, ${color} 40%, #ffffff 50%, ${color} 60%, transparent)`,
+          filter: 'drop-shadow(0 0 6px rgba(72,199,101,0.9))'
+        }}
+      />
+      {/* Vertical Starlight Beam */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1.5px] h-14 sm:h-20 pointer-events-none"
+        style={{
+          background: `linear-gradient(180deg, transparent, ${color} 40%, #ffffff 50%, ${color} 60%, transparent)`,
+          filter: 'drop-shadow(0 0 6px rgba(72,199,101,0.9))'
+        }}
+      />
+      {/* 45-degree Diagonal Sparkle Micro-Rays */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-[1px] rotate-45 pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, transparent, #ffffff, transparent)' }}
+      />
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-[1px] -rotate-45 pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, transparent, #ffffff, transparent)' }}
+      />
+      {/* Central Starlight Corona Core */}
+      <div 
+        className="w-4 h-4 rounded-full bg-white blur-[1.5px]"
+        style={{ boxShadow: '0 0 14px #ffffff, 0 0 24px #48C765, 0 0 36px #22C55E' }}
+      />
+    </div>
+  );
+};
+
 export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechModal }) => {
   const { t, language } = useLanguage();
   const { theme } = useTheme();
@@ -36,9 +78,14 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
   const heroImageSrc = '/images/alakazam_hero.png?v=6';
 
-  // 10s Pure Cinematic Intro Animation (100% transparent, zero text, zero blinking circles)
+  // 10s After Effects Level Cinematic Optical Pipeline (100% transparent, zero box)
   const [isIntroPlaying, setIsIntroPlaying] = useState(true);
   const [introProgress, setIntroProgress] = useState(0); // 0 to 100%
+  const [glint1, setGlint1] = useState(0); // Gem Mint 10 badge diamond flare
+  const [glint2, setGlint2] = useState(0); // Ultrasonic weld diamond flare
+  const [glint3, setGlint3] = useState(0); // Cryptographic QR diamond flare
+  const [sonicWaveY, setSonicWaveY] = useState(0); // Ultrasonic wave position %
+  const [sonicWaveOpacity, setSonicWaveOpacity] = useState(0);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50 });
@@ -46,7 +93,7 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
   const [showHotspots, setShowHotspots] = useState(true);
   const slabRef = useRef<HTMLDivElement>(null);
 
-  // 10-second automatic pure cinematic sequence on initial visit
+  // 10-second automatic high-end cinematic sequence on initial visit
   useEffect(() => {
     if (!isIntroPlaying) return;
 
@@ -60,17 +107,64 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
 
       const t = progress / 100;
 
-      // Ultra-smooth continuous floating motion across the 3 slabs
-      const angleY = Math.sin(t * Math.PI * 2) * -4.2 * (1 - t * 0.4);
-      const angleX = Math.sin(t * Math.PI * 2.5) * 2.2 * (1 - t * 0.4);
+      // 4-Act After Effects Cinematography & Camera Choreography
+      let targetRotY = 0;
+      let targetRotX = 0;
+      let g1 = 0;
+      let g2 = 0;
+      let g3 = 0;
+      let sWaveY = 0;
+      let sWaveOp = 0;
 
-      setRotateY(angleY);
-      setRotateX(angleX);
+      if (t < 0.34) {
+        // Act I: Front Slab Holographic & Grade 10 Diamond Lens Flare
+        const p1 = t / 0.34;
+        const ease1 = Math.sin(p1 * Math.PI);
+        targetRotY = -7.2 * ease1;
+        targetRotX = -3.2 * ease1;
+        // Diamond Anamorphic Star Glint peaks at p1 ~ 0.58 (~2.0s)
+        const glintPhase = Math.max(0, 1 - Math.abs(p1 - 0.58) / 0.22);
+        g1 = Math.pow(glintPhase, 3);
+      } else if (t < 0.68) {
+        // Act II: Middle Slab Ultrasonic Molecular Edge Profile & Sonic Wave
+        const p2 = (t - 0.34) / 0.34;
+        const ease2 = Math.sin(p2 * Math.PI);
+        targetRotY = 6.8 * ease2;
+        targetRotX = 2.6 * ease2;
+        // Ultrasonic molecular pulse traces down the 4mm acrylic weld
+        sWaveY = 8 + p2 * 84;
+        sWaveOp = Math.sin(p2 * Math.PI);
+        // Diamond Star Glint on Ultrasonic seal reticle peaks at p2 ~ 0.50 (~5.1s)
+        const glintPhase2 = Math.max(0, 1 - Math.abs(p2 - 0.50) / 0.20);
+        g2 = Math.pow(glintPhase2, 3);
+      } else if (t < 0.88) {
+        // Act III: Back Slab Cryptographic Ledger & QR Code Inspection
+        const p3 = (t - 0.68) / 0.20;
+        const ease3 = Math.sin(p3 * Math.PI);
+        targetRotY = -4.5 * ease3;
+        targetRotX = -1.8 * ease3;
+        // Diamond Star Glint on QR code peaks at p3 ~ 0.50 (~7.8s)
+        const glintPhase3 = Math.max(0, 1 - Math.abs(p3 - 0.50) / 0.22);
+        g3 = Math.pow(glintPhase3, 3);
+      } else {
+        // Act IV: Hermite Eased Deceleration to Rest (8.8s to 10.0s)
+        const p4 = (t - 0.88) / 0.12;
+        const settleDecel = Math.pow(1 - p4, 2);
+        targetRotY = -1.5 * settleDecel;
+        targetRotX = -0.6 * settleDecel;
+      }
 
-      // Silky specular studio light gliding continuously across the acrylic faces
+      setRotateY(targetRotY);
+      setRotateX(targetRotX);
+      setGlint1(g1);
+      setGlint2(g2);
+      setGlint3(g3);
+      setSonicWaveY(sWaveY);
+      setSonicWaveOpacity(sWaveOp);
+
       setGlarePosition({
         x: Math.round(15 + t * 70),
-        y: Math.round(32 + Math.sin(t * Math.PI * 2) * 16)
+        y: Math.round(30 + Math.sin(t * Math.PI * 2) * 18)
       });
 
       if (elapsed >= duration) {
@@ -78,9 +172,13 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
         setIsIntroPlaying(false);
         setRotateX(0);
         setRotateY(0);
+        setGlint1(0);
+        setGlint2(0);
+        setGlint3(0);
+        setSonicWaveOpacity(0);
         setGlarePosition({ x: 50, y: 50 });
       }
-    }, 30);
+    }, 20);
 
     return () => clearInterval(timer);
   }, [isIntroPlaying]);
@@ -467,6 +565,126 @@ export const LuxuryHero: React.FC<LuxuryHeroProps> = ({ onNavigate, onOpenTechMo
                   }}
                 />
               )}
+
+              {/* Front Slab: Secret Rare Rainbow Holographic Foil Sheen (Directly bounded to card artwork) */}
+              <div
+                className="absolute pointer-events-none rounded-[6px] overflow-hidden z-10"
+                style={{
+                  left: '8.4%',
+                  top: '26.2%',
+                  width: '31.8%',
+                  height: '58.2%',
+                  mixBlendMode: 'color-dodge',
+                }}
+              >
+                <div
+                  className="w-full h-full transition-opacity duration-300"
+                  style={{
+                    opacity: isIntroPlaying
+                      ? Math.max(0.15, Math.sin((introProgress / 100) * Math.PI) * 0.85)
+                      : 0.35,
+                    background: `linear-gradient(${115 + rotateY * 4}deg, 
+                      transparent 10%, 
+                      rgba(236, 72, 153, 0.28) 25%, 
+                      rgba(59, 130, 246, 0.38) 40%, 
+                      rgba(255, 255, 255, 0.75) 50%, 
+                      rgba(52, 211, 153, 0.42) 60%, 
+                      rgba(251, 191, 36, 0.38) 75%, 
+                      transparent 90%)`,
+                    transform: isIntroPlaying
+                      ? `translateX(${-60 + (introProgress / 100) * 140}%)`
+                      : `translateX(${rotateY * 3}%) translateY(${rotateX * 2}%)`,
+                    filter: 'contrast(1.3) brightness(1.2)'
+                  }}
+                />
+              </div>
+
+              {/* Front Slab: Grade 10 Label Brushed Metallic Optical Shimmer */}
+              <div
+                className="absolute pointer-events-none rounded-[5px] overflow-hidden z-10"
+                style={{
+                  left: '8.2%',
+                  top: '6.8%',
+                  width: '32.2%',
+                  height: '16.5%',
+                  mixBlendMode: 'overlay',
+                }}
+              >
+                <div
+                  className="w-full h-full"
+                  style={{
+                    opacity: isIntroPlaying ? Math.sin((introProgress / 100) * Math.PI) * 0.65 : 0.25,
+                    background: `linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.75) 50%, transparent 70%)`,
+                    transform: isIntroPlaying
+                      ? `translateX(${-80 + (introProgress / 100) * 180}%)`
+                      : `translateX(${rotateY * 2}%)`
+                  }}
+                />
+              </div>
+
+              {/* Middle Slab: Ultrasonic Molecular Edge Scanner & Acoustic Pulse */}
+              {sonicWaveOpacity > 0.05 && (
+                <div
+                  className="absolute pointer-events-none z-30 -translate-x-1/2"
+                  style={{
+                    left: '50.7%',
+                    top: `${Math.max(6, Math.min(94, sonicWaveY))}%`,
+                    opacity: sonicWaveOpacity
+                  }}
+                >
+                  {/* Center Emerald Laser Bead */}
+                  <div
+                    className="w-3.5 h-3.5 -ml-[7px] -mt-[7px] rounded-full bg-emerald-200 blur-[0.6px]"
+                    style={{
+                      boxShadow: '0 0 12px #48C765, 0 0 24px #10B981, 0 0 36px #059669'
+                    }}
+                  />
+                  {/* Transverse Crosshair Metrology Bar */}
+                  <div
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 sm:w-16 h-[1.5px]"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, #48C765 25%, #ffffff 50%, #48C765 75%, transparent)',
+                      boxShadow: '0 0 10px #48C765'
+                    }}
+                  />
+                </div>
+              )}
+
+              {/* Back Slab: Reverse Card Iridescent Holographic Sheen */}
+              <div
+                className="absolute pointer-events-none rounded-[6px] overflow-hidden z-10"
+                style={{
+                  left: '60.0%',
+                  top: '26.2%',
+                  width: '31.8%',
+                  height: '58.2%',
+                  mixBlendMode: 'color-dodge',
+                }}
+              >
+                <div
+                  className="w-full h-full transition-opacity duration-300"
+                  style={{
+                    opacity: isIntroPlaying
+                      ? Math.max(0.1, Math.sin((introProgress / 100) * Math.PI) * 0.7)
+                      : 0.25,
+                    background: `linear-gradient(${130 + rotateY * 3}deg, 
+                      transparent 20%, 
+                      rgba(59, 130, 246, 0.35) 40%, 
+                      rgba(255, 255, 255, 0.65) 50%, 
+                      rgba(245, 158, 11, 0.35) 60%, 
+                      transparent 80%)`,
+                    transform: isIntroPlaying
+                      ? `translateX(${-70 + (introProgress / 100) * 150}%)`
+                      : `translateX(${rotateY * 3}%)`,
+                    filter: 'contrast(1.2)'
+                  }}
+                />
+              </div>
+
+              {/* After Effects Diamond Anamorphic Star Glints */}
+              <StarGlint x={18.2} y={15} intensity={glint1} color="#A7F3D0" />
+              <StarGlint x={50.7} y={45} intensity={glint2} color="#34D399" />
+              <StarGlint x={84.2} y={15} intensity={glint3} color="#6EE7B7" />
 
               {/* Interactive Inspection Hotspots */}
               {showHotspots && !isIntroPlaying && hotspots.map((spot) => {
