@@ -94,7 +94,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
     >
       {/* ── ARCHIVAL DOSSIER FOLIO CONTAINER ── */}
       <div 
-        className={`relative w-full max-w-6xl shadow-2xl flex flex-col max-h-[94vh] border transition-colors duration-300 font-sans ${
+        className={`relative w-full max-w-6xl shadow-2xl flex flex-col h-[96dvh] sm:h-auto sm:max-h-[92vh] border transition-colors duration-300 font-sans ${
           isLight 
             ? 'bg-[#F9F7F2] border-[#D4CBBF] text-[#14170F]' 
             : 'bg-[#0E1310] border-white/15 text-white'
@@ -108,17 +108,17 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
       >
 
         {/* ── ARCHIVAL HEADER: SECURITY FOLIO BANNER ── */}
-        <div className={`shrink-0 px-6 sm:px-8 py-3.5 border-b flex flex-wrap items-center justify-between gap-4 transition-colors ${
+        <div className={`shrink-0 px-3.5 sm:px-8 py-2.5 sm:py-3.5 border-b flex items-center justify-between gap-3 transition-colors ${
           isLight 
             ? 'bg-[#EFEAE0] border-[#D4CBBF]' 
             : 'bg-[#131A14] border-white/10'
         }`}>
           {/* Official Dossier Identification */}
-          <div className="min-w-0">
-            <div className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-[#15803D] dark:text-[#48C765]">
-              {isEs ? 'DOSSIER OFICIAL DE LABORATORIO · REF. GG-LAB-2026-MET' : 'OFFICIAL LABORATORY DOSSIER · REF. GG-LAB-2026-MET'}
+          <div className="min-w-0 flex-1">
+            <div className="font-mono text-[8.5px] sm:text-[10px] font-bold tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[#15803D] dark:text-[#48C765] truncate">
+              {isEs ? 'DOSSIER DE LABORATORIO · REF. GG-LAB-2026-MET' : 'LABORATORY DOSSIER · REF. GG-LAB-2026-MET'}
             </div>
-            <h2 className={`font-['Nunito',sans-serif] text-base sm:text-lg font-[900] tracking-normal uppercase truncate mt-0.5 ${
+            <h2 className={`font-['Nunito',sans-serif] text-xs sm:text-base md:text-lg font-[900] tracking-normal uppercase leading-tight mt-0.5 ${
               isLight ? 'text-[#14170F]' : 'text-white'
             }`}>
               {isEs 
@@ -128,7 +128,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
           </div>
 
           {/* Dossier Top Controls: Return Button */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <span className="hidden md:inline font-mono text-[10px] uppercase tracking-wider opacity-60">
               ISO/IEC 17025 ACCREDITED
             </span>
@@ -136,7 +136,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
             <button
               type="button"
               onClick={onClose}
-              className={`px-3 sm:px-4 py-1.5 border text-xs font-mono font-bold tracking-widest uppercase transition-all duration-150 flex items-center gap-2 cursor-pointer ${
+              className={`px-2.5 sm:px-4 py-1 sm:py-1.5 border text-[11px] sm:text-xs font-mono font-bold tracking-wider sm:tracking-widest uppercase transition-all duration-150 flex items-center gap-1.5 cursor-pointer rounded-sm ${
                 isLight 
                   ? 'border-[#14170F] text-[#14170F] hover:bg-[#14170F] hover:text-[#F9F7F2]' 
                   : 'border-white/30 text-white hover:bg-white hover:text-[#0E1310]'
@@ -144,18 +144,18 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
               title={isEs ? 'Cerrar Dossier (Esc)' : 'Close Dossier (Esc)'}
             >
               <span>{isEs ? 'CERRAR' : 'CLOSE'}</span>
-              <span className="text-sm leading-none">✕</span>
+              <span className="text-xs sm:text-sm leading-none font-bold">✕</span>
             </button>
           </div>
         </div>
 
         {/* ── ARCHIVAL FOLIO TABS (PHYSICAL FOLIO DIVIDERS) ── */}
-        <div className={`shrink-0 border-b overflow-x-auto scrollbar-none transition-colors ${
+        <div className={`shrink-0 border-b transition-colors ${
           isLight 
             ? 'bg-[#E7E1D4] border-[#D4CBBF]' 
             : 'bg-[#090C0A] border-white/10'
         }`}>
-          <div className="grid grid-cols-2 lg:grid-cols-4 min-w-[620px] lg:min-w-0">
+          <div className="grid grid-cols-4 w-full divide-x divide-current/10">
             {folioTabs.map((tab) => {
               const isActive = activeFolio === tab.id;
               return (
@@ -163,9 +163,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveFolio(tab.id)}
-                  className={`px-4 sm:px-6 py-3.5 text-left border-r last:border-r-0 transition-all duration-200 cursor-pointer relative select-none ${
-                    isLight ? 'border-[#D4CBBF]' : 'border-white/10'
-                  } ${
+                  className={`py-2 px-1 sm:px-5 sm:py-3.5 text-center sm:text-left transition-all duration-200 cursor-pointer relative select-none flex flex-col justify-center ${
                     isActive
                       ? isLight 
                         ? 'bg-[#F9F7F2] text-[#14170F]' 
@@ -177,24 +175,24 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 >
                   {/* Active Folio Gilt Bar */}
                   {isActive && (
-                    <div className="absolute top-0 inset-x-0 h-1 bg-[#15803D] dark:bg-[#48C765]" />
+                    <div className="absolute top-0 inset-x-0 h-0.5 sm:h-1 bg-[#15803D] dark:bg-[#48C765]" />
                   )}
 
-                  <div className="flex items-center justify-between mb-1">
-                    <span className={`font-mono text-[10px] font-bold tracking-widest ${
-                      isActive ? 'text-[#15803D] dark:text-[#48C765]' : 'opacity-50'
+                  <div className="flex items-center justify-center sm:justify-between mb-0.5 sm:mb-1">
+                    <span className={`font-mono text-[9px] sm:text-[10px] font-bold tracking-wider sm:tracking-widest ${
+                      isActive ? 'text-[#15803D] dark:text-[#48C765]' : 'opacity-60'
                     }`}>
                       FOLIO {tab.num}
                     </span>
-                    <span className="font-mono text-[9px] opacity-40 uppercase">
+                    <span className="hidden sm:inline font-mono text-[9px] opacity-40 uppercase">
                       {tab.code}
                     </span>
                   </div>
 
-                  <h3 className="font-['Nunito',sans-serif] text-xs sm:text-sm font-[900] tracking-normal uppercase truncate leading-tight">
+                  <h3 className="font-['Nunito',sans-serif] text-[10px] sm:text-xs md:text-sm font-[900] tracking-tight sm:tracking-normal uppercase truncate leading-tight">
                     {tab.title}
                   </h3>
-                  <div className="font-mono text-[10px] opacity-60 mt-0.5 truncate">
+                  <div className="hidden xs:block font-mono text-[8px] sm:text-[10px] opacity-60 mt-0.5 truncate">
                     {tab.metric}
                   </div>
                 </button>
@@ -204,7 +202,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
         </div>
 
         {/* ── DOSSIER INTERIOR: SPECIMEN PLATE (LEFT) & METROLOGICAL LEDGER (RIGHT) ── */}
-        <div className="p-4 sm:p-6 md:p-8 overflow-y-auto flex-1 min-h-0">
+        <div className="p-3 sm:p-6 md:p-8 overflow-y-auto flex-1 min-h-0">
           <AnimatePresence mode="wait">
 
             {/* ════════════════════════════════════════════════════════════════════
@@ -220,13 +218,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
               >
                 {/* LEFT: Archival Museum Specimen Plate I */}
-                <div className={`lg:col-span-6 p-5 sm:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
+                <div className={`lg:col-span-6 p-3.5 sm:p-5 md:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
                   isLight 
                     ? 'bg-[#EFEAE0] border-[#D4CBBF]' 
                     : 'bg-[#090C0A] border-white/10'
                 }`}>
                   {/* Plate Header */}
-                  <div className="flex items-center justify-between pb-3 border-b border-current/15 font-mono text-[10px]">
+                  <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-current/15 font-mono text-[9.5px] sm:text-[10px]">
                     <div className="flex items-center gap-2">
                       <span className="font-bold tracking-wider text-[#15803D] dark:text-[#48C765]">LÁMINA I</span>
                       <span className="opacity-40">|</span>
@@ -236,7 +234,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                   </div>
 
                   {/* Specimen Viewport with Precision Registration Corners */}
-                  <div className="my-6 relative flex flex-col items-center justify-center">
+                  <div className="my-2 sm:my-4 relative flex flex-col items-center justify-center">
                     {/* Millimetric Scale Bar along left side */}
                     <div className="absolute -left-1 sm:left-2 top-0 bottom-0 flex flex-col justify-between font-mono text-[8px] opacity-40 select-none py-2 border-r border-current/20 pr-1.5">
                       <span>0 mm</span>
@@ -247,7 +245,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                     </div>
 
                     {/* Specimen Display */}
-                    <div className="relative w-48 sm:w-56 h-64 sm:h-76 flex items-center justify-center p-2">
+                    <div className="relative w-36 sm:w-56 h-48 sm:h-76 flex items-center justify-center p-2">
                       {/* Authentic Archival Photo Mounting Corners */}
                       <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#15803D] dark:border-[#48C765]" />
                       <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#15803D] dark:border-[#48C765]" />
@@ -403,13 +401,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
               >
                 {/* LEFT: Archival Museum Specimen Plate II */}
-                <div className={`lg:col-span-6 p-5 sm:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
+                <div className={`lg:col-span-6 p-3.5 sm:p-5 md:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
                   isLight 
                     ? 'bg-[#EFEAE0] border-[#D4CBBF]' 
                     : 'bg-[#090C0A] border-white/10'
                 }`}>
                   {/* Plate Header */}
-                  <div className="flex items-center justify-between pb-3 border-b border-current/15 font-mono text-[10px]">
+                  <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-current/15 font-mono text-[9.5px] sm:text-[10px]">
                     <div className="flex items-center gap-2">
                       <span className="font-bold tracking-wider text-[#15803D] dark:text-[#48C765]">LÁMINA II</span>
                       <span className="opacity-40">|</span>
@@ -419,7 +417,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                   </div>
 
                   {/* Micro-Reticle Specimen Viewport */}
-                  <div className="my-6 relative flex flex-col items-center justify-center">
+                  <div className="my-2 sm:my-4 relative flex flex-col items-center justify-center">
                     <div className="relative w-full max-w-[340px] aspect-[4/3] border border-current/25 shadow-xl overflow-hidden bg-black">
                       <img 
                         src="/images/macro_authenticate.jpg" 
@@ -565,13 +563,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
               >
                 {/* LEFT: Archival Museum Specimen Plate III */}
-                <div className={`lg:col-span-6 p-5 sm:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
+                <div className={`lg:col-span-6 p-3.5 sm:p-5 md:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
                   isLight 
                     ? 'bg-[#EFEAE0] border-[#D4CBBF]' 
                     : 'bg-[#090C0A] border-white/10'
                 }`}>
                   {/* Plate Header */}
-                  <div className="flex items-center justify-between pb-3 border-b border-current/15 font-mono text-[10px]">
+                  <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-current/15 font-mono text-[9.5px] sm:text-[10px]">
                     <div className="flex items-center gap-2">
                       <span className="font-bold tracking-wider text-[#15803D] dark:text-[#48C765]">LÁMINA III</span>
                       <span className="opacity-40">|</span>
@@ -581,13 +579,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                   </div>
 
                   {/* Top Datum Callout (Cleanly floating outside the card) */}
-                  <div className="w-full flex justify-between items-center font-mono text-[10px] pb-2 border-b border-current/10">
+                  <div className="w-full flex justify-between items-center font-mono text-[9.5px] sm:text-[10px] pb-1.5 sm:pb-2 border-b border-current/10">
                     <span className="opacity-70">{isEs ? 'MARGEN SUPERIOR' : 'TOP MARGIN'}: 3.21 mm</span>
                     <span className="font-bold text-[#15803D] dark:text-[#48C765]">50.4% [GEM 10]</span>
                   </div>
 
                   {/* Clean Specimen Viewport: Completely Unobstructed Card Artwork */}
-                  <div className="my-3 relative flex items-center justify-center">
+                  <div className="my-2 sm:my-3 relative flex items-center justify-center">
                     {/* Left Dimension Datum */}
                     <div className="absolute -left-8 sm:-left-12 top-1/2 -translate-y-1/2 font-mono text-[9px] text-right opacity-80 select-none hidden xs:block">
                       <span className="block text-[7.5px] uppercase opacity-50">{isEs ? 'IZQ' : 'L'}</span>
@@ -596,7 +594,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                     </div>
 
                     {/* Unobstructed Card Specimen */}
-                    <div className="relative w-44 sm:w-52 h-60 sm:h-72 flex items-center justify-center">
+                    <div className="relative w-36 sm:w-52 h-48 sm:h-72 flex items-center justify-center">
                       <img 
                         src="/images/alakazam_hero.png" 
                         alt="Medición centesimal de carta"
@@ -742,13 +740,13 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                 className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
               >
                 {/* LEFT: Archival Museum Specimen Plate IV */}
-                <div className={`lg:col-span-6 p-5 sm:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
+                <div className={`lg:col-span-6 p-3.5 sm:p-5 md:p-7 border flex flex-col justify-between relative overflow-hidden transition-colors ${
                   isLight 
                     ? 'bg-[#EFEAE0] border-[#D4CBBF]' 
                     : 'bg-[#090C0A] border-white/10'
                 }`}>
                   {/* Plate Header */}
-                  <div className="flex items-center justify-between pb-3 border-b border-current/15 font-mono text-[10px]">
+                  <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-current/15 font-mono text-[9.5px] sm:text-[10px]">
                     <div className="flex items-center gap-2">
                       <span className="font-bold tracking-wider text-[#15803D] dark:text-[#48C765]">LÁMINA IV</span>
                       <span className="opacity-40">|</span>
@@ -758,8 +756,8 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
                   </div>
 
                   {/* Clean Specimen Viewport: Gorilla Slab Specimen */}
-                  <div className="my-6 relative flex flex-col items-center justify-center">
-                    <div className="relative w-44 sm:w-52 h-60 sm:h-72 flex items-center justify-center">
+                  <div className="my-2 sm:my-4 relative flex flex-col items-center justify-center">
+                    <div className="relative w-36 sm:w-52 h-48 sm:h-72 flex items-center justify-center">
                       <img 
                         src="/images/hero_card_slab.jpg" 
                         alt="Cápsula Gorilla Grading con sellado ultrasónico"
@@ -869,18 +867,18 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
         </div>
 
         {/* ── ARCHIVAL FOOTER CONTROLS ── */}
-        <div className={`shrink-0 px-6 sm:px-8 py-4 border-t flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 transition-colors ${
+        <div className={`shrink-0 px-3.5 sm:px-8 py-2.5 sm:py-3.5 border-t flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-4 transition-colors ${
           isLight 
             ? 'bg-[#EFEAE0] border-[#D4CBBF]' 
             : 'bg-[#131A14] border-white/10'
         }`}>
           {/* Folio Step Navigator */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-3">
             <button
               type="button"
               onClick={handlePrevFolio}
               disabled={currentIndex === 0}
-              className={`px-3 py-2 border font-mono text-[11px] font-bold uppercase transition-all flex items-center gap-2 ${
+              className={`px-2.5 sm:px-3 py-1.5 sm:py-2 border font-mono text-[10px] sm:text-[11px] font-bold uppercase transition-all flex items-center gap-1.5 sm:gap-2 ${
                 currentIndex === 0 
                   ? 'opacity-30 cursor-not-allowed border-current/10' 
                   : isLight
@@ -900,7 +898,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
               type="button"
               onClick={handleNextFolio}
               disabled={currentIndex === folioList.length - 1}
-              className={`px-3 py-2 border font-mono text-[11px] font-bold uppercase transition-all flex items-center gap-2 ${
+              className={`px-2.5 sm:px-3 py-1.5 sm:py-2 border font-mono text-[10px] sm:text-[11px] font-bold uppercase transition-all flex items-center gap-1.5 sm:gap-2 ${
                 currentIndex === folioList.length - 1 
                   ? 'opacity-30 cursor-not-allowed border-current/10' 
                   : isLight
@@ -920,7 +918,7 @@ export const TechDetailModal: React.FC<TechDetailModalProps> = ({ isOpen, onClos
               onClose();
               if (onNavigate) onNavigate('/submit');
             }}
-            className="btn-gorilla-square py-3.5 px-8 text-xs font-bold tracking-normal uppercase flex items-center justify-center gap-3 shadow-xl cursor-pointer"
+            className="btn-gorilla-square py-2.5 sm:py-3.5 px-4 sm:px-8 text-xs font-bold tracking-normal uppercase flex items-center justify-center gap-2 sm:gap-3 shadow-xl cursor-pointer"
           >
             <span>{isEs ? 'ENVIAR CARTAS A PERITAJE' : 'SUBMIT CARDS FOR GRADING'}</span>
             <span className="text-sm">→</span>
