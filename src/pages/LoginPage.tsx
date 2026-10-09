@@ -112,11 +112,6 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                     className="w-full h-full object-contain filter drop-shadow-sm group-hover:drop-shadow-md transition-all"
                   />
                 </div>
-                {/* Active Metrology Status Dot */}
-                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#48C765] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22C55E]" />
-                </span>
               </button>
             </div>
 
