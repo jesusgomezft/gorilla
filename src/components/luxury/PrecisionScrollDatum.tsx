@@ -330,10 +330,11 @@ export const PrecisionScrollDatum: React.FC = () => {
 
         {/* =================================================================== */}
         {/* RESULTADO DEL ESCÁNER: APARECE EN LA MITAD DEL HERO                 */}
-        {/* Letras cortas, pequeñas y discretas (SIN CÍRCULOS NI FONDOS)        */}
+        {/* En desktop (lg:flex) permanece en Hero; en móvil (lg:hidden) se     */}
+        {/* muestra justo debajo del botón 'SEE OUR TECHNOLOGY' en LuxuryHero   */}
         {/* =================================================================== */}
         <div 
-          className="absolute top-[48vh] left-0 right-0 flex flex-col items-center justify-center pointer-events-none select-none z-10 px-4"
+          className="hidden lg:flex absolute top-[48vh] left-0 right-0 flex-col items-center justify-center pointer-events-none select-none z-10 px-4"
           style={{
             animation: 'heroMidScanResultReveal 18s cubic-bezier(0.4, 0, 0.2, 1) infinite',
           }}
