@@ -387,14 +387,8 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                             : 'bg-gradient-to-r from-amber-950/35 via-[#211B0D]/90 to-[#191409]'));
 
                   const hoverBg = isLight 
-                    ? 'hover:bg-[#EBE5DA]' 
-                    : (lvl.id === 'regular' 
-                        ? 'hover:from-blue-900/40 hover:via-[#142030]' 
-                        : lvl.id === 'standard' 
-                        ? 'hover:from-emerald-900/45 hover:via-[#132719]' 
-                        : lvl.id === 'express' 
-                        ? 'hover:from-orange-900/45 hover:via-[#261A12]' 
-                        : 'hover:from-amber-900/45 hover:via-[#2B2311]');
+                    ? 'hover:bg-[#E7F6EA] hover:border-l-[#16A34A]' 
+                    : 'hover:bg-[#122A17] hover:border-l-[#4ADE80]';
 
                   return (
                     <tr 
@@ -402,9 +396,9 @@ export const LuxuryPricingSection: React.FC<LuxuryPricingSectionProps> = ({ onNa
                       onClick={() => setSelectedTierId(prev => prev === lvl.id ? null : lvl.id)}
                       className={`cursor-pointer transition-all border-l-4 ${rowBg} ${hoverBg}`}
                       style={{
-                        borderLeftColor: !isLight 
-                          ? (isSelected ? '#4ADE80' : darkTierColor) 
-                          : 'transparent'
+                        borderLeftColor: isLight
+                          ? (isSelected ? '#16A34A' : 'transparent')
+                          : (isSelected ? '#4ADE80' : darkTierColor)
                       }}
                     >
                       {/* Name & Purpose */}
